@@ -2,6 +2,8 @@ import React from 'react'
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { useUserAuth } from "../Context/UserAuthContext";
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 const Signup = () => {
     const [email, setEmail] = useState("");
     const [error, setError] = useState("");
