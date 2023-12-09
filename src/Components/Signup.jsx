@@ -22,7 +22,7 @@ const Signup = () => {
         }
     };
     useEffect(()=>{
-        toast(error)
+        toast.error(error)
     },[error])
     return (
         <div className="flex min-h-screen">

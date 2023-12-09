@@ -21,7 +21,7 @@ const Login = () => {
         }
     };
     useEffect(()=>{
-        toast(error)
+        toast.error(error)
     },[error])
     const handleGoogleSignIn = async (e) => {
         e.preventDefault();
