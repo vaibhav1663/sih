@@ -10,14 +10,35 @@ const Login = () => {
     const { logIn, googleSignIn } = useUserAuth();
     const navigate = useNavigate();
 
+    const changeEmail = async (e) => {
+        setEmail(e.target.value);
+        document.getElementById('emailInput').style.borderColor = 'black';
+    }
+
+    const changePassword = async (e) => {
+        setPassword(e.target.value);
+        document.getElementById('passwordInput').style.borderColor = 'black';
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
-        try {
-            await logIn(email, password);
-            navigate("/");
-        } catch (err) {
-            setError(err.message);
+        if (email === '' || password === '') {
+            if (email === '') {
+              document.getElementById('emailInput').style.borderColor = 'red';
+            }
+            if (password === '') {
+              document.getElementById('passwordInput').style.borderColor = 'red';
+            }
+            return; 
+        }
+        else{
+            try {
+                await logIn(email, password);
+                navigate("/");
+            } catch (err) {
+                setError(err.message);
+            }
         }
     };
     useEffect(()=>{
@@ -66,10 +87,10 @@ const Login = () => {
                             <p className="text-md md:text-xl">Log in to place the order,no password require!</p>
                         </div>
                         <div className="flex flex-col max-w-md space-y-5">
-                            <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)}
+                            <input type="email" placeholder="Email" onChange={changeEmail} id='emailInput'
                                 className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal" />
-                            <input type="password" placeholder="Password"
-                                className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"  onChange={(e) => setPassword(e.target.value)} />
+                            <input type="password" placeholder="Password" id='passwordInput'
+                                className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"  onChange={changePassword} />
                             <button className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black bg-black text-white" onClick={handleSubmit}>Login</button>
 
                             <p className=" mb-1">Dont have Account <Link className='font-bold' to="/signup">Create one </Link></p>
