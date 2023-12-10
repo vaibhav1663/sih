@@ -1,7 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv"); // no need of using dotenv if node.js version >= 20.6.0
+dotenv.config();
 const app = express();
-const db = "mongodb+srv://username:27bKylHTcLzRZqhf@brocoders.kmwx8fe.mongodb.net/sih"
+const db = process.env.MONGO_CONN_URL;
 
 mongoose.connect(db,{
     useNewUrlParser: true, 
