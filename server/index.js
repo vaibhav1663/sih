@@ -14,8 +14,9 @@ const limiter = rateLimit({
   message: "Too many requests from this IP, please try again later",
 });
 const userRouter = require("./routes/user");
+const bookRouter = require("./routes/books");
 connectDB();
-app.use("/books", limiter);
+app.use("/books", limiter, bookRouter);
 app.use("/reviewer", limiter);
 app.use("/user", limiter, userRouter);
 

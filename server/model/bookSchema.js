@@ -67,6 +67,6 @@ const bookSchema = new mongoose.Schema({
   },
 });
 
-const User = mongoose.model("BOOKS", bookSchema);
+const User = mongoose.model("books", bookSchema);
 
 module.exports = User;
