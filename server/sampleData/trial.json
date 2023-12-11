@@ -1,0 +1,36 @@
+{
+  "uid": {
+    "someField": "someValue",
+    "anotherField": "anotherValue"
+  },
+  "name": "Sample Book",
+  "publicRating": 4.5,
+  "publicCount": 100,
+  "reviewerRating": 4.2,
+  "reviewerCount": 50,
+  "totalScore": 4.4,
+  "isRecommended": true,
+  "desc": "This is a sample book description.",
+  "imageLink": "https://example.com/book-image.jpg",
+  "buyLink": "https://example.com/buy-book",
+  "previewLink": "https://example.com/preview-book",
+  "reviewer1": [
+    {
+      "reviewerName": "Reviewer 1",
+      "review": "Great book! I highly recommend it."
+    }
+  ],
+  "reviewer2": [
+    {
+      "reviewerName": "Reviewer 2",
+      "review": "Enjoyed reading this book. Well-written."
+    }
+  ],
+  "reviewer3": [
+    {
+      "reviewerName": "Reviewer 3",
+      "review": "Interesting plot twists. Thumbs up!"
+    }
+  ],
+  "users": ["user1", "user2", "user3"]
+}
