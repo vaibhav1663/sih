@@ -42,7 +42,12 @@ const Login = () => {
         }
     };
     useEffect(()=>{
-        toast(error)
+        if(error==""){
+
+        }else{
+            toast.error(error)
+        }
+        
     },[error])
     const handleGoogleSignIn = async (e) => {
         e.preventDefault();

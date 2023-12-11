@@ -16,7 +16,7 @@ const Home = () => {
     };
     return (
         <>
-            <Navbar />
+            <Navbar page="home"/>
             <div className="p-4 box mt-3 text-center">
                 Hello Welcome <br />
                 {user && user.email}
