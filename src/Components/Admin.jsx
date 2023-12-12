@@ -1,9 +1,15 @@
 import React from 'react'
+import Navbar from './Navbar'
 
-const Admin = () => {
-  return (
-    <div>Admin</div>
-  )
+const About = () => {
+    return (
+        <>
+            <Navbar page="admin" />
+            <div className="p-4 box mt-3 text-center">
+                Admin
+            </div>
+        </>
+    )
 }
 
-export default Admin
+export default About
