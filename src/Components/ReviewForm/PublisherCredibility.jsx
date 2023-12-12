@@ -8,12 +8,12 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
-const PublisherCredibility = ({ onRadioChange }) => {
+const PublisherCredibility = ({ OnRadioChange }) => {
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleRadioChange = (value) => {
     setSelectedOption(value);
-    onRadioChange(value);
+    OnRadioChange(Number(value));
   };
 
   useEffect(() => {

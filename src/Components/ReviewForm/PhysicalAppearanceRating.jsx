@@ -5,6 +5,7 @@ import {
   IconButton,
   Tooltip,
   Text,
+  Select,
   Box,
   NumberInput,
   NumberInputField,
@@ -16,20 +17,46 @@ import {
 import { StarIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
 
-const PhysicalAppearanceRating = () => {
+const PhysicalAppearanceRating = ({OnDataChange}) => {
   const [ratings, setRatings] = useState({
     attractivenessOfCoverPage: null,
     relevanceOfCoverPageDesign: null,
-
-      dimensions: null,
-      bulkiness: null,
-  
+    dimensions: null,
+    bulkiness: null,
     paperQuality: null,
     colors: null,
+    pageLayout: null,
+    ratio: null,
   });
+
+  const handleRatioChange = (e)=>{
+    setRatings((prevRatings)=>({...prevRatings,ratio:e.target.value}));
+    OnDataChange(e.target.value,10);
+  }
 
   const handleStarClick = (value, question) => {
       setRatings((prevRatings) => ({ ...prevRatings, [question]: value }));
+      if(question==="attractivenessOfCoverPage"){
+        OnDataChange(value,0)
+      }
+      else if(question==="relevanceOfCoverPageDesign"){
+        OnDataChange(value,1)
+      }
+      else if(question==="dimensions"){
+        OnDataChange(value,2)
+      }
+      else if(question==="bulkiness"){
+        OnDataChange(value,3)
+      }
+      else if(question==="paperQuality"){
+        OnDataChange(value,4)
+      }
+      else if(question==="colors"){
+        OnDataChange(value,5)
+      }
+      else if(question==="pageLayout"){
+        OnDataChange(value,6)
+      }
   };
 
   useEffect(() => {
@@ -295,7 +322,9 @@ const PhysicalAppearanceRating = () => {
             <Text as="h2" fontSize="lg" textAlign="left" mr={4}>
               Type of Font (Score out of 10)
             </Text>
-            <NumberInput max={10} min={0} defaultValue={1}>
+            <NumberInput max={10} min={0} defaultValue={1}
+            onChange={(value) => OnDataChange(value,7)}
+            >
               <NumberInputField />
               <NumberInputStepper>
                 <NumberIncrementStepper />
@@ -310,7 +339,8 @@ const PhysicalAppearanceRating = () => {
             <Text as="h2" fontSize="lg" textAlign="left" mr={4}>
               Size of Font (Score out of 10)
             </Text>
-            <NumberInput max={10} min={0} defaultValue={1}>
+            <NumberInput max={10} min={0} defaultValue={1}
+            onChange={(value) => OnDataChange(value,8)}>
               <NumberInputField />
               <NumberInputStepper>
                 <NumberIncrementStepper />
@@ -325,7 +355,184 @@ const PhysicalAppearanceRating = () => {
             <Text as="h2" fontSize="lg" textAlign="left" mr={4}>
             Consistency in maintaining type & size of font (Score out of 10)
             </Text>
-            <NumberInput max={10} min={0} defaultValue={1}>
+            <NumberInput max={10} min={0} defaultValue={1}
+            onChange={(value) => OnDataChange(value,9)}>
+              <NumberInputField />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+          </Flex>
+        </Box>
+
+        <Box mb={4}>
+        <Text as="h2" fontSize="lg" textAlign="left">
+            Number of Pages to teaching hours ratio.
+          </Text>
+          <Select
+            placeholder="Select pages to teaching hours ratio"
+            onChange={handleRatioChange}
+          >
+            <option value="0">less than 1:1</option>
+            <option value="5">1:1</option>
+            <option value="15">2:1</option>
+            <option value="20">3:1 and above</option>
+          </Select>
+        </Box>
+
+        <Box mb={4}>
+          <Flex alignItems="center" justifyContent="space-between">
+            <Text as="h2" fontSize="lg" textAlign="left" mr={4}>
+            Overview of learning objectives included at the beginning of chapters (Score out of 5)
+            </Text>
+            <NumberInput max={5} min={0} defaultValue={1}
+            onChange={(value) => OnDataChange(value,11)}>
+              <NumberInputField />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+          </Flex>
+        </Box>
+
+        <Box mb={4}>
+          <Flex alignItems="center" justifyContent="space-between">
+            <Text as="h2" fontSize="lg" textAlign="left" mr={4}>
+             Introductory Section to explain unique features and how to use the book (Score out of 5)
+            </Text>
+            <NumberInput max={5} min={0} defaultValue={1}
+            onChange={(value) => OnDataChange(value,12)}>
+              <NumberInputField />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+          </Flex>
+        </Box>
+
+        <Box mb={4}>
+          <Flex alignItems="center" justifyContent="space-between">
+            <Text as="h2" fontSize="lg" textAlign="left" mr={4}>
+             Well-Structured table of Contents (Score out of 5)
+            </Text>
+            <NumberInput max={5} min={0} defaultValue={1}
+            onChange={(value) => OnDataChange(value,13)}>
+              <NumberInputField />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+          </Flex>
+        </Box>
+
+        <Box mb={4}>
+          <Flex alignItems="center" justifyContent="space-between">
+            <Text as="h2" fontSize="lg" textAlign="left" mr={4}>
+             Inclusion of list of Abbreviations,index,etc. (Score out of 5)
+            </Text>
+            <NumberInput max={5} min={0} defaultValue={1}
+            onChange={(value) => OnDataChange(value,14)}>
+              <NumberInputField />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+          </Flex>
+        </Box>
+
+        <Box mb={4}>
+          <Flex alignItems="center" justifyContent="space-between">
+            <Text as="h2" fontSize="lg" textAlign="left" mr={4}>
+             Inclusion of summary (Score out of 5)
+            </Text>
+            <NumberInput max={5} min={0} defaultValue={1}
+            onChange={(value) => OnDataChange(value,15)}>
+              <NumberInputField />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+          </Flex>
+        </Box>
+
+        <Box mb={4}>
+          <Flex alignItems="center" justifyContent="space-between">
+            <Text as="h2" fontSize="lg" textAlign="left" mr={4}>
+            Text is structured as chapter titles, headings, captions,
+text boxes (Score out of 5)
+            </Text>
+            <NumberInput max={5} min={0} defaultValue={1}
+            onChange={(value) => OnDataChange(value,16)}>
+              <NumberInputField />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+          </Flex>
+        </Box>
+
+        <Box mb={4}>
+          <Flex alignItems="center" justifyContent="space-between">
+            <Text as="h2" fontSize="lg" textAlign="left" mr={4}>
+            Inclusion of meaningful activities,tasks, and exercises (Score out of 5)
+            </Text>
+            <NumberInput max={5} min={0} defaultValue={1}
+            onChange={(value) => OnDataChange(value,17)}>
+              <NumberInputField />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+          </Flex>
+        </Box>
+
+        <Box mb={4}>
+          <Flex alignItems="center" justifyContent="space-between">
+            <Text as="h2" fontSize="lg" textAlign="left" mr={4}>
+            Appropriate topic distribution and sequencing (Score out of 5)
+            </Text>
+            <NumberInput max={5} min={0} defaultValue={1}
+            onChange={(value) => OnDataChange(value,18)}>
+              <NumberInputField />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+          </Flex>
+        </Box>
+
+        <Box mb={4}>
+          <Flex alignItems="center" justifyContent="space-between">
+            <Text as="h2" fontSize="lg" textAlign="left" mr={4}>
+            Highlighted Key words and Concepts (Score out of 5)
+            </Text>
+            <NumberInput max={5} min={0} defaultValue={1}
+            onChange={(value) => OnDataChange(value,19)}>
+              <NumberInputField />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+          </Flex>
+        </Box>
+
+        <Box mb={4}>
+          <Flex alignItems="center" justifyContent="space-between">
+            <Text as="h2" fontSize="lg" textAlign="left" mr={4}>
+              Free from the mistakes and reiteration(Score out of 5)
+            </Text>
+            <NumberInput max={5} min={0} defaultValue={1}
+            onChange={(value) => OnDataChange(value,20)}>
               <NumberInputField />
               <NumberInputStepper>
                 <NumberIncrementStepper />

@@ -7,7 +7,7 @@ import PhysicalAppearanceRating from "./ReviewForm/PhysicalAppearanceRating";
 import SubjectMatter from "./ReviewForm/SubjectMatter";
 import Illustrations from "./ReviewForm/Illustrations";
 import { Button } from '@chakra-ui/react'
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Divider } from "@chakra-ui/react";
 
 const ReviewForm = () => {
@@ -26,63 +26,38 @@ const ReviewForm = () => {
   };
 
   const [bookData, setBookData] = useState({
-    H: {
-      H1:0,
-      H2:0,
-      H3:0,
-    },
-    A:{
-      A1:0,
-      A2:0,
-      A3:0,
-      A4:0,
-      A5:0,
-    },
-    B:0,
-    C: {
-      C1:0,
-      C2:0,
-      C3:0,
-      C4:0,
-    },
-    D:{
-      D1:0,
-      D2:0,
-      D3:{D31:0, D32:0},
-      D4:0,
-      D5:0,
-      D6:0,
-      D7:{D71:0,D72:0,D73:0},
-    },
-    E:{
-      E1:{E11 : 0,
-        E12 : 0,
-        E13 : 0,},
-      E2:{E21 : 0,
-        E22 : 0,
-        E23 : 0,
-        E24 : 0,},
-      E3: 0,
-      E4: 0,
-      E5: 0,
-      E61: 0,
-      E62: 0,
-      E7: 0,
-      E8: 0,
-      E9: 0,
-      E10: 0,
-      E11: 0,
-      E12: 0,
-      E13: 0,
-      E14: 0,
-      E15: 0,
-    }, 
-    G:{
-      G1:0,
-      G2:{G21:0,G22:0,G23:0},
-      G3:0,
-    }
+    H:[null, null, null],
+    A:[null,null,null,null,null],
+    B:null,
+    C:[null,null,null,null],
+    D:[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+    E:[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null], 
+    G:[null,null,null,null,null],
   });
+
+  const handleEthicalIssuesChange = (id,value) => {
+    if(id==="fabrication"){
+      const newBookData = { ...bookData };
+      newBookData.H[0] = value;
+      setBookData(newBookData);
+    }
+    else if(id==="plagiarism"){
+      const newBookData = { ...bookData };
+      newBookData.H[1] = value;
+      setBookData(newBookData);
+    }
+    else if(id==="citation"){
+      const newBookData = { ...bookData };
+      newBookData.H[2] = value;
+      setBookData(newBookData);
+    }
+  }
+
+  const handleAuthorInfo = (value, id) => {
+    const newBookData = { ...bookData };
+    newBookData.A[id] = value;
+    setBookData(newBookData);
+  }
 
   const handlePublisherCredibilityChange = (selectedOption) => {
     setBookData((prevBookData) => ({
@@ -92,11 +67,48 @@ const ReviewForm = () => {
   };
 
   const handleUniquenessRatingChange = (value, question) => {
-    ;
+    if(question==="uniquenessLevel"){
+      const newBookData = { ...bookData };
+      newBookData.C[0] = value;
+      setBookData(newBookData);
+    }
+    else if(question==="clarityOfClaim"){
+      const newBookData = { ...bookData };
+      newBookData.C[1] = value;
+      setBookData(newBookData);
+    }
+    else if(question==="focusOnUniqueness"){
+      const newBookData = { ...bookData };
+      newBookData.C[2] = value;
+      setBookData(newBookData);
+    }
+    else if(question==="curriculumAndSyllabus"){
+      const newBookData = { ...bookData };
+      newBookData.C[3] = value;
+      setBookData(newBookData);
+    }
+  }
+
+  const handlePhysicalAppearanceRating = (value, id) => {
+    const newBookData = { ...bookData };
+    newBookData.D[id] = value;
+    setBookData(newBookData);
+  }
+
+  const handleSubjectMatterChange = (value,id) => {
+    const newBookData = { ...bookData };
+    newBookData.E[id] = value;
+    setBookData(newBookData);
+  }
+
+  const handleIllustrationsChange = (value,id) => {
+    const newBookData = { ...bookData };
+    newBookData.G[id] = value;
+    setBookData(newBookData);
   }
 
   const handleSubmit = () => {
-    ;
+    console.log(bookData);
   }
 
   return (
@@ -123,25 +135,25 @@ const ReviewForm = () => {
 
         <TabPanels className="px-10">
           <TabPanel>
-            <EthicalIssues />
+            <EthicalIssues OnDataChange={handleEthicalIssuesChange}/>
           </TabPanel>
           <TabPanel>
-            <AuthorInfo />
+            <AuthorInfo OnDataChange={handleAuthorInfo}/>
           </TabPanel>
           <TabPanel>
-            <PublisherCredibility onRadioChange={handlePublisherCredibilityChange}/>
+            <PublisherCredibility OnRadioChange={handlePublisherCredibilityChange}/>
           </TabPanel>
           <TabPanel>
             <UniquenessRating onDataChange={handleUniquenessRatingChange}/>
           </TabPanel>
           <TabPanel>
-            <PhysicalAppearanceRating />
+            <PhysicalAppearanceRating OnDataChange={handlePhysicalAppearanceRating}/>
           </TabPanel>
           <TabPanel>
-            <SubjectMatter/>
+            <SubjectMatter OnDataChange={handleSubjectMatterChange}/>
           </TabPanel>
           <TabPanel>
-            <Illustrations />
+            <Illustrations OnDataChange={handleIllustrationsChange}/>
           </TabPanel>
         </TabPanels>
 

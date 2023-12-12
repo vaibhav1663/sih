@@ -18,7 +18,7 @@ import {
 import { StarIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
 
-  const SubjectMatter = () => {
+  const SubjectMatter = ({OnDataChange}) => {
     const [subjectMatter, setsubjectMatter] = useState({
       E11 : 0,
       E12 : 0,
@@ -47,7 +47,42 @@ import { useEffect, useState } from "react";
 
     const handleStarClick = (value, question) => {
       setsubjectMatter((prevRatings) => ({ ...prevRatings, [question]: value }));
-      
+      if(question==="E4"){
+        OnDataChange(value,8);
+      }
+      else if(question==="E5"){
+        OnDataChange(value,9);
+      }
+      else if(question==="E61"){
+        OnDataChange(value,10);
+      }
+      else if(question==="E62"){
+        OnDataChange(value,11);
+      }
+      else if(question==="E7"){
+        OnDataChange(value,12);
+      }
+      else if(question==="E8"){
+        OnDataChange(value,13);
+      }
+      else if(question==="E9"){
+        OnDataChange(value,14);
+      }
+      else if(question==="E1_0"){
+        OnDataChange(value,15);
+      }
+      else if(question==="E1_1"){
+        OnDataChange(value,16);
+      }
+      else if(question==="E1_2"){
+        OnDataChange(value,17);
+      }
+      else if(question==="E1_3"){
+        OnDataChange(value,18);
+      }
+      else if(question==="E1_4"){
+        OnDataChange(value,19);
+      }
     };
 
     useEffect(()=>{
@@ -56,6 +91,7 @@ import { useEffect, useState } from "react";
 
     const handleRadioChange = (value) => {
       setsubjectMatter((prevData) => ({ ...prevData, E11: value}));
+      OnDataChange(value,0);
     };
 
 
@@ -117,8 +153,7 @@ import { useEffect, useState } from "react";
             </Text>
             <NumberInput max={5} min={0} 
             defaultValue={1}
-            value={subjectMatter.E12}
-            onChange={(value) => setsubjectMatter({ ...subjectMatter, E12: value })}
+            onChange={(value) => OnDataChange(value,1)}
             >
               <NumberInputField />
               <NumberInputStepper>
@@ -134,8 +169,7 @@ import { useEffect, useState } from "react";
               Added with recent and relevant advances   (Score out of 5)
             </Text>
             <NumberInput max={5} min={0} defaultValue={1}
-            value={subjectMatter.E13}
-            onChange={(value) => setsubjectMatter({ ...subjectMatter, E13: value })}
+            onChange={(value) => OnDataChange(value,2)}
             >
               <NumberInputField />
               <NumberInputStepper>
@@ -149,13 +183,12 @@ import { useEffect, useState } from "react";
           <Text as="h2" fontSize="25px" textAlign="left" mr={4} paddingBottom="2.5%">
             The concepts
           </Text>
-          <Flex alignItems="center" justifyContent="space-between">
+          <Flex alignItems="center" justifyContent="space-between" marginBottom="0.7rem">
             <Text as="h2" fontSize="lg" textAlign="left" mr={4}>
                 Clear & Accurate (Score out of 5)
             </Text>
             <NumberInput max={5} min={0} defaultValue={1}
-            value={subjectMatter.E21}
-            onChange={(value) => setsubjectMatter({ ...subjectMatter, E21: value })}
+            onChange={(value) => OnDataChange(value,3)}
             >
               <NumberInputField />
               <NumberInputStepper>
@@ -164,13 +197,12 @@ import { useEffect, useState } from "react";
               </NumberInputStepper>
             </NumberInput>
           </Flex>
-          <Flex alignItems="center" justifyContent="space-between">
+          <Flex alignItems="center" justifyContent="space-between" marginBottom="0.7rem">
             <Text as="h2" fontSize="lg" textAlign="left" mr={4}>
                 Comprehensiveness (Score out of 5)
             </Text>
             <NumberInput max={5} min={0} defaultValue={1}
-            value={subjectMatter.E22}
-            onChange={(value) => setsubjectMatter({ ...subjectMatter, E22: value })}>
+            onChange={(value) => OnDataChange(value,4)}>
               <NumberInputField />
               <NumberInputStepper>
                 <NumberIncrementStepper />
@@ -178,13 +210,12 @@ import { useEffect, useState } from "react";
               </NumberInputStepper>
             </NumberInput>
           </Flex>
-          <Flex alignItems="center" justifyContent="space-between">
+          <Flex alignItems="center" justifyContent="space-between" marginBottom="0.7rem">
             <Text as="h2" fontSize="lg" textAlign="left" mr={4}>
                 Self-explanatory and do not require additional resources to understand(Score out of 5)
             </Text>
             <NumberInput max={5} min={0} defaultValue={1}
-            value={subjectMatter.E23}
-            onChange={(value) => setsubjectMatter({ ...subjectMatter, E23: value })}
+            onChange={(value) => OnDataChange(value,5)}
             >
               <NumberInputField />
               <NumberInputStepper>
@@ -193,13 +224,12 @@ import { useEffect, useState } from "react";
               </NumberInputStepper>
             </NumberInput>
           </Flex>
-          <Flex alignItems="center" justifyContent="space-between">
+          <Flex alignItems="center" justifyContent="space-between" marginBottom="0.7rem">
             <Text as="h2" fontSize="lg" textAlign="left" mr={4}>
                 Supported with authoritative (Score out of 5)
             </Text>
             <NumberInput max={5} min={0} defaultValue={1}
-            value={subjectMatter.E24}
-            onChange={(value) => setsubjectMatter({ ...subjectMatter, E24: value })}
+            onChange={(value) => OnDataChange(value,6)}
             >
               <NumberInputField />
               <NumberInputStepper>
@@ -210,14 +240,13 @@ import { useEffect, useState } from "react";
           </Flex>
         </Box>
         <Box mb={4}>
-          <Flex alignItems="center" justifyContent="space-between">
+          <Flex alignItems="center" justifyContent="space-between"marginBottom="0.7rem">
               <Text as="h2" fontSize="lg" textAlign="left" mr={4}>
               Consistency of content to entire curriculum & syllabus (1 score for
 every 20% of content)
               </Text>
               <NumberInput max={5} min={0} defaultValue={1}
-              value={subjectMatter.E3}
-              onChange={(value) => setsubjectMatter({ ...subjectMatter, E3: value })}
+              onChange={(value) => OnDataChange(value,7)}
               >
                 <NumberInputField />
                 <NumberInputStepper>
@@ -282,11 +311,11 @@ every 20% of content)
               <Text as="h2" fontSize="25px" textAlign="left" mr={4}>
                     Is the content promoting
               </Text>
-              <Flex alignItems="center" justifyContent="space-between">
+              <Flex alignItems="center" justifyContent="space-between" marginBottom="0.7rem">
               <Text as="h2" fontSize="lg" textAlign="left" mr={4}>
-              Higher-order thinking skills that require analysis, evaluation
-and judgement, and not just recalling and comprehension of
-facts 
+                Higher-order thinking skills that require analysis, evaluation
+                and judgement, and not just recalling and comprehension of
+                facts 
               </Text>
               <Flex>
               {labels2.map((label, idx) => (
@@ -307,7 +336,7 @@ facts
               ))}
               </Flex>
             </Flex>
-            <Flex alignItems="center" justifyContent="space-between">
+            <Flex alignItems="center" justifyContent="space-between" marginBottom="0.7rem">
               <Text as="h2" fontSize="lg" textAlign="left" mr={4}>
               Deep processing, critical and creative thinking by providing
 less structured problems and more open-ended questions 
@@ -333,7 +362,7 @@ less structured problems and more open-ended questions
             </Flex>
           </Box>
           <Box mb={4}>
-            <Flex alignItems="center" justifyContent="space-between">
+            <Flex alignItems="center" justifyContent="space-between" marginBottom="0.7rem">
               <Text as="h2" fontSize="lg" textAlign="left" mr={4}>
               Content is with well- formed presentation, discussion and
 conclusion
@@ -543,8 +572,7 @@ culture, disability etc., nor do they suggest exclusion.
               Bibliography, References & Citations 
               </Text>
               <NumberInput max={5} min={0} defaultValue={1}
-              value={subjectMatter.E1_5}
-              onChange={(value) => setsubjectMatter({ ...subjectMatter, E1_5: value })}
+              onChange={(value) => OnDataChange(value,20)}
               >
                 <NumberInputField />
                 <NumberInputStepper>

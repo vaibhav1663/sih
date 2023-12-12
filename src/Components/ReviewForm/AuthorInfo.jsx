@@ -13,10 +13,10 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
-const AuthorInfo = () => {
+const AuthorInfo = ({OnDataChange}) => {
   const [authorData, setAuthorData] = useState({
     numberOfAuthors: 1,
-    qualification: "",
+    qualification: 0,
     experience: 1,
     expertise: {
       webOfScience: false,
@@ -27,17 +27,37 @@ const AuthorInfo = () => {
     },
   });
 
-  const handleExperienceChange = (value) => {
-    setAuthorData((prevData) => ({ ...prevData, experience: value }));
-  };
+  const handleNumberofAuthorChange = (value) => {
+    setAuthorData({ ...authorData, numberOfAuthors: value });
+    OnDataChange(Math.min(10,value*2),0);
+  }
+
+  const handleQualificationChange = (e) => {
+    setAuthorData({ ...authorData, qualification: e.target.value });
+    OnDataChange(e.target.value,1);
+  }
+
 
   const handleCheckboxChange = (checkbox) => {
     setAuthorData((prevData) => ({
       ...prevData,
       expertise: { ...prevData.expertise, [checkbox]: !prevData.expertise[checkbox] },
     }));
+    let count = 0;
+    if(authorData.expertise[checkbox]===false){
+      count++;
+    }
+    else{
+      count--;
+    }
+    for (const key in authorData.expertise) {
+      if (authorData.expertise[key] === true) {
+        count++;
+      }
+      console.log(key);
+    }
+    OnDataChange(count*2,3);
   };
-
 
   useEffect(() => {
     console.log(authorData)
@@ -57,7 +77,7 @@ const AuthorInfo = () => {
           <NumberInput
             min={1}
             value={authorData.numberOfAuthors}
-            onChange={(value) => setAuthorData({ ...authorData, numberOfAuthors: value })}
+            onChange={handleNumberofAuthorChange}
           >
             <NumberInputField />
             <NumberInputStepper>
@@ -72,13 +92,14 @@ const AuthorInfo = () => {
           <Select
             placeholder="Select Qualification"
             value={authorData.qualification}
-            onChange={(e) => setAuthorData({ ...authorData, qualification: e.target.value })}
+            onChange={handleQualificationChange}
           >
-            <option>No Proper Qualification</option>
-            <option>Non-Domain</option>
-            <option>Domain-UG</option>
-            <option>Domain-PG (Specialization in other sub-domain)</option>
-            <option>Domain-PG (Specialization in the same sub-domain)</option>
+            <option value="0">No Proper Qualification</option>
+            <option value="1">Non-Domain</option>
+            <option value="2">Domain-UG</option>
+            <option value="3">Domain-PG (Specialization in other sub-domain)</option>
+            <option value="4">Domain-PG (Specialization in the same sub-domain)</option>
+            <option value="5">PhD</option>
           </Select>
 
           <Text as="h2" fontSize="lg" textAlign="left">
@@ -86,8 +107,7 @@ const AuthorInfo = () => {
           </Text>
           <NumberInput
             min={1}
-            value={authorData.experience}
-            onChange={(value) => handleExperienceChange(value)}
+            onChange={(value) => OnDataChange(Math.min(5,value),2)}
           >
             <NumberInputField />
             <NumberInputStepper>
@@ -119,6 +139,21 @@ const AuthorInfo = () => {
               UGC CARE
             </Checkbox>
           </Stack>
+
+          <Text as="h2" fontSize="lg" textAlign="left">
+            Number of books authored by the writer.
+          </Text>
+          <NumberInput
+            min={1}
+            onChange={(value) => OnDataChange(Math.min(20,value*4),4)}
+          >
+            <NumberInputField />
+            <NumberInputStepper>
+              <NumberIncrementStepper />
+              <NumberDecrementStepper />
+            </NumberInputStepper>
+          </NumberInput>
+
         </Stack>
       </FormControl>
 

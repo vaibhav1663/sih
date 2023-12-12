@@ -1,13 +1,24 @@
 import { FormControl, Text, Stack } from "@chakra-ui/react";
 import { HStack, Heading } from "@chakra-ui/react";
 import { RadioGroup, Radio } from "@chakra-ui/react";
+import { useState} from "react";
 
-const EthicalIssues = () => {
+const EthicalIssues = ({OnDataChange}) => {
   const ethicalIssues = [
     { id: "fabrication", label: "Fabrication / Falsification of Data" },
     { id: "plagiarism", label: "Plagiarism" },
     { id: "citation", label: "Citation Bias" },
   ];
+
+  const [selectedValues, setSelectedValues] = useState({});
+
+  const handleRadioChange = (issueId, value) => {
+    setSelectedValues((prevValues) => ({
+      ...prevValues,
+      [issueId]: value,
+    }));
+    OnDataChange(issueId, value);
+  };
 
   return (
     <>
@@ -20,10 +31,12 @@ const EthicalIssues = () => {
             <Text as="h2" fontSize="lg" textAlign="left">
               {issue.label}
             </Text>
-            <RadioGroup defaultValue="Yes">
+            <RadioGroup 
+            onChange={(value) => handleRadioChange(issue.id, value)}
+            >
               <HStack spacing="24px">
-                <Radio value="Yes">Yes</Radio>
-                <Radio value="No">No</Radio>
+                <Radio value="true">Yes</Radio>
+                <Radio value="false">No</Radio>
               </HStack>
             </RadioGroup>
           </Stack>

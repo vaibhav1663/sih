@@ -3,7 +3,6 @@ import {
     FormControl,
     RadioGroup,
     Radio,
-    Stack,
     Text,
     Flex,
     Box,
@@ -18,7 +17,7 @@ import {
   import { StarIcon } from "@chakra-ui/icons";
   import { useEffect, useState } from "react";
 
-  const Illustrations = () => {
+  const Illustrations = ({OnDataChange}) => {
     const [IllustrationsData, setIllustrationsData] = useState({
       clarity: 0,
       colour_rating:0,
@@ -30,11 +29,13 @@ import {
     const labels2 = ["No", "To some extent", "Moderate", "Absolutely"];
 
     const handleStarClick = (value) => {
-      setIllustrationsData((prevIllustrationsData) => ({ ...prevIllustrationsData, rel_to_content: value }));  
+      setIllustrationsData((prevIllustrationsData) => ({ ...prevIllustrationsData, rel_to_content: value }));
+      OnDataChange(value,4)  
     };
 
     const handleRadioChange = (value) => {
       setIllustrationsData({...IllustrationsData,color:value});
+      OnDataChange(value,0);
     };
 
     useEffect(() => {
@@ -48,15 +49,15 @@ import {
         </Heading>
         <FormControl>
         <Box mb={4}>
-            <Text as="h2" fontSize="25px" textAlign="left" mr={4} paddingBottom="2.5%">
+            <Text as="h2" fontSize="lg" textAlign="left" mr={4} marginBottom="0.7rem">
                   Color
             </Text>
             <RadioGroup
               value={IllustrationsData.color}
               onChange={(value) => handleRadioChange(value)}
             >
-              <Stack spacing={4}>
-                <Radio value="5" fontSize="lg">
+                <Flex alignItems="center">
+                <Radio value="5" fontSize="lg" marginRight="2rem">
                   <Text fontSize="lg">
                     Black and White
                   </Text>
@@ -66,23 +67,19 @@ import {
                       Colour
                     </Text>
                   </Radio>
-                </Stack>
+                  </Flex>
               </RadioGroup>
         </Box>
         <Box mb={4}>
-        <Text as="h2" fontSize="25px" textAlign="left" mr={4} paddingBottom="2.5%">
-                  Visibility of Illustrations
-            </Text>
-          <Stack spacing={4}>
+          <Flex alignItems="center" justifyContent="space-between" marginBottom="0.75rem">
             <Text as="h2" fontSize="lg" textAlign="left">
-              Clarity and Resolution
+            Visibility of Illustrations: Clarity and Resolution
             </Text>
             <NumberInput
               min={0}
               max={5}
               defaultValue={0}
-              value={IllustrationsData.clarity}
-              onChange={(value) => setIllustrationsData({ ...IllustrationsData, clarity: value })}
+              onChange={(value) => OnDataChange(value,1)}
             >
               <NumberInputField />
               <NumberInputStepper>
@@ -90,16 +87,16 @@ import {
                 <NumberDecrementStepper />
               </NumberInputStepper>
             </NumberInput>
-
+            </Flex>
+            <Flex alignItems="center" justifyContent="space-between" marginBottom="0.75rem">
             <Text as="h2" fontSize="lg" textAlign="left">
-              Colour
+            Visibility of Illustrations: Colour
             </Text>
             <NumberInput
               min={0}
               max={5}
               defaultValue={0}
-              value={IllustrationsData.colour_rating}
-              onChange={(value) => setIllustrationsData({ ...IllustrationsData, colour_rating: value })}
+              onChange={(value) => OnDataChange(value,2)}
             >
               <NumberInputField />
               <NumberInputStepper>
@@ -107,15 +104,15 @@ import {
                 <NumberDecrementStepper />
               </NumberInputStepper>
             </NumberInput>
+            </Flex>
+            <Flex alignItems="center" justifyContent="space-between" marginBottom="0.75rem">
             <Text as="h2" fontSize="lg" textAlign="left">
-              Labelling
+            Visibility of Illustrations: Labelling
             </Text>
             <NumberInput
               min={0}
               max={5}
-              defaultValue={0}
-              value={IllustrationsData.labelling}
-              onChange={(value) => setIllustrationsData({ ...IllustrationsData, labelling: value })}
+              onChange={(value) => OnDataChange(value,3)}
             >
               <NumberInputField />
               <NumberInputStepper>
@@ -123,11 +120,11 @@ import {
                 <NumberDecrementStepper />
               </NumberInputStepper>
             </NumberInput>
-            </Stack>
+            </Flex>
             </Box>
             <Box mb={4}>
             <Flex alignItems="center" justifyContent="space-between">
-            <Text as="h2" fontSize="25px" textAlign="left" mr={4} paddingBottom="2.5%">
+            <Text as="h2" fontSize="lg" textAlign="left" mr={4} paddingBottom="2.5%">
                   Relevance to the content
             </Text>
               <Flex>
