@@ -1,7 +1,7 @@
 const publicReview = require("../../model/bookSchema");
 
 exports.addPublicReview = async (req, res) => {
-  const { _id, overall, appearance, comment, content } = req.body;
+  const { _id, user_id, overall, appearance, comment, content } = req.body;
 
   try {
     // Find the document by _id
@@ -13,6 +13,7 @@ exports.addPublicReview = async (req, res) => {
 
     // Append the userData to the users array
     let userData = {
+      user_id,
       overall,
       appearance,
       comment,

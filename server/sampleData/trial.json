@@ -1,8 +1,4 @@
 {
-  "uid": {
-    "someField": "someValue",
-    "anotherField": "anotherValue"
-  },
   "name": "Sample Book",
   "publicRating": 4.5,
   "publicCount": 100,
