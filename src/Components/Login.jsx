@@ -42,7 +42,7 @@ const Login = () => {
         }
     };
     useEffect(()=>{
-        if(error==""){
+        if(error===""){
 
         }else{
             toast.error(error)
