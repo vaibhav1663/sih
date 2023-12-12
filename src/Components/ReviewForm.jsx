@@ -55,7 +55,7 @@ const ReviewForm = () => {
 
   const handleAuthorInfo = (value, id) => {
     const newBookData = { ...bookData };
-    newBookData.A[id] = value;
+    newBookData.A[id] = Number(value);
     setBookData(newBookData);
   }
 
@@ -69,41 +69,41 @@ const ReviewForm = () => {
   const handleUniquenessRatingChange = (value, question) => {
     if(question==="uniquenessLevel"){
       const newBookData = { ...bookData };
-      newBookData.C[0] = value;
+      newBookData.C[0] = Number(value);
       setBookData(newBookData);
     }
     else if(question==="clarityOfClaim"){
       const newBookData = { ...bookData };
-      newBookData.C[1] = value;
+      newBookData.C[1] = Number(value);
       setBookData(newBookData);
     }
     else if(question==="focusOnUniqueness"){
       const newBookData = { ...bookData };
-      newBookData.C[2] = value;
+      newBookData.C[2] = Number(value);
       setBookData(newBookData);
     }
     else if(question==="curriculumAndSyllabus"){
       const newBookData = { ...bookData };
-      newBookData.C[3] = value;
+      newBookData.C[3] = Number(value);
       setBookData(newBookData);
     }
   }
 
   const handlePhysicalAppearanceRating = (value, id) => {
     const newBookData = { ...bookData };
-    newBookData.D[id] = value;
+    newBookData.D[id] = Number(value);
     setBookData(newBookData);
   }
 
   const handleSubjectMatterChange = (value,id) => {
     const newBookData = { ...bookData };
-    newBookData.E[id] = value;
+    newBookData.E[id] = Number(value);
     setBookData(newBookData);
   }
 
   const handleIllustrationsChange = (value,id) => {
     const newBookData = { ...bookData };
-    newBookData.G[id] = value;
+    newBookData.G[id] = Number(value);
     setBookData(newBookData);
   }
 
