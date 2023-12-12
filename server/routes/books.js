@@ -1,13 +1,10 @@
 const express = require("express");
-const { addReview } = require("../controllers/books/addBookResponse");
-const { addPublicReview } = require("../controllers/books/addPublicReview");
 
 const router = express.Router();
 const { getBooks } = require("../controllers/books/getBooks");
+const { addPublicReview } = require("../controllers/books/addPublicReview");
 
-// router.post("/addBookReview", addReview);
-// router.post("/addBookPublicReview", addPublicReview);
-
+router.post("/addPublicReview", addPublicReview);
 router.get("/getBooks", getBooks);
 
 module.exports = router;
