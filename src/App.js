@@ -11,6 +11,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import ReviewForm from "./Components/ReviewForm.jsx";
+import AdminLogin from "./Components/LoginForms/AdminLogin.jsx";
+import ReviewerLogin from "./Components/LoginForms/ReviewerLogin.jsx";
 
 import About from "./Components/About.jsx";
 function App() {
@@ -53,6 +55,9 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/test" element={<ReviewForm />} />
+              <Route path="/adminLogin" element={<AdminLogin />} />
+              <Route path="/reviewerLogin" element={<ReviewerLogin />} />
+
             </Routes>
           </div>
         </ChakraProvider>
