@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import { useUserAuth } from "../Context/UserAuthContext";
-const ProtectedRoute = ({ children }) => {
-  const { user } = useUserAuth();
+import { useAuthContext } from "../hooks/useAuthContext";
+import { useLogin } from "../hooks/useLogin";
 
-  console.log("Check user in Private: ", user);
-  if (!user) {
+const ProtectedRoute = ({ children }) => {
+  const { user } = useAuthContext();
+  const {isLoading} = useLogin();
+  
+  if (!localStorage.getItem("user")) {
     return <Navigate to="/login" />;
   }
   return children;

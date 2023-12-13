@@ -1,50 +1,40 @@
-const User = require("../../model/userSchema");
+const User = require('../../model/userSchema')
+const jwt = require('jsonwebtoken')
 
-exports.addUser = async (req, res) => {
-  const { uid, name, email, age, gender, field, collegeName, degree, year } =
-    req.body;
-  if (
-    !uid ||
-    !name ||
-    !email ||
-    !age ||
-    !gender ||
-    !field ||
-    !collegeName ||
-    !degree ||
-    !year
-  ) {
-    return res.status(422).json({ error: "Field cant be empty " });
-  }
+const createToken = (_id) => {
+  return jwt.sign({_id}, "secret", { expiresIn: '3d' })
+}
+
+// login a user
+const loginUser = async (req, res) => {
+  const {email, password} = req.body
 
   try {
-    const userExists = await User.findOne({ uid: uid });
-    if (userExists) {
-      return res.status(422).json({ error: "Email Exists" });
-    }
+    const user = await User.login(email, password)
 
-    const user = new User({
-      uid,
-      name,
-      email,
-      age,
-      gender,
-      field,
-      collegeName,
-      degree,
-      year,
-    });
+    // create a token
+    const token = createToken(user._id)
 
-    const userRegister = await user.save();
-    console.log(userRegister);
-
-    if (userRegister) {
-      res.status(201).json({ msg: "Added the user" });
-    } else {
-      res.status(500).json({ error: "Internal server error " });
-    }
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(200).json({...user._doc, token })
+  } catch (error) {
+    res.status(400).json({error: error.message})
   }
-};
+}
+
+// signup a user
+const signupUser = async (req, res) => {
+  const {email,name, age, gender, role, field, collegeName, degree, year, password} = req.body
+
+  try {
+    const user = await User.signup(email,name, age, gender, role, field, collegeName, degree, year, password)
+
+    // create a token
+    const token = createToken(user._id)
+
+    res.status(200).json({...user._doc, token })
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
+}
+
+module.exports = { signupUser, loginUser }

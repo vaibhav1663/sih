@@ -1,10 +1,8 @@
 const mongoose = require("mongoose");
-
-const userSchema = new mongoose.Schema({
-  uid: {
-    type: Object,
-    required: true,
-  },
+const bcrypt = require('bcrypt')
+const validator = require('validator')
+const Schema = mongoose.Schema
+const userSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -12,6 +10,7 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
+    unique: true
   },
   age: {
     type: Number,
@@ -20,6 +19,10 @@ const userSchema = new mongoose.Schema({
   gender: {
     type: String,
     required: false,
+  },
+  role:{
+    type: String,
+    required: false
   },
   field: {
     type: String,
@@ -34,11 +37,61 @@ const userSchema = new mongoose.Schema({
     required: false,
   },
   year: {
-    type: Number,
+    type: String,
     required: false,
   },
+  password:{
+    type : String,
+    required: true
+  }
 });
 
-const User = mongoose.model("USERS", userSchema);
+// static signup method
+userSchema.statics.signup = async function(email,name, age, gender, role, field, collegeName, degree, year, password) {
 
-module.exports = User;
+  // validation
+  if (!email|| !name|| ! age|| !gender|| !role|| !field|| !collegeName|| !degree|| !year|| !password ) {
+    throw Error('All fields must be filled')
+  }
+  if (!validator.isEmail(email)) {
+    throw Error('Email not valid')
+  }
+  if (!validator.isStrongPassword(password)) {
+    throw Error('Password not strong enough')
+  }
+
+  const exists = await this.findOne({ email })
+
+  if (exists) {
+    throw Error('Email already in use')
+  }
+
+  const salt = await bcrypt.genSalt(10)
+  const hash = await bcrypt.hash(password, salt)
+
+  const user = await this.create({ email, name, age, gender, role, field, collegeName, degree, year, password: hash })
+
+  return user
+}
+
+// static login method
+userSchema.statics.login = async function(email, password) {
+
+  if (!email || !password) {
+    throw Error('All fields must be filled')
+  }
+
+  const user = await this.findOne({ email })
+  if (!user) {
+    throw Error('Incorrect email')
+  }
+
+  const match = await bcrypt.compare(password, user.password)
+  if (!match) {
+    throw Error('Incorrect password')
+  }
+
+  return user
+}
+
+module.exports = mongoose.model('User', userSchema)
