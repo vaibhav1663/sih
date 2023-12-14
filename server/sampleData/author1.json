@@ -1,0 +1,10 @@
+{
+  "recomendedBy": 123,
+  "name": "Sample Book",
+  "desc": "A brief description of the sample book.",
+  "imageLink": "https://example.com/sample-image.jpg",
+  "buyLink": "https://example.com/buy-sample-book",
+  "previewLink": "https://example.com/preview-sample-book",
+  "reviewersAlotted": [1, 2, 3],
+  "underReview": true
+}

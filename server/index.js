@@ -16,11 +16,12 @@ const limiter = rateLimit({
 const userRouter = require("./routes/user");
 const bookRouter = require("./routes/books");
 const authorRouter = require("./routes/author");
+const reviewerRouter = require("./routes/reviewer");
 
 connectDB();
 app.use("/books", limiter, bookRouter);
 app.use("/author", limiter, authorRouter);
-app.use("/reviewer", limiter);
+app.use("/reviewer", limiter, reviewerRouter);
 app.use("/user", limiter, userRouter);
 
 app.listen(5000, () => {
