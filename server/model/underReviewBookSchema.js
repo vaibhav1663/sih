@@ -37,6 +37,6 @@ const underReviewBookSchema = new mongoose.Schema({
   },
 });
 
-const buff = mongoose.model("UnderReviews", underReviewBookSchema);
+const buff = mongoose.model("recommendedbooks", underReviewBookSchema);
 
 module.exports = buff;
