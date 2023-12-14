@@ -59,9 +59,11 @@ const SuggestBook = () => {
 
   const [discipline, setDiscipline] = useState("");
   const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
   const [description, setDescription] = useState("");
-  const [link, setLink] = useState("");
+  const [buyLink, setBuyLink] = useState("");
+  const [previewLink, setPreviewLink] = useState("");
+  const [imageLink, setImageLink] = useState("");
+
 //   const [file, setFile] = useState(null);
   const [error, setError] = useState("");
   const [successModalOpen, setSuccessModalOpen] = useState(false);
@@ -82,27 +84,34 @@ const SuggestBook = () => {
       return;
     }
 
-    if (!author.trim()) {
-      setError("Please enter the author's name");
-      return;
-    }
 
     if (!description.trim()) {
       setError("Please enter a book description");
       return;
     }
 
-    if (!link.trim()) {
-      setError("Please enter a link of the book");
+    if (!previewLink.trim()) {
+      setError("Please enter a Preview link of the book");
+      return;
+    }
+
+    if (!imageLink.trim()) {
+      setError("Please enter a Image Link of the book");
+      return;
+    }
+
+    if (!buyLink.trim()) {
+      setError("Please enter a Buy link of the book");
       return;
     }
 
     const bookInfo = {
       discipline,
       title,
-      author,
       description, 
-      link,
+      imageLink,
+      previewLink,
+      buyLink
     };
 
     console.log("Book Information:", bookInfo);
@@ -168,14 +177,6 @@ const SuggestBook = () => {
                     onChange={(e) => setTitle(e.target.value)}
                   />
 
-                  <Input
-                    placeholder="Author"
-                    size="md"
-                    className="mb-2"
-                    value={author}
-                    onChange={(e) => setAuthor(e.target.value)}
-                  />
-
                   <Textarea
                     placeholder="Description"
                     size="md"
@@ -199,10 +200,25 @@ const SuggestBook = () => {
                   /> */}
 
                   <Input
-                    placeholder="Link of the Book (Amazon, Google Books etc)"
-                    id="link"
-                    value={link}
-                    onChange={(e) => setLink(e.target.value)}
+                    placeholder="Buy Link of the Book (eg. Amazon & Flipkart)"
+                    id="buyLink"
+                    className="mb-3"
+                    value={buyLink}
+                    onChange={(e) => setBuyLink(e.target.value)}
+                  />
+                  <Input
+                    placeholder="Image Link of the Book"
+                    id="imageLink"
+                    className="mb-3"
+                    value={imageLink}
+                    onChange={(e) => setImageLink(e.target.value)}
+                  />
+                  <Input
+                    placeholder="Preview Link of the Book (eg. Google Books)"
+                    id="previewLink"
+                    className="mb-3"
+                    value={previewLink}
+                    onChange={(e) => setPreviewLink(e.target.value)}
                   />
                 </FormControl>
 
@@ -227,7 +243,11 @@ const SuggestBook = () => {
         </ModalContent>
       </Modal>
 
-      <SuccessModal isOpen={successModalOpen} onClose={closeSuccessModal} handleExplore={handleExplore} />
+      <SuccessModal
+        isOpen={successModalOpen}
+        onClose={closeSuccessModal}
+        handleExplore={handleExplore}
+      />
     </>
   );
 };
