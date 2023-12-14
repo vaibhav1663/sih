@@ -46,6 +46,10 @@ const bookSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  reviewerAlloted: {
+    type: Array,
+    required: true,
+  },
   reviewer1: {
     //array of 3 members (boolean) each corresponsing to one question
     H: { type: Array, required: true },
