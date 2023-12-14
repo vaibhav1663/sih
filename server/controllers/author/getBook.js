@@ -6,7 +6,7 @@ exports.getAllBooks = async (req, res) => {
     const allBooks = await underReviewBook.find();
 
     // // Check if there are no books
-    if (!allBooks || allBooks.length === 0) {
+    if (!allBooks) {
       return res.status(404).json({ error: "No books found" });
     }
 
