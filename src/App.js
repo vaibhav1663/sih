@@ -1,6 +1,5 @@
 import "./App.css";
 import Login from "./Components/Login";
-import { UserAuthContextProvider } from "./Context/UserAuthContext";
 import { Routes, Route } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import Signup from "./Components/Signup";
@@ -17,11 +16,15 @@ import "react-toastify/dist/ReactToastify.css";
 import Admin from "./Components/Admin.jsx";
 import BookReviews from "./Components/BookReviews.jsx";
 import Book from "./Components/Book.jsx";
-
+import { AuthContextProvider } from "./Context/AuthContext.js";
+import { Navigate } from "react-router-dom";
+import { useAuthContext } from "./hooks/useAuthContext.js";
 function App() {
+    const { user } = useAuthContext()
+
     return (
         <Router>
-            <UserAuthContextProvider>
+           
                 <ChakraProvider>
                     <div className="App">
                         <ToastContainer
@@ -42,10 +45,9 @@ function App() {
                             <Route
                                 path="/"
                                 element={
-                                    <ProtectedRoute>
-                                        <Home />
-                                    </ProtectedRoute>
-                                }
+                                <ProtectedRoute>
+                                    <Home />
+                                </ProtectedRoute>}
                             />
                             <Route
                                 path="/about"
@@ -76,7 +78,6 @@ function App() {
                         </Routes>
                     </div>
                 </ChakraProvider>
-            </UserAuthContextProvider>
         </Router>
     );
 }
