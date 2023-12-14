@@ -1,6 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router";
+import { useAuthContext } from "../hooks/useAuthContext";
+import {useLogout} from "../hooks/useLogout"
 import Navbar from "./Navbar";
+import Carousel from "./Carousel/Carousel";
+import BookCard from "./Carousel/BookCard";
 
 const Home = () => {
     const { logout } = useLogout();
