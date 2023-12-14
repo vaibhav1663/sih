@@ -1,8 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import Navbar from "./Navbar";
 import { useAuthContext } from "../hooks/useAuthContext";
 import {useLogout} from "../hooks/useLogout"
+import Navbar from "./Navbar";
+import Carousel from "./Carousel/Carousel";
+import BookCard from "./Carousel/BookCard";
+
 const Home = () => {
     const { logout } = useLogout();
     const { user } = useAuthContext()
@@ -18,7 +21,13 @@ const Home = () => {
     };
     return (
         <>
-            <Navbar page="home"/>
+            <div className="h-screen">
+                <Navbar page="home"/>
+                <Carousel></Carousel>
+            </div>
+            <div className="mt-28">
+                <BookCard></BookCard>
+            </div>
             <div className="p-4 box mt-3 text-center">
                 Hello Welcome <br />
                 {user && user.email}
