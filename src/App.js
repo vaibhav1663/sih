@@ -61,12 +61,8 @@ function App() {
                             <Route path="/signup" element={<Signup />} />
                             <Route path="/test" element={<ReviewForm />} />
                             <Route
-                                path="/adminLogin"
-                                element={<AdminLogin />}
-                            />
-                            <Route
-                                path="/reviewerLogin"
-                                element={<ReviewerLogin />}
+                                path="/LoginForm"
+                                element={<LoginForm />}
                             />
 
                             <Route path="/admin" element={<Admin />} />
