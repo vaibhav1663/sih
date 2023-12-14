@@ -31,7 +31,7 @@ const ReviewForm = () => {
     B:null,
     C:[null,null,null,null],
     D:[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
-    E:[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null], 
+    E:[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
     G:[null,null,null,null,null],
   });
 
@@ -160,17 +160,45 @@ const ReviewForm = () => {
         <Divider className="mb-4" />
 
         <div className="mt-4">
-        
-        <Button onClick={handlePrev} disabled={currentTab === 0} colorScheme='teal' variant='outline' className="mx-2">Previous</Button>
-        <Button onClick={handleNext} disabled={currentTab === 5} colorScheme='teal' variant='outline' className="mx-2">Next</Button>
-        </div>
-        <div className="mt-4">
-        <Button onClick={handleSubmit} disabled={currentTab !== 5} colorScheme='teal' variant='outline' className="mx-2">Submit</Button>
+          <Button
+            onClick={handlePrev}
+            disabled={currentTab === 0}
+            colorScheme="teal"
+            variant="outline"
+            className="mx-2"
+          >
+            Previous
+          </Button>
+
+          {currentTab == 6 ? (
+            <>
+              <Button
+                onClick={handleSubmit}
+                disabled={currentTab !== 6}
+                colorScheme="teal"
+                variant="outline"
+                className="mx-2"
+              >
+                Submit
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button
+                onClick={handleNext}
+                disabled={currentTab === 5}
+                colorScheme="teal"
+                variant="outline"
+                className="mx-2"
+              >
+                Next
+              </Button>
+            </>
+          )}
         </div>
       </Tabs>
     </>
   );
-
 };
 
 export default ReviewForm;
