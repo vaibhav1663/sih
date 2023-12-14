@@ -1,4 +1,4 @@
-const underReviewBook = require("../../model/underReviewBookSchema");
+const underReviewBook = require("../../model/recommendedBooks");
 
 exports.addBook = async (req, res) => {
   const { recomendedBy, name, desc, imageLink, buyLink, previewLink } =

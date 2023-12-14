@@ -1,4 +1,4 @@
-const underReviewBook = require("../../model/underReviewBookSchema");
+const underReviewBook = require("../../model/recommendedBooks");
 
 exports.getAllBooks = async (req, res) => {
   try {
