@@ -5,7 +5,6 @@ const ReviewerQueue = require("../../model/reviewerqueue");
 exports.addRecommendedBook = async (req, res) => {
   try {
     const {
-      _id,
       name,
       desc,
       imageLink,
@@ -16,16 +15,18 @@ exports.addRecommendedBook = async (req, res) => {
       reviewer3,
       underReview,
     } = req.body;
-    console.log(req.body);
+
     // Check if the required fields are present in the request body
     if (!name || !desc || !imageLink || !buyLink || !previewLink) {
       return res.status(400).json({ error: "Missing required fields" });
     }
-    let reviewerAlotted1 = [];
-    reviewerAlotted1.push(reviewer1);
-    reviewerAlotted1.push(reviewer2);
-    reviewerAlotted1.push(reviewer3);
-    console.log(reviewerAlotted1);
+    console.log(reviewer1, reviewer2, reviewer3);
+
+    let reviewerAlotted = [];
+    reviewerAlotted.push(reviewer1);
+    reviewerAlotted.push(reviewer2);
+    reviewerAlotted.push(reviewer3);
+    console.log(reviewerAlotted);
     // Create a new book object using parameters from recommended book and additional parameters from bookSchema
     const newBook = new Book({
       name,
@@ -33,7 +34,7 @@ exports.addRecommendedBook = async (req, res) => {
       imageLink,
       buyLink,
       previewLink,
-      reviewerAlotted: reviewerAlotted1,
+      reviewerAlotted,
       underReview,
       // Add additional parameters as needed
       publicRating: 0,
@@ -42,33 +43,7 @@ exports.addRecommendedBook = async (req, res) => {
       reviewerCount: 0,
       totalScore: 0,
       isRecommended: true,
-      reviewer1: {
-        H: [false, false, false],
-        A: [0, 0, 0, 0, 0],
-        B: 0,
-        C: [0, 0, 0, 0],
-        D: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        E: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        G: [0, 0, 0, 0, 0],
-      },
-      reviewer2: {
-        H: [false, false, false],
-        A: [0, 0, 0, 0, 0],
-        B: 0,
-        C: [0, 0, 0, 0],
-        D: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        E: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        G: [0, 0, 0, 0, 0],
-      },
-      reviewer3: {
-        H: [false, false, false],
-        A: [0, 0, 0, 0, 0],
-        B: 0,
-        C: [0, 0, 0, 0],
-        D: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        E: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        G: [0, 0, 0, 0, 0],
-      },
+      reviewerResponse: [],
       users: [],
     });
 
