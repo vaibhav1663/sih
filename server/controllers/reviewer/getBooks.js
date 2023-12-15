@@ -4,9 +4,9 @@ exports.getBooksByReviewerId = async (req, res) => {
   const { id } = req.query;
 
   try {
-    // Find books where reviewerAlloted array contains the provided id
+    // Find books where reviewersAllotted array contains the provided id
     const books = await Book.find({
-      reviewerAlloted: { $in: [id] },
+      reviewersAllotted: { $in: [id] },
     });
 
     // Check if there are no books

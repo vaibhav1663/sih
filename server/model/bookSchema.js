@@ -1,64 +1,64 @@
 const mongoose = require("mongoose");
 
 const bookSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  publicRating: {
-    //out of 5
-    type: Number,
-    required: true,
-  },
-  publicCount: {
-    type: Number,
-    required: true,
-  },
-  reviewerRating: {
-    type: Number,
-    required: true,
-  },
-  reviewerCount: {
-    type: Number,
-    required: true,
-  },
-  totalScore: {
-    type: Number,
-    required: true,
-  },
-  isRecommended: {
-    type: Boolean,
-    required: true,
-  },
-  desc: {
-    type: String,
-    required: true,
-  },
-  imageLink: {
-    type: String,
-    required: true,
-  },
-  buyLink: {
-    type: String,
-    required: true,
-  },
-  previewLink: {
-    type: String,
-    required: true,
-  },
-  reviewerAlloted: {
-    type: [String],
-    required: true,
-  },
-  reviewerResponse: {
-    type: Array,
-    required: true,
-  },
+    name: {
+        type: String,
+        required: true,
+    },
+    publicRating: {
+        //out of 5
+        type: Number,
+        required: true,
+    },
+    publicCount: {
+        type: Number,
+        required: true,
+    },
+    reviewerRating: {
+        type: Number,
+        required: true,
+    },
+    reviewerCount: {
+        type: Number,
+        required: true,
+    },
+    totalScore: {
+        type: Number,
+        required: true,
+    },
+    isRecommended: {
+        type: Boolean,
+        required: true,
+    },
+    desc: {
+        type: String,
+        required: true,
+    },
+    imageLink: {
+        type: String,
+        required: true,
+    },
+    buyLink: {
+        type: String,
+        required: true,
+    },
+    previewLink: {
+        type: String,
+        required: true,
+    },
+    reviewersAllotted: {
+        type: [String],
+        required: true,
+    },
+    reviewerResponse: {
+        type: Array,
+        required: true,
+    },
 
-  users: {
-    type: Array,
-    required: true,
-  },
+    users: {
+        type: Array,
+        required: true,
+    },
 });
 
 const User = mongoose.model("books", bookSchema);
