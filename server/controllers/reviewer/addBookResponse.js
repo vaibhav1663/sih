@@ -3,11 +3,11 @@ const ReviewerQueue = require("../../model/reviewerqueue");
 
 exports.addBookResponse = async (req, res) => {
   try {
-    const { _id, reviewer_id, H, A, B, C, D, E, G } = req.body;
+    const { _id, reviewerid, H, A, B, C, D, E, G } = req.body;
 
     // Find the reviewer queue by reviewer_id
     const reviewerQueue = await ReviewerQueue.findOne({
-      reviewerid: reviewer_id,
+      reviewerid,
     });
 
     if (!reviewerQueue) {
@@ -16,7 +16,7 @@ exports.addBookResponse = async (req, res) => {
 
     // Remove the _id from tobereviewed and add it to the reviewed array
     await ReviewerQueue.findOneAndUpdate(
-      { reviewerid: reviewer_id },
+      { reviewerid },
       {
         $pull: { tobereviewed: _id },
         $addToSet: { reviewed: _id },
@@ -31,6 +31,17 @@ exports.addBookResponse = async (req, res) => {
     const e_total = E.reduce((acc, value) => acc + value, 0);
     const g_total = G.reduce((acc, value) => acc + value, 0);
 
+    // Create a new response object
+    const responseObject = {
+      a_total,
+      b_total,
+      c_total,
+      d_total,
+      e_total,
+      g_total,
+      totalScore: a_total + b_total + c_total + d_total + e_total + g_total,
+    };
+
     // Max scores
     const maxScores = {
       a: 50,
@@ -43,23 +54,14 @@ exports.addBookResponse = async (req, res) => {
 
     // Check if totals are less than 50% of max scores
     const isRecommended = Object.keys(maxScores).every(
-      (key) => eval(`${key}_total`) < 0.5 * maxScores[key]
+      (key) => responseObject[`${key}_total`] > 0.5 * maxScores[key]
     );
 
     // Check if any member of H is false
     const isHValid = H.every((value) => value);
 
-    // Create a new response object
-    const responseObject = {
-      a_total,
-      b_total,
-      c_total,
-      d_total,
-      e_total,
-      g_total,
-      isRecommended: isRecommended && isHValid,
-      totalScore: a_total + b_total + c_total + d_total + e_total + g_total,
-    };
+    // Update isRecommended based on the calculated values
+    responseObject.isRecommended = isRecommended && isHValid;
 
     // Find the book by _id and push the new response object into the array
     await Book.findByIdAndUpdate(_id, {
