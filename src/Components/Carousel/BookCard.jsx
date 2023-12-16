@@ -4,14 +4,11 @@ import {
     CardBody,
     Image,
     Stack,
-    HStack,
-    Text,
     Heading,
     Center,
     Button,
     ButtonGroup
     } from "@chakra-ui/react";
-import { StarIcon } from "@chakra-ui/icons";
 
 let data = [
     {
@@ -76,12 +73,6 @@ const BookCard = () => {
                                 borderRadius='lg'
                                 />
                                 <Stack spacing='3'>
-                                <HStack>
-                                <StarIcon size="lg" color="yellow.400"></StarIcon>
-                                <Text color='blue.600' fontSize='2xl'>
-                                    {book.publicRating}
-                                </Text>
-                                </HStack>
                                 <Heading size='md'>{book.name}</Heading>
                                 <ButtonGroup spacing='2'>
                                 <Button variant='solid' colorScheme='blue'>
@@ -120,12 +111,6 @@ const BookCard = () => {
                             borderRadius='lg'
                             />
                             <Stack spacing='3'>
-                            <HStack>
-                            <StarIcon size="lg" color="yellow.400"></StarIcon>
-                            <Text color='blue.600' fontSize='2xl'>
-                                {book.publicRating}
-                            </Text>
-                            </HStack>
                             <Heading size='md'>{book.name}</Heading>
                             <ButtonGroup spacing='2'>
                             <Button variant='solid' colorScheme='blue'>
@@ -150,7 +135,7 @@ const BookCard = () => {
                 border-t-[35px] border-t-stone-300
                 border-r-[50px] border-r-transparent" mx-auto>
             </div>
-            <Center><Heading size="lg" margin="auto">Top picks for Siddha</Heading></Center>
+            <Center><Heading size="lg" margin="auto">Top picks for Unani</Heading></Center>
             
             <div className="p-9 grid gap-5 grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
             {data.map((book,index)=>{
@@ -164,56 +149,6 @@ const BookCard = () => {
                             borderRadius='lg'
                             />
                             <Stack spacing='3'>
-                            <HStack>
-                            <StarIcon size="lg" color="yellow.400"></StarIcon>
-                            <Text color='blue.600' fontSize='2xl'>
-                                {book.publicRating}
-                            </Text>
-                            </HStack>
-                            <Heading size='md'>{book.name}</Heading>
-                            <ButtonGroup spacing='2'>
-                            <Button variant='solid' colorScheme='blue'>
-                                Read review
-                            </Button>
-                            </ButtonGroup>
-                            </Stack>
-                        </CardBody>
-                    </Card>
-                )
-            })}
-            </div>
-                <Center>
-                    <Button variant='solid' colorScheme='blue'>
-                        More
-                    </Button>
-                </Center>
-        </div>
-        <div className="content-center m-auto bg-stone-500 w-full h-2/3 pb-3">
-            <div class="w-0 h-0 m-auto
-                border-l-[50px] border-l-transparent
-                border-t-[35px] border-t-stone-400
-                border-r-[50px] border-r-transparent" mx-auto>
-            </div>
-            <Center><Heading size="lg" margin="auto">Top picks for Siddha</Heading></Center>
-            
-            <div className="p-9 grid gap-5 grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
-            {data.map((book,index)=>{
-                return(
-                    <Card maxW='15rem' maxH='25rem' key={index}>
-                        <CardBody>
-                            <Image
-                            boxSize='200px'
-                            src={book.thumb}
-                            alt='book image'
-                            borderRadius='lg'
-                            />
-                            <Stack spacing='3'>
-                            <HStack>
-                            <StarIcon size="lg" color="yellow.400"></StarIcon>
-                            <Text color='blue.600' fontSize='2xl'>
-                                {book.publicRating}
-                            </Text>
-                            </HStack>
                             <Heading size='md'>{book.name}</Heading>
                             <ButtonGroup spacing='2'>
                             <Button variant='solid' colorScheme='blue'>

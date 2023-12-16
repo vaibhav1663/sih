@@ -5,6 +5,7 @@ import {useLogout} from "../hooks/useLogout"
 import Navbar from "./Navbar";
 import Carousel from "./Carousel/Carousel";
 import BookCard from "./Carousel/BookCard";
+import Info from "./Carousel/Info";
 
 const Home = () => {
     const { logout } = useLogout();
@@ -27,6 +28,9 @@ const Home = () => {
             </div>
             <div className="mt-28">
                 <BookCard></BookCard>
+            </div>
+            <div>
+                <Info></Info>
             </div>
             <div className="p-4 box mt-3 text-center">
                 Hello Welcome <br />
