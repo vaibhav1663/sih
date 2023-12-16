@@ -100,7 +100,7 @@ const Book = () => {
     return (
         <>
             <Navbar page="book" />
-            <div className="box p-4 bg-gray-100">
+            <div className="box p-20 bg-gray-100">
                 <div className="flex flex-col md:flex-row gap-6">
                     <div className="w-1/2">
                         <img

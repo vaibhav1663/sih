@@ -49,8 +49,8 @@ let data = [
 const BookReviews = () => {
     return (
         <>
-            <Navbar page="book-reviews" />
-            <div className="box p-4 text-center bg-gray-100 grid gap-4 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <Navbar page="book-reviews" />
+            <div className="box pt-16 p-4 text-center bg-gray-100 grid gap-4 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                 {data.map((book, index) => {
                     return (
                         <div
