@@ -3,13 +3,18 @@ import { Navigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useLogin } from "../hooks/useLogin";
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = ({ children, allowedRoles }) => {
   const { user } = useAuthContext();
   const {isLoading} = useLogin();
-  
-  if (!localStorage.getItem("user")) {
-    return <Navigate to="/login" />;
+
+  if (!localStorage.getItem("user") || !user) {
+    return <Navigate to="/" />;
   }
+
+  // if (allowedRoles && user.role && !allowedRoles.includes(user.role)) {
+  //   return <Navigate to="/" />;
+  // }
+
   return children;
 };
 
