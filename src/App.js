@@ -21,8 +21,9 @@ import { AuthContextProvider } from "./Context/AuthContext.js";
 import { Navigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext.js";
 
+
 function App() {
-    const { user } = useAuthContext()
+    const { user } = useAuthContext();
 
     return (
         <Router>
@@ -44,22 +45,8 @@ function App() {
                         {/* Same as */}
                         <ToastContainer />
                         <Routes>
-                            <Route
-                                path="/"
-                                element={
-                                <ProtectedRoute>
-                                    <Home />
-                                </ProtectedRoute>
-                                }
-                            />
-                            <Route
-                                path="/about"
-                                element={
-                                    <ProtectedRoute>
-                                        <About />
-                                    </ProtectedRoute>
-                                }
-                            />
+                            <Route path="/" element={<Home />}/>
+                            <Route path="/about"element={<About />}/>
                             <Route path="/login" element={<Login />} />
                             <Route path="/signup" element={<Signup />} />
                             <Route path="/test" element={<ReviewForm />} />
@@ -72,7 +59,9 @@ function App() {
                             <Route path="/admin" element={<Admin />} />
                             <Route
                                 path="/book-reviews"
-                                element={<BookReviews />}
+                                element={
+                                            <BookReviews />
+                                }
                             />
                             <Route path="/book/:id" element={<Book />} />
                         </Routes>

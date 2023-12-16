@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { AuthContextProvider } from "../Context/AuthContext";
+import { useAuthContext } from "../hooks/useAuthContext";
+
 
 const Navbar = (props) => {
     const [menu, setMenu] = useState(false);
+    const { user } = useAuthContext();
     const simple =
         "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent";
     const highlight =
@@ -78,28 +82,21 @@ const Navbar = (props) => {
                                 About
                             </a>
                         </li>
-                        <li>
-                            <a
-                                href="/admin"
-                                className={
-                                    props.page === "admin" ? highlight : simple
-                                }
-                            >
-                                Services
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="/book-reviews"
-                                className={
-                                    props.page === "book-reviews"
-                                        ? highlight
-                                        : simple
-                                }
-                            >
-                                Book Reviews
-                            </a>
-                        </li>
+                        
+                            <li>
+                                <a
+                                    href="/book-reviews"
+                                    className={
+                                        props.page === "book-reviews"
+                                            ? highlight
+                                            : simple
+                                    }
+                                >
+                                    Book Reviews
+                                </a>
+                            </li>
+                        
+                        
                         <li>
                             <a
                                 href="/"
@@ -108,15 +105,14 @@ const Navbar = (props) => {
                                 Contact
                             </a>
                         </li>
-                        {/* <li>
+                         <li>
                             <a
-                                href="/Admin"
+                                href="/login"
                                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                             >
                                 Login
                             </a>
-                        </li> */}
-                        
+                        </li> 
 
                     </ul>
                 </div>
