@@ -3,12 +3,15 @@ const mongoose = require("mongoose");
 const recommendedBook = new mongoose.Schema({
   recomendedBy: {
     //id
-    type: Number,
+    type: String, // This was number -> changed to string
     required: true,
   },
   name: {
     type: String,
     required: true,
+  }, author: {
+    type: String,
+    required: true
   },
 
   desc: {
@@ -35,6 +38,14 @@ const recommendedBook = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  referenceId: { // A reference id for teacher for a book recommended
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    required: true
+  }
 });
 
 const buff = mongoose.model("recommendedbooks", recommendedBook);
