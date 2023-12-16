@@ -5,6 +5,9 @@ import {useLogout} from "../hooks/useLogout"
 import Navbar from "./Navbar";
 import Carousel from "./Carousel/Carousel";
 import BookCard from "./Carousel/BookCard";
+import About from "./Carousel/About";
+import Info from "./Carousel/Info";
+import Footer from "./Carousel/Footer";
 
 const Home = () => {
     const { logout } = useLogout();
@@ -25,18 +28,12 @@ const Home = () => {
                 <Navbar page="home"/>
                 <Carousel></Carousel>
             </div>
+                <About></About>
             <div className="mt-28">
                 <BookCard></BookCard>
             </div>
-            <div className="p-4 box mt-3 text-center">
-                Hello Welcome <br />
-                {user && user.email}
-            </div>
-            <div className="d-grid gap-2">
-                <button variant="primary" onClick={handleLogout}>
-                    Log out
-                </button>
-            </div>
+            <Info></Info>
+            <Footer></Footer>
         </>
     );
 };
