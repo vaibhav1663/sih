@@ -3,7 +3,6 @@ import Navbar from "./Navbar";
 import Table from "./TeacherDashboard/table";
 import SuggestBook from "./SuggestBook";
 import { useAuthContext } from "../hooks/useAuthContext";
-import SuggestBook from "./SuggestBook";
 const TeacherDashboard = () => {
   const teacher = useAuthContext();
   
