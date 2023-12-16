@@ -20,13 +20,11 @@ exports.addRecommendedBook = async (req, res) => {
     if (!name || !desc || !imageLink || !buyLink || !previewLink) {
       return res.status(400).json({ error: "Missing required fields" });
     }
-    console.log(reviewer1, reviewer2, reviewer3);
 
-    let reviewerAlotted = [];
-    reviewerAlotted.push(reviewer1);
-    reviewerAlotted.push(reviewer2);
-    reviewerAlotted.push(reviewer3);
-    console.log(reviewerAlotted);
+    let reviewerAlloted = [];
+    reviewerAlloted.push(reviewer1);
+    reviewerAlloted.push(reviewer2);
+    reviewerAlloted.push(reviewer3);
     // Create a new book object using parameters from recommended book and additional parameters from bookSchema
     const newBook = new Book({
       name,
@@ -34,7 +32,7 @@ exports.addRecommendedBook = async (req, res) => {
       imageLink,
       buyLink,
       previewLink,
-      reviewerAlotted,
+      reviewerAlloted,
       underReview,
       // Add additional parameters as needed
       publicRating: 0,
