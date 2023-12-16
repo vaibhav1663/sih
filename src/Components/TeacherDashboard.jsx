@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Table from "./TeacherDashboard/table";
+import SuggestBook from "./SuggestBook";
 import { useAuthContext } from "../hooks/useAuthContext";
 import SuggestBook from "./SuggestBook";
 const TeacherDashboard = () => {
@@ -14,7 +15,11 @@ const TeacherDashboard = () => {
       <Navbar page="admin" />
       <div className="p-4 box text-center">
         <h1 className="mt-24 font-bold text-4xl">Teacher Dashboard</h1>
-        <SuggestBook id={teacherID}/>
+        <div className="p-20">
+        <h1 className="font-bold text-lg p-9">Books Reccomendation</h1>
+          <SuggestBook />
+          </div>
+        <h1 className="font-bold text-lg p-9">Books Status Table</h1>
         <Table id={teacherID}/>
       </div>
     </>

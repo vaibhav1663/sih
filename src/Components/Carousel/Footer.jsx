@@ -4,7 +4,7 @@ const footer = () => {
     return (
         <div>
 <footer
-  class="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left">
+  class="bg-blue text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left">
   <div
     class="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500 lg:justify-between">
     <div class="mr-12 hidden lg:block">
@@ -168,7 +168,7 @@ const footer = () => {
     <a
       class="font-semibold text-neutral-600 dark:text-neutral-400"
       href="https://tw-elements.com/"
-      >TW elements</a>
+      > SIH BroCoders </a>
   </div>
 </footer>
     </div>
