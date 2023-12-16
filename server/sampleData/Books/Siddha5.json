@@ -1,0 +1,425 @@
+{
+    "type": "siddha",
+    "books": [
+        {
+            "kind": "books#volume",
+            "id": "MXMazr0LRDsC",
+            "etag": "6kJNb78Ohiw",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/MXMazr0LRDsC",
+            "volumeInfo": {
+                "title": "Ananthanarayan and Paniker's Textbook of Microbiology",
+                "authors": ["R. Ananthanarayan"],
+                "publisher": "Orient Blackswan",
+                "publishedDate": "2006",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "8125028080"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9788125028086"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": true
+                },
+                "pageCount": 657,
+                "printedPageCount": 672,
+                "dimensions": {
+                    "height": "24.00 cm"
+                },
+                "printType": "BOOK",
+                "averageRating": 3,
+                "ratingsCount": 15,
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "0.9.7.0.preview.1",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=MXMazr0LRDsC&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE73rGbb99dWXGexC5GNO_WM7NMVBMPCu2OIdA3QouzbjHk-V4mTtVASJ0jFQBQFqXbu6yU81ukbLFBPvxzxZ5-46R4Xi4wEeulHwoED6lMdXbp81sFrYYvjZwDta332lg_bx9pRL&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=MXMazr0LRDsC&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE70MVGbdRn0QiJ0DG78SM5ixQkC6Xb-lHY93MjFWBcSShheAXF-9MgLjOnb8hl82rn195gEBm2m_fQpbmQ8j-tHw5zVvPYZDvb3_pDSLeTuox5ynh_DeMm8lCKkxtdE-RhrCFaJP&source=gbs_api",
+                    "small": "http://books.google.com/books/content?id=MXMazr0LRDsC&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE70-Bz302j4dW9mH4maUax4YvZ-k3yJZ1OhAuWDNIGztsFft0LtlhR7tfq7-Dunmy8F4PqMKB1WK4aXJfNKQf4ZWPOtR1yHJZCrygOlbj4-XPipViidModw8CxIEsS0EtrJyx7Um&source=gbs_api",
+                    "medium": "http://books.google.com/books/content?id=MXMazr0LRDsC&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE70PC3fBXqiCgLKfYCg53JqYi3IDPsz6_11DO_k-3K4Dq6EBo_F1PzGH3aYobj-pD6-kd7lkxSejgVHSayJ8-uFqzSMh2oNmHPCCX2EQhEdQjGd7MtwOUDlqnJF9TasT9wlPwpLc&source=gbs_api",
+                    "large": "http://books.google.com/books/content?id=MXMazr0LRDsC&printsec=frontcover&img=1&zoom=4&edge=curl&imgtk=AFLRE72DS6AZRGbcURpcNuZXb49ofTxollO68C67hmhbXlXbGW4ikD1MGrhZWiUW_i_jQ4RaJjNW2hSrhbN9CuwTDsKgrhbrjDHU_0AWLFGlhPdCif8tQjhdTX-HY31DnWrcmbuL5OAG&source=gbs_api",
+                    "extraLarge": "http://books.google.com/books/content?id=MXMazr0LRDsC&printsec=frontcover&img=1&zoom=6&edge=curl&imgtk=AFLRE72EgnZJTIEGSgJqPt-g3iPchp27cxBILJV6V6VhxgPpZby-ZAK6B-7nMhg9OD3DvMzOLC8d4FYDHnvgIINsZ9GqIpBz_UxhzLyAnKR-vRYohybaB-M2WRNY13HtUeEBnGZ-IvHD&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.co.in/books?id=MXMazr0LRDsC&hl=&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=MXMazr0LRDsC&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=MXMazr0LRDsC"
+            },
+            "saleInfo": {
+                "country": "IN",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "IN",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.in/books/download/Ananthanarayan_and_Paniker_s_Textbook_of-sample-pdf.acsm?id=MXMazr0LRDsC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=MXMazr0LRDsC&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "Xq52DwAAQBAJ",
+            "etag": "GIau5zxtlE0",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/Xq52DwAAQBAJ",
+            "volumeInfo": {
+                "title": "Essentials of Medical Microbiology",
+                "authors": ["Apurba Sankar Sastry", "Sandhya Bhat K"],
+                "publisher": "JP Medical Ltd",
+                "publishedDate": "2018-10-31",
+                "description": "\u003cp\u003eThe new edition of this comprehensive guide provides students with the latest information and advances in medical microbiology.\u003c/p\u003e \u003cp\u003eDivided into seven sections, the book begins with discussion on general microbiology, followed by immunology, systematic bacteriology, virology and mycology.\u003c/p\u003e \u003cp\u003eThe second edition has been fully revised and features two new sections covering hospital acquired infections and clinical microbiology.\u003c/p\u003e \u003cp\u003eThe extensive text is further enhanced by more than 600 clinical photographs, diagrams and tables.\u003c/p\u003e \u003cp\u003eThe book concludes with annexures on emerging and re-emerging infections, bioterrorism, laboratory acquired infections, and zoonosis (the transmission of disease between humans and animals).\u003c/p\u003e \u003cp\u003eKey points\u003c/p\u003e \u003cul\u003e \u003cli\u003eComprehensive guide to medical microbiology for students\u003c/li\u003e \u003cli\u003eFully revised, second edition featuring many new topics\u003c/li\u003e \u003cli\u003eHighly illustrated with clinical photographs, diagrams and tables\u003c/li\u003e \u003cli\u003ePrevious edition (9789351529873) published in 2015\u003c/li\u003e \u003c/ul\u003e",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "9352704797"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9789352704798"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": true
+                },
+                "pageCount": 705,
+                "printedPageCount": 716,
+                "dimensions": {
+                    "height": "27.90 cm",
+                    "width": "21.60 cm",
+                    "thickness": "3.00 cm"
+                },
+                "printType": "BOOK",
+                "categories": [
+                    "Medical / General",
+                    "Medical / Microbiology",
+                    "Medical / Pathology"
+                ],
+                "averageRating": 1,
+                "ratingsCount": 1,
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/publisher/content?id=Xq52DwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE70GgFwGkPLzWCs92foaZoQhnvswI477oZhk1hJzhqyZ9PCiWWGi3yGJsQy0MtcvbioODd-DiZaFyXc2inu1bvZU_VdBmJS6Bux1YqGBbWt2Lk24ywXhA3weivo1YK8U_wnOWT2B&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/publisher/content?id=Xq52DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE73-bdcL8OPXxFbaIxi6eu4jkvALsZFE2IlpCewYColICptLwOx4Hou-1Vg3bgeb5xpLAJJAIYdMJ9YGmqAs4UpcWzC0HdudK7cABIOfE2ya13dXLgMpuddozrl_aVo2oCixRPVs&source=gbs_api",
+                    "small": "http://books.google.com/books/publisher/content?id=Xq52DwAAQBAJ&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE72jEUrboO8O4lkSwrQC0Xy3gNOU9OPf85xNv_GnWKJVAf9glmZ4aWhC3GIHlnvPBr-4DSlO71J-rCnHEv_uTrQFWdhRiqoZmFVgRoXlr3HR_p_ZTQaqNr8CqIE-81ltjQ7mkKsL&source=gbs_api",
+                    "medium": "http://books.google.com/books/publisher/content?id=Xq52DwAAQBAJ&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE72gY3iXWnal4U3lpqHMql8tDqetaHV27sOnXrjZt9D8YlMASO46Ao0_Ek4Kx7jeazy3kzKrDQ_2NDKYvNYMEFqt7LyCHutc1mnlPtb37BdVJvpM1QVQH5Rc97SgHYg8gqTp3ev2&source=gbs_api",
+                    "large": "http://books.google.com/books/publisher/content?id=Xq52DwAAQBAJ&printsec=frontcover&img=1&zoom=4&edge=curl&imgtk=AFLRE73LEpSk6Vz4OxP9W69rUmnu0_mXgntIU1FTlBFZbtvA4Ht1DR488fpB0eXDbsFYzjKkbZ8i3Ubjw_z6KhqRFfdqgTrpBBIZ2VcQjKMAdnHLssnrItCOXUwcS0oVQm3aSnlIZzJv&source=gbs_api",
+                    "extraLarge": "http://books.google.com/books/publisher/content?id=Xq52DwAAQBAJ&printsec=frontcover&img=1&zoom=6&edge=curl&imgtk=AFLRE72poQWhJ12q7pCWT5ne-zASz46KbM3kxtWghvEPV5wEDYIByzNByf1ob70585RcZOAzAk5hy8uEC-5PgUuCLefq6Ec2tqNOifmM8js58tBUuiuM3vkYmkdu17-F0E5AqT_EqYLQ&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.co.in/books?id=Xq52DwAAQBAJ&hl=&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=Xq52DwAAQBAJ&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=Xq52DwAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "IN",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "IN",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.in/books/download/Essentials_of_Medical_Microbiology-sample-pdf.acsm?id=Xq52DwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=Xq52DwAAQBAJ&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "KfjD7sKOeekC",
+            "etag": "BO0AQSbdFQQ",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/KfjD7sKOeekC",
+            "volumeInfo": {
+                "title": "The Age of Immunology",
+                "subtitle": "Conceiving a Future in an Alienating World",
+                "authors": ["A. David Napier"],
+                "publisher": "University of Chicago Press",
+                "publishedDate": "2010-12-15",
+                "description": "In this fascinating and inventive work, A. David Napier argues that the central assumption of immunology—that we survive through the recognition and elimination of non-self—has become a defining concept of the modern age. Tracing this immunological understanding of self and other through an incredibly diverse array of venues, from medical research to legal and military strategies and the electronic revolution, Napier shows how this defensive way of looking at the world not only destroys diversity but also eliminates the possibility of truly engaging difference, thereby impoverishing our culture and foreclosing tremendous opportunities for personal growth.\u003cbr\u003e \u003cbr\u003e To illustrate these destructive consequences, Napier likens the current craze for embracing diversity and the use of politically correct speech to a cultural potluck to which we each bring different dishes, but at which no one can eat unless they abide by the same rules. Similarly, loaning money to developing nations serves as a tool both to make the peoples in those nations more like us and to maintain them in the nonthreatening status of distant dependents. To break free of the resulting downward spiral of homogenization and self-focus, Napier suggests that we instead adopt a new defining concept based on embryology, in which development and self-growth take place through a process of incorporation and transformation. In this effort he suggests that we have much to learn from non-Western peoples, such as the Balinese, whose ritual practices require them to take on the considerable risk of injecting into their selves the potential dangers of otherness—and in so doing ultimately strengthen themselves as well as their society.\u003cbr\u003e \u003cbr\u003e \u003ci\u003eThe Age of Immunology,\u003c/i\u003e with its combination of philosophy, history, and cultural inquiry, will be seen as a manifesto for a new age and a new way of thinking about the world and our place in it.",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "0226568148"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9780226568140"
+                    }
+                ],
+                "readingModes": {
+                    "text": true,
+                    "image": true
+                },
+                "pageCount": 328,
+                "printedPageCount": 344,
+                "dimensions": {
+                    "height": "24.00 cm"
+                },
+                "printType": "BOOK",
+                "categories": [
+                    "Philosophy / General",
+                    "Philosophy / Movements / General",
+                    "Medical / History"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "0.3.3.0.preview.3",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=KfjD7sKOeekC&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE711Hp19BL8G60bhqmLcdrUJyNJyOy7OIMaBHxc9W8oWfWOovxD2YVjPtzLjYPMxGRCtj4pvq3hFrRK-A3u4PHINXTbMwjEJ9o9YeBQgnyzLuJoUkhj1yUoSBhwcvxbBPUAoIpxU&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=KfjD7sKOeekC&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE73y3UKoCoKylbntvVRNBrApvHhBZWVpbATzsP6Yv6LS2uYG2Uzp0sL_VsWwmTwMh7GzVB8ZMYCa2TWfGazUM9-bEMPPPbL598mtexNpcdrHyXVUwi4AE4UJClokpWRl4ZL7qw2A&source=gbs_api",
+                    "small": "http://books.google.com/books/content?id=KfjD7sKOeekC&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE72zcuB48TDfnF327lJ5b03XnMRwROeS2WLV37fVCaff-B0X8KOPjQQuSRi58AJexN4f2F-CF1ygG4y3DatfiwQDqg-6op5Zjma3mep4chHsGvNcLsCtwet7KApQNIT1585IczBn&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.co.in/books?id=KfjD7sKOeekC&hl=&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=KfjD7sKOeekC&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=KfjD7sKOeekC"
+            },
+            "layerInfo": {
+                "layers": [
+                    {
+                        "layerId": "geo",
+                        "volumeAnnotationsVersion": "8"
+                    }
+                ]
+            },
+            "saleInfo": {
+                "country": "IN",
+                "saleability": "FOR_SALE",
+                "isEbook": true,
+                "listPrice": {
+                    "amount": 6288.19,
+                    "currencyCode": "INR"
+                },
+                "retailPrice": {
+                    "amount": 6288.19,
+                    "currencyCode": "INR"
+                },
+                "buyLink": "https://play.google.com/store/books/details?id=KfjD7sKOeekC&rdid=book-KfjD7sKOeekC&rdot=1&source=gbs_api",
+                "offers": [
+                    {
+                        "finskyOfferType": 1,
+                        "listPrice": {
+                            "amountInMicros": 6288190000,
+                            "currencyCode": "INR"
+                        },
+                        "retailPrice": {
+                            "amountInMicros": 6288190000,
+                            "currencyCode": "INR"
+                        }
+                    }
+                ]
+            },
+            "accessInfo": {
+                "country": "IN",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.in/books/download/The_Age_of_Immunology-sample-epub.acsm?id=KfjD7sKOeekC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.in/books/download/The_Age_of_Immunology-sample-pdf.acsm?id=KfjD7sKOeekC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=KfjD7sKOeekC&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "XKb_fNcz8eMC",
+            "etag": "GT7EPQwWr2U",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/XKb_fNcz8eMC",
+            "volumeInfo": {
+                "title": "Applied and community psychology",
+                "authors": ["Surya Kumar Srivastava"],
+                "publisher": "Sarup & Sons",
+                "publishedDate": "2005",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "8176256099"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9788176256094"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": true
+                },
+                "pageCount": 854,
+                "printedPageCount": 486,
+                "dimensions": {
+                    "height": "26.00 cm"
+                },
+                "printType": "BOOK",
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "0.5.5.0.preview.1",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=XKb_fNcz8eMC&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE71gMPUgbCDu-5SRw6kA06w6RfaxGd7HZhmvuacdONwRFG4pZjiVYzhb4bOLawFL7BpHA050WMrJMFJs1G_BWPalG2D5hsrUupSQ27zaWx8mRVIokFCk4KQZwV-4IZOxVBM5HeBk&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=XKb_fNcz8eMC&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE73zYysxXX6Ymd2BgiKwEpXSTi9WvKTKiT91j4TdHEMmeG_Av2qTtEhjV_Bsvem06n46nlzrEEF7VG02938uMXRYmzGknUGAY74i11djaDEsRozsg-Qcjx-Pbf0yLbHVDf379vT-&source=gbs_api",
+                    "small": "http://books.google.com/books/content?id=XKb_fNcz8eMC&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE72rilMQrfY6BMZaPQCD1aw7W3ww4r8ECfqGM_m1AmO2O2T2oBrR64OBuY7Jm9HC3j8qtLmu8nSm8NGmgc5vhB6GKYkKYiK0IodDEq3oke7xJbkpyXv6zPErvJY2bYg-sMt8S9C4&source=gbs_api",
+                    "medium": "http://books.google.com/books/content?id=XKb_fNcz8eMC&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE70OIh5qKEXBWFbEL4XtF9btVP9JgDyFtwSFjDKlBmEpHp1CP-Y1kS9GMSwzAavgJx5NwruQI9rsUIDaQsyDHPXteqx_GbiY4QMJyjUhf0bTW7wJGLjJDwtEnmpVksHKYkcBd_eJ&source=gbs_api",
+                    "large": "http://books.google.com/books/content?id=XKb_fNcz8eMC&printsec=frontcover&img=1&zoom=4&edge=curl&imgtk=AFLRE72o3AJtPKFDgBJ81O1GL-5ZcEEkB44riinhYlJnu-5Zxzx-EZ9xW3qUpSEHsSmoA_iGOXOvqJZIAKgz7n2DqmzIq6GS7znFM7D6PAtCreUdmwe31nNtGaOGDy11NW3X9fKKzawo&source=gbs_api",
+                    "extraLarge": "http://books.google.com/books/content?id=XKb_fNcz8eMC&printsec=frontcover&img=1&zoom=6&edge=curl&imgtk=AFLRE72GHANG4lKqeL2zDWrrjwulWccGB4xnaCsLg_CGjZJ0brA7PR9EMUOi4Y0Q4G_VTjXFsYjYAgZ0DrWu-Aye8bv51d3zGnM-NlanfbkrfWQ80bXdRr40L4hfWbAD0skM14cjEJ38&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.co.in/books?id=XKb_fNcz8eMC&hl=&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=XKb_fNcz8eMC&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=XKb_fNcz8eMC"
+            },
+            "saleInfo": {
+                "country": "IN",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "IN",
+                "viewability": "ALL_PAGES",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.in/books/download/Applied_and_community_psychology-sample-pdf.acsm?id=XKb_fNcz8eMC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=XKb_fNcz8eMC&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "dXdISwJQJFIC",
+            "etag": "fw6+o6BB7bQ",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/dXdISwJQJFIC",
+            "volumeInfo": {
+                "title": "Textbook of Blood Banking and Transfusion Medicine",
+                "authors": ["Sally V. Rudmann"],
+                "publisher": "Elsevier Health Sciences",
+                "publishedDate": "2005-02-18",
+                "description": "This comprehensive book on transfusion practices and immunohematology offers concise, thorough guidelines on the best ways to screen donors, store blood components, ensure safety, anticipate the potentially adverse affects of blood transfusion, and more. It begins with the basics of genetics and immunology, and then progresses to the technical aspects of blood banking and transfusion. Chapters are divided into sections on: Basic Science Review; Blood Group Serology; Donation, Preparation, and Storage; Pretransfusion Testing; Transfusion Therapy; Clinical Considerations; and Safety, Quality Assurance, and Data Management. Developed specifically for medical technologists, blood bank specialists, and residents, the new edition conforms to the most current standards of the American Association of Blood Banks (AABB).\u003cul\u003e\u003cli\u003eExpert Opinion essays, written by well-known, frequently published experts, discuss interesting topics of research or new advances in the field.\u003c/li\u003e\u003cli\u003eImportant terms are defined in the margins of the pages on which they appear, enabling readers to easily check the meaning of an unfamiliar term where it appears in context.\u003c/li\u003e\u003cli\u003eMargin notes highlight important concepts and points, remind readers of previously discussed topics, offer an alternative perspective, or refer readers to other sources for further information.\u003c/li\u003e\u003cli\u003eMaterial conforms to the most recent AABB standards for the most accurate, up-to-date information on immunohematology.\u003c/li\u003e\u003cli\u003eAdvanced concepts, beyond what is required for entry-level practice, are set apart from the rest of the text so readers can easily differentiate between basic and advanced information.\u003c/li\u003e\u003c/ul\u003e\u003cul\u003e\u003cli\u003eA new chapter on Hematopoietic Stem Cells and Cellular Therapy (chapter 19) provides cutting-edge coverage of cellular therapy and its relevance to blood-banking.\u003c/li\u003e\u003cli\u003eNew content has been added on molecular genetics, component therapy, and International Society of Blood Transfusion (ISBT) nomenclature, as well as the latest information on HIV, hepatitis, quality assurance, and information systems.\u003c/li\u003e\u003cli\u003eCoverage of new technologies, such as nucleic acid technology and gel technology, keeps readers current with advances in the field.\u003c/li\u003e\u003c/ul\u003e",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9780721603841"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "072160384X"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": true
+                },
+                "pageCount": 704,
+                "printedPageCount": 704,
+                "dimensions": {
+                    "height": "28.00 cm",
+                    "width": "21.60 cm",
+                    "thickness": "3.00 cm"
+                },
+                "printType": "BOOK",
+                "categories": [
+                    "Medical / Allied Health Services / Medical Technology"
+                ],
+                "averageRating": 3.5,
+                "ratingsCount": 6,
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "1.1.1.0.preview.1",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=dXdISwJQJFIC&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE72UbHugFmMOE-I704g3FoI4fly2Z-Qt4jS4fUb_H-Cs76HRQPbov2pecIlSLZsgMe6BiPK8-86_w_RkLflHtMuUTA0hFqWBbYCaQVQueYg8xw4Z6kr9GhzjDRdQ8TjoOeun3kkP&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=dXdISwJQJFIC&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE72gRTrlkKAI6zXO3V_yqiSQpcPmq6DOGfGOA9BoOqh_kqOcVOnnxY5qr6ScGYHGyTLEUceF1BdnuYHdmYUPodrZq8wR1piA-m8ATZJ3_70NJ-IHCZ401pJ8UDH4iFfCgCH-OCFT&source=gbs_api",
+                    "small": "http://books.google.com/books/content?id=dXdISwJQJFIC&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE73-kwlYuBcjVH4Oy0xRDPzukNwpMRiJNLJA0X4JQcxw8EcuIFJItx0k7Er837sRGj5kO2YLSrU_JvcYcdDSqrhwV7r01smK7nDu0koIHlI-kfOnAdh4TfNSBWs4M6A7bb-LnD8m&source=gbs_api",
+                    "medium": "http://books.google.com/books/content?id=dXdISwJQJFIC&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE71IElul1Eqm8wARGflV6VmAC7bE72M9sAzAPxcMzY12xy0GOK55_ixpn7zAK_HRn5N4NLFFJHOfONCA1zUqHcVUwsAIKZzdy6-WNtJsQEM5dVe34Nag7zIM4jgxopWL7_JYd3Tf&source=gbs_api",
+                    "large": "http://books.google.com/books/content?id=dXdISwJQJFIC&printsec=frontcover&img=1&zoom=4&edge=curl&imgtk=AFLRE732rkC4FjugLet0RtZy9u5qhxesu4yFKFVxkMgZ10Sl4n-ZJi5hesfTr_pRBdavW5SxJZI_XuDLaXLUjNQb3bJNWJdYzj195XrXcfV1va29yx6vmPBn0MhrS0gdqzhtpnhHttLz&source=gbs_api",
+                    "extraLarge": "http://books.google.com/books/content?id=dXdISwJQJFIC&printsec=frontcover&img=1&zoom=6&edge=curl&imgtk=AFLRE73sCqhPKi5UruWpis9l_SFUVtu51YoOSVNlUb_I3k4-pCIsCgst26TROpUfy8FQPN2iNuurnScMZNv50eW5qHLvN3qCXorQ6I61P9Jf4MRQLqFs1OboMcib7l5unmsjp-Za_fkZ&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.co.in/books?id=dXdISwJQJFIC&hl=&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=dXdISwJQJFIC&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=dXdISwJQJFIC"
+            },
+            "saleInfo": {
+                "country": "IN",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "IN",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.in/books/download/Textbook_of_Blood_Banking_and_Transfusio-sample-pdf.acsm?id=dXdISwJQJFIC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=dXdISwJQJFIC&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            }
+        }
+    ]
+}
