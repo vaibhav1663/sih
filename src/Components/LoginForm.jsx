@@ -74,8 +74,12 @@ const LoginForm = () => {
   return (
     <>
 
-    {/* @Payal , match this button to overall main page styles */}
-      <Button onClick={onOpen}>Open Modal</Button>
+     <li
+      className="block py-2 px-3 text-gray-900 rounded transition duration-300 ease-in-out transform hover:bg-white md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent cursor-pointer focus:outline-none focus:ring focus:border-blue-300"
+      onClick={onOpen}
+                >
+        Login
+      </li>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -141,7 +145,7 @@ const LoginForm = () => {
                       value={password}
                       onChange={(e) => {
                         setPassword(e.target.value);
-                        setError(""); // Reset error message on change
+                        setError(""); 
                       }}
                     />
                     <InputRightElement mr={2}>
