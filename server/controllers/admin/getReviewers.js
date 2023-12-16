@@ -3,7 +3,7 @@ const user = require("../../model/userSchema");
 exports.getReviewers = async (req, res) => {
   try {
     // Find all books in the database
-    const allReviewers = await user.findOne({ role: "reviewer" });
+    const allReviewers = await user.find({ role: "reviewer" });
 
     // // Check if there are no books
     if (!allReviewers) {

@@ -2,7 +2,7 @@ const recommendedBook = require("../../model/recommendedBooks");
 
 exports.getRecommendations = async (req, res) => {
   try {
-    // Find all books in the database
+    // Find al l books in the database
     const allBooks = await recommendedBook.find();
 
     // // Check if there are no books

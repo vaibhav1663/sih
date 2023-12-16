@@ -6,7 +6,6 @@ const bookSchema = new mongoose.Schema({
     required: true,
   },
   publicRating: {
-    //out of 5
     type: Number,
     required: true,
   },
