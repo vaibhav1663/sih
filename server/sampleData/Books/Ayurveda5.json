@@ -1,0 +1,461 @@
+{
+    "_id": {
+        "$oid": "657d40d2af5280196e490718"
+    },
+    "type": "ayurveda",
+    "books": [
+        {
+            "kind": "books#volume",
+            "id": "YXmmDwAAQBAJ",
+            "etag": "wiAf3kACj/M",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/YXmmDwAAQBAJ",
+            "volumeInfo": {
+                "title": "Scientific Basis for Ayurvedic Therapies",
+                "authors": ["Lakshmi C. Mishra"],
+                "publisher": "CRC Press",
+                "publishedDate": "2003-09-29",
+                "description": "Arguably the oldest form of health care, Ayurveda is often referred to as the \"Mother of All Healing.\" Although there has been considerable scientific research done in this area during the last 50 years, the results of that research have not been adequately disseminated. Meeting the need for an authoritative, evidence-based reference, Scientific Ba",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "1135511225"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9781135511227"
+                    }
+                ],
+                "readingModes": {
+                    "text": true,
+                    "image": true
+                },
+                "pageCount": 656,
+                "printedPageCount": 502,
+                "dimensions": {
+                    "height": "25.40 cm",
+                    "width": "17.80 cm"
+                },
+                "printType": "BOOK",
+                "categories": [
+                    "Health & Fitness / Herbal Medications",
+                    "Medical / Alternative & Complementary Medicine",
+                    "Medical / Health Care Delivery",
+                    "Medical / Pharmacology"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "1.2.2.0.preview.3",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/publisher/content?id=YXmmDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE72IEznJAa4iRzo9SXnNE_rMqOlWqXFzvnb3tGAz33ZluTt3F_6GhfwO6qpLLK5f-eN8IPaI353O--UYIrAKlNBej6-GCmyn12V4NtAbrBrjfw8nj3EJ-2TrZg1BTmSFM9v6ugLN&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/publisher/content?id=YXmmDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE70yD5w5-xCXTZCQLUiFNcSc3pYu2mWYMhXiXXUBC-2ewExmFmy95zy6AWSLIpaUe8yYSGotAJUTlFVzMrINlGfzkuCVu__p_Ew4JCayla_NgVbvKUrEU1eihFrrTQ7gSBwXoTeU&source=gbs_api",
+                    "small": "http://books.google.com/books/publisher/content?id=YXmmDwAAQBAJ&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE716jVqGiiMROmfBVa3MZl_WhMowzW2ikifZ6ApsAJMb2xlZw9DLu_ZsnU6Bv0HjA3D9xe1quvIfz81p4ppcw0P6fHVE02NDaktpZ2BJBobTXlIaM8qxrderYySrQyXAJx-tOxR4&source=gbs_api",
+                    "medium": "http://books.google.com/books/publisher/content?id=YXmmDwAAQBAJ&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE72jICFVCX7wV7wjjS3l3yi8yRJH4Ldrj4Gf8sxNEBYabnEXGmFoT1ndlteaszL6hzy_Lsi_IsgE2bVxErcPVFIEiIkt04D1rYmhuTeq8HvPgRS2nAgdN4Y-u-BwYWGA_2fLosdz&source=gbs_api",
+                    "large": "http://books.google.com/books/publisher/content?id=YXmmDwAAQBAJ&printsec=frontcover&img=1&zoom=4&edge=curl&imgtk=AFLRE734KCLFYA7bwiZNkUebMxo8sH2S_hH7NzJuZ6ZJ04JSG9IFT_-CrTRxfHAU8FP6PiycoVg4S3GJFnn6dudF2SKAQyGbl7IBN9mJM32c4uelg5yLw5-wym6D_wfp4wAKXkomczN-&source=gbs_api",
+                    "extraLarge": "http://books.google.com/books/publisher/content?id=YXmmDwAAQBAJ&printsec=frontcover&img=1&zoom=6&edge=curl&imgtk=AFLRE72q1kNv-DglEoemHG7snguf0dnPLfn0n29ZkUgOwvFwa6mSrvEr1b2zzHAP8ZWc5OZhuFRm9o4-Cq4Ct8V2vjAu78qDwBo9jUvbiazCeQvqmtLnBM3IPWp5I9IPWvV3As_nAl1c&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.co.in/books?id=YXmmDwAAQBAJ&hl=&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=YXmmDwAAQBAJ&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=YXmmDwAAQBAJ"
+            },
+            "layerInfo": {
+                "layers": [
+                    {
+                        "layerId": "geo",
+                        "volumeAnnotationsVersion": "3"
+                    }
+                ]
+            },
+            "saleInfo": {
+                "country": "IN",
+                "saleability": "FOR_SALE",
+                "isEbook": true,
+                "listPrice": {
+                    "amount": 16815,
+                    "currencyCode": "INR"
+                },
+                "retailPrice": {
+                    "amount": 16815,
+                    "currencyCode": "INR"
+                },
+                "buyLink": "https://play.google.com/store/books/details?id=YXmmDwAAQBAJ&rdid=book-YXmmDwAAQBAJ&rdot=1&source=gbs_api",
+                "offers": [
+                    {
+                        "finskyOfferType": 1,
+                        "listPrice": {
+                            "amountInMicros": 16815000000,
+                            "currencyCode": "INR"
+                        },
+                        "retailPrice": {
+                            "amountInMicros": 16815000000,
+                            "currencyCode": "INR"
+                        }
+                    }
+                ]
+            },
+            "accessInfo": {
+                "country": "IN",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.in/books/download/Scientific_Basis_for_Ayurvedic_Therapies-sample-epub.acsm?id=YXmmDwAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.in/books/download/Scientific_Basis_for_Ayurvedic_Therapies-sample-pdf.acsm?id=YXmmDwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=YXmmDwAAQBAJ&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "fYhFEAAAQBAJ",
+            "etag": "4h0Tizksclg",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/fYhFEAAAQBAJ",
+            "volumeInfo": {
+                "title": "Essentials of Medical Physiology",
+                "subtitle": "With Free Review of Medical Physiology",
+                "authors": ["K Sembulingam"],
+                "publisher": "Jaypee Brothers Medical Publishers",
+                "publishedDate": "2019-08-31",
+                "description": "\u003cp\u003eSection 1 - General Physiology\u003cbr\u003e Section 2 - Blood and Body Fluids\u003cbr\u003e Section 3 - Muscle Physiology\u003cbr\u003e Section 4 - Digestive System\u003cbr\u003e Section 5 - Renal Physiology and Skin\u003cbr\u003e Section 6 - Endocrinology\u003cbr\u003e Section 7 - Reproductive System\u003cbr\u003e Section 8 - Cardiovascular System\u003cbr\u003e Section 9 - Respiratory System and Environmental Physiology\u003cbr\u003e Section 10 - Nervous System\u003cbr\u003e Section 11 - Special Senses\u003cbr\u003e Index\u003c/p\u003e",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "9352706927"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9789352706921"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": true
+                },
+                "pageCount": 1186,
+                "printedPageCount": 1186,
+                "dimensions": {
+                    "height": "26.50 cm",
+                    "width": "21.00 cm",
+                    "thickness": "5.90 cm"
+                },
+                "printType": "BOOK",
+                "categories": [
+                    "Medical / Education & Training",
+                    "Medical / Physiology"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "0.0.1.0.preview.1",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/publisher/content?id=fYhFEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE705kuOF5isRFPFaust80RianGnrFQRKRbLGUPf2tfIGzXWmfJBh9b8pocIIvtH-F2x3VA1EnWORO3X3o2dbGorxvzfYVL7DcXBa9ajTJfcnZBdclzdeq6JL8fKdtLt8RnwswFER&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/publisher/content?id=fYhFEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE72PgY1b1gSFFHYSbH-YypKJftSAhD20ud1eDrcXfRwk1DlAOqLN0Au1d4yGByNGy8B8WX5GA2FEcAsPDPIaD14oai-_4UW4r3K-kapkjRbFXbT8jVbUmoyMqpBfkappS8XgeATV&source=gbs_api",
+                    "small": "http://books.google.com/books/publisher/content?id=fYhFEAAAQBAJ&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE71mtWAHWCDLR7ItyNPScHGLpboiVOW_Z8wvrY5wa8b7awW53Ysgi5n-zIx7iKOhW_V-zmhFIRweWYSunG5zJ_Yleb11AXcASR2cGrYzY1_nMj5BxRooKgy7J3fG-imLgt07gzXq&source=gbs_api",
+                    "medium": "http://books.google.com/books/publisher/content?id=fYhFEAAAQBAJ&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE70UjLvV1wnAXG0Iq45FActIrOKJLXnjPU_YC-Q90do6t2S4iqYXUhQGEXyz2RWhnHA2M-V6IuArYVEjNXJG3ydxA4BNvB2ZvrbeV5CN2kl0ndJ7VFVhvMPJEOUbPlZgVWg8CPeS&source=gbs_api",
+                    "large": "http://books.google.com/books/publisher/content?id=fYhFEAAAQBAJ&printsec=frontcover&img=1&zoom=4&edge=curl&imgtk=AFLRE73OgxHbzbpPZhwNU0qMInplSCGOviieuXR66bkcFZNhmg0ONhUIUwRpbCQ_DyGaHWYR3UMxC6rP3wpHQdQmV3fC1LJbIbngBlI64QqEv4oSJQczKfSv0sNMlF07QlKiUYvVrvjQ&source=gbs_api",
+                    "extraLarge": "http://books.google.com/books/publisher/content?id=fYhFEAAAQBAJ&printsec=frontcover&img=1&zoom=6&edge=curl&imgtk=AFLRE70YQ7CnX6-xSbzD9jIOj1NxDHn190UmfWJpmYFCtOKPj3-3jwtxggzYkTlEPhRVbUGJ9UxL05W-FHFz9O8W6nS4Xxw163CHPeOIrToEd--60P9VN17hgzaxvHHb1I1FWiGcAhNQ&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.co.in/books?id=fYhFEAAAQBAJ&hl=&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=fYhFEAAAQBAJ&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=fYhFEAAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "IN",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "IN",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.in/books/download/Essentials_of_Medical_Physiology-sample-pdf.acsm?id=fYhFEAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=fYhFEAAAQBAJ&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "7lEEEAAAQBAJ",
+            "etag": "VSV6TWVXsz8",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/7lEEEAAAQBAJ",
+            "volumeInfo": {
+                "title": "The Chemistry and Bioactive Components of Turmeric",
+                "authors": [
+                    "Sreeraj Gopi",
+                    "Sabu Thomas",
+                    "Ajaikumar B. Kunnumakkara ",
+                    "Bharat B. Aggarwal",
+                    "Augustine Amalraj"
+                ],
+                "publisher": "Royal Society of Chemistry",
+                "publishedDate": "2020-10-21",
+                "description": "Turmeric belongs to the family Zingiberaceae and is a yellow spice of high economic importance due to its medicinal value. Cultivated in tropical and sub-tropical regions around the world, it is used extensively as a colouring, flavouring and preserving agent. In recent years, several drugs derived from natural products have been developed and current drug research is actively investigating the possible therapeutic roles of many Ayurvedic medicines, most notable among those being examined is turmeric. The wide range of pharmacological activities attributed to turmeric come mainly from curcuminoids and two related compounds, demethoxycurcumin and bisdemethoxycurcumin. \u003cbr\u003eThis comprehensive book brings together the research carried out on the constituents obtained from turmeric and highlights their chemical and biological activities. Comprising 17 chapters, each written by experts in their respective field and curated by authorities, it will be invaluable to all those who are involved in the production, processing, marketing, and the use of turmeric. Appealing to researchers and professionals in natural products, nutraceuticals and food chemists, this book is exposing some of the myths and showing areas for possible future use.",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "178801555X"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9781788015554"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": true
+                },
+                "pageCount": 386,
+                "printedPageCount": 405,
+                "dimensions": {
+                    "height": "23.40 cm",
+                    "width": "15.60 cm",
+                    "thickness": "2.80 cm"
+                },
+                "printType": "BOOK",
+                "categories": [
+                    "Medical / Nutrition",
+                    "Science / Life Sciences / Biochemistry",
+                    "Technology & Engineering / Food Science / General"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "0.0.1.0.preview.1",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/publisher/content?id=7lEEEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE70Nnq-UgINQvarNkkvD_p-97nG4Bf2mat-beclk18f6bM2tgIa6_bDvEWH_-fCrhE6rtot3qfl1-qSukg_6d657s3QBfdf-3hr7N7HuiGn5IxCf_2JthGVg0FHqUYKdwD9D8eBQ&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/publisher/content?id=7lEEEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE72HpHVV7HxKjbQzMJdtHyFoRpdl-YO8Fgv4_SgsLAXbjwXIqXmyD81O9brFUhEtbnXWg8580vM3ynwYuim81IFc7IZmLHZ_A-c4WORGik8zso7PGwDEg5Wa6ZkPq63X6ucLJm0W&source=gbs_api",
+                    "small": "http://books.google.com/books/publisher/content?id=7lEEEAAAQBAJ&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE73Bk29oBBdVlIqG0R2rfmfLoXDJKNTXvDk02aTye7XQdNbo_GBtu2crRCs5sLQMDABlNeAHPBBe3pzEl6sdPb7zYlSk-AXjB7JHoPlVHWMk0FcF3mPwzZijTMs2tVOqm4YtCBJm&source=gbs_api",
+                    "medium": "http://books.google.com/books/publisher/content?id=7lEEEAAAQBAJ&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE73rkYGtNvU7cP3AiJNp2rov14feaQ_P2z2mp9tkHoR8VdRf_UDLVJSiWUUy7dSh4eTsmN1k3igddqhRN34CcCvtyBh8DhOBP-BKrprzBpJsR4IIj6e1-OiHO40wfyfXId-dDJz2&source=gbs_api",
+                    "large": "http://books.google.com/books/publisher/content?id=7lEEEAAAQBAJ&printsec=frontcover&img=1&zoom=4&edge=curl&imgtk=AFLRE73cqVHEQDgiJjlpnhF46L4w93YiPkWi4Hfegs6kQ4Rdd8Q4i0LGwbpj2oiGw22N9MxLe6rwb1Yg5LwBK9bYUGojc8xMCPouTuEEZ49wubq_EL6PWp4HXiPVZ8Ts2Z3ikF6l--WO&source=gbs_api",
+                    "extraLarge": "http://books.google.com/books/publisher/content?id=7lEEEAAAQBAJ&printsec=frontcover&img=1&zoom=6&edge=curl&imgtk=AFLRE7317s9_mXHCMUHDKxjP9guBBXmYzXlYDAri0BN1Q5_AUswtFCKHQjlDbQ3gOheSrrBaqHCSNxm7TK9LhQTOQIH2fsu0vk_ndgYkZKcJEhDxnEnfCrkyhw9g_uw3j8oV2LcKXzFq&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.co.in/books?id=7lEEEAAAQBAJ&hl=&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=7lEEEAAAQBAJ&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=7lEEEAAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "IN",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "IN",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.in/books/download/The_Chemistry_and_Bioactive_Components_o-sample-pdf.acsm?id=7lEEEAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=7lEEEAAAQBAJ&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "eqpMEAAAQBAJ",
+            "etag": "K0UNYlHykCg",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/eqpMEAAAQBAJ",
+            "volumeInfo": {
+                "title": "ANTI-INFLAMMATORY ACTIVITY OF DECOCTION AND DISTILLATION OF TRIPHALA TREATED WITH GOMUTRA",
+                "authors": [
+                    "Dr. Abhaya Mishra ",
+                    "Dr. Sahil ",
+                    "Dr. Raghuveer "
+                ],
+                "publisher": "Book Rivers",
+                "publishedDate": "2021-11-04",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "9355150741"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9789355150745"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": true
+                },
+                "pageCount": 124,
+                "printedPageCount": 124,
+                "printType": "BOOK",
+                "categories": ["Antiques & Collectibles / Books"],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/publisher/content?id=eqpMEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE71BRFTEuf0EFdw9zVQOclmJ9n9VZLI3HPQ67NHDzXwTdEOZzi2Rr-R0fFmxplOshJg-d9eZf8jsI9spWSeoq80tEHzmQiNpUN_1y20m_ieZK8GYurtKJ-zPDCLhUNvLlikHxzFT&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/publisher/content?id=eqpMEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE72RhEOCmDPUMVQkzzJjY4nrmfINQEwYIXAURvYjpE3V3t3Q5TJ1u6F9Uvw-30BE_X9vER8uOPqmpDCkeN64kSoQmexgVA6wYR86HVTtraS2vRrMALOwb6zoXMsg4hxwHAlM5ydD&source=gbs_api",
+                    "small": "http://books.google.com/books/publisher/content?id=eqpMEAAAQBAJ&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE71a0bg44Ai6hvIzC8Ny7OFAtHpg4gF5nuAsPRCTU9XCrgBbrFvZMihpM0Uw9y72w6vmGrcjJym7cfcfDPt2pAMK2buaCoCWk-jX0FjKqLMK4pqYek81A1Hemi595WEqN7f1peor&source=gbs_api",
+                    "medium": "http://books.google.com/books/publisher/content?id=eqpMEAAAQBAJ&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE72dnbYjcJopbRfAzRpbIBMuZJ98QeLGusemNppiniDg5LB51iYEiAwKBV6Mza534E-ME_GlRgi-36PysQrhZV9HHbQT9R0q7O2-Jzw7KPp8mJQuAXx1sckJADUIinUM32IYtaOT&source=gbs_api",
+                    "large": "http://books.google.com/books/publisher/content?id=eqpMEAAAQBAJ&printsec=frontcover&img=1&zoom=4&edge=curl&imgtk=AFLRE70BhDjsu2G4GNJo-x5SESE8jm3u_RAaENdYpD0biAB6RZMNTfID1nBT1kwUAYqjp8jUFDW-NB1YP4W1G8aS3Ub6LQEtt6X0OHcDkHvi3NiDYgnN2wEduzfCLFhtuEnhPKY1Slg3&source=gbs_api",
+                    "extraLarge": "http://books.google.com/books/publisher/content?id=eqpMEAAAQBAJ&printsec=frontcover&img=1&zoom=6&edge=curl&imgtk=AFLRE71L9KKBzwj9bkciBRX1xgn39dfLwRAUbtSDQl8Y43X63urQ_HWN8OddIDfp_qqTcQTiEFgzu6PUyyg_RVkOS1dycct-ClhBQaVxi4nsZE6UniKArokK1u5nDqq5jx7JOlGFjIzr&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.co.in/books?id=eqpMEAAAQBAJ&hl=&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=eqpMEAAAQBAJ&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=eqpMEAAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "IN",
+                "saleability": "FOR_SALE",
+                "isEbook": true,
+                "listPrice": {
+                    "amount": 165.2,
+                    "currencyCode": "INR"
+                },
+                "retailPrice": {
+                    "amount": 115.64,
+                    "currencyCode": "INR"
+                },
+                "buyLink": "https://play.google.com/store/books/details?id=eqpMEAAAQBAJ&rdid=book-eqpMEAAAQBAJ&rdot=1&source=gbs_api",
+                "offers": [
+                    {
+                        "finskyOfferType": 1,
+                        "listPrice": {
+                            "amountInMicros": 165200000,
+                            "currencyCode": "INR"
+                        },
+                        "retailPrice": {
+                            "amountInMicros": 115640000,
+                            "currencyCode": "INR"
+                        }
+                    }
+                ]
+            },
+            "accessInfo": {
+                "country": "IN",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.in/books/download/ANTI_INFLAMMATORY_ACTIVITY_OF_DECOCTION-sample-pdf.acsm?id=eqpMEAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=eqpMEAAAQBAJ&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "CFu0kLTNLQAC",
+            "etag": "vqzZoU9hapw",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/CFu0kLTNLQAC",
+            "volumeInfo": {
+                "title": "Snehana Therapy in Āyurveda",
+                "subtitle": "A Descriptive & Analytical Review on Internal Oleation",
+                "authors": ["Vasant C. Patil"],
+                "publisher": "Chaukhambha Publications",
+                "publishedDate": "2008",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "8189798138"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9788189798130"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": true
+                },
+                "pageCount": 200,
+                "printedPageCount": 212,
+                "dimensions": {
+                    "height": "22.00 cm"
+                },
+                "printType": "BOOK",
+                "averageRating": 5,
+                "ratingsCount": 1,
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "0.3.4.0.preview.1",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=CFu0kLTNLQAC&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE70z_d0gnzbnSmzqnv4A7HFc3BgiaBVvsb6DQ9jvbHyqw1TybxiiYQsyNA2Hke1_LpZO12OxRmI5DanP7JAZdFf8el7Qh17a9eggbJ34oprja39LZmIrXMrf9jo4UcQ4EMMlP80X&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=CFu0kLTNLQAC&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE72o8Tgp7yYp0kzLQFcQBU0doBTm2CudNir0XRInI7z4lKp05OWvv2VhaEIgnV1SXyjmcYL4WoHq5ujs2AydKgd4Pexeb78-GMo-I4kAk_XxkNh4ytMx7f5xr2rW9WTYEjX2S6KB&source=gbs_api",
+                    "small": "http://books.google.com/books/content?id=CFu0kLTNLQAC&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE73NX5za4uKHBuYEFpSzdqeZisG96n8-_lA8JRfEIxzrKwAUuogS9mUJgu4f_hLnrR7st6Yu_PHTv_O8atux6NKeZjCfDvYwNtstlMbVRhf_WCuq4qN-CKZ1hxe88bLLpYDvUIXS&source=gbs_api",
+                    "medium": "http://books.google.com/books/content?id=CFu0kLTNLQAC&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE71PgtjQ927wodZGpDdhY43unAI1vwMNLwr9jHHh6ed9AuafxikisAcJcl6BBMgf-b2SouL-WL-QN1jQP_sb0uaQQmj2u_RiAVK_YBaFW2TT31AdTu-Q6XRRslTsoibKRtLTkfVf&source=gbs_api",
+                    "large": "http://books.google.com/books/content?id=CFu0kLTNLQAC&printsec=frontcover&img=1&zoom=4&edge=curl&imgtk=AFLRE73ErVXBIodbAcMdDKiICJNd6PcHzNp51hLDQUpSwWiqqD7Mor_HVjleUwICLCnBe8HjZ9URqhHZaHekJo-KBU4YrOcFlUPNQtjMi1uyqU5NEmtAfPvWPTmwaA-Yk5arBOVDXtW1&source=gbs_api",
+                    "extraLarge": "http://books.google.com/books/content?id=CFu0kLTNLQAC&printsec=frontcover&img=1&zoom=6&edge=curl&imgtk=AFLRE71UHQj5XycrVOEdG7WJEdpki83bO4yTTXPShPQYlILlNKmf7n5vNiUXEfPm874Q6CJK9IUKrMaMwhDsdQkBkeP6ygcd6lsW3zUaau3EVkR0WCYdT0cnsnmux4ooDN-wz_X-OLyI&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.co.in/books?id=CFu0kLTNLQAC&hl=&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=CFu0kLTNLQAC&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=CFu0kLTNLQAC"
+            },
+            "saleInfo": {
+                "country": "IN",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "IN",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.co.in/books/download/Snehana_Therapy_in_%C4%80yurveda-sample-pdf.acsm?id=CFu0kLTNLQAC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=CFu0kLTNLQAC&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            }
+        }
+    ]
+}
