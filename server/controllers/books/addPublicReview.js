@@ -26,9 +26,7 @@ exports.addPublicReview = async (req, res) => {
     const currentPublicCount = book.publicCount;
 
     // Calculate the new publicRating based on the average of incomingOverall and currentPublicRating
-    const newPublicRating =
-      (currentPublicRating * currentPublicCount + incomingOverall) /
-      (currentPublicCount + 1);
+    const newPublicRating = currentPublicRating + (incomingOverall - currentPublicRating) / (currentPublicCount + 1) ;
 
     // Update publicRating and increment publicCount
     book.publicRating = newPublicRating;

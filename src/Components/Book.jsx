@@ -29,22 +29,21 @@ const Book = () => {
                     avgUserRating: {
                         content:
                             json.users.reduce(
-                                (acc, curr) => acc + curr.content,
+                                (acc, curr) => acc + Number(curr.content),
                                 0
                             ) / json.users.length,
                         appearance:
                             json.users.reduce(
-                                (acc, curr) => acc + curr.appearance,
+                                (acc, curr) => acc + Number(curr.appearance),
                                 0
                             ) / json.users.length,
                         overall:
                             json.users.reduce(
-                                (acc, curr) => acc + curr.overall,
+                                (acc, curr) => acc + Number(curr.overall),
                                 0
                             ) / json.users.length,
                     },
                 };
-
                 setBook(json);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -58,15 +57,33 @@ const Book = () => {
     const [ovrRate, setOvrRate] = useState(0);
     const [comment, setComment] = useState("");
     const [modal, setModal] = useState(false);
+    const validateForm = () => {
+        return true;
+    };
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (!validateForm()) return;
+        // console.log("id>>", id);
         const requestObject = {
-            id: id,
+            _id: id,
             content: conRate,
             appearance: appRate,
             overall: ovrRate,
             comment: comment,
         };
+
+        console.log("Book Information:", requestObject);
+        // submitData(bookInfo, (ref) => {
+        //     console.log(">>>", ref);
+        //     if ("error" in ref) {
+        //         setError(ref.error);
+        //         // setFailure Modal
+        //     } else {
+        //         setReferenceNumber(ref.referenceId);
+        //         setSuccessModalOpen(true);
+        //     }
+        // });
     };
     const toggleModal = () => {
         setModal(!modal);
@@ -192,6 +209,7 @@ const Book = () => {
                                     <h1 className="text-xl px-2">Comments</h1>
                                     <div className="flex flex-col px-4 gap-2">
                                         {book.users.map((user, index) => {
+                                            if (user.comment === "") return;
                                             return (
                                                 <div
                                                     className="bg-gray-100 border-4 rounded-md p-1 border-gray-100 border-b-gray-200 border-l-gray-200"
@@ -209,8 +227,8 @@ const Book = () => {
                 </div>
             </div>
             {modal ? (
-                <div className="modal top-0 absolute w-screen h-screen bg-gray-400 flex justify-center items-center z-50">
-                    <div className="modal-content bg-white shadow-md rounded-xl w-1/4 w-auto">
+                <div className="modal top-0 fixed w-screen h-screen bg-gray-400 flex justify-center items-center z-50">
+                    <div className="modal-content bg-white shadow-md rounded-xl md:w-1/4 w-auto">
                         <span
                             className="close-button rounded-full border-black border-2 float-right px-2 m-1 bg-gray-300 cursor-pointer"
                             onClick={() => toggleModal()}
@@ -223,6 +241,7 @@ const Book = () => {
                                     <h1 className="text-2xl font-semibold">
                                         Review this book
                                     </h1>
+
                                     <div className="flex flex-col gap-2">
                                         <label htmlFor="content">
                                             Content Rating
