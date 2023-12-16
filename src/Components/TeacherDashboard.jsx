@@ -5,8 +5,10 @@ import SuggestBook from "./SuggestBook";
 import { useAuthContext } from "../hooks/useAuthContext";
 const TeacherDashboard = () => {
   const teacher = useAuthContext();
-  const teacherID = '123' || teacher._id;// '123' is only id availabke for now
-
+  
+  console.log(teacher);
+  const teacherID = teacher?.user?._id ;
+  console.log(teacher?.user?._id)
   return (
     <>
       <Navbar page="admin" />
