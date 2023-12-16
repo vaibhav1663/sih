@@ -19,44 +19,64 @@ import {
 } from "@chakra-ui/react";
 import { FaRegCopy } from "react-icons/fa";
 
+const GET_REVIEWERS_URL = "http://localhost:5000/admin/getReviewers";
+
+
+
 
 const AdminDashboard = () => {
-  const [reviewers, setReviewers] = useState([]);
 
+  const [reviewersToDisplay, setReviewersToDisplay] = useState([])
+  const getReviewers = async (needle) => {
+    try {
+      const response = await fetch(GET_REVIEWERS_URL);
+      const data = await response.json();
+      setReviewersToDisplay(data)
+      return ;
+    } catch (error) {
+      console.error("Error fetching reviewers:", error);
+    }
+  };
   useEffect(() => {
-    setReviewers([
-      {
-        id: "asf3421",
-        name: "Dummy Name1",
-        specialisation: "Unani",
-        college: "COEP",
-      },
-      {
-        id: "ahkk13421",
-        name: "Dummy Name2",
-        specialisation: "Unani",
-        college: "COEP",
-      },
-      {
-        id: "hdkk13421",
-        name: "Dummy Name3",
-        specialisation: "Unani",
-        college: "COEP",
-      },
-      {
-        id: "ah3421",
-        name: "Dummy Name4",
-        specialisation: "Unani",
-        college: "COEP",
-      },
-      {
-        id: "kk13421",
-        name: "Dummy Name5",
-        specialisation: "Unani",
-        college: "COEP",
-      },
-    ]);
-  }, []);
+    getReviewers()
+ }, []);
+
+  // const [reviewers, setReviewers] = useState([]);  // fetch available reviwers data here
+
+  // useEffect(() => {
+  //   setReviewers([
+  //     {
+  //       id: "asf3421",
+  //       name: "Dummy Name1",
+  //       specialisation: "Unani",
+  //       college: "COEP",
+  //     },
+  //     {
+  //       id: "ahkk13421",
+  //       name: "Dummy Name2",
+  //       specialisation: "Unani",
+  //       college: "COEP",
+  //     },
+  //     {
+  //       id: "hdkk13421",
+  //       name: "Dummy Name3",
+  //       specialisation: "Unani",
+  //       college: "COEP",
+  //     },
+  //     {
+  //       id: "ah3421",
+  //       name: "Dummy Name4",
+  //       specialisation: "Unani",
+  //       college: "COEP",
+  //     },
+  //     {
+  //       id: "kk13421",
+  //       name: "Dummy Name5",
+  //       specialisation: "Unani",
+  //       college: "COEP",
+  //     },
+  //   ]);
+  // }, []);
 
   const header1 = ["Book Name", "Book Desc","Reviewer 1","Reviewer 2","Reviewer 3"]
   const Data = [{"bookId":1,"name":"Payal"},{"bookId":2,"name":"Yash"}] //fetch books to be reviewed data here so admin can allocate
@@ -105,7 +125,7 @@ const AdminDashboard = () => {
           <div className="w-1/4">
             <h1 className="mb-4 font-semibold text-2xl">Available Reviewers</h1>
             <Accordion allowToggle>
-              {reviewers.map((reviewer) => (
+              {reviewersToDisplay.map((reviewer) => (
                 <AccordionItem
                   key={reviewer.id}
                   className="mb-2 border border-black rounded-lg"
