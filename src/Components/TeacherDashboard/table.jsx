@@ -7,14 +7,12 @@ import {
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
 } from "@chakra-ui/react";
 import { useEffect } from 'react';
 
 
 const GET_AUTHOR_BOOKS_URL = "http://localhost:5000/author/getBooks";
-let DATA;
 const match = (a, b) => {
   return a.split(" ").some((word1) => {
     return b.split(" ").some((word2) => {
