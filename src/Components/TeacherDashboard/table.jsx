@@ -23,7 +23,17 @@ const match = (a, b) => {
 const filterByName = (book, query) =>
   match(String(book.recomendedBy).toLowerCase(), query);
 
+function formatDate(date) {
+  if (!(date instanceof Date)) {
+    throw new Error("Invalid Date object");
+  }
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  const formattedDate = `${day}-${month}-${year}`;
 
+  return formattedDate;
+}
 const DataTable = (id) => {
   const [booksToDisplay, setBooksToDisplay] = useState([])
   const getBooksByTeacherName = async (needle) => {
@@ -39,8 +49,8 @@ const DataTable = (id) => {
   useEffect(() => {
     getBooksByTeacherName(id)
  }, []);
-  const header = ["Book Title", "Status: underReview"];
-  const propsToDisplay = ["name", "underReview"];
+  const header = ["Book Title","Author", "Submission Date",  "Status: underReview"];
+  const propsToDisplay = ["name","author","date", "underReview"];
   console.log(">>",booksToDisplay);
   const tableData = (booksToDisplay).map((dataBook) =>
     propsToDisplay.map((x) => String(dataBook[x]))
@@ -61,7 +71,8 @@ const DataTable = (id) => {
             return (
               <Tr key={i}>
                 {rowData.map((col, j) => (
-                  <Td key={j}>{col}</Td>
+                  
+                  <Td key={j}>{(j==2)?formatDate(new Date(col)):col}</Td>
                 ))}
               </Tr>
             );
