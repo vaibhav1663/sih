@@ -1,9 +1,9 @@
-const underReviewBook = require("../../model/recommendedBooks");
+const recommendedBook = require("../../model/recommendedBooks");
 
-exports.getAllBooks = async (req, res) => {
+exports.getRecommendations = async (req, res) => {
   try {
-    // Find all books in the database
-    const allBooks = await underReviewBook.find();
+    // Find al l books in the database
+    const allBooks = await recommendedBook.find();
 
     // // Check if there are no books
     if (!allBooks) {

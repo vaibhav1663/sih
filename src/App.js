@@ -8,8 +8,9 @@ import ProtectedRoute from "./Components/ProtectedRoute";
 import Home from "./Components/Home.jsx";
 import "react-toastify/dist/ReactToastify.css";
 import ReviewForm from "./Components/ReviewForm.jsx";
-import AdminLogin from "./Components/LoginForms/AdminLogin.jsx";
-import ReviewerLogin from "./Components/LoginForms/ReviewerLogin.jsx";
+import LoginForm from "./Components/LoginForm.jsx";
+import SuggestBook from "./Components/SuggestBook.jsx";
+
 import About from "./Components/About.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,6 +20,7 @@ import Book from "./Components/Book.jsx";
 import { AuthContextProvider } from "./Context/AuthContext.js";
 import { Navigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext.js";
+
 function App() {
     const { user } = useAuthContext()
 
@@ -62,13 +64,10 @@ function App() {
                             <Route path="/signup" element={<Signup />} />
                             <Route path="/test" element={<ReviewForm />} />
                             <Route
-                                path="/adminLogin"
-                                element={<AdminLogin />}
+                                path="/LoginForm"
+                                element={<LoginForm />}
                             />
-                            <Route
-                                path="/reviewerLogin"
-                                element={<ReviewerLogin />}
-                            />
+                            <Route path="/suggest" element={<SuggestBook />} />
 
                             <Route path="/admin" element={<Admin />} />
                             <Route

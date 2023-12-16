@@ -1,9 +1,9 @@
-const underReviewBook = require("../../model/underReviewBookSchema");
+const underReviewBook = require("../../model/recommendedBooks");
 
 exports.addBook = async (req, res) => {
   const { recomendedBy, name, desc, imageLink, buyLink, previewLink } =
     req.body;
-  console.log(req.body);
+  // console.log(req.body);
 
   try {
     // Check if a book with the given name already exists

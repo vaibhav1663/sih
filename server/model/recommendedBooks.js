@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const underReviewBookSchema = new mongoose.Schema({
+const recommendedBook = new mongoose.Schema({
   recomendedBy: {
     //id
     type: Number,
@@ -37,9 +37,6 @@ const underReviewBookSchema = new mongoose.Schema({
   },
 });
 
-const underReviewBookSchema1 = mongoose.model(
-  "underreview",
-  underReviewBookSchema
-);
+const buff = mongoose.model("recommendedbooks", recommendedBook);
 
-module.exports = underReviewBookSchema1;
+module.exports = buff;

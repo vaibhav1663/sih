@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Aarav Patel",
+    "email": "aarav.patel@example.com",
+    "age": 21,
+    "gender": "Male",
+    "role": "student",
+    "field": "ayurveda",
+    "collegeName": "Example University",
+    "degree": "Bachelor of Medicine",
+    "year": "Third Year",
+    "password": "SecurePassword123"
+  },
+  {
+    "name": "Aishwarya Kapoor",
+    "email": "aishwarya.kapoor@example.com",
+    "age": 35,
+    "gender": "Female",
+    "role": "author",
+    "field": "siddha",
+    "collegeName": "Research Institute",
+    "degree": "Ph.D. in Herbal Medicine",
+    "year": "Graduate",
+    "password": "StrongPass456"
+  },
+  {
+    "name": "Arjun Singh",
+    "email": "arjun.singh@example.com",
+    "age": 28,
+    "gender": "Male",
+    "role": "reviewer",
+    "field": "unani",
+    "collegeName": "Medical Institute",
+    "degree": "Master of Science",
+    "year": "Postgraduate",
+    "password": "ReviewerPass789"
+  },
+  {
+    "name": "Aditi Sharma",
+    "email": "aditi.sharma@example.com",
+    "age": 30,
+    "gender": "Female",
+    "role": "admin",
+    "field": null,
+    "collegeName": null,
+    "degree": null,
+    "year": null,
+    "password": "AdminPass123"
+  },
+  {
+    "name": "Chirag Desai",
+    "email": "chirag.desai@example.com",
+    "age": 22,
+    "gender": "Male",
+    "role": "student",
+    "field": "siddha",
+    "collegeName": "Herbal Science College",
+    "degree": "Bachelor of Science",
+    "year": "Final Year",
+    "password": "Charlie1234"
+  }
+]

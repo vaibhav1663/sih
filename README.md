@@ -68,3 +68,74 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+#All routes in server folder
+structure index.js->routes->controllers
+pre defined schemas are present in model folder
+/books
+/getBooks gives all the details related to books in the database
+/addPublicReview (POST)
+expected request : \_id is the book id for which the review is to be written
+{
+"\_id":"657ce2dd8a6b0ab4e0d8331d",
+"user_id":"263636",
+"content":3.5,
+"overall":3.5,
+"appearance":5,
+"comment":"hello world"
+}
+
+/author
+/addRecommendation (POST) add the recommendation form
+expected request body
+{ recomendedBy (author \_id), name, desc, imageLink, buyLink, previewLink }
+/getBooks gets all the books in the recommended DB
+/getAuthorBooks (POST) (to be developed) to get personalised data regarding status of uploaded books
+
+/reviewer
+/getBooks (POST) input { id } returns the books to be reviewed (can be optimised further)
+/addResponse
+{
+"\_id": (book id)
+"657cf00bd9bdf80e31f4a575",
+(user id of reviewer)
+"reviewerid":"657c65973b9829e08742db3d",
+"H": [
+true,
+true,
+true
+],
+"A": [8, 5, 3, 10, 15],
+"B": 20,
+"C": [3, 2, 1, 3],
+"D": [5, 5, 10, 5, 5, 5, 10, 10, 10, 15, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+"E": [5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5],
+"G": [10, 5, 5, 3]
+
+}
+
+/user
+/login
+/signup
+
+/admin
+/allocate allocates reviewers and puts books into the platform
+{
+"\_id":"657b359e2873a44162fa3260",
+"name":"Sample Book trial",
+"desc":"A brief description of the sample book",
+"imageLink":"https://example.com/sample-image.jpg",
+"buyLink":"https://example.com/buy-sample-book",
+"previewLink":"https://example.com/preview-sample-book",
+"reviewer1":"657b3fc02873a44162fa3263",
+"reviewer2":"657b3fc02873a44162fa3265",
+"reviewer3":"657c65973b9829e08742db3d",
+"underReview":true
+}
+
+/publish for final score calculation
+{
+"\_id":"657ce2dd8a6b0ab4e0d8331d"
+}
+/getReviewers gets all the available users
+/getRecommendations gets all the recommended books
