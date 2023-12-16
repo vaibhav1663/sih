@@ -51,7 +51,6 @@ const DataTable = (id) => {
   return (
     <TableContainer>
       <Table variant="simple">
-        <TableCaption>Book Review Status Table</TableCaption>
         <Thead>
           <Tr>
             {header.map((x,i) => (

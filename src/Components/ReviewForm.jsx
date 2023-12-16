@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import EthicalIssues from "./ReviewForm/EthicalIssues";
 import AuthorInfo from "./ReviewForm/AuthorInfo";
@@ -6,11 +8,56 @@ import UniquenessRating from "./ReviewForm/UniquenessRating";
 import PhysicalAppearanceRating from "./ReviewForm/PhysicalAppearanceRating";
 import SubjectMatter from "./ReviewForm/SubjectMatter";
 import Illustrations from "./ReviewForm/Illustrations";
-import { Button } from '@chakra-ui/react'
-import { useState } from "react";
-import { Divider } from "@chakra-ui/react";
+import {
+  Heading,
+  Select,
+  Input,
+  Button,
+  Textarea,
+  Stack,
+  Box,
+  Divider,
+  FormControl,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  AlertDialog,
+  AlertDialogOverlay,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogCloseButton,
+  AlertDialogBody,
+  AlertDialogFooter,
+} from "@chakra-ui/react";
 
-const ReviewForm = () => {
+const SuccessModal = ({ isOpen, onClose, handleExplore }) => (
+  <AlertDialog isOpen={isOpen} onClose={onClose}>
+    <AlertDialogOverlay />
+  
+    <AlertDialogContent>
+      <AlertDialogHeader fontSize="2xl" fontWeight="bold" mx="auto" mt={2}>
+        Book Review Successful.
+      </AlertDialogHeader>
+  
+      {/* <AlertDialogCloseButton /> */}
+  
+      <AlertDialogBody textAlign="center">
+        Thank you for your review!
+      </AlertDialogBody>
+    </AlertDialogContent>
+  </AlertDialog>
+  
+  
+);
+
+
+const ReviewForm = (id) => {
+  const [successModalOpen, setSuccessModalOpen] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const [currentTab, setCurrentTab] = useState(0);
 
   const handleTabChange = (index) => {
@@ -109,10 +156,21 @@ const ReviewForm = () => {
 
   const handleSubmit = () => {
     console.log(bookData);
+    setSuccessModalOpen(true);
+    onClose();
   }
+
+  const closeSuccessModal = () => {
+    setSuccessModalOpen(false);
+  };
 
   return (
     <>
+      <Button onClick={onOpen}>Review</Button>
+      <Modal isOpen={isOpen} onClose={onClose} size="7xl">
+        <ModalOverlay />
+        <ModalContent>
+          <ModalBody>
       <h1 className="text-3xl mx-auto my-6">Book Review</h1>
       <Tabs
         variant="soft-rounded"
@@ -197,6 +255,13 @@ const ReviewForm = () => {
           )}
         </div>
       </Tabs>
+      </ModalBody>
+      </ModalContent>
+      </Modal>
+      <SuccessModal
+        isOpen={successModalOpen}
+        onClose={closeSuccessModal}
+      />
     </>
   );
 };

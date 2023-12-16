@@ -1,15 +1,6 @@
 import React from "react";
-import { 
-    Card,
-    CardBody,
-    Image,
-    Stack,
-    Heading,
-    Center,
-    Button,
-    ButtonGroup
-    } from "@chakra-ui/react";
-
+import { useState, useEffect } from "react";
+import { Center,} from "@chakra-ui/react";
 let data = [
     {
         name: "Book Name 1",
@@ -48,9 +39,34 @@ let data = [
     }
 ];
 
+const GET_BOOKS_URL = "http://localhost:5000/books/toppicks";
 
 
 const BookCard = () => {
+    const [booksToDisplay, setBooksToDisplay] = useState([])
+    const getBooks = async () => {
+        try {
+        const response = await fetch(GET_BOOKS_URL);
+        const data = await response.json();
+        setBooksToDisplay(data)
+        return ;
+        } catch (error) {
+        console.error("Error fetching books:", error);
+        }
+    };
+    useEffect(() => {
+        getBooks()
+    }, []);
+    let data_ayurveda=data;
+    let data_siddha=data;
+    console.log(booksToDisplay);
+    if(booksToDisplay.length===0){
+        getBooks();
+    }
+    else{
+        data_ayurveda = booksToDisplay[0].books;
+        data_siddha = booksToDisplay[1].books;
+    }
     return(
         <div>
             <div className="content-center m-auto bg-stone-100 w-full h-2/3 pb-3">
@@ -62,7 +78,7 @@ const BookCard = () => {
                 <Center><a href="#"><h1 className="mt-6 text-4xl font-semibold text-blue-900">Recommended Books for Ayurveda</h1></a></Center>
                 
                 <div className="p-9 grid gap-5 grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
-                {data.map((book, index) => {
+                {data_ayurveda.map((book, index) => {
                     return (
                         <div
                             className="box p-5 mt-3 bg-white rounded-lg shadow-md"
@@ -72,7 +88,7 @@ const BookCard = () => {
                             <div className="flex flex-col md:flex-col">
                                 <div className="flex flex-col justify-center">
                                     <img
-                                        src={book.thumb}
+                                        src={book.imageLink}
                                         alt="Book Thumbnail"
                                         className="w-full rounded-lg shadow-md m-auto"
                                     />
@@ -98,7 +114,7 @@ const BookCard = () => {
             <Center><a href="#"><h1 className="mt-6 text-4xl font-semibold text-blue-900">Recommended Books for Siddha</h1></a></Center>
             
             <div className="p-9 grid gap-5 grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
-            {data.map((book, index) => {
+            {data_siddha.map((book, index) => {
                     return (
                         <div
                             className="box p-5 mt-3 bg-white rounded-lg shadow-md"
@@ -108,7 +124,7 @@ const BookCard = () => {
                             <div className="flex flex-col md:flex-col">
                                 <div className="flex flex-col justify-center">
                                     <img
-                                        src={book.thumb}
+                                        src={book.imageLink}
                                         alt="Book Thumbnail"
                                         className="w-full rounded-lg shadow-md m-auto"
                                     />
