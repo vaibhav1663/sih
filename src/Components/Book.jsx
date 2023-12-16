@@ -1,115 +1,99 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-let book = {
-    uid: {
-        someField: "someValue",
-        anotherField: "anotherValue",
-    },
-    name: "Scientific Basis for Ayurvedic Therapies - Lakshmi Chandra Mishra",
-    publicRating: 4.5,
-    publicCount: 100,
-    reviewerRating: 4.2,
-    reviewerCount: 50,
-    totalScore: 4.4,
-    isRecommended: true,
-    desc: "Arguably the oldest form of health care, Ayurveda is often referred to as the 'Mother of All Healing.' Although there has been considerable scientific research done in this area during the last 50 years, the results of that research have not been adequately disseminated.",
-    imageLink:
-        "http://books.google.com/books/publisher/content?id=YXmmDwAAQBAJ&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE72wZbXM-YbdPcie_-6GToUdS-f8nxTzoN75srNGZWRhGF0IijgoZ4bmFrJVI4qczcVYbVqZbe9VwfsLq2mUjzWFurHTQa_qtdU_fMHpCJtgD0BRoJh1q7gYZws9o6FITMvhaghD&source=gbs_api",
-    buyLink:
-        "https://play.google.com/store/books/details?id=YXmmDwAAQBAJ&rdid=book-YXmmDwAAQBAJ&rdot=1&source=gbs_api",
-    previewLink:
-        "http://books.google.co.in/books?id=YXmmDwAAQBAJ&hl=&source=gbs_api",
-    reviewer1: {
-        H: [true, false, true],
-        A: [8, 5, 3, 10, 15],
-        B: 20,
-        C: [3, 2, 1, 3],
-        D: [5, 5, 10, 5, 5, 5, 10, 10, 10, 15, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
-        E: [5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5],
-        G: [10, 5, 5, 3],
-    },
-    reviewer2: {
-        H: [true, true, true],
-        A: [10, 5, 3, 10, 20],
-        B: 15,
-        C: [4, 3, 2, 3],
-        D: [5, 5, 10, 5, 5, 5, 10, 10, 10, 15, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
-        E: [5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5],
-        G: [10, 5, 5, 3],
-    },
-    reviewer3: {
-        H: [false, true, false],
-        A: [8, 5, 3, 10, 15],
-        B: 18,
-        C: [3, 2, 1, 3],
-        D: [5, 5, 10, 5, 5, 5, 10, 10, 10, 15, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
-        E: [5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5],
-        G: [10, 5, 5, 3],
-    },
-    users: [
-        {
-            content: 4,
-            appearance: 3,
-            overall: 5,
-            comment: "Enjoyed reading this book. Well-written.",
-        },
-        {
-            content: 5,
-            appearance: 4,
-            overall: 4,
-            comment: "Great book! Highly recommended.",
-        },
-        {
-            content: 3,
-            appearance: 2,
-            overall: 3,
-            comment: "Average book. Nothing special.",
-        },
-    ],
-};
-
+const publicReviewURL = "localhost:5000/books/addPublicReview";
 const Book = () => {
     const { id } = useParams();
     // fetch data from mongo
+    const [book, setBook] = useState({});
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(
+                    `http://localhost:5000/books/getBookById`,
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            id: id,
+                        }),
+                    }
+                );
+                let json = await response.json();
+                console.log("resp >>", json);
+                json = {
+                    ...json,
+                    avgUserRating: {
+                        content:
+                            json.users.reduce(
+                                (acc, curr) => acc + curr.content,
+                                0
+                            ) / json.users.length,
+                        appearance:
+                            json.users.reduce(
+                                (acc, curr) => acc + curr.appearance,
+                                0
+                            ) / json.users.length,
+                        overall:
+                            json.users.reduce(
+                                (acc, curr) => acc + curr.overall,
+                                0
+                            ) / json.users.length,
+                    },
+                };
+
+                setBook(json);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+        fetchData();
+    }, []);
 
     const [conRate, setConRate] = useState(0);
     const [appRate, setAppRate] = useState(0);
     const [ovrRate, setOvrRate] = useState(0);
     const [comment, setComment] = useState("");
     const [modal, setModal] = useState(false);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const requestObject = {
+            id: id,
+            content: conRate,
+            appearance: appRate,
+            overall: ovrRate,
+            comment: comment,
+        };
+    };
     const toggleModal = () => {
         setModal(!modal);
     };
-    let avgUserRating = {
-        content: 0,
-        appearance: 0,
-        overall: 0,
-    };
-    book.users.forEach((user) => {
-        avgUserRating.content += user.content;
-        avgUserRating.appearance += user.appearance;
-        avgUserRating.overall += user.overall;
-    });
-    avgUserRating.content /= book.users.length;
-    avgUserRating.appearance /= book.users.length;
-    avgUserRating.overall /= book.users.length;
-    book.avgUserRating = avgUserRating;
-
+    if (Object.keys(book).length === 0) {
+        return (
+            <>
+                <Navbar page="book-reviews" />
+                <div className="p-2 flex flex-row justify-center items-center w-full">
+                    <span className="text-2xl font-semibold">Loading ...</span>
+                </div>
+            </>
+        );
+    }
     return (
         <>
-            <Navbar page="book" />
+            <Navbar page="book-reviews" />
             <div className="box p-4 bg-gray-100">
                 <div className="flex flex-col md:flex-row gap-6">
-                    <div className="w-1/2">
+                    <div className="w-full md:w-1/3">
                         <img
                             className="w-full"
                             src={book.imageLink}
                             alt={book.name}
                         />
                     </div>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 w-full md:w-2/3">
                         <h1 className="text-2xl font-semibold">{book.name}</h1>
                         <p className="text-gray-700 mt-1">{book.desc}</p>
                         <div className="rating">
@@ -209,14 +193,12 @@ const Book = () => {
                                     <div className="flex flex-col px-4 gap-2">
                                         {book.users.map((user, index) => {
                                             return (
-                                                <>
-                                                    <div
-                                                        className="bg-gray-100 border-4 rounded-md p-1 border-gray-100 border-b-gray-200 border-l-gray-200"
-                                                        key={index}
-                                                    >
-                                                        <p>{user.comment}</p>
-                                                    </div>
-                                                </>
+                                                <div
+                                                    className="bg-gray-100 border-4 rounded-md p-1 border-gray-100 border-b-gray-200 border-l-gray-200"
+                                                    key={index}
+                                                >
+                                                    <p>{user.comment}</p>
+                                                </div>
                                             );
                                         })}
                                     </div>
@@ -227,8 +209,8 @@ const Book = () => {
                 </div>
             </div>
             {modal ? (
-                <div className="modal top-0 absolute w-screen h-screen bg-gray-400 flex justify-center items-center">
-                    <div className="modal-content bg-white shadow-md rounded-xl w-1/4">
+                <div className="modal top-0 absolute w-screen h-screen bg-gray-400 flex justify-center items-center z-50">
+                    <div className="modal-content bg-white shadow-md rounded-xl w-1/4 w-auto">
                         <span
                             className="close-button rounded-full border-black border-2 float-right px-2 m-1 bg-gray-300 cursor-pointer"
                             onClick={() => toggleModal()}
@@ -236,12 +218,7 @@ const Book = () => {
                             X
                         </span>
                         <div>
-                            <form
-                                action="/"
-                                onSubmit={(e) => {
-                                    e.preventDefault();
-                                }}
-                            >
+                            <form action="/" onSubmit={handleSubmit}>
                                 <div className="flex flex-col gap-4 p-4">
                                     <h1 className="text-2xl font-semibold">
                                         Review this book
