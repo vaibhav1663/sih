@@ -24,8 +24,9 @@ import AdminDashboard from "./Components/AdminDashboard.jsx";
 import ReviewerDashboard from "./Components/ReviewerDashboard.jsx";
 import TeacherDashboard from "./Components/TeacherDashboard.jsx";
 
+
 function App() {
-    const { user } = useAuthContext()
+    const { user } = useAuthContext();
 
     return (
       <Router>
