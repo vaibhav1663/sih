@@ -198,7 +198,6 @@ const AdminDashboard = () => {
                       <Td key={4} width="20%">
                         <Input placeholder="Reviewer 3 Id"onChange={(e)=>handleReviewer(i,e.target.value,2)}></Input>
                       </Td>
-                      <Td>{i}</Td>
                     </Tr>
                   ))}
                 </Tbody>
@@ -206,6 +205,7 @@ const AdminDashboard = () => {
             </TableContainer>
           </div>
         </div>
+        <ReviewerAllocationTable></ReviewerAllocationTable>
       </div>
     </>
   );
