@@ -77,25 +77,25 @@ const BookCard = () => {
                 </div>
                 <Center><a href="#"><h1 className="mt-6 text-4xl font-semibold text-blue-900">Recommended Books for Ayurveda</h1></a></Center>
                 
-                <div className="p-9 grid gap-5 grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
+                <div className="p-9  grid gap-5 grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
                 {data_ayurveda.map((book, index) => {
                     return (
                         <div
-                            className="box p-5 mt-3 bg-white rounded-lg shadow-md"
+                            className="box max-h-[28rem] p-5 mt-3 bg-white rounded-lg shadow-md"
                             key={index}
                         >
                             <a href={book.link} target="_blank">
                             <div className="flex flex-col md:flex-col">
                                 <div className="flex flex-col justify-center">
                                     <img
-                                        src={book.imageLink}
+                                        src={book.imageLink || "http://books.google.com/books/publisher/content?id=YXmmDwAAQBAJ&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE72wZbXM-YbdPcie_-6GToUdS-f8nxTzoN75srNGZWRhGF0IijgoZ4bmFrJVI4qczcVYbVqZbe9VwfsLq2mUjzWFurHTQa_qtdU_fMHpCJtgD0BRoJh1q7gYZws9o6FITMvhaghD&source=gbs_api"}
                                         alt="Book Thumbnail"
                                         className="w-full rounded-lg shadow-md m-auto"
                                     />
                                 </div>
                                 <div className="pt-4 flex flex-col justify-center items-start">
-                                    <h1 className="text-lg font-semibold text-blue-900">
-                                        {book.name}
+                                    <h1 className="text-2xl font-semibold text-blue-900">
+                                    {book.name.length<30 ? book.name : book.name.substring(0,30)+"..." }
                                     </h1>
                                 </div>
                             </div>
@@ -117,20 +117,20 @@ const BookCard = () => {
             {data_siddha.map((book, index) => {
                     return (
                         <div
-                            className="box p-5 mt-3 bg-white rounded-lg shadow-md"
+                            className="box max-h-[28rem] p-5 mt-3 bg-white rounded-lg shadow-md"
                             key={index}
                         >
                             <a href={book.link} target="_blank">
                             <div className="flex flex-col md:flex-col">
                                 <div className="flex flex-col justify-center">
                                     <img
-                                        src={book.imageLink}
+                                        src={book.imageLink || "http://books.google.com/books/publisher/content?id=YXmmDwAAQBAJ&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE72wZbXM-YbdPcie_-6GToUdS-f8nxTzoN75srNGZWRhGF0IijgoZ4bmFrJVI4qczcVYbVqZbe9VwfsLq2mUjzWFurHTQa_qtdU_fMHpCJtgD0BRoJh1q7gYZws9o6FITMvhaghD&source=gbs_api"}
                                         alt="Book Thumbnail"
                                         className="w-full rounded-lg shadow-md m-auto"
                                     />
                                 </div>
                                 <div className="pt-4 flex flex-col justify-center items-start">
-                                    <h1 className="text-lg font-semibold text-blue-900" style={{WebkitLineClamp: 2,lineClamp: 2, textOverflow: "ellipsis"}}>
+                                    <h1 className="text-2xl font-semibold text-blue-900">
                                         {book.name}
                                     </h1>
                                 </div>
