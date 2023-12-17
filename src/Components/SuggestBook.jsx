@@ -194,149 +194,138 @@ const SuggestBook = ({recommenderID}) => {
     };
 
     return (
-        <>
-            <Button onClick={onOpen}>Recommend</Button>
+      <>
+        <Button
+          className="border-2 border-gray-400 text-gray-500 hover:text-black hover:border-gray-600 px-4 py-2"
+          onClick={onOpen}
+        >
+          Recommend a Book
+        </Button>
 
-            <Modal isOpen={isOpen} onClose={onClose} size="xl">
-                <ModalOverlay />
-                <ModalContent>
-                    <ModalBody>
-                        <form onSubmit={handleSubmit}>
-                            <Stack
-                                spacing={4}
-                                pt={10}
-                                pb={6}
-                                justifyContent="center"
-                                alignItems="center"
-                            >
-                                <IoBookSharp className="text-8xl text-teal-600" />
+        <Modal isOpen={isOpen} onClose={onClose} size="xl">
+          <ModalOverlay />
+          <ModalContent>
+            <ModalBody>
+              <form onSubmit={handleSubmit}>
+                <Stack
+                  spacing={4}
+                  pt={10}
+                  pb={6}
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <IoBookSharp className="text-8xl text-teal-600" />
 
-                                <Heading color="teal.500" className="mb-6">
-                                    Recommend a Book
-                                </Heading>
+                  <Heading color="teal.500" className="mb-6">
+                    Recommend a Book
+                  </Heading>
 
-                                <FormControl>
-                                    <Select
-                                        value={discipline}
-                                        onChange={(e) => {
-                                            setDiscipline(e.target.value);
-                                            setError("");
-                                        }}
-                                        className="mb-3"
-                                    >
-                                        <option value="" disabled>
-                                            Select Discipline
-                                        </option>
-                                        <option value="ayurveda">
-                                            Ayurveda
-                                        </option>
-                                        <option value="unani">Unani</option>
-                                        <option value="siddha">Siddha</option>
-                                        <option value="sowarigpa">
-                                            Sowa-Rigpa
-                                        </option>
-                                    </Select>
+                  <FormControl>
+                    <Select
+                      value={discipline}
+                      onChange={(e) => {
+                        setDiscipline(e.target.value);
+                        setError("");
+                      }}
+                      className="mb-3"
+                    >
+                      <option value="" disabled>
+                        Select Discipline
+                      </option>
+                      <option value="ayurveda">Ayurveda</option>
+                      <option value="unani">Unani</option>
+                      <option value="siddha">Siddha</option>
+                      <option value="sowarigpa">Sowa-Rigpa</option>
+                    </Select>
 
-                                    <Input
-                                        placeholder="Title"
-                                        size="md"
-                                        className="mb-2"
-                                        value={title}
-                                        onChange={(e) =>
-                                            setTitle(e.target.value)
-                                        }
-                                    />
-                                    <Input
-                                        placeholder="Author"
-                                        size="md"
-                                        className="mb-2"
-                                        value={author}
-                                        onChange={(e) =>
-                                            setAuthor(e.target.value)
-                                        }
-                                    />
+                    <Input
+                      placeholder="Title"
+                      size="md"
+                      className="mb-2"
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
+                    />
+                    <Input
+                      placeholder="Author"
+                      size="md"
+                      className="mb-2"
+                      value={author}
+                      onChange={(e) => setAuthor(e.target.value)}
+                    />
 
-                                    <Textarea
-                                        placeholder="Description"
-                                        size="md"
-                                        className="mb-3"
-                                        value={description}
-                                        onChange={(e) =>
-                                            setDescription(e.target.value)
-                                        }
-                                    />
+                    <Textarea
+                      placeholder="Description"
+                      size="md"
+                      className="mb-3"
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
+                    />
 
-                                    <label
-                                        htmlFor="formFile"
-                                        className="mb-2 ml-2 inline-block text-neutral-700"
-                                    >
-                                        Upload Book Options
-                                    </label>
+                    <label
+                      htmlFor="formFile"
+                      className="mb-2 ml-2 inline-block text-neutral-700"
+                    >
+                      Upload Book Options
+                    </label>
 
-                                    {/* <input
+                    {/* <input
                     className="relative m-0 mb-2 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-500 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none"
                     type="file"
                     id="formFile"
                     onChange={(e) => setFile(e.target.files[0])}
                   /> */}
 
-                                    <Input
-                                        placeholder="Buy Link of the Book (eg. Amazon & Flipkart)"
-                                        id="buyLink"
-                                        className="mb-3"
-                                        value={buyLink}
-                                        onChange={(e) =>
-                                            setBuyLink(e.target.value)
-                                        }
-                                    />
-                                    <Input
-                                        placeholder="Image Link of the Book"
-                                        id="imageLink"
-                                        className="mb-3"
-                                        value={imageLink}
-                                        onChange={(e) =>
-                                            setImageLink(e.target.value)
-                                        }
-                                    />
-                                    <Input
-                                        placeholder="Preview Link of the Book (eg. Google Books)"
-                                        id="previewLink"
-                                        className="mb-3"
-                                        value={previewLink}
-                                        onChange={(e) =>
-                                            setPreviewLink(e.target.value)
-                                        }
-                                    />
-                                </FormControl>
+                    <Input
+                      placeholder="Buy Link of the Book (eg. Amazon & Flipkart)"
+                      id="buyLink"
+                      className="mb-3"
+                      value={buyLink}
+                      onChange={(e) => setBuyLink(e.target.value)}
+                    />
+                    <Input
+                      placeholder="Image Link of the Book"
+                      id="imageLink"
+                      className="mb-3"
+                      value={imageLink}
+                      onChange={(e) => setImageLink(e.target.value)}
+                    />
+                    <Input
+                      placeholder="Preview Link of the Book (eg. Google Books)"
+                      id="previewLink"
+                      className="mb-3"
+                      value={previewLink}
+                      onChange={(e) => setPreviewLink(e.target.value)}
+                    />
+                  </FormControl>
 
-                                {error && (
-                                    <Box color="red.500" fontSize="sm" mb={4}>
-                                        {error}
-                                    </Box>
-                                )}
+                  {error && (
+                    <Box color="red.500" fontSize="sm" mb={4}>
+                      {error}
+                    </Box>
+                  )}
 
-                                <Button
-                                    borderRadius={4}
-                                    type="submit"
-                                    variant="solid"
-                                    colorScheme="teal"
-                                    width="full"
-                                >
-                                    Recommend
-                                </Button>
-                            </Stack>
-                        </form>
-                    </ModalBody>
-                </ModalContent>
-            </Modal>
+                  <Button
+                    borderRadius={4}
+                    type="submit"
+                    variant="solid"
+                    colorScheme="teal"
+                    width="full"
+                  >
+                    Recommend
+                  </Button>
+                </Stack>
+              </form>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
 
-            <SuccessModal
-                referenceNumber={referenceNumber}
-                isOpen={successModalOpen}
-                onClose={closeSuccessModal}
-                handleExplore={handleExplore}
-            />
-        </>
+        <SuccessModal
+          referenceNumber={referenceNumber}
+          isOpen={successModalOpen}
+          onClose={closeSuccessModal}
+          handleExplore={handleExplore}
+        />
+      </>
     );
 };
 

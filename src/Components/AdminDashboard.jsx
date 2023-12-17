@@ -18,28 +18,26 @@ import {
   TableContainer,
 } from "@chakra-ui/react";
 import { FaRegCopy } from "react-icons/fa";
-
+import ReviewerAllocationTable from "./AdminDashboard/table";
 const GET_REVIEWERS_URL = "http://localhost:5000/admin/getReviewers";
-
-
-
+const GET_BOOKS_TO_REVIEW_URL =
+  "http://localhost:5000/admin/getRecommendations";
 
 const AdminDashboard = () => {
-
-  const [reviewersToDisplay, setReviewersToDisplay] = useState([])
+  const [reviewersToDisplay, setReviewersToDisplay] = useState([]);
   const getReviewers = async (needle) => {
     try {
       const response = await fetch(GET_REVIEWERS_URL);
       const data = await response.json();
-      setReviewersToDisplay(data)
-      return ;
+      setReviewersToDisplay(data);
+      return;
     } catch (error) {
       console.error("Error fetching reviewers:", error);
     }
   };
   useEffect(() => {
-    getReviewers()
- }, []);
+    getReviewers();
+  }, []);
 
   // const [reviewers, setReviewers] = useState([]);  // fetch available reviwers data here
 
@@ -78,12 +76,21 @@ const AdminDashboard = () => {
   //   ]);
   // }, []);
 
-  const header1 = ["Book Name", "Book Desc","Reviewer 1","Reviewer 2","Reviewer 3"]
-  const Data = [{"bookId":1,"name":"Payal"},{"bookId":2,"name":"Yash"}] //fetch books to be reviewed data here so admin can allocate
-  
+  const header1 = [
+    "Book Name",
+    "Book Desc",
+    "Reviewer 1",
+    "Reviewer 2",
+    "Reviewer 3",
+  ];
+  const Data = [
+    { bookId: 1, name: "Payal" },
+    { bookId: 2, name: "Yash" },
+  ]; //fetch books to be reviewed data here so admin can allocate
+
   const tableData = Data.map(({ bookId, name }) => [bookId, name]);
 
-  const initialReviewerData = Data.map(item => ({
+  const initialReviewerData = Data.map((item) => ({
     bookId: item.bookId,
     reviewer1: null,
     reviewer2: null,
@@ -91,27 +98,34 @@ const AdminDashboard = () => {
   }));
 
   const [reviewerData, setReviewerData] = useState(initialReviewerData);
-
   const handleReviewer = (bid, value, id) => {
-    setReviewerData(prevReviewerData => {
-    const newReviewerData = [...prevReviewerData];
-    const reviewerData = { ...newReviewerData[bid] };
-    if (id === 0) {
-      reviewerData.reviewer1 = value;
-    } else if (id === 1) {
-      reviewerData.reviewer2 = value;
-    } else if (id === 2) {
-      reviewerData.reviewer3 = value;
-    }
-    newReviewerData[bid] = reviewerData;
-    return newReviewerData;
+    setReviewerData((prevReviewerData) => {
+      const newReviewerData = [...prevReviewerData];
+      const reviewerData = { ...newReviewerData[bid] };
+      console.log("Triigger");
+      console.log({ reviewerData });
+      if (id === 0) {
+        reviewerData.reviewer1 = value;
+      } else if (id === 1) {
+        reviewerData.reviewer2 = value;
+      } else if (id === 2) {
+        reviewerData.reviewer3 = value;
+      }
+      newReviewerData[bid] = reviewerData;
+      return newReviewerData;
     });
   };
 
-  console.log(reviewerData);   //reviwerData is array of objects containing bookId and three respective reviwers (no. of elements same as Data)
+  console.log(reviewerData); //reviwerData is array of objects containing bookId and three respective reviwers (no. of elements same as Data)
 
-  const handleCopyId = (id) => {
-    navigator.clipboard.writeText(id);
+  const handleCopyId = async (id) => {
+    try {
+      console.log(id)
+      await navigator.clipboard.writeText(id);
+      console.log("Content copied to clipboard");
+    } catch (err) {
+      console.error("Failed to copy: ", err);
+    }
   };
 
   return (
@@ -184,6 +198,7 @@ const AdminDashboard = () => {
                       <Td key={4} width="20%">
                         <Input placeholder="Reviewer 3 Id"onChange={(e)=>handleReviewer(i,e.target.value,2)}></Input>
                       </Td>
+                      <Td>{i}</Td>
                     </Tr>
                   ))}
                 </Tbody>
