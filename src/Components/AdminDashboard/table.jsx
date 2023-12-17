@@ -7,16 +7,47 @@ import {
   Tr,
   Th,
   Td,
-  TableCaption,
-  Input,
   TableContainer,
   Button,
 } from "@chakra-ui/react";
+import {
+  AlertDialog,
+  AlertDialogOverlay,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogBody,
+  AlertDialogFooter,
+} from "@chakra-ui/react";
 import { useEffect } from "react";
+import  Search  from "./Search";
 
 const GET_BOOKS_TO_REVIEW_URL =
   "http://localhost:5000/admin/getRecommendations";
 const ADD_BOOKS_TO_REVIEW_URL = "http://localhost:5000/admin/allocate";
+const GET_REVIEWERS_URL = "http://localhost:5000/admin/getReviewers";
+
+const SuccessModal = ({ isOpen, onClose}) => (
+  <AlertDialog isOpen={isOpen} onClose={onClose}>
+      <AlertDialogOverlay />
+
+      <AlertDialogContent>
+          <AlertDialogHeader
+              fontSize="2xl"
+              fontWeight="bold"
+              mx="auto"
+              mt={2}
+          >
+              Reviewer Allocation Successful
+          </AlertDialogHeader>
+
+          {/* <AlertDialogCloseButton /> */}
+
+          <AlertDialogBody textAlign="center">
+              Reviewers Allocated !
+          </AlertDialogBody>
+      </AlertDialogContent>
+  </AlertDialog>
+);
 
 function formatDate(date) {
   if (!(date instanceof Date)) {
@@ -30,6 +61,27 @@ function formatDate(date) {
   return formattedDate;
 }
 const DataTable = ({ handleReviewer }) => {
+  const [successModalOpen, setSuccessModalOpen] = useState(false);
+
+  const closeSuccessModal = () => {
+    setSuccessModalOpen(false);
+  };
+
+  const [reviewersToDisplay, setReviewersToDisplay] = useState([]);
+  const getReviewers = async (needle) => {
+    try {
+      const response = await fetch(GET_REVIEWERS_URL);
+      const data = await response.json();
+      setReviewersToDisplay(data);
+      return;
+    } catch (error) {
+      console.error("Error fetching reviewers:", error);
+    }
+  };
+  useEffect(() => {
+    getReviewers();
+  }, []);
+
   const [booksToDisplay, setBooksToDisplay] = useState([]);
 
   const getBooks = async (u) => {
@@ -42,6 +94,9 @@ const DataTable = ({ handleReviewer }) => {
       console.error("Error fetching books:", error);
     }
   };
+
+
+
   const validate = (bookID, reviewers) => {
     if (bookID && reviewers.length) return true;
     return false;
@@ -60,11 +115,14 @@ const DataTable = ({ handleReviewer }) => {
       if (!isValidated) throw new Error("Invalid data format");
 
       const requestData = {
-        bookID,
+        id:bookID,
         reviewers,
       };
       submitData(requestData, (res) => {
         console.log(">>>", res);
+        if(res.code===201){
+          setSuccessModalOpen(true);
+        }
       });
     } catch (e) {
       console.log(">>>", e);
@@ -109,13 +167,45 @@ const DataTable = ({ handleReviewer }) => {
     "Reviewer 3",
   ];
   const propsToDisplay = ["name", "author"];
+
   console.log(">>", booksToDisplay);
   const tableData = booksToDisplay.map((dataBook) =>
     propsToDisplay.map((x) => String(dataBook[x]))
   );
 
   console.log("tableData :>> ", tableData);
+
+  const [reviewersData, setReviewersData] = useState([]);
+
+  useEffect(() => {
+    // Set the initial state using booksToDisplay only when reviewersData is empty
+    if (reviewersData.length === 0) {
+      setReviewersData(booksToDisplay.map((book) => ({ bookId: book._id, reviewers: [null, null, null] })));
+    }
+  }, [booksToDisplay, reviewersData]);
+
+  const getBookIdByName=(bookName)=> {
+    const foundBook = booksToDisplay.find(book => book.name === bookName);
+    return foundBook._id;
+  }
+
+  // Function to update an element in the reviewers array based on bookId
+  const updateReviewerData = (bookname, value, index) => {
+    const bookId = getBookIdByName(bookname);
+    console.log(bookId);
+    setReviewersData((prevReviewersData) =>
+      prevReviewersData.map((item) =>
+        item.bookId === bookId ? { ...item, reviewers: item.reviewers.map((el, i) => (i === index ? value : el)) } : item
+      )
+    );
+  };
+  const getReviewersByBookId = (bookID) => {
+    const data = reviewersData.find(reviewData=>reviewData.bookId===bookID);
+    return data.reviewers;
+  }
+
   return (
+    <>
     <TableContainer>
       <Table variant="simple">
         <Thead>
@@ -135,30 +225,22 @@ const DataTable = ({ handleReviewer }) => {
               </Td>
             ))}
             <Td key={2} width="20%">
-              <Input
-                placeholder="Reviewer 1 Id"
-                onChange={(e) => handleReviewer(i, e.target.value, 0)}
-              ></Input>
+              <Search reviewers={reviewersToDisplay} onChange={updateReviewerData} bookname={rowData[0]} r={0} ></Search>
             </Td>
             <Td key={3} width="20%">
-              <Input
-                placeholder="Reviewer 2 Id"
-                onChange={(e) => handleReviewer(i, e.target.value, 1)}
-              ></Input>
+            <Search reviewers={reviewersToDisplay} onChange={updateReviewerData} bookname={rowData[0]} r={1} ></Search>
             </Td>
             <Td key={4} width="20%">
-              <Input
-                placeholder="Reviewer 3 Id"
-                onChange={(e) => handleReviewer(i, e.target.value, 2)}
-              ></Input>
+            <Search reviewers={reviewersToDisplay} onChange={updateReviewerData} bookname={rowData[0]} r={2} ></Search>
             </Td>
             <Td>
               {" "}
               <Button
                 key={5}
                 onClick={(e) => {
-                  const reviewers = null;
-                  const bookID = null;
+                  const bookID = getBookIdByName(rowData[0]);
+                  const reviewers = getReviewersByBookId(bookID);
+                  console.log(bookID, reviewers);
                   handleAllocateReviewer(e, bookID, reviewers);
                 }}
                 colorScheme="blue"
@@ -171,6 +253,11 @@ const DataTable = ({ handleReviewer }) => {
         <Tfoot></Tfoot>
       </Table>
     </TableContainer>
+    <SuccessModal
+          isOpen={successModalOpen}
+          onClose={closeSuccessModal}
+      />
+    </>
   );
 };
 

@@ -3,7 +3,7 @@ import { Carousel, Typography, Button } from "@material-tailwind/react";
 
 const CarouselDefault=()=> {
   return (
-    <Carousel className="h-full">
+    <Carousel className="h-[92%]">
       <div className="relative h-full w-full">
       <img
         src="/img/image1.jpg"
@@ -11,7 +11,7 @@ const CarouselDefault=()=> {
         className="h-full w-full object-cover"
       />
       <div className="absolute inset-0 grid h-full w-full items-center bg-black/75">
-          <div className="m-auto w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32">
+          <div className="w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32">
             <Typography
               variant="h1"
               color="white"
@@ -37,7 +37,7 @@ improve access to quality and affordable Ayurveda, Unani, Siddha and Sowa-Rigpa 
         className="h-full w-full object-cover"
       />
       <div className="absolute inset-0 grid h-full w-full items-center bg-black/75">
-          <div className="m-auto w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32">
+          <div className="w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32">
             <Typography
               variant="h1"
               color="white"
@@ -62,7 +62,7 @@ improve access to quality and affordable Ayurveda, Unani, Siddha and Sowa-Rigpa 
         className="h-full w-full object-cover"
       />
       <div className="absolute inset-0 grid h-full w-full items-center bg-black/75">
-          <div className="m-auto w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32">
+          <div className="w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32">
             <Typography
               variant="h1"
               color="white"
