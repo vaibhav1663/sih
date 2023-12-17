@@ -31,6 +31,7 @@ const AdminDashboard = () => {
     try {
       const response = await fetch(GET_REVIEWERS_URL);
       const data = await response.json();
+      console.log("Data :",data);
       setReviewersToDisplay(data)
       return ;
     } catch (error) {
@@ -127,7 +128,7 @@ const AdminDashboard = () => {
             <Accordion allowToggle>
               {reviewersToDisplay.map((reviewer) => (
                 <AccordionItem
-                  key={reviewer.id}
+                  key={reviewer._id}
                   className="mb-2 border border-black rounded-lg"
                 >
                   <h2>
@@ -138,7 +139,7 @@ const AdminDashboard = () => {
                       <Box
                         as="span"
                         className="text-md cursor-pointer ml-2"
-                        onClick={() => handleCopyId(reviewer.id)}
+                        onClick={() => handleCopyId(reviewer._id)}
                       >
                         <FaRegCopy />
                       </Box>
