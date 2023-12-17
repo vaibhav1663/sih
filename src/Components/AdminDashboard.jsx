@@ -5,8 +5,10 @@ import {
   AccordionItem,
   AccordionButton,
   AccordionPanel,
+  Divider,
   Box,
 } from "@chakra-ui/react";
+import StatusCards from "./AdminDashboard/StatusCards";
 import {
   Table,
   Thead,
@@ -17,6 +19,8 @@ import {
   Input,
   TableContainer,
 } from "@chakra-ui/react";
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+
 import { FaRegCopy } from "react-icons/fa";
 import ReviewerAllocationTable from "./AdminDashboard/table";
 const GET_REVIEWERS_URL = "http://localhost:5000/admin/getReviewers";
@@ -76,6 +80,55 @@ const AdminDashboard = () => {
   //   ]);
   // }, []);
 
+  let dataAyurveda = [
+    {
+      name: "Book Name 1",
+      id: "abc",
+      thumb:
+        "https://m.media-amazon.com/images/I/51CFkZG8UjL._SX342_SY445_.jpg",
+      author: "Author 1",
+      received: 2,
+      allocated: true,
+    },
+    {
+      name: "Book Name 2",
+      id: "def",
+      thumb:
+        "https://m.media-amazon.com/images/I/51CFkZG8UjL._SX342_SY445_.jpg",
+      author: "Author 2",
+      received: 0,
+      allocated: false,
+    },
+    {
+      name: "Book Name 3",
+      id: "xyz",
+      thumb:
+        "https://m.media-amazon.com/images/I/51CFkZG8UjL._SX342_SY445_.jpg",
+      author: "Author 3",
+      received: 3,
+      allocated: true,
+    },
+    {
+      name: "Book Name 4",
+      id: "xyz",
+      thumb:
+        "https://m.media-amazon.com/images/I/51CFkZG8UjL._SX342_SY445_.jpg",
+      author: "Author 4",
+      received: 0,
+      allocated: false,
+    },
+    {
+      name: "Book Name 5",
+      id: "xyz",
+      thumb:
+        "https://m.media-amazon.com/images/I/51CFkZG8UjL._SX342_SY445_.jpg",
+      author: "Author 5",
+      received: 1,
+      allocated: true,
+    },
+  ];
+  //review cards data
+
   const header1 = [
     "Book Name",
     "Book Desc",
@@ -120,7 +173,7 @@ const AdminDashboard = () => {
 
   const handleCopyId = async (id) => {
     try {
-      console.log(id)
+      console.log(id);
       await navigator.clipboard.writeText(id);
       console.log("Content copied to clipboard");
     } catch (err) {
@@ -133,79 +186,74 @@ const AdminDashboard = () => {
       <Navbar page="admin" />
 
       <div className="p-4 box text-center">
-        <h1 className="mt-24 font-bold text-4xl">Admin Dashboard</h1>
+        <h1 className="mt-8 font-bold text-4xl mb-8">Admin Dashboard</h1>
+        <Tabs
+          variant="soft-rounded"
+          colorScheme="green"
+          className="mx-2 md:mx-6 lg:mx-10 py-6 border-2 border-gray-300 rounded-lg"
+        >
+          <TabList className="overflow-x-auto px-6">
+            <Tab>Reviewer Allocation</Tab>
+            <Tab>Review Status</Tab>
+          </TabList>
 
-        <div className="flex mt-16 ">
-          <div className="w-1/4">
-            <h1 className="mb-4 font-semibold text-2xl">Available Reviewers</h1>
-            <Accordion allowToggle>
-              {reviewersToDisplay.map((reviewer) => (
-                <AccordionItem
-                  key={reviewer._id}
-                  className="mb-2 border border-black rounded-lg"
-                >
-                  <h2>
-                    <AccordionButton className="bg-gray-200 rounded-lg">
-                      <Box as="span" flex="1" textAlign="left">
-                        {reviewer.name}
-                      </Box>
-                      <Box
-                        as="span"
-                        className="text-md cursor-pointer ml-2"
-                        onClick={() => handleCopyId(reviewer._id)}
+          <Divider className="mt-4 mx-0" borderColor="gray.300" />
+
+
+          <TabPanels className="">
+            <TabPanel>
+              <h1 className="text-2xl font-semibold mb-6">
+                Reviewer Allocation
+              </h1>
+
+              <div className="mt-16 flex flex-col lg:flex-row">
+                <div className="w-full sm:w-1/4 sm:mb-6">
+                  <h1 className="mb-4 font-semibold text-2xl">
+                    Available Reviewers
+                  </h1>
+                  <Accordion allowToggle>
+                    {reviewersToDisplay.map((reviewer) => (
+                      <AccordionItem
+                        key={reviewer._id}
+                        className="mb-2 border border-black rounded-lg"
                       >
-                        <FaRegCopy />
-                      </Box>
-                    </AccordionButton>
-                  </h2>
-                  <AccordionPanel pb={4} className="text-left">
-                    Specialisation : {reviewer.specialisation}
-                    <br />
-                    College : {reviewer.college}
-                  </AccordionPanel>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-
-          <div className="w-3/4">
-            <h1 className="mb-4 font-semibold text-2xl">Books</h1>
-            <TableContainer>
-              <Table variant="simple" className="ml-16 border border-2 rounded-lg">
-                <Thead>
-                  <Tr>
-                    {header1.map((x, i) => (
-                      <Th key={i} width="20%"> {/* Set a fixed width or use responsive values like "20%" */}
-                        {x}
-                      </Th>
+                        <h2>
+                          <AccordionButton className="bg-gray-200 rounded-lg">
+                            <Box as="span" flex="1" textAlign="left">
+                              {reviewer.name}
+                            </Box>
+                            <Box
+                              as="span"
+                              className="text-md cursor-pointer ml-2"
+                              onClick={() => handleCopyId(reviewer._id)}
+                            >
+                              <FaRegCopy />
+                            </Box>
+                          </AccordionButton>
+                        </h2>
+                        <AccordionPanel pb={4} className="text-left">
+                          Specialisation : {reviewer.specialisation}
+                          <br />
+                          College : {reviewer.college}
+                        </AccordionPanel>
+                      </AccordionItem>
                     ))}
-                  </Tr>
-                </Thead>
-                <Tbody>
-                  {tableData.map((rowData, i) => (
-                    <Tr key={i}>
-                      {rowData.map((col, j) => (
-                        <Td key={j} width="20%"> {/* Set a fixed width or use responsive values like "20%" */}
-                          {col}
-                        </Td>
-                      ))}
-                      <Td key={2} width="20%">
-                        <Input placeholder="Reviewer 1 Id" onChange={(e)=>handleReviewer(i,e.target.value,0)}></Input>
-                      </Td>
-                      <Td key={3} width="20%">
-                        <Input placeholder="Reviewer 2 Id"onChange={(e)=>handleReviewer(i,e.target.value,1)}></Input>
-                      </Td>
-                      <Td key={4} width="20%">
-                        <Input placeholder="Reviewer 3 Id"onChange={(e)=>handleReviewer(i,e.target.value,2)}></Input>
-                      </Td>
-                    </Tr>
-                  ))}
-                </Tbody>
-              </Table>
-            </TableContainer>
-          </div>
-        </div>
-        <ReviewerAllocationTable></ReviewerAllocationTable>
+                  </Accordion>
+                </div>
+
+                <div className="w-full lg:w-3/4 md-3/4">
+                  <h1 className="mb-4 font-semibold text-2xl">Books</h1>
+                  <ReviewerAllocationTable handleReviewer={handleReviewer} />
+                </div>
+              </div>
+            </TabPanel>
+
+            <TabPanel>
+              <h1 className="text-2xl font-semibold mb-6">Review Status</h1>
+              <StatusCards data={dataAyurveda} />
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
       </div>
     </>
   );

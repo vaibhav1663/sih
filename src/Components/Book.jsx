@@ -18,7 +18,7 @@ const Book = () => {
                             "Content-Type": "application/json",
                         },
                         body: JSON.stringify({
-                            id: id,
+                            _id: id,
                         }),
                     }
                 );

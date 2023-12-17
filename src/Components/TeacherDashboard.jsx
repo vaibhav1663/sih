@@ -14,7 +14,7 @@ const TeacherDashboard = () => {
             <div className="p-4 box text-center">
                 <h1 className="mt-8 font-bold text-4xl">Teacher's Dashboard</h1>
                 <h1 className="font-semibold text-xl px-auto mt-16 mb-8">Books Status Table</h1>
-                <div className="w-3/4 mx-auto border border-2 rounded-xl">
+                <div className="w-full md:w-full lg:w-3/4 mx-auto border border-2 rounded-xl">
                 <Table recommenderID={teacherID} />
                 </div>
                 
