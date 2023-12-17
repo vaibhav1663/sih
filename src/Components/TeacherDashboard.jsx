@@ -12,15 +12,15 @@ const TeacherDashboard = () => {
         <>
             <Navbar page="admin" />
             <div className="p-4 box text-center">
-                <h1 className="mt-24 font-bold text-4xl">Teacher Dashboard</h1>
-                <div className="p-20">
-                    <h1 className="font-bold text-lg p-9">
-                        Books Reccomendation
-                    </h1>
+                <h1 className="mt-8 font-bold text-4xl">Teacher's Dashboard</h1>
+                <h1 className="font-semibold text-xl px-auto mt-16 mb-8">Books Status Table</h1>
+                <div className="w-3/4 mx-auto border border-2 rounded-xl">
+                <Table recommenderID={teacherID} />
+                </div>
+                
+                <div className="my-12">
                     <SuggestBook recommenderID={teacherID} />
                 </div>
-                <h1 className="font-bold text-lg p-9">Books Status Table</h1>
-                <Table recommenderID={teacherID} />
             </div>
         </>
     );

@@ -141,7 +141,7 @@ const AdminDashboard = () => {
             <Accordion allowToggle>
               {reviewersToDisplay.map((reviewer) => (
                 <AccordionItem
-                  key={reviewer.id}
+                  key={reviewer._id}
                   className="mb-2 border border-black rounded-lg"
                 >
                   <h2>

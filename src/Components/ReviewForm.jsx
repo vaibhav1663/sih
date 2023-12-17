@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import EthicalIssues from "./ReviewForm/EthicalIssues";
@@ -36,25 +36,22 @@ import {
 const SuccessModal = ({ isOpen, onClose, handleExplore }) => (
   <AlertDialog isOpen={isOpen} onClose={onClose}>
     <AlertDialogOverlay />
-  
+
     <AlertDialogContent>
       <AlertDialogHeader fontSize="2xl" fontWeight="bold" mx="auto" mt={2}>
         Book Review Successful.
       </AlertDialogHeader>
-  
+
       {/* <AlertDialogCloseButton /> */}
-  
+
       <AlertDialogBody textAlign="center">
         Thank you for your review!
       </AlertDialogBody>
     </AlertDialogContent>
   </AlertDialog>
-  
-  
 );
 
-
-const ReviewForm = (id) => {
+const ReviewForm = ({ id, bookName }) => {
   const [successModalOpen, setSuccessModalOpen] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -73,38 +70,80 @@ const ReviewForm = (id) => {
   };
 
   const [bookData, setBookData] = useState({
-    H:[null, null, null],
-    A:[null,null,null,null,null],
-    B:null,
-    C:[null,null,null,null],
-    D:[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
-    E:[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
-    G:[null,null,null,null,null],
+    H: [null, null, null],
+    A: [null, null, null, null, null],
+    B: null,
+    C: [null, null, null, null],
+    D: [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+    ],
+    E: [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+    ],
+    G: [null, null, null, null, null],
   });
 
-  const handleEthicalIssuesChange = (id,value) => {
-    if(id==="fabrication"){
+  const handleEthicalIssuesChange = (id, value) => {
+    if (id === "fabrication") {
       const newBookData = { ...bookData };
       newBookData.H[0] = value;
       setBookData(newBookData);
-    }
-    else if(id==="plagiarism"){
+    } else if (id === "plagiarism") {
       const newBookData = { ...bookData };
       newBookData.H[1] = value;
       setBookData(newBookData);
-    }
-    else if(id==="citation"){
+    } else if (id === "citation") {
       const newBookData = { ...bookData };
       newBookData.H[2] = value;
       setBookData(newBookData);
     }
-  }
+  };
 
   const handleAuthorInfo = (value, id) => {
     const newBookData = { ...bookData };
     newBookData.A[id] = Number(value);
     setBookData(newBookData);
-  }
+  };
 
   const handlePublisherCredibilityChange = (selectedOption) => {
     setBookData((prevBookData) => ({
@@ -114,51 +153,48 @@ const ReviewForm = (id) => {
   };
 
   const handleUniquenessRatingChange = (value, question) => {
-    if(question==="uniquenessLevel"){
+    if (question === "uniquenessLevel") {
       const newBookData = { ...bookData };
       newBookData.C[0] = Number(value);
       setBookData(newBookData);
-    }
-    else if(question==="clarityOfClaim"){
+    } else if (question === "clarityOfClaim") {
       const newBookData = { ...bookData };
       newBookData.C[1] = Number(value);
       setBookData(newBookData);
-    }
-    else if(question==="focusOnUniqueness"){
+    } else if (question === "focusOnUniqueness") {
       const newBookData = { ...bookData };
       newBookData.C[2] = Number(value);
       setBookData(newBookData);
-    }
-    else if(question==="curriculumAndSyllabus"){
+    } else if (question === "curriculumAndSyllabus") {
       const newBookData = { ...bookData };
       newBookData.C[3] = Number(value);
       setBookData(newBookData);
     }
-  }
+  };
 
   const handlePhysicalAppearanceRating = (value, id) => {
     const newBookData = { ...bookData };
     newBookData.D[id] = Number(value);
     setBookData(newBookData);
-  }
+  };
 
-  const handleSubjectMatterChange = (value,id) => {
+  const handleSubjectMatterChange = (value, id) => {
     const newBookData = { ...bookData };
     newBookData.E[id] = Number(value);
     setBookData(newBookData);
-  }
+  };
 
-  const handleIllustrationsChange = (value,id) => {
+  const handleIllustrationsChange = (value, id) => {
     const newBookData = { ...bookData };
     newBookData.G[id] = Number(value);
     setBookData(newBookData);
-  }
+  };
 
   const handleSubmit = () => {
     console.log(bookData);
     setSuccessModalOpen(true);
     onClose();
-  }
+  };
 
   const closeSuccessModal = () => {
     setSuccessModalOpen(false);
@@ -169,99 +205,111 @@ const ReviewForm = (id) => {
       <Button onClick={onOpen}>Review</Button>
       <Modal isOpen={isOpen} onClose={onClose} size="7xl">
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent pb={12}>
+        <ModalCloseButton />
           <ModalBody>
-      <h1 className="text-3xl mx-auto my-6">Book Review</h1>
-      <Tabs
-        variant="soft-rounded"
-        colorScheme="green"
-        className="mx-10 border rounded px-2 py-4"
-        index={currentTab}
-        onChange={handleTabChange}
-      >
-        <TabList className="overflow-x-auto">
-          <Tab onClick={() => handleTabChange(0)}>Ethical Issues</Tab>
-          <Tab onClick={() => handleTabChange(1)}>Authors</Tab>
-          <Tab onClick={() => handleTabChange(2)}>Publisher</Tab>
-          <Tab onClick={() => handleTabChange(3)}>Uniqueness</Tab>
-          <Tab onClick={() => handleTabChange(4)}>Appearance</Tab>
-          <Tab onClick={() => handleTabChange(5)}>Subject Matter</Tab>
-          <Tab onClick={() => handleTabChange(6)}>Illustrations</Tab>
-        </TabList>
+            <Heading
+              as="h1"
+              size="lg"
+              fontWeight="semibold"
+              textAlign="center"
+              my={6}
+            >
+              Review of {bookName}
+            </Heading>
+            <Tabs
+              variant="soft-rounded"
+              colorScheme="green"
+              className="mx-10 border rounded px-2 py-4"
+              index={currentTab}
+              onChange={handleTabChange}
+            >
+              <TabList className="overflow-x-auto">
+                <Tab onClick={() => handleTabChange(0)}>Ethical Issues</Tab>
+                <Tab onClick={() => handleTabChange(1)}>Authors</Tab>
+                <Tab onClick={() => handleTabChange(2)}>Publisher</Tab>
+                <Tab onClick={() => handleTabChange(3)}>Uniqueness</Tab>
+                <Tab onClick={() => handleTabChange(4)}>Appearance</Tab>
+                <Tab onClick={() => handleTabChange(5)}>Subject Matter</Tab>
+                <Tab onClick={() => handleTabChange(6)}>Illustrations</Tab>
+              </TabList>
 
-        <Divider className="mt-4 mx-0" borderColor="gray.300" />
+              <Divider className="mt-4 mx-0" borderColor="gray.300" />
 
-        <TabPanels className="px-10">
-          <TabPanel>
-            <EthicalIssues OnDataChange={handleEthicalIssuesChange}/>
-          </TabPanel>
-          <TabPanel>
-            <AuthorInfo OnDataChange={handleAuthorInfo}/>
-          </TabPanel>
-          <TabPanel>
-            <PublisherCredibility OnRadioChange={handlePublisherCredibilityChange}/>
-          </TabPanel>
-          <TabPanel>
-            <UniquenessRating onDataChange={handleUniquenessRatingChange}/>
-          </TabPanel>
-          <TabPanel>
-            <PhysicalAppearanceRating OnDataChange={handlePhysicalAppearanceRating}/>
-          </TabPanel>
-          <TabPanel>
-            <SubjectMatter OnDataChange={handleSubjectMatterChange}/>
-          </TabPanel>
-          <TabPanel>
-            <Illustrations OnDataChange={handleIllustrationsChange}/>
-          </TabPanel>
-        </TabPanels>
+              <TabPanels className="px-10">
+                <TabPanel>
+                  <EthicalIssues OnDataChange={handleEthicalIssuesChange} />
+                </TabPanel>
+                <TabPanel>
+                  <AuthorInfo OnDataChange={handleAuthorInfo} />
+                </TabPanel>
+                <TabPanel>
+                  <PublisherCredibility
+                    OnRadioChange={handlePublisherCredibilityChange}
+                  />
+                </TabPanel>
+                <TabPanel>
+                  <UniquenessRating
+                    onDataChange={handleUniquenessRatingChange}
+                  />
+                </TabPanel>
+                <TabPanel>
+                  <PhysicalAppearanceRating
+                    OnDataChange={handlePhysicalAppearanceRating}
+                  />
+                </TabPanel>
+                <TabPanel>
+                  <SubjectMatter OnDataChange={handleSubjectMatterChange} />
+                </TabPanel>
+                <TabPanel>
+                  <Illustrations OnDataChange={handleIllustrationsChange} />
+                </TabPanel>
+              </TabPanels>
 
-        <Divider className="mb-4" />
+              <Divider className="mb-4" />
 
-        <div className="mt-4">
-          <Button
-            onClick={handlePrev}
-            disabled={currentTab === 0}
-            colorScheme="teal"
-            variant="outline"
-            className="mx-2"
-          >
-            Previous
-          </Button>
+              <div className="mt-4 ">
+                <Button
+                  onClick={handlePrev}
+                  disabled={currentTab === 0}
+                  colorScheme="teal"
+                  variant="outline"
+                  className="mx-2"
+                >
+                  Previous
+                </Button>
 
-          {currentTab == 6 ? (
-            <>
-              <Button
-                onClick={handleSubmit}
-                disabled={currentTab !== 6}
-                colorScheme="teal"
-                variant="outline"
-                className="mx-2"
-              >
-                Submit
-              </Button>
-            </>
-          ) : (
-            <>
-              <Button
-                onClick={handleNext}
-                disabled={currentTab === 5}
-                colorScheme="teal"
-                variant="outline"
-                className="mx-2"
-              >
-                Next
-              </Button>
-            </>
-          )}
-        </div>
-      </Tabs>
-      </ModalBody>
-      </ModalContent>
+                {currentTab == 6 ? (
+                  <>
+                    <Button
+                      onClick={handleSubmit}
+                      disabled={currentTab !== 6}
+                      colorScheme="teal"
+                      variant="outline"
+                      className="mx-2"
+                    >
+                      Submit
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Button
+                      onClick={handleNext}
+                      disabled={currentTab === 5}
+                      colorScheme="teal"
+                      variant="outline"
+                      className="mx-2"
+                    >
+                      Next
+                    </Button>
+                  </>
+                )}
+              </div>
+            </Tabs>
+          </ModalBody>
+        </ModalContent>
       </Modal>
-      <SuccessModal
-        isOpen={successModalOpen}
-        onClose={closeSuccessModal}
-      />
+      <SuccessModal isOpen={successModalOpen} onClose={closeSuccessModal} />
     </>
   );
 };
