@@ -51,7 +51,7 @@ const BookCard = () => {
         setBooksToDisplay(data)
         return ;
         } catch (error) {
-        console.error("Error fetching books:", error);
+            console.log("Error fetching books:", error);
         }
     };
     useEffect(() => {
@@ -69,7 +69,7 @@ const BookCard = () => {
     }
     return(
         <div>
-            <div className="content-center m-auto bg-stone-100 w-full h-2/3 pb-3">
+            <div className="max-w-screen-xl content-center m-auto bg-stone-100 w-full h-2/3 pb-3">
                 <div class="w-0 h-0 m-auto
                     border-l-[50px] border-l-transparent
                     border-t-[35px] border-t-white
@@ -84,7 +84,7 @@ const BookCard = () => {
                             className="box p-5 mt-3 bg-white rounded-lg shadow-md"
                             key={index}
                         >
-                            <a href={"/book/" + book.id}>
+                            <a href={book.link} target="_blank">
                             <div className="flex flex-col md:flex-col">
                                 <div className="flex flex-col justify-center">
                                     <img
@@ -94,7 +94,7 @@ const BookCard = () => {
                                     />
                                 </div>
                                 <div className="pt-4 flex flex-col justify-center items-start">
-                                    <h1 className="text-2xl font-semibold text-blue-900">
+                                    <h1 className="text-lg font-semibold text-blue-900">
                                         {book.name}
                                     </h1>
                                 </div>
@@ -105,7 +105,7 @@ const BookCard = () => {
                 })}
                 </div>
             </div>
-            <div className="content-center m-auto bg-stone-200 w-full h-2/3 pb-3">
+            <div className="  max-w-screen-xl content-center m-auto bg-stone-200 w-full h-2/3 pb-3">
             <div class="w-0 h-0 m-auto
                 border-l-[50px] border-l-transparent
                 border-t-[35px] border-t-stone-100
@@ -113,14 +113,14 @@ const BookCard = () => {
             </div>
             <Center><a href="#"><h1 className="mt-6 text-4xl font-semibold text-blue-900">Recommended Books for Siddha</h1></a></Center>
             
-            <div className="p-9 grid gap-5 grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
+            <div className=" p-9 grid gap-5 grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
             {data_siddha.map((book, index) => {
                     return (
                         <div
                             className="box p-5 mt-3 bg-white rounded-lg shadow-md"
                             key={index}
                         >
-                            <a href={"/book/" + book.id}>
+                            <a href={book.link} target="_blank">
                             <div className="flex flex-col md:flex-col">
                                 <div className="flex flex-col justify-center">
                                     <img
@@ -130,7 +130,7 @@ const BookCard = () => {
                                     />
                                 </div>
                                 <div className="pt-4 flex flex-col justify-center items-start">
-                                    <h1 className="text-2xl font-semibold text-blue-900">
+                                    <h1 className="text-lg font-semibold text-blue-900" style={{WebkitLineClamp: 2,lineClamp: 2, textOverflow: "ellipsis"}}>
                                         {book.name}
                                     </h1>
                                 </div>

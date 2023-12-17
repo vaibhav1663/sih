@@ -14,19 +14,11 @@ const Home = () => {
     const { user } = useAuthContext()
   
     const navigate = useNavigate();
-    const handleLogout = async () => {
-        try {
-            await logout();
-            navigate("/login");
-        } catch (error) {
-            console.log(error.message);
-        }
-    };
     return (
         <>
             <div className="h-screen">
                 <Navbar page="home"/>
-                <Carousel></Carousel>
+                <Carousel/>
             </div>
                 <About></About>
             <div className="mt-28">

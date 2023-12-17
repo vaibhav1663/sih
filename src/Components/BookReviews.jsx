@@ -30,7 +30,7 @@ const BookReviews = () => {
             <>
                 <Navbar page="book-reviews" />
                 <div className="p-2">
-                    <InputGroup>
+                    <InputGroup className="max-w-screen-xl m-auto">
                         <InputLeftElement pointerEvents="none">
                             <SearchIcon color="black" />
                         </InputLeftElement>
@@ -60,6 +60,8 @@ const BookReviews = () => {
                 <Masonry
                     columns={{ 640: 1, 768: 2, 1024: 3, 1280: 4 }}
                     gap={16}
+
+                    className="max-w-screen-xl m-auto"
                 >
                     {data.map((book, index) => {
                         return (
@@ -73,7 +75,7 @@ const BookReviews = () => {
                                             src={book.imageLink}
                                             alt="Book Thumbnail"
                                             loading="lazy"
-                                            className="w-full rounded-lg shadow-md m-auto"
+                                            className="w-full rounded-md shadow-md m-auto"
                                         />
                                         <div className="flex flex-row mt-2">
                                             <svg

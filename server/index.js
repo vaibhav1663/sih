@@ -9,9 +9,7 @@ app.use(helmet());
 app.use(express.json());
 
 const limiter = rateLimit({
-    max: 100,
-    windowMs: 60 * 60 * 1000,
-    message: "Too many requests from this IP, please try again later",
+    
 });
 const userRouter = require("./routes/user");
 const bookRouter = require("./routes/books");

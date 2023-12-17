@@ -10,6 +10,7 @@ exports.getTopPicks = async (req, res) => {
                     name: book.volumeInfo.title,
                     desc: book.volumeInfo.description,
                     imageLink: book.volumeInfo.imageLinks.medium,
+                    link: book.volumeInfo.previewLink
                 });
             });
 
