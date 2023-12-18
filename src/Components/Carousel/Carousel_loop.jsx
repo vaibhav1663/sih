@@ -31,18 +31,18 @@ const CarouselSlider = ({slides}) => {
                 )
             })}
             <div className="absolute inset-0 grid h-full w-full items-center bg-black/75">
-                <div className="w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32">
+                <div className="w-3/4 pl-24 md:w-2/4 md:pl-20 lg:pl-32">
                     <Typography
                     variant="h1"
                     color="white"
-                    className="mb-4 text-3xl md:text-4xl lg:text-5xl"
+                    className="mb-4 text-2xl md:text-4xl lg:text-5xl"
                     >
                     National Commission for Indian System of Medicine
                     </Typography>
                     <Typography
                     variant="lead"
                     color="white"
-                    className="mb-12 opacity-80"
+                    className="mb-12 text-md opacity-80 lg:text-xl"
                     >
                     The Aims and objectives of the National Commission for Indian System of Medicine are to
                     improve access to quality and affordable Ayurveda, Unani, Siddha and Sowa-Rigpa (AUS&SR) medical education

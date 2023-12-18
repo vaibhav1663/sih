@@ -3,7 +3,6 @@ import { useNavigate } from "react-router";
 import { useAuthContext } from "../hooks/useAuthContext";
 import {useLogout} from "../hooks/useLogout"
 import Navbar from "./Navbar";
-import Carousel from "./Carousel/Carousel";
 import Carousel_loop from "./Carousel/Carousel_loop";
 import BookCard from "./Carousel/BookCard";
 import About from "./Carousel/About";
@@ -36,7 +35,6 @@ let slides=[
 const Home = () => {
     const { logout } = useLogout();
     const { user } = useAuthContext()
-  
     const navigate = useNavigate();
     return (
         <>
@@ -44,7 +42,7 @@ const Home = () => {
                 <Navbar page="home"/>
                 <Carousel_loop slides={slides}></Carousel_loop>
             </div>
-                <About></About>
+            <About></About>
             <div className="mt-28">
                 <BookCard></BookCard>
             </div>
