@@ -1,32 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
-const Dropdown = ({reviewers, onChange, bookname, r}) => {
+const Dropdown = ({ reviewers, onChange, bookname, r }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedItem, setSelectedItem] = useState('Select Reviewer');
-
+  const dropdownRef = useRef(null);
 
   const reviewerData = reviewers.map((reviewer) => {
-    return [reviewer._id,reviewer.name ];
+    return [reviewer._id, reviewer.name];
   });
-  
 
   const handleToggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
   const handleClick = (item) => {
-    onChange(bookname,item[0],r);
+    onChange(bookname, item[0], r);
     setSelectedItem(item[1]);
     handleToggleDropdown();
-  }
+  };
 
   const handleSearchInput = (e) => {
     setSearchTerm(e.target.value.toLowerCase());
   };
 
+  const handleDocumentClick = (e) => {
+    // Close the dropdown if the click is outside the dropdown
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    // Add a click event listener to the document to close the dropdown on outside clicks
+    document.addEventListener('click', handleDocumentClick);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      document.removeEventListener('click', handleDocumentClick);
+    };
+  }, []);
+
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center" ref={dropdownRef}>
       <div className="relative group">
         <button
           id="dropdown-button"
@@ -84,4 +100,3 @@ const Dropdown = ({reviewers, onChange, bookname, r}) => {
 };
 
 export default Dropdown;
-
