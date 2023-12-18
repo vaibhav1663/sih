@@ -12,7 +12,7 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 
 import ReviewForm from "../ReviewForm";
 
-const BooksAccordion = ({ data, toBeReviewed }) => (
+const BooksAccordion = ({ data, toBeReviewed, reviewerID }) => (
   <Accordion allowToggle>
     {data.map((book, index) => (
       <AccordionItem
@@ -30,13 +30,15 @@ const BooksAccordion = ({ data, toBeReviewed }) => (
           <p>Author: {book.name}</p>
           <p className="mb-4">Description: {book.desc}</p>
           {!toBeReviewed ? (
-            <Link href={`/book/${book.id}`} >
-              <Button className="font-medium text-xl">
-              Preview Book
-              </Button>
+            <Link href={`/book/${book.id}`}>
+              <Button className="font-medium text-xl">Preview Book</Button>
             </Link>
           ) : (
-            <ReviewForm id={book._id}  bookName={book.name} />
+            <ReviewForm
+              id={book._id}
+              reviewerid={reviewerID}
+              bookName={book.name}
+            />
           )}
         </AccordionPanel>
       </AccordionItem>
@@ -44,93 +46,32 @@ const BooksAccordion = ({ data, toBeReviewed }) => (
   </Accordion>
 );
 
-const Accordian = (id) => {
+const Accordian = ({reviewerID}) => {
   const [booksToDisplay, setBooksToDisplay] = useState([]);
 
-  let data1 = [
-    {
-      name: "Ayurvedic Healing Guide",
-      desc: "Explore the ancient wisdom of Ayurveda for holistic healing and well-being.",
-      id: "abc123",
-      thumb: "http://example.com/thumb1.jpg",
-      publicRating: 4.5,
-    },
-    {
-      name: "Ayurvedic Recipes for Vitality",
-      desc: "Discover nourishing recipes based on Ayurvedic principles to boost your energy.",
-      id: "def456",
-      thumb: "http://example.com/thumb2.jpg",
-      publicRating: 4.2,
-    },
-    {
-      name: "Ayurvedic Beauty Rituals",
-      desc: "Unlock the secrets of Ayurvedic beauty practices for radiant and glowing skin.",
-      id: "xyz789",
-      thumb: "http://example.com/thumb3.jpg",
-      publicRating: 4.7,
-    },
-    {
-      name: "Ayurvedic Yoga for Balance",
-      desc: "Integrate Ayurveda and Yoga for a balanced and harmonious life.",
-      id: "ghi321",
-      thumb: "http://example.com/thumb4.jpg",
-      publicRating: 4.8,
-    },
-    {
-      name: "Ayurvedic Herbal Remedies",
-      desc: "Learn about powerful herbal remedies from Ayurveda to support your health.",
-      id: "jkl987",
-      thumb: "http://example.com/thumb5.jpg",
-      publicRating: 4.4,
-    },
-  ];
-  
-
-  let data2 = [
-    {
-      name: "Ayurvedic Healing Guide",
-      desc: "Explore the ancient wisdom of Ayurveda for holistic healing and well-being.",
-      id: "abc123",
-      thumb: "http://example.com/thumb1.jpg",
-      publicRating: 4.5,
-    },
-    {
-      name: "Ayurvedic Recipes for Vitality",
-      desc: "Discover nourishing recipes based on Ayurvedic principles to boost your energy.",
-      id: "def456",
-      thumb: "http://example.com/thumb2.jpg",
-      publicRating: 4.2,
-    },
-    {
-      name: "Ayurvedic Beauty Rituals",
-      desc: "Unlock the secrets of Ayurvedic beauty practices for radiant and glowing skin.",
-      id: "xyz789",
-      thumb: "http://example.com/thumb3.jpg",
-      publicRating: 4.7,
-    },
-    {
-      name: "Ayurvedic Yoga for Balance",
-      desc: "Integrate Ayurveda and Yoga for a balanced and harmonious life.",
-      id: "ghi321",
-      thumb: "http://example.com/thumb4.jpg",
-      publicRating: 4.8,
-    },
-    {
-      name: "Ayurvedic Herbal Remedies",
-      desc: "Learn about powerful herbal remedies from Ayurveda to support your health.",
-      id: "jkl987",
-      thumb: "http://example.com/thumb5.jpg",
-      publicRating: 4.4,
-    },
-  ];
-  
+  const [toBeReviewed, setToBeReviewed] = useState([]);
+  const [reviewed, setReviewed] = useState([]);
 
   const GET_REVIEWER_BOOKS_URL = "http://localhost:5000/reviewer/getBooks";
 
-  const getBooksByReviewerName = async (needle) => {
+  const getBooksByReviewerId = async () => {
     try {
-      const response = await fetch(GET_REVIEWER_BOOKS_URL);
+      const response = await fetch(GET_REVIEWER_BOOKS_URL, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+          "Content-Type": "application/json",
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify({ _id: reviewerID }),
+      });
       const data = await response.json();
+      console.log(">>>>>>>>>>>>>>",reviewerID );
+      console.log(">>>>>>>>>>>>>>",data );
+      setToBeReviewed(data.tobereviewedBooks)
+      setReviewed(data.reviewedBooks)
       setBooksToDisplay(data);
       return;
     } catch (error) {
@@ -138,7 +79,7 @@ const Accordian = (id) => {
     }
   };
   useEffect(() => {
-    getBooksByReviewerName(id);
+    getBooksByReviewerId();
   }, []);
 
   return (
@@ -155,11 +96,19 @@ const Accordian = (id) => {
       <TabPanels className="md:px-12 lg:px-16">
         <TabPanel>
           <h1 className="text-2xl font-semibold mb-6">Books to be Reviewed</h1>
-          <BooksAccordion data={data1} toBeReviewed={true} />
+          <BooksAccordion
+            data={toBeReviewed}
+            toBeReviewed={true}
+            reviewerID={reviewerID}
+          />
         </TabPanel>
         <TabPanel>
           <h1 className="text-2xl font-semibold mb-6">Reviewed Books</h1>
-          <BooksAccordion data={data2} toBeReviewed={false} />
+          <BooksAccordion
+            data={reviewed}
+            toBeReviewed={false}
+            reviewerID={reviewerID}
+          />
         </TabPanel>
       </TabPanels>
     </Tabs>

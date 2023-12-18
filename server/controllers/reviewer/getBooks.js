@@ -3,7 +3,7 @@ const book = require("../../model/bookSchema");
 
 exports.getBooksByReviewerId = async (req, res) => {
   const { _id } = req.body;
-
+  console.log(req.body)
   try {
     // Find reviewer queue based on reviewer ID
     const reviewerQueue = await rq.findOne({
