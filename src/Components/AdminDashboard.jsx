@@ -9,20 +9,11 @@ import {
   Box,
 } from "@chakra-ui/react";
 import StatusCards from "./AdminDashboard/StatusCards";
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  Input,
-  TableContainer,
-} from "@chakra-ui/react";
+
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 
-import { FaRegCopy } from "react-icons/fa";
 import ReviewerAllocationTable from "./AdminDashboard/table";
+import ReviewerDisplay from "./AdminDashboard/ReviewerDisplay";
 const GET_REVIEWERS_URL = "http://localhost:5000/admin/getReviewers";
 const GET_BOOKS_TO_REVIEW_URL =
   "http://localhost:5000/admin/getRecommendations";
@@ -34,7 +25,7 @@ const AdminDashboard = () => {
       const response = await fetch(GET_REVIEWERS_URL);
       const data = await response.json();
       setReviewersToDisplay(data);
-      // console.log("set :", data);
+      console.log("set :", data);
       return;
     } catch (error) {
       console.error("Error fetching reviewers:", error);
@@ -177,27 +168,9 @@ const AdminDashboard = () => {
             <TabPanel>
               <h1 className="text-2xl font-semibold mb-6">Reviewers</h1>
               <div className="w-full">
-                <Accordion allowToggle>
-                  {reviewersToDisplay.map((reviewer) => (
-                    <AccordionItem
-                      key={reviewer._id}
-                      className="mb-2 border border-black rounded-lg"
-                    >
-                      <h2>
-                        <AccordionButton className="bg-gray-200 rounded-lg">
-                          <Box as="span" flex="1" textAlign="left">
-                            <p>{reviewer.name}</p>
-                          </Box>
-                        </AccordionButton>
-                      </h2>
-                      <AccordionPanel pb={4} className="text-left">
-                        <p>{reviewer.collegeName}</p>
-                        <p>{reviewer.degree}</p>
-                        <p>{reviewer.field}</p>
-                      </AccordionPanel>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
+
+                <ReviewerDisplay reviewersToDisplay={reviewersToDisplay} />
+
               </div>
             </TabPanel>
           </TabPanels>
