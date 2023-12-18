@@ -10,6 +10,7 @@ import {
   TableContainer,
   Button,
 } from "@chakra-ui/react";
+
 const ReviewerDisplay = ({ reviewersToDisplay }) => {
   const [reviewersData, setReviewersData] = useState([]);
 
@@ -53,7 +54,6 @@ const ReviewerDisplay = ({ reviewersToDisplay }) => {
 
         const updatedReviewersData = reviewersToDisplay.map(
           (reviewer, index) => {
-
             return {
               ...reviewer,
               reviewed: responseAll[index].reviewedBooks,
@@ -99,9 +99,11 @@ const ReviewerDisplay = ({ reviewersToDisplay }) => {
                         (item, index) =>
                           item && (
                             <li key={index}>
-                              <Button mb={2} href={`#${item.name}`}>
-                                {item.name}
-                              </Button>
+                              <Link to={`/book/${item._id}`}>
+                                <Button mb={2} mr={2} className="font-medium text-xl">
+                                  {item.name}
+                                </Button>
+                              </Link>
                             </li>
                           )
                       )}
@@ -113,9 +115,13 @@ const ReviewerDisplay = ({ reviewersToDisplay }) => {
                       rowData.underReview.map(
                         (item, index) =>
                           item && (
-                            <Link to={`/book/${item._id}`}>
-                            <Button className="font-medium text-xl">{item.name}</Button>
-                          </Link>
+                            <li key={index}>
+                              <Link to={`/admin/book/${item._id}`}>
+                                <Button mb={2} mr={2} className="font-medium text-xl">
+                                  {item.name}
+                                </Button>
+                              </Link>
+                            </li>
                           )
                       )}
                   </ul>
