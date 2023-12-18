@@ -144,7 +144,7 @@ const Book = () => {
                                                 <path d="M12 2L14.94 8.28L22 9.3L16.36 14.14L18.18 21.01L12 17.77L5.82 21.01L7.64 14.14L2 9.3L9.06 8.28L12 2Z" />
                                             </svg>
                                             <p>
-                                                {book.reviewerRating} (
+                                                {book.reviewerRating.toFixed(1)} (
                                                 {book.reviewerCount})
                                             </p>
                                         </span>
@@ -165,7 +165,7 @@ const Book = () => {
                                                 <path d="M12 2L14.94 8.28L22 9.3L16.36 14.14L18.18 21.01L12 17.77L5.82 21.01L7.64 14.14L2 9.3L9.06 8.28L12 2Z" />
                                             </svg>
                                             <p>
-                                                {book.publicRating} (
+                                                {book.publicRating.toFixed(1)} (
                                                 {book.publicCount})
                                             </p>
                                         </span>
@@ -211,15 +211,15 @@ const Book = () => {
                                     <div className="flex flex-col px-4">
                                         <span>
                                             Content:{" "}
-                                            {book.avgUserRating.content}
+                                            {book.avgUserRating.content.toFixed(1)}
                                         </span>
                                         <span>
                                             Appearance:{" "}
-                                            {book.avgUserRating.appearance}
+                                            {book.avgUserRating.appearance.toFixed(1)}
                                         </span>
                                         <span>
                                             Overall:{" "}
-                                            {book.avgUserRating.overall}
+                                            {book.avgUserRating.overall.toFixed(1)}
                                         </span>
                                     </div>
                                 </div>
