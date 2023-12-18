@@ -8,9 +8,6 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json());
 
-const limiter = rateLimit({
-    max: 1000000
-});
 
 const userRouter = require("./routes/user");
 const bookRouter = require("./routes/books");
