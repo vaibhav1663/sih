@@ -3,9 +3,10 @@ const ReviewerQueue = require("../../model/reviewerqueue");
 
 exports.addBookResponse = async (req, res) => {
     try {
-        const { _id, reviewerid, H, A, B, C, D, E, G } = req.body;
+        const { _id, reviewerid, H, A, B, C, D, E, G, PDFData } = req.body;
 
         // Find the reviewer queue by reviewer_id
+        console.log(reviewerid)
         const reviewerQueue = await ReviewerQueue.findOne({
             reviewerid,
         });
@@ -20,7 +21,7 @@ exports.addBookResponse = async (req, res) => {
             {
                 $pull: { tobereviewed: _id },
                 $addToSet: { reviewed: _id },
-            }
+            }   
         );
 
         // Calculate totals for each array
@@ -39,7 +40,7 @@ exports.addBookResponse = async (req, res) => {
             c_total,
             d_total,
             e_total,
-            g_total,
+            g_total, H, A, B, C, D, E, G, PDFData,
             totalScore:
                 a_total + b_total + c_total + d_total + e_total + g_total,
         };
