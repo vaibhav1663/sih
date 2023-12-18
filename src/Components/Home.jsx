@@ -35,7 +35,6 @@ let slides=[
 const Home = () => {
     const { logout } = useLogout();
     const { user } = useAuthContext()
-  
     const navigate = useNavigate();
     return (
         <>
@@ -43,7 +42,7 @@ const Home = () => {
                 <Navbar page="home"/>
                 <Carousel_loop slides={slides}></Carousel_loop>
             </div>
-                <About></About>
+            <About></About>
             <div className="mt-28">
                 <BookCard></BookCard>
             </div>
