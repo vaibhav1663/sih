@@ -34,6 +34,7 @@ const AdminDashboard = () => {
       const response = await fetch(GET_REVIEWERS_URL);
       const data = await response.json();
       setReviewersToDisplay(data);
+      // console.log("set :", data);
       return;
     } catch (error) {
       console.error("Error fetching reviewers:", error);
@@ -195,10 +196,10 @@ const AdminDashboard = () => {
           <TabList className="overflow-x-auto px-6">
             <Tab>Reviewer Allocation</Tab>
             <Tab>Review Status</Tab>
+            <Tab>Reviewers</Tab>
           </TabList>
 
           <Divider className="mt-4 mx-0" borderColor="gray.300" />
-
 
           <TabPanels className="">
             <TabPanel>
@@ -207,42 +208,7 @@ const AdminDashboard = () => {
               </h1>
 
               <div className="mt-16 flex flex-col lg:flex-row">
-                <div className="w-full sm:w-1/4 sm:mb-6">
-                  <h1 className="mb-4 font-semibold text-2xl">
-                    Available Reviewers
-                  </h1>
-                  <Accordion allowToggle>
-                    {reviewersToDisplay.map((reviewer) => (
-                      <AccordionItem
-                        key={reviewer._id}
-                        className="mb-2 border border-black rounded-lg"
-                      >
-                        <h2>
-                          <AccordionButton className="bg-gray-200 rounded-lg">
-                            <Box as="span" flex="1" textAlign="left">
-                              {reviewer.name}
-                            </Box>
-                            <Box
-                              as="span"
-                              className="text-md cursor-pointer ml-2"
-                              onClick={() => handleCopyId(reviewer._id)}
-                            >
-                              <FaRegCopy />
-                            </Box>
-                          </AccordionButton>
-                        </h2>
-                        <AccordionPanel pb={4} className="text-left">
-                          Specialisation : {reviewer.specialisation}
-                          <br />
-                          College : {reviewer.college}
-                        </AccordionPanel>
-                      </AccordionItem>
-                    ))}
-                  </Accordion>
-                </div>
-
-                <div className="w-full lg:w-3/4 md-3/4">
-                  <h1 className="mb-4 font-semibold text-2xl">Books</h1>
+                <div className="w-full">
                   <ReviewerAllocationTable handleReviewer={handleReviewer} />
                 </div>
               </div>
@@ -251,6 +217,33 @@ const AdminDashboard = () => {
             <TabPanel>
               <h1 className="text-2xl font-semibold mb-6">Review Status</h1>
               <StatusCards data={dataAyurveda} />
+            </TabPanel>
+
+            <TabPanel>
+              <h1 className="text-2xl font-semibold mb-6">Reviewers</h1>
+              <div className="w-full">
+                <Accordion allowToggle>
+                  {reviewersToDisplay.map((reviewer) => (
+                    <AccordionItem
+                      key={reviewer._id}
+                      className="mb-2 border border-black rounded-lg"
+                    >
+                      <h2>
+                        <AccordionButton className="bg-gray-200 rounded-lg">
+                          <Box as="span" flex="1" textAlign="left">
+                            <p>{reviewer.name}</p>
+                          </Box>
+                        </AccordionButton>
+                      </h2>
+                      <AccordionPanel pb={4} className="text-left">
+                        <p>{reviewer.collegeName}</p>
+                        <p>{reviewer.degree}</p>
+                        <p>{reviewer.field}</p>
+                      </AccordionPanel>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
             </TabPanel>
           </TabPanels>
         </Tabs>
