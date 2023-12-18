@@ -9,7 +9,7 @@ app.use(helmet());
 app.use(express.json());
 
 const limiter = rateLimit({
-    max: 11111111111
+  max: 11111111111,
 });
 const userRouter = require("./routes/user");
 const bookRouter = require("./routes/books");
@@ -25,5 +25,5 @@ app.use("/user", limiter, userRouter);
 app.use("/admin", limiter, adminRouter);
 
 app.listen(5000, () => {
-    console.log("Server is runnning..");
+  console.log("Server is runnning..");
 });
