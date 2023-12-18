@@ -47,7 +47,6 @@ const BooksAccordion = ({ data, toBeReviewed, reviewerID }) => (
 );
 
 const Accordian = ({reviewerID}) => {
-  const [booksToDisplay, setBooksToDisplay] = useState([]);
 
   const [toBeReviewed, setToBeReviewed] = useState([]);
   const [reviewed, setReviewed] = useState([]);
@@ -69,10 +68,11 @@ const Accordian = ({reviewerID}) => {
       });
       const data = await response.json();
       console.log(">>>>>>>>>>>>>>",reviewerID );
-      console.log(">>>>>>>>>>>>>>",data );
+      console.log(">>>>>>>>>>>>>>",data );  
+      if("error" in data) throw new Error(data.error)
       setToBeReviewed(data.tobereviewedBooks)
       setReviewed(data.reviewedBooks)
-      setBooksToDisplay(data);
+      
       return;
     } catch (error) {
       console.error("Error fetching books:", error);
