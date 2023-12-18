@@ -7,6 +7,7 @@ import PublisherCredibility from "./ReviewForm/PublisherCredibility";
 import UniquenessRating from "./ReviewForm/UniquenessRating";
 import PhysicalAppearanceRating from "./ReviewForm/PhysicalAppearanceRating";
 import SubjectMatter from "./ReviewForm/SubjectMatter";
+import Language from "./ReviewForm/Language";
 import Illustrations from "./ReviewForm/Illustrations";
 import {
   Heading,
@@ -32,7 +33,7 @@ import {
   AlertDialogBody,
   AlertDialogFooter,
 } from "@chakra-ui/react";
-const POST_REVIEW_SUBMIT_URL = "http://localhost:5000/reviewer/addResponse"
+const POST_REVIEW_SUBMIT_URL = "http://localhost:5000/addResponse"
 const SuccessModal = ({ isOpen, onClose, handleExplore }) => (
   <AlertDialog isOpen={isOpen} onClose={onClose}>
     <AlertDialogOverlay />
@@ -121,6 +122,7 @@ const ReviewForm = ({ id,reviewerid, bookName }) => {
       null,
       null,
     ],
+    F:[null,null,null,null,null,null,null,null],
     G: [null, null, null, null, null],
   });
 
@@ -184,6 +186,12 @@ const ReviewForm = ({ id,reviewerid, bookName }) => {
     newBookData.E[id] = Number(value);
     setBookData(newBookData);
   };
+
+  const handleLanguageChange = (value, id) => {
+    const newBookData = { ...bookData };
+    newBookData.F[id] = Number(value);
+    setBookData(newBookData);
+  }
 
   const handleIllustrationsChange = (value, id) => {
     const newBookData = { ...bookData };
@@ -309,6 +317,16 @@ const ReviewForm = ({ id,reviewerid, bookName }) => {
           "Bibliography, References & Citations": null,
         },
       },
+      F:{
+        "Is the language used in the text is simple?":null,
+        "Usage of Standard Technical Terminology":null,
+        "Usage of Standard Punctuation Marks & Symbols":null,
+        "The language is accurate and precise":null,
+        "Can the audience determine meanings of difficult or technical terms through context clues?": null,
+        "Is the text free from Grammatical mistakes, redundancies,wordiness, highfalutin and sexist language?":null,
+        "Is the text free from fragments, run-on, and overly complex sentences?":null,
+        "Are capitalization, spelling, and paragraphs used correctly?":null,
+      },
       G: {
         Color: null,
         "Visibility of Illustrations: Clarity and Resolution": null,
@@ -376,7 +394,8 @@ const ReviewForm = ({ id,reviewerid, bookName }) => {
                 <Tab onClick={() => handleTabChange(3)}>Uniqueness</Tab>
                 <Tab onClick={() => handleTabChange(4)}>Appearance</Tab>
                 <Tab onClick={() => handleTabChange(5)}>Subject Matter</Tab>
-                <Tab onClick={() => handleTabChange(6)}>Illustrations</Tab>
+                <Tab onClick={() => handleTabChange(6)}>Language</Tab>
+                <Tab onClick={() => handleTabChange(7)}>Illustrations</Tab>
               </TabList>
 
               <Divider className="mt-4 mx-0" borderColor="gray.300" />
@@ -407,6 +426,9 @@ const ReviewForm = ({ id,reviewerid, bookName }) => {
                   <SubjectMatter OnDataChange={handleSubjectMatterChange} />
                 </TabPanel>
                 <TabPanel>
+                  <Language onDataChange={handleLanguageChange}></Language>
+                </TabPanel>
+                <TabPanel>
                   <Illustrations OnDataChange={handleIllustrationsChange} />
                 </TabPanel>
               </TabPanels>
@@ -424,11 +446,11 @@ const ReviewForm = ({ id,reviewerid, bookName }) => {
                   Previous
                 </Button>
 
-                {currentTab == 6 ? (
+                {currentTab == 7 ? (
                   <>
                     <Button
                       onClick={()=>handleSubmit()}
-                      disabled={currentTab !== 6}
+                      disabled={currentTab !== 7}
                       colorScheme="teal"
                       variant="outline"
                       className="mx-2"
@@ -440,7 +462,7 @@ const ReviewForm = ({ id,reviewerid, bookName }) => {
                   <>
                     <Button
                       onClick={handleNext}
-                      disabled={currentTab === 5}
+                      disabled={currentTab === 7}
                       colorScheme="teal"
                       variant="outline"
                       className="mx-2"

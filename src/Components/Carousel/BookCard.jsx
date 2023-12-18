@@ -118,7 +118,7 @@ const BookCard = () => {
                                     <img
                                         src={book.imageLink || "http://books.google.com/books/publisher/content?id=YXmmDwAAQBAJ&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE72wZbXM-YbdPcie_-6GToUdS-f8nxTzoN75srNGZWRhGF0IijgoZ4bmFrJVI4qczcVYbVqZbe9VwfsLq2mUjzWFurHTQa_qtdU_fMHpCJtgD0BRoJh1q7gYZws9o6FITMvhaghD&source=gbs_api"}
                                         alt="Book Thumbnail"
-                                        className="w-full rounded-lg shadow-md m-auto"
+                                        className="w-full rounded-lg shadow-md m-auto sm:max-h-[20rem]"
                                     />
                                 </div>
                                 <div className="pt-4 flex flex-col justify-center items-start">
