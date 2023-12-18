@@ -32,7 +32,7 @@ import {
   AlertDialogBody,
   AlertDialogFooter,
 } from "@chakra-ui/react";
-const POST_REVIEW_SUBMIT_URL = "http://localhost:5000/reviewer/addResponse"
+const POST_REVIEW_SUBMIT_URL = "http://localhost:5000/addResponse"
 const SuccessModal = ({ isOpen, onClose, handleExplore }) => (
   <AlertDialog isOpen={isOpen} onClose={onClose}>
     <AlertDialogOverlay />
