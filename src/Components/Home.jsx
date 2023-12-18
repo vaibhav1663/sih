@@ -3,7 +3,6 @@ import { useNavigate } from "react-router";
 import { useAuthContext } from "../hooks/useAuthContext";
 import {useLogout} from "../hooks/useLogout"
 import Navbar from "./Navbar";
-import Carousel from "./Carousel/Carousel";
 import Carousel_loop from "./Carousel/Carousel_loop";
 import BookCard from "./Carousel/BookCard";
 import About from "./Carousel/About";

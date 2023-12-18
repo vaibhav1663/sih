@@ -43,43 +43,6 @@ const AdminDashboard = () => {
     getReviewers();
   }, []);
 
-  // const [reviewers, setReviewers] = useState([]);  // fetch available reviwers data here
-
-  // useEffect(() => {
-  //   setReviewers([
-  //     {
-  //       id: "asf3421",
-  //       name: "Dummy Name1",
-  //       specialisation: "Unani",
-  //       college: "COEP",
-  //     },
-  //     {
-  //       id: "ahkk13421",
-  //       name: "Dummy Name2",
-  //       specialisation: "Unani",
-  //       college: "COEP",
-  //     },
-  //     {
-  //       id: "hdkk13421",
-  //       name: "Dummy Name3",
-  //       specialisation: "Unani",
-  //       college: "COEP",
-  //     },
-  //     {
-  //       id: "ah3421",
-  //       name: "Dummy Name4",
-  //       specialisation: "Unani",
-  //       college: "COEP",
-  //     },
-  //     {
-  //       id: "kk13421",
-  //       name: "Dummy Name5",
-  //       specialisation: "Unani",
-  //       college: "COEP",
-  //     },
-  //   ]);
-  // }, []);
-
   let dataAyurveda = [
     {
       name: "Book Name 1",
@@ -129,19 +92,11 @@ const AdminDashboard = () => {
   ];
   //review cards data
 
-  const header1 = [
-    "Book Name",
-    "Book Desc",
-    "Reviewer 1",
-    "Reviewer 2",
-    "Reviewer 3",
-  ];
   const Data = [
     { bookId: 1, name: "Payal" },
     { bookId: 2, name: "Yash" },
   ]; //fetch books to be reviewed data here so admin can allocate
 
-  const tableData = Data.map(({ bookId, name }) => [bookId, name]);
 
   const initialReviewerData = Data.map((item) => ({
     bookId: item.bookId,
