@@ -1,4 +1,20 @@
 const booksforlandingpage = require("../../model/booksforlandingpage");
+function convertUrl(originalUrl) {
+    // Extract the book ID from the original URL
+    const bookIdRegex = /id=([^&]+)/;
+    const match = originalUrl.match(bookIdRegex);
+    const bookId = match ? match[1] : null;
+
+    if (bookId) {
+        // Create a new URL with the extracted book ID
+        const newUrl = `https://books.google.com/books/publisher/content?id=${bookId}&printsec=frontcover&img=1&zoom=3&edge=curl`;
+        return newUrl;
+    } else {
+        console.log("Unable to extract book ID from the URL");
+        return originalUrl;
+    }
+}
+
 exports.getTopPicks = async (req, res) => {
     try {
         const allBooks = await booksforlandingpage.find({});
@@ -9,7 +25,7 @@ exports.getTopPicks = async (req, res) => {
                 books.push({
                     name: book.volumeInfo.title,
                     desc: book.volumeInfo.description,
-                    imageLink: book.volumeInfo.imageLinks.medium,
+                    imageLink: convertUrl(book.volumeInfo.imageLinks.medium),
                     link: book.volumeInfo.previewLink
                 });
             });

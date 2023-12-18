@@ -11,7 +11,7 @@ const Book = () => {
         const fetchData = async () => {
             try {
                 const response = await fetch(
-                    `http://localhost:5000/books/getBookById`,
+                    `http://localhost:5000/books/getBookById/`,
                     {
                         method: "POST",
                         headers: {
@@ -65,15 +65,33 @@ const Book = () => {
 
         if (!validateForm()) return;
         // console.log("id>>", id);
-        const requestObject = {
-            _id: id,
-            content: conRate,
-            appearance: appRate,
-            overall: ovrRate,
-            comment: comment,
-        };
 
-        console.log("Book Information:", requestObject);
+
+        const addReview = async () => {
+            const response = await fetch(
+                `http://localhost:5000/books/addPublicReview/`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        _id: id,
+                        content: conRate,
+                        appearance: appRate,
+                        overall: ovrRate,
+                        comment: comment,
+                    }),
+                }
+            );
+            console.log(response)
+            if(response){
+                toggleModal();
+            }
+        }
+        addReview();
+
+
         // submitData(bookInfo, (ref) => {
         //     console.log(">>>", ref);
         //     if ("error" in ref) {
@@ -101,7 +119,7 @@ const Book = () => {
     return (
         <>
             <Navbar page="book-reviews" />
-            <div className="box p-4 bg-gray-100">
+            <div className="max-w-screen-xl m-auto box p-4">
                 <div className="flex flex-col md:flex-row gap-6">
                     <div className="w-full md:w-1/3">
                         <img
@@ -335,6 +353,7 @@ const Book = () => {
                                             cols="30"
                                             rows="10"
                                             className="p-2 rounded-xl shadow-md"
+                                            onChange={(e)=>{setComment(e.target.value)}}
                                         ></textarea>
                                     </div>
                                     <button
