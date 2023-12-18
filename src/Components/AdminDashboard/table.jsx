@@ -20,29 +20,12 @@ import {
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import Search from "./Search";
+import ModalComp from "../Modal";
 
 const GET_BOOKS_TO_REVIEW_URL =
   "http://localhost:5000/admin/getRecommendations";
 const ADD_BOOKS_TO_REVIEW_URL = "http://localhost:5000/admin/allocate";
 const GET_REVIEWERS_URL = "http://localhost:5000/admin/getReviewers";
-
-const SuccessModal = ({ isOpen, onClose }) => (
-  <AlertDialog isOpen={isOpen} onClose={onClose}>
-    <AlertDialogOverlay />
-
-    <AlertDialogContent>
-      <AlertDialogHeader fontSize="2xl" fontWeight="bold" mx="auto" mt={2}>
-        Reviewer Allocation Successful
-      </AlertDialogHeader>
-
-      {/* <AlertDialogCloseButton /> */}
-
-      <AlertDialogBody textAlign="center">
-        Reviewers Allocated !
-      </AlertDialogBody>
-    </AlertDialogContent>
-  </AlertDialog>
-);
 
 function formatDate(date) {
   if (!(date instanceof Date)) {
@@ -308,7 +291,7 @@ const DataTable = ({ handleReviewer }) => {
           <Tfoot></Tfoot>
         </Table>
       </TableContainer>
-      <SuccessModal isOpen={successModalOpen} onClose={closeSuccessModal} />
+      <ModalComp heading="Reviewer Allocation Successful" message="Reviewers Allocated !" isOpen={successModalOpen} onClose={closeSuccessModal} />
     </>
   );
 };

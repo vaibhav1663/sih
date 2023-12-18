@@ -25,5 +25,5 @@ app.use("/user", limiter, userRouter);
 app.use("/admin", limiter, adminRouter);
 
 app.listen(5000, () => {
-    console.log("Server is runnning..");
+  console.log("Server is runnning..");
 });
