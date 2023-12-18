@@ -2,6 +2,7 @@ const Book = require("../../model/bookSchema");
 const ReviewerQueue = require("../../model/reviewerqueue");
 
 exports.addBookResponse = async (req, res) => {
+
   try {
     const { _id, reviewerid, H, A, B, C, D, E, F, G } = req.body;
 

@@ -20,29 +20,12 @@ import {
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import Search from "./Search";
+import ModalComp from "../Modal";
 
 const GET_BOOKS_TO_REVIEW_URL =
   "http://localhost:5000/admin/getRecommendations";
 const ADD_BOOKS_TO_REVIEW_URL = "http://localhost:5000/admin/allocate";
 const GET_REVIEWERS_URL = "http://localhost:5000/admin/getReviewers";
-
-const SuccessModal = ({ isOpen, onClose }) => (
-  <AlertDialog isOpen={isOpen} onClose={onClose}>
-    <AlertDialogOverlay />
-
-    <AlertDialogContent>
-      <AlertDialogHeader fontSize="2xl" fontWeight="bold" mx="auto" mt={2}>
-        Reviewer Allocation Successful
-      </AlertDialogHeader>
-
-      {/* <AlertDialogCloseButton /> */}
-
-      <AlertDialogBody textAlign="center">
-        Reviewers Allocated !
-      </AlertDialogBody>
-    </AlertDialogContent>
-  </AlertDialog>
-);
 
 function formatDate(date) {
   if (!(date instanceof Date)) {
@@ -192,6 +175,17 @@ const DataTable = ({ handleReviewer }) => {
     return foundBook._id;
   };
 
+  function filteredReviewersToDisplay(reviewersToDisplay, reviewersData, bookname){
+    let reviewers=[];
+    reviewersData.map((r)=>{
+      if (r.bookId===getBookIdByName(bookname)){
+        reviewers = r.reviewers
+      }
+    })
+    const filteredData = reviewersToDisplay.filter((reviewer) => !reviewers.includes(reviewer._id));
+    return filteredData;
+  }
+
   // Function to update an element in the reviewers array based on bookId
   const updateReviewerData = (bookname, value, index) => {
     const bookId = getBookIdByName(bookname);
@@ -245,7 +239,7 @@ const DataTable = ({ handleReviewer }) => {
               <Tr>
                 <Td key={2} border="0" py={2}>
                   <Search
-                    reviewers={reviewersToDisplay}
+                    reviewers={filteredReviewersToDisplay(reviewersToDisplay, reviewersData, rowData[0])}
                     onChange={updateReviewerData}
                     bookname={rowData[0]}
                     r={0}
@@ -256,7 +250,7 @@ const DataTable = ({ handleReviewer }) => {
               <Tr>
                 <Td key={3} border="0" py={2}>
                   <Search
-                    reviewers={reviewersToDisplay}
+                    reviewers={filteredReviewersToDisplay(reviewersToDisplay, reviewersData, rowData[0])}
                     onChange={updateReviewerData}
                     bookname={rowData[0]}
                     r={1}
@@ -266,7 +260,7 @@ const DataTable = ({ handleReviewer }) => {
               <Tr>
                 <Td key={4} border="0" py={2}>
                   <Search
-                    reviewers={reviewersToDisplay}
+                    reviewers={filteredReviewersToDisplay(reviewersToDisplay, reviewersData, rowData[0])}
                     onChange={updateReviewerData}
                     bookname={rowData[0]}
                     r={2}
@@ -308,7 +302,7 @@ const DataTable = ({ handleReviewer }) => {
           <Tfoot></Tfoot>
         </Table>
       </TableContainer>
-      <SuccessModal isOpen={successModalOpen} onClose={closeSuccessModal} />
+      <ModalComp heading="Reviewer Allocation Successful" message="Reviewers Allocated !" isOpen={successModalOpen} onClose={closeSuccessModal} />
     </>
   );
 };
