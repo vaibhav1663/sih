@@ -1,6 +1,6 @@
 const express = require("express");
 const helmet = require("helmet");
-const rateLimit = require("express-rate-limit");
+// const rateLimit = require("express-rate-limit");
 const app = express();
 const connectDB = require("./config/connectDB");
 const cors = require("cors");
@@ -8,9 +8,7 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json());
 
-const limiter = rateLimit({
-    max:10000
-});
+
 const userRouter = require("./routes/user");
 const bookRouter = require("./routes/books");
 const authorRouter = require("./routes/author");
