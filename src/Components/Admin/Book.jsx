@@ -1,17 +1,14 @@
 import React, { useEffect } from "react";
 import Navbar from "../Navbar";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import {
-    Accordion,
-    Box,
-    AccordionItem,
-    AccordionButton,
-    AccordionPanel,
-    AccordionIcon,
-    Spinner,
+    List,
+    ListItem,
+    ListIcon,
+    OrderedList,
+    UnorderedList,
 } from "@chakra-ui/react";
-import { ListItem, UnorderedList } from "@chakra-ui/react";
 const Book = () => {
     const { id } = useParams();
     // fetch data from mongo
@@ -84,6 +81,7 @@ const Book = () => {
                         }
                     );
                     let json = await response.json();
+                    console.log("json>>", json);
                     setReviews(reviews);
 
                     let temp = json.map((x) => {
@@ -96,7 +94,7 @@ const Book = () => {
                             ...d2,
                         };
                     });
-                    // console.log(temp);
+                    console.log(temp);
                     setArrToBeMapped(temp);
                 } catch (error) {
                     console.error("Error fetching data:", error);
@@ -177,101 +175,107 @@ const Book = () => {
                             <h1 className="text-2xl font-semibold">
                                 Reviewers
                             </h1>
-                            <div className="bg-grey-100">
+                            <div className="bg-grey-100 m-4">
                                 <h2 className="text-xl font-semibold">
                                     Reviewed
                                 </h2>
-                                <Accordion allowMultiple>
-                                    {reviewedReviewers.map((reviewer) => (
-                                        <AccordionItem
-                                            key={reviewer._id}
-                                            className="bg-gray-100 mb-2 border border-black rounded-lg"
-                                        >
-                                            <h2>
-                                                <AccordionButton className="bg-gray-100 rounded-lg">
-                                                    <Box
-                                                        as="span"
-                                                        flex="1"
-                                                        textAlign="left"
-                                                    >
-                                                        {reviewer.name}
-                                                        {" - "}
-                                                        {reviewer.email}
-                                                        {" - "}
-                                                        {reviewer._id}
-                                                    </Box>
-                                                    <AccordionIcon />
-                                                </AccordionButton>
-                                            </h2>
-                                            <AccordionPanel
-                                                pb={4}
-                                                className="rounded-lg text-left bg-gray-100"
+                                <div className="flex flex-col gap-2">
+                                    {reviewedReviewers ? (
+                                        reviewedReviewers.map((x, index) => (
+                                            <div
+                                                key={index}
+                                                className="flex flex-col gap-2 bg-gray-100 rounded-lg"
                                             >
-                                                <UnorderedList>
-                                                    {Object.entries(
-                                                        reviewer
-                                                    ).map(([key, value]) => (
-                                                        <ListItem key={key}>
-                                                            {key}: {value}
-                                                        </ListItem>
-                                                    ))}
-                                                </UnorderedList>
-                                            </AccordionPanel>
-                                        </AccordionItem>
-                                    ))}
-                                </Accordion>
+                                                <div className="flex flex-row justify-between">
+                                                    <div className="flex flex-col">
+                                                        <h3 className="text-lg font-semibold p-2">
+                                                            {x.name}
+                                                        </h3>
+                                                        <UnorderedList>
+                                                            <ListItem>
+                                                                Author
+                                                                credibitlity:{" "}
+                                                                {x.a_total}
+                                                            </ListItem>
+                                                            <ListItem>
+                                                                Publisher
+                                                                Credibility:{" "}
+                                                                {x.b_total}
+                                                            </ListItem>
+                                                            <ListItem>
+                                                                In General:{" "}
+                                                                {x.c_total}
+                                                            </ListItem>
+                                                            <ListItem>
+                                                                Physical
+                                                                Appearance,
+                                                                Structure &
+                                                                Organisation:{" "}
+                                                                {x.d_total}
+                                                            </ListItem>
+                                                            <ListItem>
+                                                                Subject Matter:{" "}
+                                                                {x.e_total}
+                                                            </ListItem>
+                                                        </UnorderedList>
+                                                    </div>
+
+                                                    <button className="h-fit p-2 bg-green-500 text-white rounded-lg shadow-md shadow-red-300/50 hover:bg-green-400 w-1/4">
+                                                        <Link
+                                                            to={`./review/${x.reviewerid}`}
+                                                        >
+                                                            View Detailed Review
+                                                        </Link>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <div className="flex flex-row justify-center items-center w-full">
+                                            <span className="text-2xl font-semibold">
+                                                Yet to be reviewed
+                                            </span>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                             {pendingReviewers ? (
-                                <div className="bg-grey-100">
+                                <div className="bg-grey-100 m-4">
                                     <h2 className="text-xl font-semibold">
-                                        Pending
+                                        Reviews Pending
                                     </h2>
-                                    <Accordion allowMultiple>
-                                        {pendingReviewers.map((reviewer) => (
-                                            <AccordionItem
-                                                key={reviewer._id}
-                                                className="bg-gray-100 mb-2 border border-black rounded-lg"
-                                            >
-                                                <h2>
-                                                    <AccordionButton className="bg-gray-100 rounded-lg">
-                                                        <Box
-                                                            as="span"
-                                                            flex="1"
-                                                            textAlign="left"
-                                                        >
-                                                            {reviewer.name}
-                                                            {" - "}
-                                                            {reviewer.email}
-                                                            {" - "}
-                                                            {reviewer._id}
-                                                        </Box>
-                                                        <AccordionIcon />
-                                                    </AccordionButton>
-                                                </h2>
-                                                <AccordionPanel
-                                                    pb={4}
-                                                    className="rounded-lg text-left bg-gray-100"
+                                    <div className="flex flex-col gap-2">
+                                        {pendingReviewers ? (
+                                            pendingReviewers.map((x, index) => (
+                                                <div
+                                                    key={index}
+                                                    className="flex flex-col gap-2 bg-gray-100 rounded-lg p-2"
                                                 >
-                                                    <UnorderedList>
-                                                        {Object.entries(
-                                                            reviewer
-                                                        ).map(
-                                                            ([key, value]) => (
-                                                                <ListItem
-                                                                    key={key}
-                                                                >
-                                                                    {key}:{" "}
-                                                                    {value}
-                                                                </ListItem>
-                                                            )
-                                                        )}
-                                                    </UnorderedList>
-                                                </AccordionPanel>
-                                            </AccordionItem>
-                                        ))}
-                                    </Accordion>
+                                                    <div className="flex flex-row justify-between">
+                                                        <h3 className="text-lg font-semibold">
+                                                            {x.name}
+                                                        </h3>
+                                                        <h3 className="text-lg font-semibold">
+                                                            {x.rating}
+                                                        </h3>
+                                                    </div>
+                                                    <p className="text-gray-700">
+                                                        {x.review}
+                                                    </p>
+                                                </div>
+                                            ))
+                                        ) : (
+                                            <div className="flex flex-row justify-center items-center w-full">
+                                                <span className="text-2xl font-semibold">
+                                                    Yet to be reviewed
+                                                </span>
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
-                            ) : null}
+                            ) : (
+                                <></>
+                            )}
                         </div>
                     </div>
                 </div>
