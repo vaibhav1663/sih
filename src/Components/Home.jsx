@@ -6,7 +6,6 @@ import Navbar from "./Navbar";
 import Carousel_loop from "./Carousel/Carousel_loop";
 import BookCard from "./Carousel/BookCard";
 import About from "./Carousel/About";
-import Info from "./Carousel/Info";
 import Footer from "./Carousel/Footer";
 
 let slides=[
@@ -16,17 +15,17 @@ let slides=[
         'para':"The Aims and objectives of the National Commission for Indian System of Medicine are toimprove access to quality and affordable Ayurveda, Unani, Siddha and Sowa-Rigpa (AUS&SR) medical education"
     },
     {
-        "imglink":"/img/image2.jpg",
+        "imglink":"/img/img2.jpg",
         "heading":"Textbook Quality Assessment Scale",
         'para':"Acharya Charaka states a good medical text with pure knowledge enlightens the whole subject in the manner how sun eliminates darkness and spreads brightness"
     },
     {
-        "imglink":"/img/image3.jpg",
+        "imglink":"/img/img3.jpg",
         "heading":"Textbook Quality Assessment Scale",
         'para':"Acharya Charaka states a good medical text with pure knowledge enlightens the whole subject in the manner how sun eliminates darkness and spreads brightness"
     },
     {
-        "imglink":"./img/image4.jpg",
+        "imglink":"./img/img4.jpg",
         "heading":"Textbook Quality Assessment Scale",
         'para':"Acharya Charaka states a good medical text with pure knowledge enlightens the whole subject in the manner how sun eliminates darkness and spreads brightness"
     },
@@ -46,7 +45,6 @@ const Home = () => {
             <div className="mt-28">
                 <BookCard></BookCard>
             </div>
-            <Info></Info>
             <Footer></Footer>
         </>
     );
