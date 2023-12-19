@@ -132,7 +132,7 @@ const AdminDashboard = () => {
         <h1 className="mt-8 font-bold text-4xl mb-8">Admin Dashboard</h1>
         <Tabs
           variant="soft-rounded"
-          colorScheme="green"
+          colorScheme="blue"
           className="mx-2 md:mx-6 lg:mx-10 py-6 border-2 border-gray-300 rounded-lg"
         >
           <TabList className="overflow-x-auto px-6">
