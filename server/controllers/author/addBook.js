@@ -1,6 +1,6 @@
 const { randomId, checkId, getId } = require("../../lib/uid_generator");
 const underReviewBook = require("../../model/recommendedBooks");
-
+const {sendMail} = require("./sendMail")
 exports.addBook = async (req, res) => {
   const { recomendedBy, name, desc, imageLink, buyLink, previewLink } =
     req.body;
@@ -10,6 +10,11 @@ exports.addBook = async (req, res) => {
   try {
     // Check if a book with the given name already exists
     const existingBook = await underReviewBook.findOne({ name });
+    const allBooks = (await underReviewBook.find()).map((x) => x.referenceId);
+    const referenceId = getId({ length: 8, existing: allBooks });
+    const date = new Date()
+    sendMail({name,desc, date, referenceId, recomendedBy})
+
     if (existingBook) {
       return res
         .status(422)
@@ -18,8 +23,6 @@ exports.addBook = async (req, res) => {
 
     // If the book doesn't exist, create a new one
 
-    const allBooks = (await underReviewBook.find()).map((x) => x.referenceId);
-    const referenceId = getId({ length: 8, existing: allBooks });
     const newBook = new underReviewBook({
       recomendedBy,
       underReview: false,
@@ -28,12 +31,11 @@ exports.addBook = async (req, res) => {
       imageLink,
       buyLink,
       previewLink,
-      date: new Date(),
+      date,
       referenceId,
       reviewersAlotted: [],
     });
     console.log(new Date(Date.now() + 24 * 60 * 60 * 1000));
-
     // Save the new book to the database
     const savedBook = await newBook.save();
 

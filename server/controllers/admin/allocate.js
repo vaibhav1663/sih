@@ -13,7 +13,7 @@ exports.addRecommendedBook = async (req, res) => {
                 underReview: true,
                 reviewersAlotted: reviewers,
             });
-            bookInRecommendedCol.underReview = true;
+                        bookInRecommendedCol.underReview = true;
             bookInRecommendedCol.reviewersAlotted = reviewers;
             newBookinBookCol = new Book({
                 _id: bookInRecommendedCol._id,

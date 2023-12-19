@@ -21,9 +21,9 @@ exports.reject = async (req, res) => {
         rejectObject.reviewerResponse = book.reviewerResponse;
       }
       // Create a new reject object
-
+      
       // Update the recommendedBook collection if the book is found
-      if (recommendedBook) {
+            if (recommendedBook) {
         await RecommendedBook.findByIdAndUpdate(_id, {
           $set: { reject: rejectObject },
         });
