@@ -1,21 +1,24 @@
-import React,{useState,useEffect} from "react";
-import Search  from "./AdminDashboard/Search";
+import React, { useState, useEffect } from "react";
+import Search from "./AdminDashboard/Search";
 import StatusCards from "./AdminDashboard/StatusCards";
 import BarChart from "./TeacherDashboard/BarChart";
 import { HStack, Text, Heading, Center, Button } from "@chakra-ui/react";
+import Navbar from "./Navbar";
+
 let API_ROUTE = "http://localhost:5000/books/getBooks";
 
 
 const PeerToPeer = () => {
     const [books, setBooks] = useState([null,null]);
-    const [compare, setCompare] = useState(false);
     const [data, setData] = useState([]);
+    const [pData, setPData] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await fetch(API_ROUTE);
                 const json = await response.json();
                 setData(json);
+                setPData(json);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -23,17 +26,9 @@ const PeerToPeer = () => {
         fetchData();
     }, []);
 
-    const data1 = [
-        { name: 'Author Credibility', score1: 10, score2: 20 },
-        { name: 'B', score1: 1, score2: 2 },
-        { name: 'C', score1: 1, score2: 2 },
-        { name: 'D', score1: 1, score2: 2 },
-        { name: 'E', score1: 1, score2: 2 },
-        { name: 'F', score1: 1, score2: 2 },
-      ];
 
     const handleCompare = () => {
-        setCompare(true);
+        ;
     }
 
     const handleChange = (banme,value, r) => {
@@ -46,41 +41,46 @@ const PeerToPeer = () => {
         });
     };
 
-    console.log(">b>",books)
+  console.log(">b>", books);
 
-    function filterData(data, books) {
-        if (!Array.isArray(books) || books.every(id => id === null)) {
-            // If books is not an array or all elements are null, return the original data
-            return data;
-        }
-    
-        // Filter data based on the presence of non-null values in the books array
-        const filteredData = data.filter(item => {
-            // Replace 'id' with the actual property you want to compare
-            return !books.includes(item._id);
-        });
-    
-        return filteredData;
+  function filterData(data, books) {
+    if (!Array.isArray(books) || books.every((id) => id === null)) {
+      // If books is not an array or all elements are null, return the original data
+      return data;
     }
 
-    return (<>
-        
-        <div className="p-20">
-        <Heading>Compare Books</Heading>
-            <Center>
-            <HStack>
+    // Filter data based on the presence of non-null values in the books array
+    const filteredData = data.filter((item) => {
+      // Replace 'id' with the actual property you want to compare
+      return !books.includes(item._id);
+    });
+
+    return filteredData;
+  }
+
+  return (
+    <>
+      <Navbar page="about" />
+
+      <div className="p-4 box text-center">
+        <h1 className="mt-8 font-bold text-4xl mb-8">Compare Books</h1>
+        <Center>
+          <HStack>
             <Search
-            reviewers={filterData(data,books)}
-            onChange={handleChange}
-            bookname=""
-            r="0"
+              reviewers={filterData(data, books)}
+              onChange={handleChange}
+              bookname=""            
+              r="0"
+              placeholder="Select Book"
             ></Search>
-            <Text>VS</Text>
+            {/* <Text>VS</Text> */}
+            <img src="/img/vsFinal.png" className="w-12 h-24 mx-4" alt="Flowbite Logo" />
             <Search
-            reviewers={filterData(data,books)}
-            onChange={handleChange}
-            bookname=""
-            r="1"
+              reviewers={filterData(data, books)}
+              onChange={handleChange}
+              bookname=""            
+              r="0"
+              placeholder="Select Book"
             ></Search>
             </HStack>
             <Button colorScheme="blue" onClick={handleCompare}>
@@ -88,10 +88,6 @@ const PeerToPeer = () => {
             </Button>
             </Center>
         </div>
-        {compare?<>
-        <div>
-            <BarChart books={data1}/>
-        </div></>:<></>}
         <div>
             <StatusCards data={data} admin={false}></StatusCards>
         </div>
