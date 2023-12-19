@@ -129,11 +129,11 @@ const AdminDashboard = () => {
       <Navbar page="admin" />
 
       <div className="p-4 box text-center">
-        <h1 className="mt-8 font-bold text-4xl mb-8">Admin Dashboard</h1>
+        <h1 className="mt-4 font-bold text-4xl mb-8">Admin Dashboard</h1>
         <Tabs
           variant="soft-rounded"
           colorScheme="blue"
-          className="mx-2 md:mx-6 lg:mx-10 py-6 border-2 border-gray-300 rounded-lg"
+          className="mx-2 md:mx-6 lg:mx-10 py-6 border-2 border-gray-300 rounded-md"
         >
           <TabList className="overflow-x-auto px-6">
             <Tab>Reviewer Allocation</Tab>
@@ -149,7 +149,7 @@ const AdminDashboard = () => {
                 Reviewer Allocation
               </h1>
 
-              <div className="mt-16 flex flex-col lg:flex-row">
+              <div className="mt-4 flex flex-col lg:flex-row">
                 <div className="w-full">
                   <ReviewerAllocationTable handleReviewer={handleReviewer} />
                 </div>
@@ -157,14 +157,17 @@ const AdminDashboard = () => {
             </TabPanel>
 
             <TabPanel>
-              <h1 className="text-2xl font-semibold mb-6">Review Status</h1>
+              <h1 className="text-2xl font-semibold">Review Status</h1>
               <StatusCards data={booksToBeMapped} admin={true}/>
             </TabPanel>
 
             <TabPanel>
               <h1 className="text-2xl font-semibold mb-6">Reviewers</h1>
-              <div className="w-full">
+
+              <div className="mt-4 flex flex-col lg:flex-row">
+                <div className="w-full">
                 <ReviewerDisplay reviewersToDisplay={reviewersToDisplay} />
+                </div>
               </div>
             </TabPanel>
           </TabPanels>

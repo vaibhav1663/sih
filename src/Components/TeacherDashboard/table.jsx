@@ -68,23 +68,26 @@ const DataTable = ({ recommenderID }) => {
 
     const header = [
         "Book Title",
-        "Author",
         "Submission Date",
         "Status: underReview",
     ];
-    const propsToDisplay = ["name", "author", "date", "underReview"];
+    const propsToDisplay = ["name", "date", "underReview"];
     console.log(">>", booksToDisplay);
     const tableData = booksToDisplay.map((dataBook) =>
         propsToDisplay.map((x) => String(dataBook[x]))
     );
     console.log("tableData :>> ", tableData);
     return (
-        <TableContainer>
-            <Table variant="simple">
+        <TableContainer style={{  borderRadius: "8px", border: "1px solid gray" }}>
+        <Table variant="simple">
                 <Thead>
                     <Tr>
                         {header.map((x, i) => (
-                            <Th key={i}>{x}</Th>
+                             <Th
+                             className="bg-blue-300 border-r-4 text-gray-800"
+                             width="10%"
+                             key={i}
+                         >{x}</Th>
                         ))}
                     </Tr>
                 </Thead>
@@ -92,13 +95,25 @@ const DataTable = ({ recommenderID }) => {
                     {tableData.map((rowData, i) => {
                         return (
                             <>
-                            <Tr key={i}>
+                           <Tr key={i} className={i % 2 === 0 ? '' : 'bg-blue-100'}>
                                 {rowData.map((col, j) => (
-                                    <Td key={j}>
-                                        {j == 2
-                                            ? formatDate(new Date(col))
-                                            : col}
-                                    </Td>
+                                    <Td
+                                    key={j}
+                                    // border="2px solid white"
+                                    style={{ maxWidth: '400px', textWrap: "balance" }}
+                                    className={`border border-2 py-2 ${j === 0 ? 'border-white' : 'break-all overflow-wrap border-blue-400'}`}
+                                  >
+                                    {j === 1
+                                      ? formatDate(new Date(col))
+                                      : col.length < 40
+                                      ? col
+                                      : (
+                                          <>
+                                            {col}
+                                          </>
+                                        )}
+                                  </Td>
+                                  
                                 ))}
                                 { rowData[3]=="true" ? <Td><Button
                                 onClick={handleChart}

@@ -227,7 +227,7 @@ const DataTable = ({ handleReviewer }) => {
   
     return (
         <>
-            <TableContainer style={{ paddingBottom: "8rem", borderRadius: "1rem", border: "1px solid grey" }}>
+            <TableContainer style={{ paddingBottom: "8rem", borderRadius: "8px", border: "1px solid grey" }}>
                 <Table variant="simple">
                     <Thead>
                         <Tr>
@@ -247,10 +247,10 @@ const DataTable = ({ handleReviewer }) => {
                 {rowData.map((col, j) => (
                   <Td
                     key={j}
-                    style={{maxWidth: '200px'}}
-                    className={`py-2 ${j === 0 ? '' : ''}`}
+                    style={{maxWidth: '180px', textWrap: "balance"}}
+                    className={`border border-2 py-2 ${j === 0 ? 'border-white' : 'break-all overflow-wrap border-blue-400'}`}
                   >
-                    {col.length<20?col:<>{col.substring(0,20)} <br/> {col.substring(20,40)} <br/> {col.substring(40,)} </>}
+                    {col}
                   </Td>
                             ))}
                             <Tr>
@@ -342,7 +342,7 @@ const DataTable = ({ handleReviewer }) => {
                                                 }}
                                                 colorScheme="blue"
                                             >
-                                                Submit Reviwers
+                                                Submit Reviewers
                                             </Button>
                                         </Td>
                                     </Tr>

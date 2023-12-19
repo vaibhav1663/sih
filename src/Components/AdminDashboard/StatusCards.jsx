@@ -24,7 +24,7 @@ function convertUrl(originalUrl) {
 }
 
 function StatusCards({ data, admin }) {
-  console.log({data});
+  console.log({ data });
   const sortedData = data.sort((a, b) => (a.allocated > b.allocated ? -1 : 1));
 
   return (
@@ -32,18 +32,21 @@ function StatusCards({ data, admin }) {
       {sortedData.map((book, index) => {
         return (
           <div
-            className="relative box p-4 mt-3 bg-white rounded-lg shadow-md border border-2  border-gray-300 hover:border-gray-500 hover:shadow-xl hover:shadow-blue-100 transition duration-300 ease-in-out"
+            className="relative box p-4 mt-1 bg-white rounded-lg shadow-md border border-2  border-gray-300 hover:border-gray-500 hover:shadow-xl hover:shadow-blue-100 transition duration-300 ease-in-out"
             key={index}
           >
             <a href={admin ? "/admin/book/" + book._id : "/book/" + book._id}>
               <div className="flex flex-col md:flex-col h-full">
-              <div className={`flex flex-col md:flex-col h-full ${admin ? 'md:h-2/3' : 'md:h-1/2'}`}>
-
+                <div
+                  className={`flex flex-col md:flex-col h-full ${
+                    admin ? "md:h-2/3" : "md:h-1/2"
+                  }`}
+                >
                   {book.imageLink ? (
                     <img
                       src={convertUrl(book.imageLink)}
                       alt="Book Thumbnail"
-                      className="w-full h-full rounded-lg shadow-md m-auto"
+                      className="w-full h-full rounded-md shadow-md m-auto"
                     />
                   ) : (
                     <img
@@ -57,8 +60,8 @@ function StatusCards({ data, admin }) {
                 <div className="pt-4 flex flex-col justify-center items-start">
                   {admin ? (
                     <>
-                      <h1 className="text-2xl font-semibold">{book.name}</h1>
-                      <p className="mb-3">by {book.author}</p>
+                      <h1 className="text-2xl font-semibold mb-2">{book.name}</h1>
+                      {/* <p className="mb-3">by {book.author}</p> */}
 
                       {book.allocated ? (
                         <>
@@ -100,7 +103,7 @@ function StatusCards({ data, admin }) {
                         <span className="text-gray-600 ml-1">
                           {book.publicRating && book.publicRating.toFixed(2)}
                         </span>
-</div>
+                      </div>
                       <h1 className="text-2xl font-semibold">{book.name}</h1>
 
                       <p
