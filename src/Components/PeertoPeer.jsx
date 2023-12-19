@@ -118,7 +118,7 @@ const PeerToPeer = () => {
               placeholder="Select Book"
             ></Search>
             </HStack>
-            <Button colorScheme="blue" onClick={handleCompare}>
+            <Button className="py-2" colorScheme="blue" onClick={handleCompare}>
                 Compare
             </Button>
             </Stack>

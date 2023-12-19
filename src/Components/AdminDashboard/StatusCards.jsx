@@ -1,15 +1,11 @@
 import {
   Tag,
   TagLabel,
-  TagLeftIcon,
-  TagRightIcon,
-  TagCloseButton,
 } from "@chakra-ui/react";
 import { TiTick } from "react-icons/ti";
 import { RxCross2 } from "react-icons/rx";
 
-import React, { useEffect } from "react";
-import { toast } from "react-toastify";
+import React from "react";
 
 function convertUrl(originalUrl) {
   // Extract the book ID from the original URL
