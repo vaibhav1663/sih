@@ -27,15 +27,11 @@ exports.publish = async (req, res) => {
       ) / foundBook.reviewerResponse.length;
 
     // Update the book document with the averages
-    const updatedBook = await Book.findByIdAndUpdate(
-      _id,
-      {
-        totalScore: totalScoreAverage,
-        isRecommended: isRecommended,
-        reviewerCount: foundBook.reviewerResponse.length,
-      },
-      { new: true }
-    );
+    const updatedBook = await Book.findByIdAndUpdate(_id, {
+      totalScore: totalScoreAverage,
+      isRecommended: isRecommended,
+      reviewerCount: foundBook.reviewerResponse.length,
+    });
 
     res.status(200).json(updatedBook);
   } catch (error) {
