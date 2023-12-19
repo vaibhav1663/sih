@@ -64,7 +64,7 @@ import {
                   icon={
                     <StarIcon
                       boxSize={4}
-                      color={idx <= ratings.uniquenessLevel ? "teal.500" : "gray.300"}
+                      color={idx <= ratings.uniquenessLevel ? "blue.500" : "gray.300"}
                     />
                   }
                   onClick={() => handleStarClick(idx, "uniquenessLevel")}
@@ -90,7 +90,7 @@ import {
                     icon={
                       <StarIcon
                         boxSize={4}
-                        color={idx <= ratings.clarityOfClaim ? "teal.500" : "gray.300"}
+                        color={idx <= ratings.clarityOfClaim ? "blue.500" : "gray.300"}
                       />
                     }
                     onClick={() => handleStarClick(idx, "clarityOfClaim")}
@@ -116,7 +116,7 @@ import {
                     icon={
                       <StarIcon
                         boxSize={4}
-                        color={idx <= ratings.focusOnUniqueness ? "teal.500" : "gray.300"}
+                        color={idx <= ratings.focusOnUniqueness ? "blue.500" : "gray.300"}
                       />
                     }
                     onClick={() => handleStarClick(idx, "focusOnUniqueness")}
@@ -142,7 +142,7 @@ import {
                     icon={
                       <StarIcon
                         boxSize={4}
-                        color={idx <= ratings.curriculumAndSyllabus ? "teal.500" : "gray.300"}
+                        color={idx <= ratings.curriculumAndSyllabus ? "blue.500" : "gray.300"}
                       />
                     }
                     onClick={() => handleStarClick(idx, "curriculumAndSyllabus")}

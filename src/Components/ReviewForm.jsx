@@ -380,7 +380,7 @@ const ReviewForm = ({ id, reviewerid, bookName }) => {
 
     return (
         <>
-            <Button onClick={onOpen}>Review</Button>
+            <Button onClick={onOpen} colorScheme="blue">Review</Button>
             <Modal isOpen={isOpen} onClose={onClose} size="7xl">
                 <ModalOverlay />
                 <ModalContent pb={12}>
@@ -397,7 +397,7 @@ const ReviewForm = ({ id, reviewerid, bookName }) => {
                         </Heading>
                         <Tabs
                             variant="soft-rounded"
-                            colorScheme="green"
+                            colorScheme="blue"
                             className="mx-10 border rounded px-2 py-4"
                             index={currentTab}
                             onChange={handleTabChange}
@@ -489,7 +489,7 @@ const ReviewForm = ({ id, reviewerid, bookName }) => {
                                 <Button
                                     onClick={handlePrev}
                                     disabled={currentTab === 0}
-                                    colorScheme="teal"
+                                    colorScheme="blue"
                                     variant="outline"
                                     className="mx-2"
                                 >
@@ -500,8 +500,7 @@ const ReviewForm = ({ id, reviewerid, bookName }) => {
                                     <>
                                         <Button
                                             onClick={() => handleSubmit()}
-                                            disabled={currentTab !== 7}
-                                            colorScheme="teal"
+                                            colorScheme="blue"
                                             variant="outline"
                                             className="mx-2"
                                         >
@@ -512,8 +511,7 @@ const ReviewForm = ({ id, reviewerid, bookName }) => {
                                     <>
                                         <Button
                                             onClick={handleNext}
-                                            disabled={currentTab === 7}
-                                            colorScheme="teal"
+                                            colorScheme="blue"
                                             variant="outline"
                                             className="mx-2"
                                         >

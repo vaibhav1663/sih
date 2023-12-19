@@ -98,7 +98,7 @@ const PhysicalAppearanceRating = ({OnDataChange}) => {
                         boxSize={4}
                         color={
                           idx <= ratings.attractivenessOfCoverPage
-                            ? "teal.500"
+                            ? "blue.500"
                             : "gray.300"
                         }
                       />
@@ -137,7 +137,7 @@ const PhysicalAppearanceRating = ({OnDataChange}) => {
                         boxSize={4}
                         color={
                           idx <= ratings.relevanceOfCoverPageDesign
-                            ? "teal.500"
+                            ? "blue.500"
                             : "gray.300"
                         }
                       />
@@ -169,7 +169,7 @@ const PhysicalAppearanceRating = ({OnDataChange}) => {
                         boxSize={4}
                         color={
                           idx <= ratings.dimensions
-                            ? "teal.500"
+                            ? "blue.500"
                             : "gray.300"
                         }
                       />
@@ -201,7 +201,7 @@ const PhysicalAppearanceRating = ({OnDataChange}) => {
                         boxSize={4}
                         color={
                           idx <= ratings.bulkiness
-                            ? "teal.500"
+                            ? "blue.500"
                             : "gray.300"
                         }
                       />
@@ -233,7 +233,7 @@ const PhysicalAppearanceRating = ({OnDataChange}) => {
                         boxSize={4}
                         color={
                           idx <= ratings.paperQuality
-                            ? "teal.500"
+                            ? "blue.500"
                             : "gray.300"
                         }
                       />
@@ -263,7 +263,7 @@ const PhysicalAppearanceRating = ({OnDataChange}) => {
                         boxSize={4}
                         color={
                           idx <= ratings.colors
-                            ? "teal.500"
+                            ? "blue.500"
                             : "gray.300"
                         }
                       />
@@ -301,7 +301,7 @@ const PhysicalAppearanceRating = ({OnDataChange}) => {
                         boxSize={4}
                         color={
                           idx <= ratings.pageLayout
-                            ? "teal.500"
+                            ? "blue.500"
                             : "gray.300"
                         }
                       />

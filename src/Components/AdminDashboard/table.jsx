@@ -245,10 +245,10 @@ const DataTable = ({ handleReviewer }) => {
                     {tableData.map((rowData, i) => (
                         <Tr key={i}>
                             {rowData.map((col, j) => (
-                                <Td key={j}>
+                                <Td key={j} style={{ maxWidth: '200px' }}>
                                     {" "}
                                     {/* Set a fixed width or use responsive values like "20%" */}
-                                    {col}
+                                    {col.length<20?col:<>{col.substring(0,20)}<br/>{col.substring(20,40)}<br/>{col.substring(40,)}</>}
                                 </Td>
                             ))}
                             <Tr>
