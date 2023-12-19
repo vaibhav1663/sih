@@ -3,9 +3,10 @@ import Navbar from "./Navbar";
 import Table from "./TeacherDashboard/table";
 import SuggestBook from "./SuggestBook";
 import { useAuthContext } from "../hooks/useAuthContext";
+import BarChart from "./TeacherDashboard/BarChart";
 const TeacherDashboard = () => {
     const teacher = useAuthContext();
-  const teacherID = String(teacher?.user?._id);
+    const teacherID = String(teacher?.user?._id);
   
   
     return (

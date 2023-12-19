@@ -142,9 +142,9 @@ const DataTable = ({ handleReviewer }) => {
     };
     fetchData();
   }, []);
-  const header = ["Book Title", "Author", "Date issued", "Reviewers"];
+  const header = ["Book Title", "Book Id", "Date issued", "Reviewers"];
 
-  const propsToDisplay = ["name", "author", "date"];
+  const propsToDisplay = ["name", "_id", "date"];
 
   console.log(">>", booksToDisplay);
   const tableData = booksToDisplay.map((dataBook) =>
@@ -216,7 +216,7 @@ const DataTable = ({ handleReviewer }) => {
 
   return (
     <>
-      <TableContainer >
+      <TableContainer style={{ paddingBottom: '8rem' }} >
         <Table variant="simple">
           <Thead>
             <Tr>
@@ -242,6 +242,7 @@ const DataTable = ({ handleReviewer }) => {
                     reviewers={filteredReviewersToDisplay(reviewersToDisplay, reviewersData, rowData[0])}
                     onChange={updateReviewerData}
                     bookname={rowData[0]}
+                    placeholder="Select Reviewer"
                     r={0}
                   ></Search>
                 </Td>
@@ -253,16 +254,18 @@ const DataTable = ({ handleReviewer }) => {
                     reviewers={filteredReviewersToDisplay(reviewersToDisplay, reviewersData, rowData[0])}
                     onChange={updateReviewerData}
                     bookname={rowData[0]}
+                    placeholder="Select Reviewer"
                     r={1}
                   ></Search>
                 </Td>
               </Tr>
               <Tr>
-                <Td key={4} border="0" py={2}>
+                <Td key={4} border="0" py={2} zIndex={20}>
                   <Search
                     reviewers={filteredReviewersToDisplay(reviewersToDisplay, reviewersData, rowData[0])}
                     onChange={updateReviewerData}
                     bookname={rowData[0]}
+                    placeholder="Select Reviewer"
                     r={2}
                   ></Search>
                 </Td>

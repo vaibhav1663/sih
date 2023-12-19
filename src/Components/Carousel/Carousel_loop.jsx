@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { BsArrowRightCircleFill, BsArrowLeftCircleFill } from "react-icons/bs";
-import {Typography, Button } from "@material-tailwind/react";
+import {Typography, } from "@material-tailwind/react";
 
 const CarouselSlider = ({slides}) => {
     const [current, setCurrent] = useState(0);

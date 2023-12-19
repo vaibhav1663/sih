@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const Dropdown = ({ reviewers, onChange, bookname, r }) => {
+const Dropdown = ({ reviewers, onChange, bookname, r, placeholder }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedItem, setSelectedItem] = useState('Select Reviewer');
+  const [selectedItem, setSelectedItem] = useState(placeholder);
   const dropdownRef = useRef(null);
 
   const reviewerData = reviewers.map((reviewer) => {
