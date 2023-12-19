@@ -8,7 +8,6 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json());
 
-
 const userRouter = require("./routes/user");
 const bookRouter = require("./routes/books");
 const authorRouter = require("./routes/author");
@@ -17,12 +16,12 @@ const adminRouter = require("./routes/admin");
 const bardRouter = require("./routes/bard");
 
 connectDB();
-app.use("/books", limiter, bookRouter);
-app.use("/author", limiter, authorRouter);
-app.use("/reviewer", limiter, reviewerRouter);
-app.use("/user", limiter, userRouter);
-app.use("/admin", limiter, adminRouter);
-app.use("/bard", limiter, bardRouter);
+app.use("/books", bookRouter);
+app.use("/author", authorRouter);
+app.use("/reviewer", reviewerRouter);
+app.use("/user", userRouter);
+app.use("/admin", adminRouter);
+app.use("/bard", bardRouter);
 
 app.listen(5000, () => {
   console.log("Server is runnning..");
