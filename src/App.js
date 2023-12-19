@@ -23,6 +23,8 @@ import AdminDashboard from "./Components/AdminDashboard.jsx";
 import AdminBook from "./Components/Admin/Book.jsx";
 import ReviewerDashboard from "./Components/ReviewerDashboard.jsx";
 import TeacherDashboard from "./Components/TeacherDashboard.jsx";
+import AI from "./Components/AI.jsx";
+import PeerToPeer from "./Components/PeertoPeer.jsx";
 
 function App() {
     const { user } = useAuthContext();
@@ -50,7 +52,7 @@ function App() {
                         <Route path="/about" element={<About />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<Signup />} />
-
+                        <Route path="/ai" element={<AI />} />
                         {/* Admin Routes */}
                         <Route path="/admin" element={<AdminDashboard />} />
                         <Route path="/admin/book/:id" element={<AdminBook />} />
@@ -75,6 +77,12 @@ function App() {
                             }
                         />
                         <Route path="/book/:id" element={<Book />} />
+                        <Route
+                        path = "/peer-to-peer"
+                        element={
+                            <PeerToPeer/>
+                        }/>
+
                     </Routes>
                 </div>
             </ChakraProvider>

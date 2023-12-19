@@ -17,9 +17,11 @@ import ReviewerDisplay from "./AdminDashboard/ReviewerDisplay";
 const GET_REVIEWERS_URL = "http://localhost:5000/admin/getReviewers";
 const GET_BOOKS_TO_REVIEW_URL =
   "http://localhost:5000/admin/getRecommendations";
-
+const GET_BOOKS = "http://localhost:5000/books/getBooks";
 const AdminDashboard = () => {
   const [reviewersToDisplay, setReviewersToDisplay] = useState([]);
+  const [books, setBooks] = useState([]);
+  const [booksToBeMapped, setBooksToBeMapped] = useState([]);
   const getReviewers = async (needle) => {
     try {
       const response = await fetch(GET_REVIEWERS_URL);
@@ -31,58 +33,53 @@ const AdminDashboard = () => {
       console.error("Error fetching reviewers:", error);
     }
   };
+
+  const getBooks = async (needle) => {
+    try {
+      const response = await fetch(GET_BOOKS  );
+      const data = await response.json();
+      console.log("FUCK THIS DATA :", data);
+      data && setBooks(data);
+      return;
+    } catch (error) {
+      console.error("Error fetching books:", error);
+    }
+  };
   useEffect(() => {
     getReviewers();
+    getBooks();
   }, []);
+  function convertUrl(originalUrl) {
+    // Extract the book ID from the original URL
+    const bookIdRegex = /id=([^&]+)/;
+    const match = originalUrl.match(bookIdRegex);
+    const bookId = match ? match[1] : null;
 
-  let dataAyurveda = [
-    {
-      name: "Book Name 1",
-      _id: "abc",
-      imageLink:
-        "https://m.media-amazon.com/images/I/51CFkZG8UjL._SX342_SY445_.jpg",
-      author: "Author 1",
-      received: 2,
-      allocated: true,
-    },
-    {
-      name: "Book Name 2",
-      _id: "def",
-      imageLink:
-        "https://m.media-amazon.com/images/I/51CFkZG8UjL._SX342_SY445_.jpg",
-      author: "Author 2",
-      received: 0,
-      allocated: false,
-    },
-    {
-      name: "Book Name 3",
-      _id: "xyz",
-      imageLink:
-        "https://m.media-amazon.com/images/I/51CFkZG8UjL._SX342_SY445_.jpg",
-      author: "Author 3",
-      received: 3,
-      allocated: true,
-    },
-    {
-      name: "Book Name 4",
-      _id: "xyz",
-      imageLink:
-        "https://m.media-amazon.com/images/I/51CFkZG8UjL._SX342_SY445_.jpg",
-      author: "Author 4",
-      received: 0,
-      allocated: false,
-    },
-    {
-      name: "Book Name 5",
-      _id: "xyz",
-      imageLink:
-        "https://m.media-amazon.com/images/I/51CFkZG8UjL._SX342_SY445_.jpg",
-      author: "Author 5",
-      received: 1,
-      allocated: true,
-    },
-  ];
-  //review cards data
+    if (bookId) {
+      // Create a new URL with the extracted book ID
+      const newUrl = `https://books.google.com/books/publisher/content?id=${bookId}&printsec=frontcover&img=1&zoom=3&edge=curl`;
+      return newUrl;
+    } else {
+      console.log("Unable to extract book ID from the URL");
+      return originalUrl;
+    }
+  }
+  useEffect(() => {
+    let arr = books;
+    arr = arr.map((item) => {
+      return {
+        name: item.name,
+        _id: item._id,
+        imageLink: convertUrl(item.imageLink),
+        author: "Anonymous",
+        received: item.reviewerResponse.length,
+        allocated: item.reviewerAlloted.length ? true : false,
+      };
+    });
+    console.log("array to be mapped", arr);
+    // setBooks(arr);
+    setBooksToBeMapped(arr);
+  }, [books]);
 
   const Data = [
     { bookId: 1, name: "Payal" },
@@ -161,7 +158,7 @@ const AdminDashboard = () => {
 
             <TabPanel>
               <h1 className="text-2xl font-semibold mb-6">Review Status</h1>
-              <StatusCards data={dataAyurveda} admin={true} />
+              <StatusCards data={booksToBeMapped} admin={true}/>
             </TabPanel>
 
             <TabPanel>

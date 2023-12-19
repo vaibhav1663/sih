@@ -8,7 +8,6 @@ import BookCard from "./Carousel/BookCard";
 import About from "./Carousel/About";
 import Info from "./Carousel/Info";
 import Footer from "./Carousel/Footer";
-import ReviewForm from "./ReviewForm";
 
 let slides=[
     {
@@ -49,7 +48,6 @@ const Home = () => {
             </div>
             <Info></Info>
             <Footer></Footer>
-            <ReviewForm></ReviewForm>
         </>
     );
 };
