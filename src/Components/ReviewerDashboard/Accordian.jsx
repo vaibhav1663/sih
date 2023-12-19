@@ -31,7 +31,7 @@ const BooksAccordion = ({ data, toBeReviewed, reviewerID }) => (
           <p>Author: {book.name}</p>
           <p className="mb-4">Description: {book.desc}</p>
           {!toBeReviewed ? (
-            <Link href={`/book/${book.id}`}>
+            <Link href={`/book/${book._id}`}>
               <Button className="font-medium text-xl">Preview Book</Button>
             </Link>
           ) : (
