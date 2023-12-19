@@ -256,16 +256,16 @@ const Book = () => {
                   </div>
                 </div>
               ) : (
-                <></>
-              )}
-              <Button
+                <>              <Button
                 colorScheme="blue"
                 onClick={handlePublish}
                 mx="auto"
                 display="block"
               >
                 Publish
-              </Button>
+              </Button></>
+              )}
+
             </div>
           </div>
         </div>
