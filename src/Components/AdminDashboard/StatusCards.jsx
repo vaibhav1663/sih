@@ -28,7 +28,7 @@ function convertUrl(originalUrl) {
 }
 
 function StatusCards({ data, admin }) {
-  console.log(data);
+  console.log({data});
   const sortedData = data.sort((a, b) => (a.allocated > b.allocated ? -1 : 1));
 
   return (
@@ -104,7 +104,7 @@ function StatusCards({ data, admin }) {
                         <span className="text-gray-600 ml-1">
                           {book.publicRating && book.publicRating.toFixed(2)}
                         </span>
-                      </div>
+</div>
                       <h1 className="text-2xl font-semibold">{book.name}</h1>
 
                       <p
@@ -113,9 +113,9 @@ function StatusCards({ data, admin }) {
                         }}
                         className="text-gray-600 mt-2"
                       >
-                        {book.desc.length < 100
-                          ? book.desc
-                          : book.desc.substring(0, 100) + "..."}
+                        {book?.desc?.length < 100
+                          ? book?.desc
+                          : book?.desc?.substring(0, 100) + "..."}
                       </p>
                     </>
                   )}
