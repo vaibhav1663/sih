@@ -93,6 +93,7 @@ const AI = () => {
                     id="genbtn"
                     type="button"
                     onClick={getResponse}
+                    style={{ minHeight: "40px" }}
                     className="ai-btn h-fit mx-auto"
                 >
                     Generate Review

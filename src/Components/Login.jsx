@@ -63,7 +63,7 @@ const Login = () => {
                     <div className="flex flex-1 flex-col  justify-center space-y-5 max-w-md">
                         <div className="flex flex-col space-y-2 text-center">
                             <h2 className="text-3xl md:text-4xl font-bold text-blue-900">
-                                Sign in to account
+                                Log in to your account
                             </h2>
                             {/* <p className="text-md md:text-xl">Log in to place the order,no password require!</p> */}
                         </div>
@@ -91,7 +91,10 @@ const Login = () => {
 
                             <p className=" mb-1">
                                 Don't have an Account?{" "}
-                                <Link className="font-bold" to="/signup">
+                                <Link
+                                    className="font-bold underline"
+                                    to="/signup"
+                                >
                                     Create one
                                 </Link>
                             </p>
@@ -101,15 +104,21 @@ const Login = () => {
                     <div className="flex justify-center flex-col m-auto mb-16 text-center text-lg ">
                         <p className="font-bold mb-1">
                             Built by{" "}
-                            <a href="/" className="">
+                            <a href="/" className="text-blue-700">
                                 Team Brocoders for SIH
                             </a>
                         </p>
-                        <p>Contact us</p>
-                        <div className="flex items-center justify-center  dark:text-slate-200 space-x-2 mt-4 flex-wrap">
+                        <p
+                            style={{
+                                color: "dodgerblue",
+                            }}
+                        >
+                            Contact us
+                        </p>
+                        <div className="flex items-center justify-center  dark:text-slate-200 space-x-2 flex-wrap">
                             <a
                                 href="https://www.linkedin.com/in/frankuxui/"
-                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-slate-700"
+                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-blue-800"
                             >
                                 <svg
                                     width="24"
@@ -131,7 +140,7 @@ const Login = () => {
                             </a>
                             <a
                                 href="https://github.com/frankuxui"
-                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-slate-700"
+                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-blue-800"
                             >
                                 <svg
                                     width="24"
@@ -147,7 +156,7 @@ const Login = () => {
                             </a>
                             <a
                                 href="https://www.instagram.com/frankuxui/"
-                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-slate-700"
+                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-blue-800"
                             >
                                 <svg
                                     width="24"
@@ -163,7 +172,7 @@ const Login = () => {
                             </a>
                             <a
                                 href="https://twitter.com/frankuxui"
-                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-slate-700"
+                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-blue-800"
                             >
                                 <svg
                                     width="24"
