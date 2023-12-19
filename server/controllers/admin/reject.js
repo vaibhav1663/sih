@@ -12,27 +12,27 @@ exports.reject = async (req, res) => {
     const book = await Book.findById(_id);
 
     if (recommendedBook || book) {
+      // Create a new reject object
       const rejectObject = {
         message: message,
         date: new Date(),
         deadline: deadline,
       };
-      if (book) {
-        rejectObject.reviewerResponse = book.reviewerResponse;
-      }
-      // Create a new reject object
 
       // Update the recommendedBook collection if the book is found
       if (recommendedBook) {
         await RecommendedBook.findByIdAndUpdate(_id, {
-          $set: { reject: rejectObject },
+          $push: { reject: rejectObject },
         });
+      }
+      if (book) {
+        rejectObject.reviewerResponse = book.reviewerResponse;
       }
 
       // Update the Books collection if the book is found
       if (book) {
         await Book.findByIdAndUpdate(_id, {
-          $set: { reject: rejectObject },
+          $push: { reject: rejectObject },
         });
       }
 
