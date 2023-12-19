@@ -3,12 +3,7 @@ import Navbar from "../Navbar";
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import { Button } from "@chakra-ui/react";
-import {
-    ListItem,
-    UnorderedList,
-    HStack,
-    Center,
-} from "@chakra-ui/react";
+import { ListItem, UnorderedList, HStack, Center } from "@chakra-ui/react";
 import RejectComp from "../AdminDashboard/Reject";
 
 const Book = () => {
@@ -19,21 +14,23 @@ const Book = () => {
     const [reviews, setReviews] = useState([]);
     const [reviewedReviewers, setArrToBeMapped] = useState([]);
     const [pendingReviewers, setPendingReviewers] = useState([]);
-    // function convertUrl(originalUrl) {
-    //     // Extract the book ID from the original URL
-    //     const bookIdRegex = /id=([^&]+)/;
-    //     const match = originalUrl.match(bookIdRegex);
-    //     const bookId = match ? match[1] : null;
 
-    //     if (bookId) {
-    //         // Create a new URL with the extracted book ID
-    //         const newUrl = `https://books.google.com/books/publisher/content?id=${bookId}&printsec=frontcover&img=1&zoom=3&edge=curl`;
-    //         return newUrl;
-    //     } else {
-    //         console.log("Unable to extract book ID from the URL");
-    //         return originalUrl;
-    //     }
-    // }
+    function convertUrl(originalUrl) {
+        // Extract the book ID from the original URL
+        const bookIdRegex = /id=([^&]+)/;
+        const match = originalUrl.match(bookIdRegex);
+        const bookId = match ? match[1] : null;
+
+        if (bookId) {
+            // Create a new URL with the extracted book ID
+            const newUrl = `https://books.google.com/books/publisher/content?id=${bookId}&printsec=frontcover&img=1&zoom=3&edge=curl`;
+            return newUrl;
+        } else {
+            console.log("Unable to extract book ID from the URL");
+            return originalUrl;
+        }
+    }
+
     const handlePublish = async () => {
         try {
             const response = await fetch(
@@ -174,155 +171,174 @@ const Book = () => {
                 </div>
             </>
         );
-    }
-    return (
-        <>
-            <Navbar page="book-reviews" />
-            <div className="box p-4 bg-gray-200">
-                <div className="flex flex-col md:flex-row gap-6">
-                    <div className="w-full md:w-1/3">
-                        <img
-                            className="w-full"
-                            src={book.imageLink}
-                            alt={book.name}
-                        />
-                    </div>
-                    <div className="flex flex-col gap-2 w-full md:w-2/3">
-                        <h1 className="text-2xl font-semibold">{book.name}</h1>
-                        <p className="text-gray-700">Bood Id: {book._id}</p>
-                        <p className="text-gray-700 mt-1">{book.desc}</p>
-                        <div className="flex flex-col gap-2">
-                            <div className="links flex flex-row text-center gap-4">
-                                <a
-                                    href={book.previewLink}
-                                    target="_blank"
-                                    className="p-2 bg-yellow-500 text-white rounded-lg shadow-md shadow-yellow-300/50 hover:bg-yellow-400 w-full"
-                                >
-                                    Preview
-                                </a>
-                                <a
-                                    href={book.buyLink}
-                                    target="_blank"
-                                    className="p-2 bg-blue-700 text-white rounded-lg shadow-md shadow-blue-300/50 hover:bg-blue-600 w-full"
-                                >
-                                    Buy
-                                </a>
-                            </div>
+    } else if (book.imageLink) {
+        return (
+            <>
+                <Navbar page="book-reviews" />
+                <div className="max-w-screen-xl m-auto box p-4">
+                    <div className="flex flex-col md:flex-row gap-6">
+                        <div className="w-full md:w-1/3">
+                            <img
+                                className="w-full"
+                                src={convertUrl(book.imageLink)}
+                                alt={book.name}
+                            />
                         </div>
-                        <div>
+                        <div className="flex flex-col gap-2 w-full md:w-2/3">
                             <h1 className="text-2xl font-semibold">
-                                Reviewers
+                                {book.name}
                             </h1>
-                            <div className="bg-grey-100 m-4">
-                                <h2 className="text-xl font-semibold">
-                                    Reviewed
-                                </h2>
-                                <div className="flex flex-col gap-2">
-                                    {reviewedReviewers ? (
-                                        reviewedReviewers.map((x, index) => (
-                                            <div
-                                                key={index}
-                                                className="flex flex-col gap-2 bg-gray-100 rounded-lg"
-                                            >
-                                                <div className="flex flex-row justify-between">
-                                                    <div className="flex flex-col p-4">
-                                                        <h3 className="text-lg font-semibold p-2">
-                                                            {x.name}
-                                                        </h3>
-                                                        <UnorderedList>
-                                                            <ListItem>
-                                                                Author
-                                                                credibitlity:{" "}
-                                                                {x.a_total}
-                                                            </ListItem>
-                                                            <ListItem>
-                                                                Publisher
-                                                                Credibility:{" "}
-                                                                {x.b_total}
-                                                            </ListItem>
-                                                            <ListItem>
-                                                                In General:{" "}
-                                                                {x.c_total}
-                                                            </ListItem>
-                                                            <ListItem>
-                                                                Physical
-                                                                Appearance,
-                                                                Structure &
-                                                                Organisation:{" "}
-                                                                {x.d_total}
-                                                            </ListItem>
-                                                            <ListItem>
-                                                                Subject Matter:{" "}
-                                                                {x.e_total}
-                                                            </ListItem>
-                                                        </UnorderedList>
-                                                    </div>
-
-                                                    <button className="h-fit p-2 my-auto mr-4 bg-green-600 text-white rounded-lg shadow-md shadow-red-300/50 hover:bg-green-400 w-1/4">
-                                                        <Link
-                                                            to={`./review/${x.reviewerid}`}
-                                                        >
-                                                            View Detailed Review
-                                                        </Link>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        ))
-                                    ) : (
-                                        <div className="flex flex-row justify-center items-center w-full">
-                                            <span className="text-2xl font-semibold">
-                                                Yet to be reviewed
-                                            </span>
-                                        </div>
-                                    )}
+                            <p className="text-gray-700">Bood Id: {book._id}</p>
+                            <p className="text-gray-700 mt-1">{book.desc}</p>
+                            <div className="flex flex-col gap-2">
+                                <div className="links flex flex-row text-center gap-4">
+                                    <a
+                                        href={book.previewLink}
+                                        target="_blank"
+                                        className="p-2 bg-yellow-500 text-white rounded-lg shadow-md shadow-yellow-300/50 hover:bg-yellow-400 w-full"
+                                    >
+                                        Preview
+                                    </a>
+                                    <a
+                                        href={book.buyLink}
+                                        target="_blank"
+                                        className="p-2 bg-blue-700 text-white rounded-lg shadow-md shadow-blue-300/50 hover:bg-blue-600 w-full"
+                                    >
+                                        Buy
+                                    </a>
                                 </div>
                             </div>
-                            {pendingReviewers ? (
+                            <div>
+                                <h1 className="text-2xl font-semibold">
+                                    Reviewers
+                                </h1>
                                 <div className="bg-grey-100 m-4">
                                     <h2 className="text-xl font-semibold">
-                                        Reviews Pending
+                                        Reviewed
                                     </h2>
                                     <div className="flex flex-col gap-2">
-                                        {pendingReviewers.map((x, index) => (
-                                            <div
-                                                key={index}
-                                                className="flex flex-col gap-2 bg-gray-100 rounded-lg p-2"
-                                            >
-                                                <div className="flex flex-row justify-between">
-                                                    <h3 className="text-lg font-semibold">
-                                                        {x.name}
-                                                    </h3>
-                                                    <h3 className="text-lg font-semibold">
-                                                        {x.rating}
-                                                    </h3>
-                                                </div>
-                                                <p className="text-gray-700">
-                                                    {x.review}
-                                                </p>
+                                        {reviewedReviewers ? (
+                                            reviewedReviewers.map(
+                                                (x, index) => (
+                                                    <div
+                                                        key={index}
+                                                        className="flex flex-col gap-2 bg-gray-100 rounded-lg"
+                                                    >
+                                                        <div className="flex flex-row justify-between">
+                                                            <div className="flex flex-col p-4 pt-1">
+                                                                <h3 className="text-lg font-semibold p-2">
+                                                                    {x.name}
+                                                                </h3>
+                                                                <UnorderedList>
+                                                                    <ListItem>
+                                                                        Author
+                                                                        credibitlity:{" "}
+                                                                        {
+                                                                            x.a_total
+                                                                        }
+                                                                    </ListItem>
+                                                                    <ListItem>
+                                                                        Publisher
+                                                                        Credibility:{" "}
+                                                                        {
+                                                                            x.b_total
+                                                                        }
+                                                                    </ListItem>
+                                                                    <ListItem>
+                                                                        In
+                                                                        General:{" "}
+                                                                        {
+                                                                            x.c_total
+                                                                        }
+                                                                    </ListItem>
+                                                                    <ListItem>
+                                                                        Physical
+                                                                        Appearance,
+                                                                        Structure
+                                                                        &
+                                                                        Organisation:{" "}
+                                                                        {
+                                                                            x.d_total
+                                                                        }
+                                                                    </ListItem>
+                                                                    <ListItem>
+                                                                        Subject
+                                                                        Matter:{" "}
+                                                                        {
+                                                                            x.e_total
+                                                                        }
+                                                                    </ListItem>
+                                                                </UnorderedList>
+                                                            </div>
+
+                                                            <button className="h-fit p-2 mt-2 mr-3 mr-4 bg-green-600 text-white rounded-lg shadow-md shadow-red-300/50 hover:bg-green-400 w-1/4">
+                                                                <Link
+                                                                    to={`./review/${x.reviewerid}`}
+                                                                >
+                                                                    View
+                                                                    Detailed
+                                                                    Review
+                                                                </Link>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            )
+                                        ) : (
+                                            <div className="flex flex-row justify-center items-center w-full">
+                                                <span className="text-2xl font-semibold">
+                                                    Yet to be reviewed
+                                                </span>
                                             </div>
-                                        ))}
+                                        )}
                                     </div>
                                 </div>
-                            ) : (
-                                <></>
-                            )}
-                            <Center>
-                            <HStack>
-                            <RejectComp _id={book._id} />
-                            <Button
-                                colorScheme="blue"
-                                onClick={handlePublish}
-                                display="block"
-                            >
-                                Publish
-                            </Button>
-                            </HStack>
-                            </Center>
+                                {pendingReviewers ? (
+                                    <div className="bg-grey-100 m-4">
+                                        <h2 className="text-xl font-semibold">
+                                            Reviews Pending
+                                        </h2>
+                                        <div className="flex flex-col gap-2">
+                                            {pendingReviewers.map(
+                                                (x, index) => (
+                                                    <div
+                                                        key={index}
+                                                        className="flex flex-col gap-2 bg-gray-100 rounded-lg p-2"
+                                                    >
+                                                        <div className="flex flex-row justify-between">
+                                                            <h3 className="text-lg font-semibold">
+                                                                {x.name}
+                                                            </h3>
+                                                            <h3 className="text-lg font-semibold">
+                                                                {x.rating}
+                                                            </h3>
+                                                        </div>
+                                                        <p className="text-gray-700">
+                                                            {x.review}
+                                                        </p>
+                                                    </div>
+                                                )
+                                            )}
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <></>
+                                )}
+                                <Center gap={4}>
+                                    <RejectComp _id={book._id} />
+                                    <Button
+                                        onClick={handlePublish}
+                                        display="block"
+                                        className="!w-min !px-4 !bg-blue-700 !text-white !rounded-lg !shadow-md !shadow-blue-300/50 hover:!bg-blue-600 !w-full"
+                                    >
+                                        Publish
+                                    </Button>
+                                </Center>
+                            </div>
                         </div>
                     </div>
                 </div>
-              </div>
-              {/* {pendingReviewers ? (
+                {/* {pendingReviewers ? (
                 <div className="bg-grey-100 m-4">
                   <h2 className="text-xl font-semibold">Reviews Pending</h2>
                   <div className="flex flex-col gap-2">
@@ -350,8 +366,18 @@ const Book = () => {
                 Publish
               </Button>
               )} */}
-        </>
-    );
+            </>
+        );
+    } else {
+        return (
+            <>
+                <Navbar page="book-reviews" />
+                <div className="p-2 flex flex-row justify-center items-center w-full">
+                    <span className="text-2xl font-semibold">Loading ...</span>
+                </div>
+            </>
+        );
+    }
 };
 
 export default Book;
