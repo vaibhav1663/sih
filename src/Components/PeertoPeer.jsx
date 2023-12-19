@@ -1,20 +1,21 @@
 import React,{useState,useEffect} from "react";
 import Search  from "./AdminDashboard/Search";
 import StatusCards from "./AdminDashboard/StatusCards";
+import BarChart from "./TeacherDashboard/BarChart";
 import { HStack, Text, Heading, Center, Button } from "@chakra-ui/react";
 let API_ROUTE = "http://localhost:5000/books/getBooks";
 
+
 const PeerToPeer = () => {
     const [books, setBooks] = useState([null,null]);
+    const [compare, setCompare] = useState(false);
     const [data, setData] = useState([]);
-    const [pData, setPData] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await fetch(API_ROUTE);
                 const json = await response.json();
                 setData(json);
-                setPData(json);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -22,9 +23,17 @@ const PeerToPeer = () => {
         fetchData();
     }, []);
 
+    const data1 = [
+        { name: 'Author Credibility', score1: 10, score2: 20 },
+        { name: 'B', score1: 1, score2: 2 },
+        { name: 'C', score1: 1, score2: 2 },
+        { name: 'D', score1: 1, score2: 2 },
+        { name: 'E', score1: 1, score2: 2 },
+        { name: 'F', score1: 1, score2: 2 },
+      ];
 
     const handleCompare = () => {
-        ;
+        setCompare(true);
     }
 
     const handleChange = (banme,value, r) => {
@@ -79,6 +88,10 @@ const PeerToPeer = () => {
             </Button>
             </Center>
         </div>
+        {compare?<>
+        <div>
+            <BarChart books={data1}/>
+        </div></>:<></>}
         <div>
             <StatusCards data={data} admin={false}></StatusCards>
         </div>
