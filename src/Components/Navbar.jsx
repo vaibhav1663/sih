@@ -167,6 +167,19 @@ const Navbar = (props) => {
                             </a>
                         </li>
 
+                        <li>
+                            <a
+                                href="/peer-to-peer"
+                                className={
+                                    props.page === "peer-to-peer"
+                                        ? highlight
+                                        : simple
+                                }
+                            >
+                                Compare Books
+                            </a>
+                        </li>
+
                         {!user ? (
                             <>
                                 <li>
