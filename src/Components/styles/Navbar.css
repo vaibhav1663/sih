@@ -1,0 +1,49 @@
+.ai-btn {
+  height: 40px;
+  padding: 4px 24px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right, #7941f7, #a340fd, #1eaaee, #1eaaee, #a340fd, #7941f7);
+  background-size: 250%;
+  background-position: left;
+  color: #ffd277;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: 1s;
+  overflow: hidden;
+}
+
+.ai-btn::before {
+  position: absolute;
+  content: "AI";
+  color: #ffd277;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96%;
+  height: 84%;
+  border-radius: 8px;
+  transition-duration: 1s;
+  background-color: rgba(0, 0, 0, 0.842);
+  background-size: 200%;
+  font-weight: 700;
+}
+
+.ai-btn:hover {
+  background-position: right;
+  transition-duration: 0.75s;
+}
+
+.ai-btn:hover::before {
+  background-position: right;
+  transition-duration: 1s;
+  background-color: navy;
+
+}
+
+.ai-btn:active {
+  transform: scale(0.95);
+}
