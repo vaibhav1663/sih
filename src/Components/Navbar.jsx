@@ -53,6 +53,11 @@ const Navbar = (props) => {
                         />
                     </svg>
                 </button>
+                {user ? (
+  <p className="text-white">{user.role.charAt(0).toUpperCase() + user.role.slice(1)}'s Login</p>
+) : (
+  null
+)}
                 <div
                     className={
                         menu
@@ -61,7 +66,7 @@ const Navbar = (props) => {
                     }
                     id="navbar-default"
                 >
-                    <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+<ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                         <li>
                             <a
                                 href="/"

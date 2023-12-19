@@ -216,7 +216,7 @@ const DataTable = ({ handleReviewer }) => {
 
   return (
     <>
-      <TableContainer >
+      <TableContainer style={{ paddingBottom: '8rem' }} >
         <Table variant="simple">
           <Thead>
             <Tr>
@@ -260,7 +260,7 @@ const DataTable = ({ handleReviewer }) => {
                 </Td>
               </Tr>
               <Tr>
-                <Td key={4} border="0" py={2}>
+                <Td key={4} border="0" py={2} zIndex={20}>
                   <Search
                     reviewers={filteredReviewersToDisplay(reviewersToDisplay, reviewersData, rowData[0])}
                     onChange={updateReviewerData}
