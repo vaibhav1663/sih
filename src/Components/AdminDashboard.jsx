@@ -133,7 +133,7 @@ const AdminDashboard = () => {
         <Tabs
           variant="soft-rounded"
           colorScheme="blue"
-          className="mx-2 md:mx-6 lg:mx-10 py-6 border-2 border-gray-300 rounded-lg"
+          className="mx-2 md:mx-6 lg:mx-10 py-6 border-2 border-gray-300 rounded-md"
         >
           <TabList className="overflow-x-auto px-6">
             <Tab>Reviewer Allocation</Tab>

@@ -247,10 +247,10 @@ const DataTable = ({ handleReviewer }) => {
                 {rowData.map((col, j) => (
                   <Td
                     key={j}
-                    style={{maxWidth: '200px'}}
+                    style={{maxWidth: '180px', textWrap: "balance"}}
                     className={`py-2 ${j === 0 ? '' : ''}`}
                   >
-                    {col.length<20?col:<>{col.substring(0,20)} <br/> {col.substring(20,40)} <br/> {col.substring(40,)} </>}
+                    {col}
                   </Td>
                             ))}
                             <Tr>
