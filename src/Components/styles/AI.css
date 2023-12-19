@@ -1,0 +1,32 @@
+:root {
+  background-color: #111827;
+}
+
+.ai-btn {
+  height: 40px;
+  padding: 4px 24px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right, #7941f7, #a340fd, #1eaaee, #1eaaee, #a340fd, #7941f7);
+  background-size: 250%;
+  background-position: left;
+  color: #ffd277;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: 1s;
+  overflow: hidden;
+  font-weight: 700;
+}
+
+.ai-btn:hover {
+  background-position: right;
+  transition-duration: 0.75s;
+}
+
+.ai-btn:active {
+  transform: scale(0.95);
+}
+
