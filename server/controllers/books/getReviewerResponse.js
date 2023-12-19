@@ -43,14 +43,14 @@ console.log({resp})
       return totalResponse
     }, ({ A: [], B: 0, C: [], D: [], E: [], F: [], G: [] }));
     console.log({ reviewerResponse })
+    const totalReviewers = Object.entries(reviewerResponse).length
     const detailedReviewerResponse = Object.entries(reviewerResponse).map(([key, value]) => {
       return [keyMappings[key
-      ], value instanceof Array ? value.reduce((t, x) => t + x, 0) : value];
+      ], value instanceof Array ? value.reduce((t, x) => t + x, 0)/totalReviewers : value/totalReviewers];
     })
     console.log({ detailedReviewerResponse })
     return detailedReviewerResponse;
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal server error" });
+    return ({ error: "Internal server error" });
   }
 };
