@@ -4,10 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import { Button } from "@chakra-ui/react";
 import {
-    List,
     ListItem,
-    ListIcon,
-    OrderedList,
     UnorderedList,
     HStack,
     Center,
@@ -127,7 +124,7 @@ const Book = () => {
                     let temp = json.map((x) => {
                         const id1 = x.reviewerid;
                         // console.log(x);
-                        const d2 = reviewers.filter((y) => y._id == id1)[0];
+                        const d2 = reviewers.filter((y) => y._id === id1)[0];
                         // console.log(">>>",d2, reviewers);
                         return {
                             ...x,
@@ -150,7 +147,7 @@ const Book = () => {
         let pending = reviewers.filter((x) => {
             let r = true;
             reviewedReviewers.forEach((obj) => {
-                if (obj.reviewerid == x._id) {
+                if (obj.reviewerid === x._id) {
                     r = false;
                 }
             });

@@ -1,4 +1,4 @@
-.ai-btn {
+.nav-btn {
   height: 40px;
   padding: 4px 24px;
   border: none;
@@ -16,7 +16,7 @@
   overflow: hidden;
 }
 
-.ai-btn::before {
+.nav-btn::before {
   position: absolute;
   content: "Book Whisperer AI";
   color: #ffd277;
@@ -32,18 +32,18 @@
   font-weight: 700;
 }
 
-.ai-btn:hover {
+.nav-btn:hover {
   background-position: right;
   transition-duration: 0.75s;
 }
 
-.ai-btn:hover::before {
+.nav-btn:hover::before {
   background-position: right;
   transition-duration: 1s;
   background-color: navy;
 
 }
 
-.ai-btn:active {
+.nav-btn:active {
   transform: scale(0.95);
 }
