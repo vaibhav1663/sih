@@ -20,22 +20,22 @@ exports.getReviewerResponse = async (req) => {
 
     if (!allBooks)
       return res.status(404).json({ error: "Book not found" });
-console.log({allBooks})
+// console.log({allBooks})
 const resp =  allBooks.reviewerResponse;
-console.log({resp})
+// console.log({resp})
 
     const reviewerResponse = allBooks.reviewerResponse.map((x) => Object.fromEntries(Object.entries(x).filter(([key, value]) => keysToInclude.indexOf(key) != -1))).reduce((totalResponse, response) => {
       console.log(response);
       (Object.entries(response).forEach((obj) => {
         const [key, value] = obj;
-        console.log({ key, value })
+        // console.log({ key, value })
         if (key == "B") {
 
           totalResponse[key] += Number(value);
           return totalResponse
         }
         if (value instanceof Array && value) {
-          console.log(">>", { value })
+          // console.log(">>", { value })
           totalResponse[key] = value?.map((x, i) => Number(x) + (totalResponse[key][i] ? totalResponse[key][i] : 0))
         };
       }))
@@ -48,7 +48,7 @@ console.log({resp})
       return [keyMappings[key
       ], value instanceof Array ? value.reduce((t, x) => t + x, 0)/totalReviewers : value/totalReviewers];
     })
-    console.log({ detailedReviewerResponse })
+    // console.log({ detailedReviewerResponse })
     return detailedReviewerResponse;
   } catch (error) {
     return ({ error: "Internal server error" });
