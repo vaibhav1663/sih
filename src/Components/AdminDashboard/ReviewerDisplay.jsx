@@ -75,7 +75,7 @@ const ReviewerDisplay = ({ reviewersToDisplay }) => {
 
     return (
         <>
-            <TableContainer style={{ paddingBottom: "8rem", marginTop: "4rem", borderRadius: "1rem", border: "1px solid grey" }}>
+            <TableContainer style={{ paddingBottom: "8rem",  borderRadius: "8px", border: "1px solid grey" }}>
                 <Table variant="simple">
                     <Thead>
                         <Tr>
@@ -94,7 +94,9 @@ const ReviewerDisplay = ({ reviewersToDisplay }) => {
                         {reviewersData.map((rowData, i) => (
                             <Tr  className={i % 2 === 0 ? '' : 'bg-blue-100'} key={i}>
                                 {propsToDisplay.map((prop, j) => (
-                                    <Td  key={j} className={`py-2 ${j === 0 ? '' : ''}`}>{rowData[prop]}</Td>
+                                    <Td  key={j}  className={`border border-2 py-2 ${j === 0 ? 'border-white' : 'break-all overflow-wrap border-blue-400'}`}>{rowData[prop]}</Td>
+                                   
+
                                 ))}
                                 <Td>
                                     <ul>
@@ -109,7 +111,7 @@ const ReviewerDisplay = ({ reviewersToDisplay }) => {
                                                                 <Button
                                                                     mb={2}
                                                                     mr={2}
-                                                                    className="font-medium text-xl"
+                                                                    className="font-medium text-xl hover:bg-blue-400"
                                                                 >
                                                                     {item.name}
                                                                 </Button>

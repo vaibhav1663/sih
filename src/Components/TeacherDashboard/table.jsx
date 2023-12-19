@@ -99,8 +99,9 @@ const DataTable = ({ recommenderID }) => {
                                 {rowData.map((col, j) => (
                                     <Td
                                     key={j}
+                                    // border="2px solid white"
                                     style={{ maxWidth: '400px', textWrap: "balance" }}
-                                    className={`py-2 ${j === 0 ? '' : 'break-all overflow-wrap'}`}
+                                    className={`border border-2 py-2 ${j === 0 ? 'border-white' : 'break-all overflow-wrap border-blue-400'}`}
                                   >
                                     {j === 1
                                       ? formatDate(new Date(col))
