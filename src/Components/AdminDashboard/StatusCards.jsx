@@ -32,7 +32,7 @@ function StatusCards({ data, admin }) {
   const sortedData = data.sort((a, b) => (a.allocated > b.allocated ? -1 : 1));
 
   return (
-    <div className="p-16 grid gap-5 grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
+    <div className="p-4 max-w-screen-xl m-auto grid gap-5 grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
       {sortedData.map((book, index) => {
         return (
           <div

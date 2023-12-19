@@ -215,7 +215,7 @@ const Book = () => {
                       Content: {book.avgUserRating.content.toFixed(1)}
                     </span>
                     <span>
-                      Appearance: {book.avgUserRating.appearance.toFixed(1)}
+                      Appearance: {book.avgUserRating.appearance.toFixed(1) || "No reviews"}
                     </span>
                     <span>
                       Overall: {book.avgUserRating.overall.toFixed(1)}
