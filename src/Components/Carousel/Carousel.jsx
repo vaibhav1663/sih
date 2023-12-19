@@ -6,8 +6,8 @@ const CarouselDefault=()=> {
     <Carousel className="h-[92%]">
       <div className="relative h-full w-full">
       <img
-        src="/img/image1.jpg"
-        alt="image 1"
+        src="/img/img1.jpg"
+        alt="img 1"
         className="h-full w-full object-cover"
       />
       <div className="absolute inset-0 grid h-full w-full items-center bg-black/75">
@@ -32,8 +32,8 @@ improve access to quality and affordable Ayurveda, Unani, Siddha and Sowa-Rigpa 
       </div>
       <div className="relative h-full w-full">
       <img
-        src="/img/image1.jpg"
-        alt="image 1"
+        src="/img/img1.jpg"
+        alt="img 1"
         className="h-full w-full object-cover"
       />
       <div className="absolute inset-0 grid h-full w-full items-center bg-black/75">
@@ -57,8 +57,8 @@ improve access to quality and affordable Ayurveda, Unani, Siddha and Sowa-Rigpa 
       </div>
       <div className="relative h-full w-full">
       <img
-        src="/img/image1.jpg"
-        alt="image 1"
+        src="/img/img1.jpg"
+        alt="img 1"
         className="h-full w-full object-cover"
       />
       <div className="absolute inset-0 grid h-full w-full items-center bg-black/75">
@@ -85,8 +85,8 @@ improve access to quality and affordable Ayurveda, Unani, Siddha and Sowa-Rigpa 
       </div>
       <div className="relative h-full w-full">
       <img
-        src="/img/image1.jpg"
-        alt="image 1"
+        src="/img/img1.jpg"
+        alt="img 1"
         className="h-full w-full object-cover"
       />
       <div className="m-auto absolute inset-0 grid h-full w-full items-center bg-black/75">

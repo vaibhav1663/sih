@@ -157,7 +157,18 @@ const Navbar = (props) => {
                                 </li>
                             </>
                         ) : null}
-
+                        <li>
+                            <a
+                                href="/peer-to-peer"
+                                className={
+                                    props.page === "peer-to-peer"
+                                        ? highlight
+                                        : simple
+                                }
+                            >
+                                Compare Books
+                            </a>
+                        </li>
                         <li>
                             <a
                                 href="/ai"
@@ -166,6 +177,8 @@ const Navbar = (props) => {
                                 <button className="ai-btn">Book Whisperer AI</button>
                             </a>
                         </li>
+
+
 
                         {!user ? (
                             <>

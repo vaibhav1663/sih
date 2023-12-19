@@ -9,7 +9,10 @@ import {
     ListIcon,
     OrderedList,
     UnorderedList,
+    HStack,
+    Center,
 } from "@chakra-ui/react";
+import RejectComp from "../AdminDashboard/Reject";
 
 const Book = () => {
     const { id } = useParams();
@@ -19,21 +22,21 @@ const Book = () => {
     const [reviews, setReviews] = useState([]);
     const [reviewedReviewers, setArrToBeMapped] = useState([]);
     const [pendingReviewers, setPendingReviewers] = useState([]);
-    function convertUrl(originalUrl) {
-        // Extract the book ID from the original URL
-        const bookIdRegex = /id=([^&]+)/;
-        const match = originalUrl.match(bookIdRegex);
-        const bookId = match ? match[1] : null;
+    // function convertUrl(originalUrl) {
+    //     // Extract the book ID from the original URL
+    //     const bookIdRegex = /id=([^&]+)/;
+    //     const match = originalUrl.match(bookIdRegex);
+    //     const bookId = match ? match[1] : null;
 
-        if (bookId) {
-            // Create a new URL with the extracted book ID
-            const newUrl = `https://books.google.com/books/publisher/content?id=${bookId}&printsec=frontcover&img=1&zoom=3&edge=curl`;
-            return newUrl;
-        } else {
-            console.log("Unable to extract book ID from the URL");
-            return originalUrl;
-        }
-    }
+    //     if (bookId) {
+    //         // Create a new URL with the extracted book ID
+    //         const newUrl = `https://books.google.com/books/publisher/content?id=${bookId}&printsec=frontcover&img=1&zoom=3&edge=curl`;
+    //         return newUrl;
+    //     } else {
+    //         console.log("Unable to extract book ID from the URL");
+    //         return originalUrl;
+    //     }
+    // }
     const handlePublish = async () => {
         try {
             const response = await fetch(
@@ -183,7 +186,7 @@ const Book = () => {
                     <div className="w-full md:w-1/3">
                         <img
                             className="w-full"
-                            src={convertUrl(book.imageLink)}
+                            src={book.imageLink}
                             alt={book.name}
                         />
                     </div>
@@ -225,7 +228,7 @@ const Book = () => {
                                                 className="flex flex-col gap-2 bg-gray-100 rounded-lg"
                                             >
                                                 <div className="flex flex-row justify-between">
-                                                    <div className="flex flex-col">
+                                                    <div className="flex flex-col p-4">
                                                         <h3 className="text-lg font-semibold p-2">
                                                             {x.name}
                                                         </h3>
@@ -258,7 +261,7 @@ const Book = () => {
                                                         </UnorderedList>
                                                     </div>
 
-                                                    <button className="h-fit p-2 bg-green-500 text-white rounded-lg shadow-md shadow-red-300/50 hover:bg-green-400 w-1/4">
+                                                    <button className="h-fit p-2 my-auto mr-4 bg-green-600 text-white rounded-lg shadow-md shadow-red-300/50 hover:bg-green-400 w-1/4">
                                                         <Link
                                                             to={`./review/${x.reviewerid}`}
                                                         >
@@ -306,53 +309,50 @@ const Book = () => {
                             ) : (
                                 <></>
                             )}
+                            <Center>
+                            <HStack>
+                            <RejectComp _id={book._id} />
                             <Button
                                 colorScheme="blue"
                                 onClick={handlePublish}
-                                mx="auto"
                                 display="block"
                             >
                                 Publish
                             </Button>
+                            </HStack>
+                            </Center>
                         </div>
                     </div>
                 </div>
-            </div>
-            {pendingReviewers ? (
+              </div>
+              {/* {pendingReviewers ? (
                 <div className="bg-grey-100 m-4">
-                    <h2 className="text-xl font-semibold">Reviews Pending</h2>
-                    <div className="flex flex-col gap-2">
-                        {pendingReviewers.map((x, index) => (
-                            <div
-                                key={index}
-                                className="flex flex-col gap-2 bg-gray-100 rounded-lg p-2"
-                            >
-                                <div className="flex flex-row justify-between">
-                                    <h3 className="text-lg font-semibold">
-                                        {x.name}
-                                    </h3>
-                                    <h3 className="text-lg font-semibold">
-                                        {x.rating}
-                                    </h3>
-                                </div>
-                                <p className="text-gray-700">{x.review}</p>
-                            </div>
-                        ))}
-                    </div>
+                  <h2 className="text-xl font-semibold">Reviews Pending</h2>
+                  <div className="flex flex-col gap-2">
+                    {pendingReviewers.map((x, index) => (
+                      <div
+                        key={index}
+                        className="flex flex-col gap-2 bg-gray-100 rounded-lg p-2"
+                      >
+                        <div className="flex flex-row justify-between">
+                          <h3 className="text-lg font-semibold">{x.name}</h3>
+                          <h3 className="text-lg font-semibold">{x.rating}</h3>
+                        </div>
+                        <p className="text-gray-700">{x.review}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-            ) : (
-                <>
-                    {" "}
-                    <Button
-                        colorScheme="blue"
-                        onClick={handlePublish}
-                        mx="auto"
-                        display="block"
-                    >
-                        Publish
-                    </Button>
-                </>
-            )}
+              ) : (
+                            <Button
+                colorScheme="blue"
+                onClick={handlePublish}
+                mx="auto"
+                display="block"
+              >
+                Publish
+              </Button>
+              )} */}
         </>
     );
 };
