@@ -84,7 +84,7 @@ const RejectComp = ({ _id }) => {
                 placeholder="We are sending this book back to you because..."
                 required
                 value={message}
-                onChange={handleTextareaChange} // Use the new handler
+                onChange={handleTextareaChange}
                 height="16rem"
                 maxH="16rem"
               />
