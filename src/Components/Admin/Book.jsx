@@ -317,36 +317,42 @@ const Book = () => {
                         </div>
                     </div>
                 </div>
-              </div>
-              {pendingReviewers ? (
-                <div className="bg-grey-100 m-4">
-                  <h2 className="text-xl font-semibold">Reviews Pending</h2>
-                  <div className="flex flex-col gap-2">
-                    {pendingReviewers.map((x, index) => (
-                      <div
-                        key={index}
-                        className="flex flex-col gap-2 bg-gray-100 rounded-lg p-2"
-                      >
-                        <div className="flex flex-row justify-between">
-                          <h3 className="text-lg font-semibold">{x.name}</h3>
-                          <h3 className="text-lg font-semibold">{x.rating}</h3>
-                        </div>
-                        <p className="text-gray-700">{x.review}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                <>              <Button
-                colorScheme="blue"
-                onClick={handlePublish}
-                mx="auto"
-                display="block"
-              >
-                Publish
-              </Button></>
-              )}
             </div>
+            {pendingReviewers ? (
+                <div className="bg-grey-100 m-4">
+                    <h2 className="text-xl font-semibold">Reviews Pending</h2>
+                    <div className="flex flex-col gap-2">
+                        {pendingReviewers.map((x, index) => (
+                            <div
+                                key={index}
+                                className="flex flex-col gap-2 bg-gray-100 rounded-lg p-2"
+                            >
+                                <div className="flex flex-row justify-between">
+                                    <h3 className="text-lg font-semibold">
+                                        {x.name}
+                                    </h3>
+                                    <h3 className="text-lg font-semibold">
+                                        {x.rating}
+                                    </h3>
+                                </div>
+                                <p className="text-gray-700">{x.review}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ) : (
+                <>
+                    {" "}
+                    <Button
+                        colorScheme="blue"
+                        onClick={handlePublish}
+                        mx="auto"
+                        display="block"
+                    >
+                        Publish
+                    </Button>
+                </>
+            )}
         </>
     );
 };
