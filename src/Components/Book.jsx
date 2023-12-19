@@ -7,7 +7,7 @@ const Book = () => {
   function convertUrl(originalUrl) {
     // Extract the book ID from the original URL
     const bookIdRegex = /id=([^&]+)/;
-    const match = originalUrl.match(bookIdRegex);
+    const match = originalUrl?.match(bookIdRegex);
     const bookId = match ? match[1] : null;
 
     if (bookId) {
