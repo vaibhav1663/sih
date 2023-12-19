@@ -31,6 +31,7 @@ exports.addBook = async (req, res) => {
       date: new Date(),
       referenceId,
       reviewersAlotted: [],
+      reject: [],
     });
     console.log(new Date(Date.now() + 24 * 60 * 60 * 1000));
 
