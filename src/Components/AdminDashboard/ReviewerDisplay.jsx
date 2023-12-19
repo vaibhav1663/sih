@@ -75,13 +75,13 @@ const ReviewerDisplay = ({ reviewersToDisplay }) => {
 
     return (
         <>
-            <TableContainer>
+            <TableContainer style={{ paddingBottom: "8rem", borderRadius: "1rem", border: "1px solid grey" }}>
                 <Table variant="simple">
                     <Thead>
                         <Tr>
                             {headers.map((header, index) => (
                                 <Th
-                                    className="bg-blue-100 border-r-4 !border-indigo-500/50"
+                                    className="bg-blue-100 border-r-4"
                                     width="10%"
                                     key={index}
                                 >
@@ -92,9 +92,9 @@ const ReviewerDisplay = ({ reviewersToDisplay }) => {
                     </Thead>
                     <Tbody>
                         {reviewersData.map((rowData, i) => (
-                            <Tr key={i}>
+                            <Tr  className={i % 2 === 0 ? '' : 'bg-blue-100'} key={i}>
                                 {propsToDisplay.map((prop, j) => (
-                                    <Td key={j}>{rowData[prop]}</Td>
+                                    <Td  key={j} className={`py-2 ${j === 0 ? '' : ''}`}>{rowData[prop]}</Td>
                                 ))}
                                 <Td>
                                     <ul>

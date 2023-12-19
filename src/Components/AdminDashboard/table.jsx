@@ -227,13 +227,13 @@ const DataTable = ({ handleReviewer }) => {
   
     return (
         <>
-            <TableContainer style={{ paddingBottom: "8rem" }}>
+            <TableContainer style={{ paddingBottom: "8rem", borderRadius: "1rem", border: "1px solid grey" }}>
                 <Table variant="simple">
                     <Thead>
                         <Tr>
                             {header.map((x, i) => (
                                 <Th
-                                    className="bg-blue-100 border-r-4 !border-indigo-500/50"
+                                    className="bg-blue-100 border-r-4 "
                                     width="10%"
                                     key={i}
                                 >
@@ -243,13 +243,15 @@ const DataTable = ({ handleReviewer }) => {
                         </Tr>
                     </Thead>
                     {tableData.map((rowData, i) => (
-                        <Tr key={i}>
-                            {rowData.map((col, j) => (
-                                <Td key={j}>
-                                    {" "}
-                                    {/* Set a fixed width or use responsive values like "20%" */}
-                                    {col}
-                                </Td>
+              <Tr key={i} className={i % 2 === 0 ? '' : 'bg-blue-100'}>
+                {rowData.map((col, j) => (
+                  <Td
+                    key={j}
+                    style={{maxWidth: '200px'}}
+                    className={`py-2 ${j === 0 ? '' : ''}`}
+                  >
+                    {col.length<20?col:<>{col.substring(0,20)} <br/> {col.substring(20,40)} <br/> {col.substring(40,)} </>}
+                  </Td>
                             ))}
                             <Tr>
                                 <Td key={2} border="0" py={2}>
