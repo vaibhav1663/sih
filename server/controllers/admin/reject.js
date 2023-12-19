@@ -1,6 +1,6 @@
 const Book = require("../../model/bookSchema");
 const RecommendedBook = require("../../model/recommendedBooks");
-
+const {sendMailReject} = require("./sendMail")
 exports.reject = async (req, res) => {
   try {
     const { _id, message, deadline } = req.body;
@@ -19,6 +19,7 @@ exports.reject = async (req, res) => {
         deadline: deadline,
       };
       // Update the recommendedBook collection if the book is found
+      
             if (recommendedBook) {
         await RecommendedBook.findByIdAndUpdate(_id, {
           $push: { reject: rejectObject },
@@ -34,7 +35,8 @@ exports.reject = async (req, res) => {
           $push: { reject: rejectObject },
         });
       }
-
+      
+      sendMailReject({ bookId:_id, deadline, message});
       return res.status(200).json({ message: "Book rejected successfully" });
     }
 

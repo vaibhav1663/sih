@@ -13,16 +13,15 @@ exports.addBook = async (req, res) => {
     const allBooks = (await underReviewBook.find()).map((x) => x.referenceId);
     const referenceId = getId({ length: 8, existing: allBooks });
     const date = new Date()
-    sendMail({name,desc, date, referenceId, recomendedBy})
-
+    
     if (existingBook) {
       return res
-        .status(422)
+      .status(422)
         .json({ error: "Book with this name already exists" });
-    }
+      }
 
     // If the book doesn't exist, create a new one
-
+    
     const newBook = new underReviewBook({
       recomendedBy,
       underReview: false,
@@ -36,6 +35,7 @@ exports.addBook = async (req, res) => {
       reviewersAlotted: [],
       reject: [],
     });
+    sendMail({name,desc, date, referenceId, recomendedBy})
     console.log(new Date(Date.now() + 24 * 60 * 60 * 1000));
     // Save the new book to the database
     const savedBook = await newBook.save();

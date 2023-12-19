@@ -50,27 +50,20 @@ Best regards,
 }
 exports.sendMailReject = async ({ bookId, deadline, message }) => {
 
-    const subject = `Request for Book Review: ${bookTitle}`;
-    const { recomendedBy: reviewerId, name: bookName } = await recommendedBooks.findById(bookId)
+    const { recomendedBy: teacherId, name: bookName } = await recommendedBooks.findById(bookId)
+    const subject = `Revision Request for "${bookName}" - Book ID: ${bookId}`;
     // Sample Variables
-    const { name: reviewerName, email: reviewerEmail } = await book.findById(reviewerId);
+    const { name: teacherName, email: teacherEmail } = await book.findById(teacherId);
 
-    console.log({ name, email })
+    console.log({ teacherEmail, teacherName })
 
-    const receivers = [reviewerEmail]
+    const receivers = [teacherEmail]
 
     // JavaScript String Template
-    let mailContent = `
-Subject: Revision Request for "${bookName}" - Book ID: ${bookId}
-
-Dear [Recipient's Name],
+    let mailContent = `<pre>
+Dear ${teacherName},
 
 I hope this message finds you well. I am writing to inform you that, unfortunately, the book with the title "${bookName}" (Book ID: ${bookId}) has been reviewed, and we are requesting a revision.
-
-**Reviewer Information:**
-- **Name:** ${reviewerName}
-- **Email:** ${reviewerEmail}
-- **Reviewer ID:** ${reviewerId}
 
 **Rejection Message:**
 The reviewer has provided the following feedback on the book:
@@ -80,7 +73,7 @@ The reviewer has provided the following feedback on the book:
 **Revision Deadline:**
 To address the reviewer's concerns and enhance the manuscript, we kindly request that you make the necessary revisions and resubmit the book by the following deadline:
 
-- **Revision Deadline:** ${deadline}
+- **Revision Deadline:** ${deadline} days
 
 Please take the reviewer's comments into consideration and ensure that the necessary improvements are made within the specified timeframe. We believe that your commitment to refining the content will contribute to the overall quality of the book.
 
@@ -89,10 +82,9 @@ If you have any questions or require further clarification regarding the reviewe
 Thank you for your understanding, and we look forward to receiving the revised manuscript.
 
 Best regards,
-
+</pre>
 `;
     
-
     const response = await sendMail({ subject, receivers, htmlBody: mailContent });
     console.log({response})
 }

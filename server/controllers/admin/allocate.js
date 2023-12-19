@@ -1,7 +1,7 @@
 const Book = require("../../model/bookSchema");
 const RecommendedBook = require("../../model/recommendedBooks");
 const ReviewerQueue = require("../../model/reviewerqueue");
-
+const { sendMailAllocate } = require("./sendMail")
 exports.addRecommendedBook = async (req, res) => {
   try {
     const { id, reviewers } = req.body;
@@ -35,6 +35,13 @@ exports.addRecommendedBook = async (req, res) => {
         users: [],
         reject: [],
       }).save();
+      const mailsToSend = reviewers.map(async (id) => {
+        return await sendMailAllocate({ bookTitle: bookInRecommendedCol.name, desc: bookInRecommendedCol.desc, reviewerId: id, bookId: bookInRecommendedCol._id });
+      })
+      const mailsResponse = await Promise.all(
+        mailsToSend
+      );
+      
     } else {
       return res.status(404).json({ error: "Book not found" });
     }
