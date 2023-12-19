@@ -11,6 +11,7 @@ import {
     TableContainer,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
+import { Button } from "@material-tailwind/react";
 
 const GET_AUTHOR_BOOKS_URL = "http://localhost:5000/author/getBooks";
 const match = (a, b) => {
@@ -60,6 +61,11 @@ const DataTable = ({ recommenderID }) => {
         };
         fetchData();
     }, [recommenderID]);
+
+    const handleChart=()=>{
+        ;
+    }
+
     const header = [
         "Book Title",
         "Author",
@@ -85,6 +91,7 @@ const DataTable = ({ recommenderID }) => {
                 <Tbody>
                     {tableData.map((rowData, i) => {
                         return (
+                            <>
                             <Tr key={i}>
                                 {rowData.map((col, j) => (
                                     <Td key={j}>
@@ -93,7 +100,13 @@ const DataTable = ({ recommenderID }) => {
                                             : col}
                                     </Td>
                                 ))}
+                                { rowData[3]=="true" ? <Td><Button
+                                onClick={handleChart}
+                                colorScheme="blue">
+                                More
+                                </Button></Td> :<></>}
                             </Tr>
+                            </>
                         );
                     })}
                 </Tbody>

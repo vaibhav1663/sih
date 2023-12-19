@@ -24,6 +24,7 @@ import AdminBook from "./Components/Admin/Book.jsx";
 import ReviewerDashboard from "./Components/ReviewerDashboard.jsx";
 import TeacherDashboard from "./Components/TeacherDashboard.jsx";
 import AI from "./Components/AI.jsx";
+import PeerToPeer from "./Components/PeertoPeer.jsx";
 
 function App() {
     const { user } = useAuthContext();
@@ -76,6 +77,12 @@ function App() {
                             }
                         />
                         <Route path="/book/:id" element={<Book />} />
+                        <Route
+                        path = "/peer-to-peer"
+                        element={
+                            <PeerToPeer/>
+                        }/>
+
                     </Routes>
                 </div>
             </ChakraProvider>
