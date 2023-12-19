@@ -80,33 +80,29 @@ const PDF = () => {
                 })
             );
         }
-
+        console.log(docData);
         // console.log({ docData });
-
-        const pdf = new jsPDF();
-        const parameters = [
-            "Ethical issues(related to author editor and publishor)",
-            "Author credibitlity",
-            "Publisher credibitlity",
-            "In General",
-            "Physical Appearance Structure and Organisation",
-            "Subject Matter - Concept",
-            "Subject Matter - Is the content promoting?",
-            "Subject Matter - Misc",
-            "Illustrations",
-        ];
-
-        pdf.text(`${book.name}`, 20, 10);
-
-        docData.forEach((item, i) => {
-            const columns = [parameters[i], "Score"];
-            pdf.autoTable({
-                head: [columns],
-                body: item,
-            });
-        });
-
-        pdf.save(`${bookID}-${reviewerID}.pdf`);
+        // const pdf = new jsPDF();
+        // const parameters = [
+        //     "Ethical issues(related to author editor and publishor)",
+        //     "Author credibitlity",
+        //     "Publisher credibitlity",
+        //     "In General",
+        //     "Physical Appearance Structure and Organisation",
+        //     "Subject Matter - Concept",
+        //     "Subject Matter - Is the content promoting?",
+        //     "Subject Matter - Misc",
+        //     "Illustrations",
+        // ];
+        // pdf.text(`${book.name}`, 20, 10);
+        // docData.forEach((item, i) => {
+        //     const columns = [parameters[i], "Score"];
+        //     pdf.autoTable({
+        //         head: [columns],
+        //         body: item,
+        //     });
+        // });
+        // pdf.save(`${bookID}-${reviewerID}.pdf`);
     }, [data]);
     return (
         <div>
