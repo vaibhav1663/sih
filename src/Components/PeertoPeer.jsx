@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Search from "./AdminDashboard/Search";
 import StatusCards from "./AdminDashboard/StatusCards";
 import BarChart from "./TeacherDashboard/BarChart";
-import { HStack, Center, Button } from "@chakra-ui/react";
+import { HStack, Center, Button,Stack } from "@chakra-ui/react";
 import Navbar from "./Navbar";
 
 let COMPARE_BOOKS_URL = "http://localhost:5000/books/compareBooksById";
@@ -12,12 +12,14 @@ let REVIEWED_BOOK_URL = "http://localhost:5000/books/getReviewedBooks"
 const PeerToPeer = () => {
     const [compare, setCompare] = useState(false)
     const [books, setBooks] = useState([null,null]);
+    const [bookname, setBookNames] = useState([null,null]);
     const [data, setData] = useState([]);
+    const [data1, setData1] = useState([]);
     
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await REVIEWED_BOOK_URL;
+                const response = await fetch(REVIEWED_BOOK_URL);
                 const json = await response.json();
                 setData(json);
             } catch (error) {
@@ -34,7 +36,7 @@ const PeerToPeer = () => {
 
             const giveCompare = async () => {
             const response = await fetch(
-                `http://localhost:5000/books/addPublicReview/`,
+                `http://localhost:5000/books/compareBooksById/`,
                 {
                 method: "POST",
                 headers: {
@@ -43,16 +45,15 @@ const PeerToPeer = () => {
                 body: JSON.stringify({
                    id1:books[0],
                    id2:books[1],
+
                 }),
                 }
             );
-            console.log({response});
-            if (response) {
-                
-            }
+            const responseJSON = await response.json()
+            console.log({responseJSON})
+            setData1(responseJSON)
             };
             giveCompare();
-
     }
 
     const handleChange = (bname,value, r) => {
@@ -64,6 +65,8 @@ const PeerToPeer = () => {
             return updatedBooks;
         });
     };
+
+    
 
   console.log(">b>", books);
 
@@ -82,14 +85,13 @@ const PeerToPeer = () => {
     return filteredData;
   }
 
-  const data1 = [
-    { name: 'Author Credibility', score1: 10, score2: 20 },
-    { name: 'B', score1: 1, score2: 2 },
-    { name: 'C', score1: 1, score2: 2 },
-    { name: 'D', score1: 1, score2: 2 },
-    { name: 'E', score1: 1, score2: 2 },
-    { name: 'F', score1: 1, score2: 2 },
-  ];
+
+  function getBookName(bookId) {
+    const book = data.find((d) => d._id === bookId);
+    return book ? book.name : null;
+  }
+
+  
 
   return (
     <>
@@ -98,6 +100,7 @@ const PeerToPeer = () => {
       <div className="p-4 box text-center">
         <h1 className="mt-8 font-bold text-4xl mb-8">Compare Books</h1>
         <Center>
+          <Stack>
           <HStack>
             <Search
               reviewers={filterData(data, books)}
@@ -106,24 +109,24 @@ const PeerToPeer = () => {
               r="0"
               placeholder="Select Book"
             ></Search>
-            {/* <Text>VS</Text> */}
             <img src="/img/vsFinal.png" className="w-12 h-24 mx-4" alt="Flowbite Logo" />
             <Search
               reviewers={filterData(data, books)}
               onChange={handleChange}
               bookname=""            
-              r="0"
+              r="1"
               placeholder="Select Book"
             ></Search>
             </HStack>
             <Button colorScheme="blue" onClick={handleCompare}>
                 Compare
             </Button>
-            </Center>
+            </Stack>
+          </Center>
         </div>
         <div>
             {compare?<>
-            <BarChart books={data1}/>
+            <BarChart books={data1} bname1={getBookName(books[0])} bname2={getBookName(books[1])}/>
             </>:<></>}
         </div>
         <div>

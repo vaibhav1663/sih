@@ -6,7 +6,6 @@ import Navbar from "./Navbar";
 import Carousel_loop from "./Carousel/Carousel_loop";
 import BookCard from "./Carousel/BookCard";
 import About from "./Carousel/About";
-import Info from "./Carousel/Info";
 import Footer from "./Carousel/Footer";
 
 let slides = [
@@ -46,7 +45,6 @@ const Home = () => {
             <div className="mt-28">
                 <BookCard></BookCard>
             </div>
-            <Info></Info>
             <Footer></Footer>
         </>
     );
