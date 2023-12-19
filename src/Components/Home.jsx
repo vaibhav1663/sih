@@ -7,6 +7,7 @@ import Carousel_loop from "./Carousel/Carousel_loop";
 import BookCard from "./Carousel/BookCard";
 import About from "./Carousel/About";
 import Footer from "./Carousel/Footer";
+import CarouselDefault from "./Carousel/Carousel";
 
 let slides = [
     {
@@ -39,7 +40,7 @@ const Home = () => {
         <>
             <div className="h-screen">
                 <Navbar page="home" />
-                <Carousel_loop slides={slides}></Carousel_loop>
+                <CarouselDefault slides={slides}></CarouselDefault>
             </div>
             <About></About>
             <div className="mt-28">
