@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from "react";
 import Search  from "./AdminDashboard/Search";
+import StatusCards from "./AdminDashboard/StatusCards";
 import { HStack, Text, Heading, Center, Button } from "@chakra-ui/react";
 let API_ROUTE = "http://localhost:5000/books/getBooks";
 
@@ -52,7 +53,7 @@ const PeerToPeer = () => {
     
         return filteredData;
     }
-    
+
     return (<>
         
         <div className="p-20">
@@ -79,7 +80,7 @@ const PeerToPeer = () => {
             </Center>
         </div>
         <div>
-            {/* Status Cards */}
+            <StatusCards data={data} admin={false}></StatusCards>
         </div>
     </>)
 }
