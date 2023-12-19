@@ -21,13 +21,15 @@ import {
 
 import { Textarea } from "@chakra-ui/react";
 
+const REJECT_BOOK_URL = "http://localhost:5000/admin/reject";
+
 const RejectComp = ({ _id }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [message, setMessage] = useState("");
   const [deadline, setDeadline] = useState(30);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!message.trim()) {
       setErrorMessage("Message is required.");
       return;
@@ -38,14 +40,30 @@ const RejectComp = ({ _id }) => {
       message,
       deadline,
     };
-    console.log("Reject Data : ", rejectData);
+
+    try {
+      await fetch(REJECT_BOOK_URL, {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(rejectData),
+      });
+
+      console.log("Book Rejected", rejectData);
+    } catch (error) {
+      console.error("Error rejecting the book:", error);
+    }
 
     onClose();
   };
 
   const handleTextareaChange = (e) => {
     setMessage(e.target.value);
-    setErrorMessage(""); // Clear the error message when the user starts typing
+    setErrorMessage("");
   };
 
   return (
