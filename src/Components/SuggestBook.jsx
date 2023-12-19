@@ -144,9 +144,8 @@ const SuggestBook = ({recommenderID}) => {
         if (!validateForm()) return;
         // console.log("id>>", id);
         const bookInfo = {
-            name: title,
+            name: title + " - " + author,
             recomendedBy: teacherID,
-            author,
             desc: description,
             imageLink,
             previewLink,
