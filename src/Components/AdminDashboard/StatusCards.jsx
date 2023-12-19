@@ -39,7 +39,7 @@ function StatusCards({ data, admin }) {
             className="relative box p-4 mt-3 bg-white rounded-lg shadow-md border border-2  border-gray-300 hover:border-gray-500"
             key={index}
           >
-            <a href={"/book/" + book._id}>
+            <a href={admin ? "/admin/book/" + book._id : "/book/" + book._id}>
               <div className="flex flex-col md:flex-col h-full">
               <div className={`flex flex-col md:flex-col h-full ${admin ? 'md:h-2/3' : 'md:h-1/2'}`}>
 

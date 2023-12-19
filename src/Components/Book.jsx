@@ -4,6 +4,22 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 const publicReviewURL = "localhost:5000/books/addPublicReview";
 const Book = () => {
+  function convertUrl(originalUrl) {
+    // Extract the book ID from the original URL
+    const bookIdRegex = /id=([^&]+)/;
+    const match = originalUrl.match(bookIdRegex);
+    const bookId = match ? match[1] : null;
+
+    if (bookId) {
+      // Create a new URL with the extracted book ID
+      const newUrl = `https://books.google.com/books/publisher/content?id=${bookId}&printsec=frontcover&img=1&zoom=3&edge=curl`;
+      return newUrl;
+    } else {
+      console.log("Unable to extract book ID from the URL");
+      return originalUrl;
+    }
+  }
+  
   const { id } = useParams();
   // fetch data from mongo
   const [book, setBook] = useState({});
@@ -86,6 +102,8 @@ const Book = () => {
     };
     addReview();
 
+    
+
     // submitData(bookInfo, (ref) => {
     //     console.log(">>>", ref);
     //     if ("error" in ref) {
@@ -116,7 +134,7 @@ const Book = () => {
       <div className="max-w-screen-xl m-auto box p-4">
         <div className="flex flex-col md:flex-row gap-6">
           <div className="w-full md:w-1/3">
-            <img className="w-full" src={book.imageLink} alt={book.name} />
+            <img className="w-full" src={convertUrl(book.imageLink)} alt={book.name} />
           </div>
           <div className="flex flex-col gap-2 w-full md:w-2/3">
             <h1 className="text-2xl font-semibold">{book.name}</h1>

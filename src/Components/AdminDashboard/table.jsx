@@ -242,6 +242,7 @@ const DataTable = ({ handleReviewer }) => {
                     reviewers={filteredReviewersToDisplay(reviewersToDisplay, reviewersData, rowData[0])}
                     onChange={updateReviewerData}
                     bookname={rowData[0]}
+                    placeholder="Select Reviewer"
                     r={0}
                   ></Search>
                 </Td>
@@ -253,6 +254,7 @@ const DataTable = ({ handleReviewer }) => {
                     reviewers={filteredReviewersToDisplay(reviewersToDisplay, reviewersData, rowData[0])}
                     onChange={updateReviewerData}
                     bookname={rowData[0]}
+                    placeholder="Select Reviewer"
                     r={1}
                   ></Search>
                 </Td>
@@ -263,6 +265,7 @@ const DataTable = ({ handleReviewer }) => {
                     reviewers={filteredReviewersToDisplay(reviewersToDisplay, reviewersData, rowData[0])}
                     onChange={updateReviewerData}
                     bookname={rowData[0]}
+                    placeholder="Select Reviewer"
                     r={2}
                   ></Search>
                 </Td>
