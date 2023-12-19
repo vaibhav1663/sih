@@ -21,6 +21,7 @@ import { Navigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext.js";
 import AdminDashboard from "./Components/AdminDashboard.jsx";
 import AdminBook from "./Components/Admin/Book.jsx";
+import PDF from "./Components/Admin/review/pdf.jsx";
 import ReviewerDashboard from "./Components/ReviewerDashboard.jsx";
 import TeacherDashboard from "./Components/TeacherDashboard.jsx";
 import AI from "./Components/AI.jsx";
@@ -55,6 +56,10 @@ function App() {
                         {/* Admin Routes */}
                         <Route path="/admin" element={<AdminDashboard />} />
                         <Route path="/admin/book/:id" element={<AdminBook />} />
+                        <Route
+                            path="/admin/book/:bookID/review/:reviewerID"
+                            element={<PDF />}
+                        />
 
                         {/* Reviewer Routes */}
                         <Route
