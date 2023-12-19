@@ -142,9 +142,9 @@ const DataTable = ({ handleReviewer }) => {
     };
     fetchData();
   }, []);
-  const header = ["Book Title", "Author", "Date issued", "Reviewers"];
+  const header = ["Book Title", "Book Id", "Date issued", "Reviewers"];
 
-  const propsToDisplay = ["name", "author", "date"];
+  const propsToDisplay = ["name", "_id", "date"];
 
   console.log(">>", booksToDisplay);
   const tableData = booksToDisplay.map((dataBook) =>
