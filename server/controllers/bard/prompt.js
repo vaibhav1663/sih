@@ -35,6 +35,7 @@ exports.getPrompt = async (req, res) => {
     const AIResponse = await fetch("https://bard.google.com/_/BardChatUi/data/assistant.lamda.BardFrontendService/StreamGenerate?hl=en&rt=c", requestOptions)
         .then(async (response) => {
             let lines = (await response.text()).split("\n");
+            console.log({lines})
             let longest_line = lines.reduce(function (a, b) {
                 return a.length > b.length ? a : b;
             }, "");
