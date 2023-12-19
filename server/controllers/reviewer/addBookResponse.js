@@ -3,7 +3,7 @@ const ReviewerQueue = require("../../model/reviewerqueue");
 
 exports.addBookResponse = async (req, res) => {
   try {
-    const { _id, reviewerid, H, A, B, C, D, E, F, G } = req.body;
+    const { _id, reviewerid, H, A, B, C, D, E, F, G, PDFData } = req.body;
 
     // Find the reviewer queue by reviewer_id
     const reviewerQueue = await ReviewerQueue.findOne({
@@ -51,7 +51,7 @@ exports.addBookResponse = async (req, res) => {
       g_total,
       f_total,
       totalScore:
-        a_total + b_total + c_total + d_total + e_total + g_total + f_total,
+        a_total + b_total + c_total + d_total + e_total + g_total + f_total,PDFData
     };
 
     // Max scores
