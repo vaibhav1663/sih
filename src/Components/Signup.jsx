@@ -72,10 +72,10 @@ const Signup = () => {
                     </div>
                     <div className="flex flex-1 flex-col mt-8 justify-center space-y-5 max-w-md">
                         <div className="flex flex-col space-y-2 text-center">
-                            <h2 className="text-3xl md:text-4xl font-bold">
+                            <h2 className="text-3xl md:text-4xl font-bold text-blue-900">
                                 Create an account
                             </h2>
-                            <p className="text-md md:text-xl">
+                            <p className="text-md md:text-xl text-blue-700">
                                 It'll takes few minutes
                             </p>
                         </div>
@@ -322,7 +322,7 @@ const Signup = () => {
                                 <button
                                     type="submit"
                                     onClick={handleSubmit}
-                                    className="flex w-full items-center justify-center flex-none mt-4 px-2 py-2 border-2 rounded-lg font-medium border-black bg-black text-white"
+                                    className="flex w-full items-center justify-center flex-none mt-4 px-2 py-2 border-2 rounded-lg font-medium border-black bg-blue-700 text-white"
                                 >
                                     Submit
                                 </button>
@@ -330,7 +330,10 @@ const Signup = () => {
 
                             <p className=" mb-1">
                                 Already have an Account ?{" "}
-                                <Link className="font-bold" to="/login">
+                                <Link
+                                    className="font-bold underline"
+                                    to="/login"
+                                >
                                     Login{" "}
                                 </Link>
                             </p>
@@ -340,15 +343,21 @@ const Signup = () => {
                     <div className="flex justify-center flex-col m-auto mt-16 mb-16 text-center text-lg ">
                         <p className="font-bold mb-1">
                             Built by{" "}
-                            <a href="/" className="">
+                            <a href="/" className="text-blue-700">
                                 Team Brocoders for SIH
                             </a>
                         </p>
-                        <p>Contact us</p>
-                        <div className="flex items-center justify-center  dark:text-slate-200 space-x-2 mt-4 flex-wrap">
+                        <p
+                            style={{
+                                color: "dodgerblue",
+                            }}
+                        >
+                            Socials
+                        </p>
+                        <div className="flex items-center justify-center dark:text-slate-200 space-x-2 flex-wrap">
                             <a
                                 href="https://www.linkedin.com/in/frankuxui/"
-                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-slate-700"
+                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-blue-800"
                             >
                                 <svg
                                     width="24"
@@ -370,7 +379,7 @@ const Signup = () => {
                             </a>
                             <a
                                 href="https://github.com/frankuxui"
-                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-slate-700"
+                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-blue-800"
                             >
                                 <svg
                                     width="24"
@@ -386,7 +395,7 @@ const Signup = () => {
                             </a>
                             <a
                                 href="https://www.instagram.com/frankuxui/"
-                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-slate-700"
+                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-blue-800"
                             >
                                 <svg
                                     width="24"
@@ -402,7 +411,7 @@ const Signup = () => {
                             </a>
                             <a
                                 href="https://twitter.com/frankuxui"
-                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-slate-700"
+                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-blue-800"
                             >
                                 <svg
                                     width="24"
