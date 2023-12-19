@@ -23,7 +23,7 @@ const Navbar = (props) => {
                         alt="Flowbite Logo"
                     />
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                        SIH- Brocoders
+                        NCISM
                     </span>
                 </a>
                 <button
