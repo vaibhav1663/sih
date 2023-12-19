@@ -1,5 +1,5 @@
-exports.prompt = async (req, res) => {
-    const { promptText } = req.body
+exports.getPrompt = async (req, res) => {
+    const { promptText } = req
 
     const prompt = encodeURI(promptText)
     
@@ -32,7 +32,7 @@ exports.prompt = async (req, res) => {
         redirect: 'follow'
     };
 
-    fetch("https://bard.google.com/_/BardChatUi/data/assistant.lamda.BardFrontendService/StreamGenerate?hl=en&rt=c", requestOptions)
+    const AIResponse = await fetch("https://bard.google.com/_/BardChatUi/data/assistant.lamda.BardFrontendService/StreamGenerate?hl=en&rt=c", requestOptions)
         .then(async (response) => {
             let lines = (await response.text()).split("\n");
             let longest_line = lines.reduce(function (a, b) {
@@ -42,9 +42,10 @@ exports.prompt = async (req, res) => {
             const processedResponse = response1.replaceAll(/\*/g, "").replaceAll("\n\n", "\n").replaceAll("  ", " ");
             console.log("Got this thing");
             console.log({processedResponse: processedResponse});
-            res.status(200).json(processedResponse);
+            return (processedResponse);
            
         })
 
         .catch(error => console.log('error', error));
+        return AIResponse
 };

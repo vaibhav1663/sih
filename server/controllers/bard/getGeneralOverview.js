@@ -1,8 +1,11 @@
 
-
+const {getPrompt} = require("./prompt")
 exports.getGeneralOverview = async (req, res) => {
-    const { bookName } = req.body
+    const { book } = req.body
 
-    const prompt = `summarise in 100 words review of the book ${bookName}`
+    const prompt = `General overview of ${book} in 100 words.`
+    const response = await getPrompt({promptText:prompt});
+    console.log(response)
+    res.status(200).json(response)
     
 };
