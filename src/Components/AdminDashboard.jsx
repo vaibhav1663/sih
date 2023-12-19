@@ -9,140 +9,82 @@ import {
   Box,
 } from "@chakra-ui/react";
 import StatusCards from "./AdminDashboard/StatusCards";
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  Input,
-  TableContainer,
-} from "@chakra-ui/react";
+
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 
-import { FaRegCopy } from "react-icons/fa";
 import ReviewerAllocationTable from "./AdminDashboard/table";
+import ReviewerDisplay from "./AdminDashboard/ReviewerDisplay";
 const GET_REVIEWERS_URL = "http://localhost:5000/admin/getReviewers";
 const GET_BOOKS_TO_REVIEW_URL =
   "http://localhost:5000/admin/getRecommendations";
-
+const GET_BOOKS = "http://localhost:5000/books/getBooks";
 const AdminDashboard = () => {
   const [reviewersToDisplay, setReviewersToDisplay] = useState([]);
+  const [books, setBooks] = useState([]);
+  const [booksToBeMapped, setBooksToBeMapped] = useState([]);
   const getReviewers = async (needle) => {
     try {
       const response = await fetch(GET_REVIEWERS_URL);
       const data = await response.json();
       setReviewersToDisplay(data);
-      // console.log("set :", data);
+      console.log("set :", data);
       return;
     } catch (error) {
       console.error("Error fetching reviewers:", error);
     }
   };
+
+  const getBooks = async (needle) => {
+    try {
+      const response = await fetch(GET_BOOKS  );
+      const data = await response.json();
+      console.log("FUCK THIS DATA :", data);
+      data && setBooks(data);
+      return;
+    } catch (error) {
+      console.error("Error fetching books:", error);
+    }
+  };
   useEffect(() => {
     getReviewers();
+    getBooks();
   }, []);
+  function convertUrl(originalUrl) {
+    // Extract the book ID from the original URL
+    const bookIdRegex = /id=([^&]+)/;
+    const match = originalUrl.match(bookIdRegex);
+    const bookId = match ? match[1] : null;
 
-  // const [reviewers, setReviewers] = useState([]);  // fetch available reviwers data here
+    if (bookId) {
+      // Create a new URL with the extracted book ID
+      const newUrl = `https://books.google.com/books/publisher/content?id=${bookId}&printsec=frontcover&img=1&zoom=3&edge=curl`;
+      return newUrl;
+    } else {
+      console.log("Unable to extract book ID from the URL");
+      return originalUrl;
+    }
+  }
+  useEffect(() => {
+    let arr = books;
+    arr = arr.map((item) => {
+      return {
+        name: item.name,
+        _id: item._id,
+        imageLink: convertUrl(item.imageLink),
+        author: "Anonymous",
+        received: item.reviewerResponse.length,
+        allocated: item.reviewerAlloted.length ? true : false,
+      };
+    });
+    console.log("array to be mapped", arr);
+    // setBooks(arr);
+    setBooksToBeMapped(arr);
+  }, [books]);
 
-  // useEffect(() => {
-  //   setReviewers([
-  //     {
-  //       id: "asf3421",
-  //       name: "Dummy Name1",
-  //       specialisation: "Unani",
-  //       college: "COEP",
-  //     },
-  //     {
-  //       id: "ahkk13421",
-  //       name: "Dummy Name2",
-  //       specialisation: "Unani",
-  //       college: "COEP",
-  //     },
-  //     {
-  //       id: "hdkk13421",
-  //       name: "Dummy Name3",
-  //       specialisation: "Unani",
-  //       college: "COEP",
-  //     },
-  //     {
-  //       id: "ah3421",
-  //       name: "Dummy Name4",
-  //       specialisation: "Unani",
-  //       college: "COEP",
-  //     },
-  //     {
-  //       id: "kk13421",
-  //       name: "Dummy Name5",
-  //       specialisation: "Unani",
-  //       college: "COEP",
-  //     },
-  //   ]);
-  // }, []);
-
-  let dataAyurveda = [
-    {
-      name: "Book Name 1",
-      id: "abc",
-      thumb:
-        "https://m.media-amazon.com/images/I/51CFkZG8UjL._SX342_SY445_.jpg",
-      author: "Author 1",
-      received: 2,
-      allocated: true,
-    },
-    {
-      name: "Book Name 2",
-      id: "def",
-      thumb:
-        "https://m.media-amazon.com/images/I/51CFkZG8UjL._SX342_SY445_.jpg",
-      author: "Author 2",
-      received: 0,
-      allocated: false,
-    },
-    {
-      name: "Book Name 3",
-      id: "xyz",
-      thumb:
-        "https://m.media-amazon.com/images/I/51CFkZG8UjL._SX342_SY445_.jpg",
-      author: "Author 3",
-      received: 3,
-      allocated: true,
-    },
-    {
-      name: "Book Name 4",
-      id: "xyz",
-      thumb:
-        "https://m.media-amazon.com/images/I/51CFkZG8UjL._SX342_SY445_.jpg",
-      author: "Author 4",
-      received: 0,
-      allocated: false,
-    },
-    {
-      name: "Book Name 5",
-      id: "xyz",
-      thumb:
-        "https://m.media-amazon.com/images/I/51CFkZG8UjL._SX342_SY445_.jpg",
-      author: "Author 5",
-      received: 1,
-      allocated: true,
-    },
-  ];
-  //review cards data
-
-  const header1 = [
-    "Book Name",
-    "Book Desc",
-    "Reviewer 1",
-    "Reviewer 2",
-    "Reviewer 3",
-  ];
   const Data = [
     { bookId: 1, name: "Payal" },
     { bookId: 2, name: "Yash" },
   ]; //fetch books to be reviewed data here so admin can allocate
-
-  const tableData = Data.map(({ bookId, name }) => [bookId, name]);
 
   const initialReviewerData = Data.map((item) => ({
     bookId: item.bookId,
@@ -216,33 +158,13 @@ const AdminDashboard = () => {
 
             <TabPanel>
               <h1 className="text-2xl font-semibold mb-6">Review Status</h1>
-              <StatusCards data={dataAyurveda} />
+              <StatusCards data={booksToBeMapped} admin={true}/>
             </TabPanel>
 
             <TabPanel>
               <h1 className="text-2xl font-semibold mb-6">Reviewers</h1>
               <div className="w-full">
-                <Accordion allowToggle>
-                  {reviewersToDisplay.map((reviewer) => (
-                    <AccordionItem
-                      key={reviewer._id}
-                      className="mb-2 border border-black rounded-lg"
-                    >
-                      <h2>
-                        <AccordionButton className="bg-gray-200 rounded-lg">
-                          <Box as="span" flex="1" textAlign="left">
-                            <p>{reviewer.name}</p>
-                          </Box>
-                        </AccordionButton>
-                      </h2>
-                      <AccordionPanel pb={4} className="text-left">
-                        <p>{reviewer.collegeName}</p>
-                        <p>{reviewer.degree}</p>
-                        <p>{reviewer.field}</p>
-                      </AccordionPanel>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
+                <ReviewerDisplay reviewersToDisplay={reviewersToDisplay} />
               </div>
             </TabPanel>
           </TabPanels>
