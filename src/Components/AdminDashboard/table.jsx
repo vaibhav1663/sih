@@ -20,7 +20,7 @@ import {
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import Search from "./Search";
-import ModalComp from "../Modal";
+import ModalComp from "../ModalComp";
 
 const GET_BOOKS_TO_REVIEW_URL =
   "http://localhost:5000/admin/getRecommendations";
@@ -142,7 +142,7 @@ const DataTable = ({ handleReviewer }) => {
     };
     fetchData();
   }, []);
-  const header = ["Book Title", "Book Id", "Date issued", "Reviewers"];
+  const header = ["Book Title", "Book Id", "Date issued", "Reviewers", "Rejection"];
 
   const propsToDisplay = ["name", "_id", "date"];
 
@@ -270,7 +270,6 @@ const DataTable = ({ handleReviewer }) => {
                   ></Search>
                 </Td>
               </Tr>
-
               {getReviewersByBookId(getBookIdByName(rowData[0])).some(
                 (reviewer) => reviewer === null
               ) ? null : (
@@ -294,12 +293,14 @@ const DataTable = ({ handleReviewer }) => {
                         }}
                         colorScheme="blue"
                       >
-                        Allocate Reviewer
+                        Submit Reviwers
                       </Button>
                     </Td>
                   </Tr>
                 </>
               )}
+                <Td><Button colorScheme="red">Reject</Button></Td>
+              
             </Tr>
           ))}
           <Tfoot></Tfoot>

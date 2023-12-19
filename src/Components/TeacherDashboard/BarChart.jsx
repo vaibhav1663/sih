@@ -4,15 +4,7 @@ import * as d3 from 'd3';
 
 const BarChart = (books) => {
   const [data, setData] = useState(books.books);
-  // const data = [
-  //   { name: 'Author Credibility', score1: 10, score2: 20 },
-  //   { name: 'B', score1: 1, score2: 2 },
-  //   { name: 'C', score1: 1, score2: 2 },
-  //   { name: 'D', score1: 1, score2: 2 },
-  //   { name: 'E', score1: 1, score2: 2 },
-  //   { name: 'F', score1: 1, score2: 2 },
-  // ];
-
+  
   // console.log(books);
   // useEffect(()=>{
   //   setData(books.books);

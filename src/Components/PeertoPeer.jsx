@@ -2,23 +2,24 @@ import React, { useState, useEffect } from "react";
 import Search from "./AdminDashboard/Search";
 import StatusCards from "./AdminDashboard/StatusCards";
 import BarChart from "./TeacherDashboard/BarChart";
-import { HStack, Text, Heading, Center, Button } from "@chakra-ui/react";
+import { HStack, Center, Button } from "@chakra-ui/react";
 import Navbar from "./Navbar";
 
-let API_ROUTE = "http://localhost:5000/books/getBooks";
+let COMPARE_BOOKS_URL = "http://localhost:5000/books/compareBooksById";
+let REVIEWED_BOOK_URL = "http://localhost:5000/books/getReviewedBooks"
 
 
 const PeerToPeer = () => {
+    const [compare, setCompare] = useState(false)
     const [books, setBooks] = useState([null,null]);
     const [data, setData] = useState([]);
-    const [pData, setPData] = useState([]);
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(API_ROUTE);
+                const response = await REVIEWED_BOOK_URL;
                 const json = await response.json();
                 setData(json);
-                setPData(json);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -26,12 +27,35 @@ const PeerToPeer = () => {
         fetchData();
     }, []);
 
+    console.log(data);
 
     const handleCompare = () => {
-        ;
+        setCompare(true);
+
+            const giveCompare = async () => {
+            const response = await fetch(
+                `http://localhost:5000/books/addPublicReview/`,
+                {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                   id1:books[0],
+                   id2:books[1],
+                }),
+                }
+            );
+            console.log({response});
+            if (response) {
+                
+            }
+            };
+            giveCompare();
+
     }
 
-    const handleChange = (banme,value, r) => {
+    const handleChange = (bname,value, r) => {
         setBooks((prevBooks) => {
             const updatedBooks = [...prevBooks];
             if (r >= 0 && r < updatedBooks.length) {
@@ -57,6 +81,15 @@ const PeerToPeer = () => {
 
     return filteredData;
   }
+
+  const data1 = [
+    { name: 'Author Credibility', score1: 10, score2: 20 },
+    { name: 'B', score1: 1, score2: 2 },
+    { name: 'C', score1: 1, score2: 2 },
+    { name: 'D', score1: 1, score2: 2 },
+    { name: 'E', score1: 1, score2: 2 },
+    { name: 'F', score1: 1, score2: 2 },
+  ];
 
   return (
     <>
@@ -87,6 +120,11 @@ const PeerToPeer = () => {
                 Compare
             </Button>
             </Center>
+        </div>
+        <div>
+            {compare?<>
+            <BarChart books={data1}/>
+            </>:<></>}
         </div>
         <div>
             <StatusCards data={data} admin={false}></StatusCards>
