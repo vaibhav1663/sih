@@ -90,7 +90,7 @@ const Accordian = ({ reviewerID }) => {
   return (
     <Tabs
       variant="soft-rounded"
-      colorScheme="green"
+      colorScheme="blue"
       className="mx-10 px-6 py-6 border-2 border-gray-300 rounded-lg"
     >
       <TabList className="overflow-x-auto">

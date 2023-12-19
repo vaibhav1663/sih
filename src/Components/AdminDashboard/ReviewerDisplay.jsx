@@ -75,7 +75,7 @@ const ReviewerDisplay = ({ reviewersToDisplay }) => {
 
     return (
         <>
-            <TableContainer style={{ paddingBottom: "8rem", borderRadius: "1rem", border: "1px solid grey" }}>
+            <TableContainer style={{ paddingBottom: "8rem", marginTop: "4rem", borderRadius: "1rem", border: "1px solid grey" }}>
                 <Table variant="simple">
                     <Thead>
                         <Tr>
