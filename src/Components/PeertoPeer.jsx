@@ -1,40 +1,69 @@
 import React, { useState, useEffect } from "react";
 import Search from "./AdminDashboard/Search";
 import StatusCards from "./AdminDashboard/StatusCards";
-import { HStack, Text, Heading, Center, Button } from "@chakra-ui/react";
+import BarChart from "./TeacherDashboard/BarChart";
+import { HStack, Center, Button } from "@chakra-ui/react";
 import Navbar from "./Navbar";
 
-let API_ROUTE = "http://localhost:5000/books/getBooks";
+let COMPARE_BOOKS_URL = "http://localhost:5000/books/compareBooksById";
+let REVIEWED_BOOK_URL = "http://localhost:5000/books/getReviewedBooks"
+
 
 const PeerToPeer = () => {
-  const [books, setBooks] = useState([null, null]);
-  const [data, setData] = useState([]);
-  const [pData, setPData] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(API_ROUTE);
-        const json = await response.json();
-        setData(json);
-        setPData(json);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
+    const [compare, setCompare] = useState(false)
+    const [books, setBooks] = useState([null,null]);
+    const [data, setData] = useState([]);
+    
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await REVIEWED_BOOK_URL;
+                const json = await response.json();
+                setData(json);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+        fetchData();
+    }, []);
+
+    console.log(data);
+
+    const handleCompare = () => {
+        setCompare(true);
+
+            const giveCompare = async () => {
+            const response = await fetch(
+                `http://localhost:5000/books/addPublicReview/`,
+                {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                   id1:books[0],
+                   id2:books[1],
+                }),
+                }
+            );
+            console.log({response});
+            if (response) {
+                
+            }
+            };
+            giveCompare();
+
+    }
+
+    const handleChange = (bname,value, r) => {
+        setBooks((prevBooks) => {
+            const updatedBooks = [...prevBooks];
+            if (r >= 0 && r < updatedBooks.length) {
+                updatedBooks[r] = value;
+            }
+            return updatedBooks;
+        });
     };
-    fetchData();
-  }, []);
-
-  const handleCompare = () => {};
-
-  const handleChange = (banme, value, r) => {
-    setBooks((prevBooks) => {
-      const updatedBooks = [...prevBooks];
-      if (r >= 0 && r < updatedBooks.length) {
-        updatedBooks[r] = value;
-      }
-      return updatedBooks;
-    });
-  };
 
   console.log(">b>", books);
 
@@ -52,6 +81,15 @@ const PeerToPeer = () => {
 
     return filteredData;
   }
+
+  const data1 = [
+    { name: 'Author Credibility', score1: 10, score2: 20 },
+    { name: 'B', score1: 1, score2: 2 },
+    { name: 'C', score1: 1, score2: 2 },
+    { name: 'D', score1: 1, score2: 2 },
+    { name: 'E', score1: 1, score2: 2 },
+    { name: 'F', score1: 1, score2: 2 },
+  ];
 
   return (
     <>
@@ -77,17 +115,21 @@ const PeerToPeer = () => {
               r="0"
               placeholder="Select Book"
             ></Search>
-          </HStack>
-        </Center>
-        <Button colorScheme="blue" mt={4} onClick={handleCompare}>
-          Compare
-        </Button>
-      </div>
-      <div>
-        <StatusCards data={data} admin={false}></StatusCards>
-      </div>
-    </>
-  );
-};
+            </HStack>
+            <Button colorScheme="blue" onClick={handleCompare}>
+                Compare
+            </Button>
+            </Center>
+        </div>
+        <div>
+            {compare?<>
+            <BarChart books={data1}/>
+            </>:<></>}
+        </div>
+        <div>
+            <StatusCards data={data} admin={false}></StatusCards>
+        </div>
+    </>)
+}
 
 export default PeerToPeer;
