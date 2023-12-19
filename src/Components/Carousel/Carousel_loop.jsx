@@ -1,21 +1,21 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { BsArrowRightCircleFill, BsArrowLeftCircleFill } from "react-icons/bs";
-import {Typography, } from "@material-tailwind/react";
+import { Typography } from "@material-tailwind/react";
 
-const CarouselSlider = ({slides}) => {
+const CarouselSlider = ({ slides }) => {
     const [current, setCurrent] = useState(0);
 
     const prevSlide = () => {
-        if(current===0) setCurrent(slides.length-1);
-        else setCurrent(current-1);
-    }
+        if (current === 0) setCurrent(slides.length - 1);
+        else setCurrent(current - 1);
+    };
 
     const nextSlide = () => {
-        if(current===slides.length-1) setCurrent(0);
-        else setCurrent(current+1);
-    }
-
-    return(
+        if (current === slides.length - 1) setCurrent(0);
+        else setCurrent(current + 1);
+    };
+    setInterval(() => nextSlide(), 3000);
+    return (
         <div className="overflow-hidden relative h-[92%]">
         <div 
         className={`flex transition ease-out duration-400 h-[100%]`}
@@ -30,8 +30,7 @@ const CarouselSlider = ({slides}) => {
                 </>
                 )
             })}
-        </div>
-        <div className="absolute inset-0 grid h-full w-full items-center bg-black/50">
+            <div className="absolute inset-0 grid h-full w-full items-center bg-black/75">
                 <div className="w-3/4 pl-24 md:w-2/4 md:pl-20 lg:pl-32">
                     <Typography
                     variant="h1"
@@ -50,6 +49,7 @@ const CarouselSlider = ({slides}) => {
                     </Typography>
                 </div>
             </div>
+        </div>
         <div className="absolute top-0 h-full w-full justify-between items-center flex text-white px-10 text-4xl">
             <button onClick={prevSlide}>
                 <BsArrowLeftCircleFill></BsArrowLeftCircleFill>
@@ -69,7 +69,7 @@ const CarouselSlider = ({slides}) => {
             })}
         </div>
         </div>
-    )
-}
+    );
+};
 
 export default CarouselSlider;

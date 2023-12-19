@@ -17,6 +17,8 @@ const BarChart = ({books, bname1, bname2}) => {
     setData(books);
   },[books]);
 
+  console.log({data});
+
   const chartRef = useRef(null);
   
   const drawChart = () => {
@@ -139,7 +141,7 @@ const BarChart = ({books, bname1, bname2}) => {
   };
   useEffect(()=>{
     drawChart();
-  },[])
+  },[data])
 
   return (<div ref={chartRef} className='bg-gray-100'>
     <svg className='svg-canvas' width="2000" height="600"/>
