@@ -36,7 +36,7 @@ function StatusCards({ data, admin }) {
       {sortedData.map((book, index) => {
         return (
           <div
-            className="relative box p-4 mt-3 bg-white rounded-lg shadow-md border border-2  border-gray-300 hover:border-gray-500 hover:shadow-xl hover:shadow-blue-100 transition duration-300 ease-in-out"
+            className="relative box p-4 mt-1 bg-white rounded-lg shadow-md border border-2  border-gray-300 hover:border-gray-500 hover:shadow-xl hover:shadow-blue-100 transition duration-300 ease-in-out"
             key={index}
           >
             <a href={admin ? "/admin/book/" + book._id : "/book/" + book._id}>
@@ -50,7 +50,7 @@ function StatusCards({ data, admin }) {
                     <img
                       src={convertUrl(book.imageLink)}
                       alt="Book Thumbnail"
-                      className="w-full h-full rounded-lg shadow-md m-auto"
+                      className="w-full h-full rounded-md shadow-md m-auto"
                     />
                   ) : (
                     <img
