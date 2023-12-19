@@ -98,7 +98,7 @@ const PeerToPeer = () => {
       <Navbar page="peer-to-peer" />
 
       <div className="p-4 box text-center">
-        <h1 className="mt-8 font-bold text-4xl mb-8">Compare Books</h1>
+        <h1 className="mt-4 font-bold text-4xl m4-8">Compare Books</h1>
         <Center>
           <Stack>
           <HStack>

@@ -32,7 +32,7 @@ improve access to quality and affordable Ayurveda, Unani, Siddha and Sowa-Rigpa 
       </div>
       <div className="relative h-full w-full">
       <img
-        src="/img/img1.jpg"
+        src="/img/img2.jpg"
         alt="img 1"
         className="h-full w-full object-cover"
       />
@@ -57,7 +57,7 @@ improve access to quality and affordable Ayurveda, Unani, Siddha and Sowa-Rigpa 
       </div>
       <div className="relative h-full w-full">
       <img
-        src="/img/img1.jpg"
+        src="/img/img3.jpg"
         alt="img 1"
         className="h-full w-full object-cover"
       />
@@ -85,7 +85,7 @@ improve access to quality and affordable Ayurveda, Unani, Siddha and Sowa-Rigpa 
       </div>
       <div className="relative h-full w-full">
       <img
-        src="/img/img1.jpg"
+        src="/img/img4.jpg"
         alt="img 1"
         className="h-full w-full object-cover"
       />

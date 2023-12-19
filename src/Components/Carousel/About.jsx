@@ -5,15 +5,15 @@ const About = () => {
         <div>
             <div className="sm:py-26 bg-gradient-to-r from-indigo-200 to-blue-100 rounded-2xl">
                 <div className="mx-auto max-w-5xl pt-20 lg:px-8 p-4">
-                    <div className="mx-auto max-w-2xl text-center bg-blue-100 rounded-2xl">
-                        <h2 className="text-base text-lg font-bold leading-7 text-blue-900">
+                    <div className="mx-auto max-w-2xl text-center rounded-2xl">
+                        <h2 className=" text-3xl font-bold pb-4 leading-7 text-blue-900">
                             Indian Systems of Medicine
                         </h2>
-                        <p className=" text-lg font-bold leading-8 text-black">
+                        {/* <p className=" text-lg font-bold leading-8 text-black">
                             The Traditional medical systems like Ayurveda,
                             Unani, Siddha & Sowa Rigpa come under the heading of
                             Indian Systems of Medicine
-                        </p>
+                        </p> */}
                     </div>
                     <div className="mx-auto m-10 flex flex-row items-center justify-evenly">
                         <div class="relative flex w-80 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">

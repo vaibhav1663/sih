@@ -55,7 +55,7 @@ const BarChart = ({books, bname1, bname2}) => {
     //   d.score2.toFixed(0) = parseInt(d.score2.toFixed(0));
     // });
 
-    xScale.domain(data.map((d) => d.name));
+    xScale.domain(data.map((d) => (d.name.length<23?d.name:d.name.substring(0,23)+"..")));
     yScale.domain([0, 100]);
 
     const barWidth = (width / data.length) / 3;
@@ -101,8 +101,10 @@ const BarChart = ({books, bname1, bname2}) => {
       .attr('transform', (d) => `translate(${barWidth / 2},${yScale(d.score2.toFixed(0)) - 5})`);
 
     svg.append('g')
-      .attr('transform', `translate(30, ${height+10})`)
-      .call(d3.axisBottom(xScale).tickSize(2));
+      .attr('transform', `translate(40, ${height+10})`)
+      .call(d3.axisBottom(xScale).tickSize(2))
+      .selectAll('text') 
+      .style('font-size', '14px');
 
     svg.append('g').attr('transform', `translate(50,10)`).call(d3.axisLeft(yScale));
 
@@ -130,14 +132,14 @@ const BarChart = ({books, bname1, bname2}) => {
     legend
       .append('text') 
       .text((d) => d)
-      .attr('transform', (d, i) => `translate(${i * legendSpacing}, ${height + margin.bottom})`);
+      .attr('transform', (d, i) => `translate(${i * legendSpacing + 30}, ${height + margin.bottom + 25})`);
 
     legend
       .append('rect')
       .attr('width', legendSpacing / 2)
       .attr('height', 5)
       .style('fill', color)
-      .attr('transform', (d, i) => `translate(${i * legendSpacing}, ${height + margin.bottom - 25})`);
+      .attr('transform', (d, i) => `translate(${i * legendSpacing+30}, ${height + margin.bottom })`);
   };
   useEffect(()=>{
     drawChart();

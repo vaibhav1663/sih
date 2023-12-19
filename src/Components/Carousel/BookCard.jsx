@@ -67,7 +67,7 @@ const BookCard = () => {
     }
     return (
         <div className="flex flex-col gap-2">
-            <div className="max-w-screen-xl content-center m-auto w-full h-2/3 pb-3  bg-green-100 rounded-lg">
+            <div className="max-w-screen-xl content-center m-auto w-full h-2/3 pb-3 rounded-lg">
                 <Center>
                     <a href="#">
                         <h1 className="mt-6 text-4xl font-semibold text-blue-900">
@@ -112,7 +112,7 @@ const BookCard = () => {
                     })}
                 </div>
             </div>
-            <div className="max-w-screen-xl content-center m-auto w-full h-2/3 pb-3  bg-yellow-100 rounded-lg">
+            <div className="max-w-screen-xl content-center m-auto w-full h-2/3 pb-3  rounded-lg">
                 <Center>
                     <a href="#">
                         <h1 className="mt-6 text-4xl font-semibold text-blue-900">
