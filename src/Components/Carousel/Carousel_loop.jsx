@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BsArrowRightCircleFill, BsArrowLeftCircleFill } from "react-icons/bs";
 import { Typography } from "@material-tailwind/react";
 
@@ -64,9 +64,8 @@ const CarouselSlider = ({ slides }) => {
                                 setCurrent(i);
                             }}
                             key={"circle" + i}
-                            className={`rounded-full cursor-pointer w-3.5 h-3.5 ${
-                                i == current ? "bg-white" : "bg-gray-300"
-                            }`}
+                            className={`rounded-full cursor-pointer w-3.5 h-3.5 ${i == current ? "bg-white" : "bg-gray-300"
+                                }`}
                         ></div>
                     );
                 })}
