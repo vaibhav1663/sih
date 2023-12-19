@@ -71,10 +71,14 @@ const AI = () => {
         <>
             <Navbar />
             <div
-                style={{ backgroundColor: "#111827" }}
+                style={{
+                    backgroundColor: "#111827",
+                    height: "calc(100vh - 72px)",
+                    overflowY: "auto",
+                }}
                 className="p-2 flex flex-col"
             >
-                <InputGroup className="max-w-screen-xl m-auto">
+                <InputGroup className="max-w-screen-xl mx-auto">
                     <Input
                         type="text"
                         placeholder="Book Name"
@@ -89,7 +93,7 @@ const AI = () => {
                     id="genbtn"
                     type="button"
                     onClick={getResponse}
-                    className="ai-btn h-fit m-auto"
+                    className="ai-btn h-fit mx-auto"
                 >
                     Generate Review
                 </button>
