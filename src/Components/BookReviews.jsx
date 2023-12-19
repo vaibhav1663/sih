@@ -71,65 +71,9 @@ const BookReviews = () => {
           </InputGroup>
         </div>
 
-        {/* <Masonry
-          columns={{ 640: 1, 768: 2, 1024: 3, 1280: 4 }}
-          gap={16}
-          className="max-w-screen-xl m-auto"
-        > */}
+
         <StatusCards data={data} tags={false} />
 
-        {/* {data.map((book, index) => {
-            return (
-              <div
-                className="box p-4 mt-3 bg-white rounded-lg shadow-md"
-                key={index}
-              >
-                <div className="flex flex-col md:flex-col">
-                  <div className="flex flex-col justify-center">
-                    <img
-                      src={convertUrl(book.imageLink)}
-                      alt="Book Thumbnail"
-                      loading="lazy"
-                      className="w-full rounded-md shadow-md m-auto"
-                      style={{ height: "22rem" }}
-                    />
-
-                    <div className="flex flex-row mt-2">
-                      <svg
-                        className="w-6 h-6 text-yellow-400 fill-current"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M12 2L14.94 8.28L22 9.3L16.36 14.14L18.18 21.01L12 17.77L5.82 21.01L7.64 14.14L2 9.3L9.06 8.28L12 2Z" />
-                      </svg>
-                      <span className="text-gray-600 ml-1">
-                        {book.publicRating && book.publicRating.toFixed(2)}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex flex-col justify-center items-start text-start">
-                    <h1 className="text-2xl font-semibold">{book.name}</h1>
-                    <p
-                      style={{
-                        maxHeight: "30vh",
-                      }}
-                      className="text-gray-600 mt-2"
-                    >
-                      {book.desc.length < 100
-                        ? book.desc
-                        : book.desc.substring(0, 100) + "..."}
-                    </p>
-                    <a
-                      href={"/book/" + book._id}
-                      className="mt-2 px-4 py-2 bg-blue-700 text-white rounded-lg shadow-md shadow-blue-300/50 hover:bg-blue-600"
-                    >
-                      Read Review
-                    </a>
-                  </div>
-                </div>
-              </div>
-            );
-          })} */}
-        {/* </Masonry> */}
       </>
     );
   } else {

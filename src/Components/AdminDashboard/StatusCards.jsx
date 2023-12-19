@@ -32,7 +32,7 @@ function StatusCards({ data, admin }) {
   const sortedData = data.sort((a, b) => (a.allocated > b.allocated ? -1 : 1));
 
   return (
-    <div className="p-9 grid gap-5 grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
+    <div className="p-16 grid gap-5 grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
       {sortedData.map((book, index) => {
         return (
           <div
@@ -41,7 +41,8 @@ function StatusCards({ data, admin }) {
           >
             <a href={"/book/" + book._id}>
               <div className="flex flex-col md:flex-col h-full">
-                <div className="flex flex-col justify-center h-1/2">
+              <div className={`flex flex-col md:flex-col h-full ${admin ? 'md:h-2/3' : 'md:h-1/2'}`}>
+
                   {book.imageLink ? (
                     <img
                       src={convertUrl(book.imageLink)}
