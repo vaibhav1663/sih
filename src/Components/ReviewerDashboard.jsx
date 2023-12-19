@@ -7,7 +7,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 const ReviewerDashboard = () => {
 
     const reviewer = useAuthContext();
-    const reviewerID = '657ecc2de60688e877a990f5    ' ;
+    const reviewerID = '657ecc2de60688e877a990f5' ;
     
     console.log({reviewerID})
     return (

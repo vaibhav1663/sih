@@ -355,6 +355,7 @@ const ReviewForm = ({ id,reviewerid, bookName }) => {
         }
       }
     }
+    console.log({...bookData, PDFData,reviewerid,_id:id});
     submitData({...bookData, PDFData,reviewerid,_id:id},(res)=>{
       console.log('res :>> ', res);
     });

@@ -8,6 +8,7 @@ import {
   Button,
   Link,
 } from "@chakra-ui/react";
+import { toast } from "react-toastify";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 
 import ReviewForm from "../ReviewForm";
@@ -46,13 +47,12 @@ const BooksAccordion = ({ data, toBeReviewed, reviewerID }) => (
   </Accordion>
 );
 
-const Accordian = ({reviewerID}) => {
-
+const Accordian = ({ reviewerID }) => {
   const [toBeReviewed, setToBeReviewed] = useState([]);
   const [reviewed, setReviewed] = useState([]);
 
   const GET_REVIEWER_BOOKS_URL = "http://localhost:5000/reviewer/getBooks";
-
+  let TOAST_ON = false;
   const getBooksByReviewerId = async () => {
     try {
       const response = await fetch(GET_REVIEWER_BOOKS_URL, {
@@ -67,21 +67,26 @@ const Accordian = ({reviewerID}) => {
         body: JSON.stringify({ _id: reviewerID }),
       });
       const data = await response.json();
-      console.log(">>>>>>>>>>>>>>",reviewerID );
-      console.log(">>>>>>>>>>>>>>",data );  
-      if("error" in data) throw new Error(data.error)
-      setToBeReviewed(data.tobereviewedBooks)
-      setReviewed(data.reviewedBooks)
-      
+      console.log(">>>>>>>>>>>>>>", reviewerID);
+      console.log(">>>>>>>>>>>>>>", data);
+      if ("error" in data) {
+        throw new Error(data.error);
+      }
+      setToBeReviewed(data.tobereviewedBooks);
+      setReviewed(data.reviewedBooks);
+
       return;
     } catch (error) {
-      console.error("Error fetching books:", error);
+      if (!TOAST_ON) toast.error(error.message);
+      TOAST_ON = true;
+
+      console.log("Error fetching books:", error);
     }
   };
   useEffect(() => {
     getBooksByReviewerId();
   }, []);
-
+  console.log({ toBeReviewed, reviewed });
   return (
     <Tabs
       variant="soft-rounded"
