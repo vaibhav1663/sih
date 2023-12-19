@@ -58,7 +58,10 @@ const bookSchema = new mongoose.Schema({
     type: Array,
     required: true,
   },
-  reject: {},
+  reject: {
+    type: Array,
+    required: true,
+  },
 });
 
 const User = mongoose.model("books", bookSchema);

@@ -34,6 +34,7 @@ exports.addBook = async (req, res) => {
       date,
       referenceId,
       reviewersAlotted: [],
+      reject: [],
     });
     console.log(new Date(Date.now() + 24 * 60 * 60 * 1000));
     // Save the new book to the database
