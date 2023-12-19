@@ -38,8 +38,8 @@ const AdminDashboard = () => {
   let dataAyurveda = [
     {
       name: "Book Name 1",
-      id: "abc",
-      thumb:
+      _id: "abc",
+      imageLink:
         "https://m.media-amazon.com/images/I/51CFkZG8UjL._SX342_SY445_.jpg",
       author: "Author 1",
       received: 2,
@@ -47,8 +47,8 @@ const AdminDashboard = () => {
     },
     {
       name: "Book Name 2",
-      id: "def",
-      thumb:
+      _id: "def",
+      imageLink:
         "https://m.media-amazon.com/images/I/51CFkZG8UjL._SX342_SY445_.jpg",
       author: "Author 2",
       received: 0,
@@ -56,8 +56,8 @@ const AdminDashboard = () => {
     },
     {
       name: "Book Name 3",
-      id: "xyz",
-      thumb:
+      _id: "xyz",
+      imageLink:
         "https://m.media-amazon.com/images/I/51CFkZG8UjL._SX342_SY445_.jpg",
       author: "Author 3",
       received: 3,
@@ -65,8 +65,8 @@ const AdminDashboard = () => {
     },
     {
       name: "Book Name 4",
-      id: "xyz",
-      thumb:
+      _id: "xyz",
+      imageLink:
         "https://m.media-amazon.com/images/I/51CFkZG8UjL._SX342_SY445_.jpg",
       author: "Author 4",
       received: 0,
@@ -74,8 +74,8 @@ const AdminDashboard = () => {
     },
     {
       name: "Book Name 5",
-      id: "xyz",
-      thumb:
+      _id: "xyz",
+      imageLink:
         "https://m.media-amazon.com/images/I/51CFkZG8UjL._SX342_SY445_.jpg",
       author: "Author 5",
       received: 1,
@@ -88,7 +88,6 @@ const AdminDashboard = () => {
     { bookId: 1, name: "Payal" },
     { bookId: 2, name: "Yash" },
   ]; //fetch books to be reviewed data here so admin can allocate
-
 
   const initialReviewerData = Data.map((item) => ({
     bookId: item.bookId,
@@ -162,15 +161,13 @@ const AdminDashboard = () => {
 
             <TabPanel>
               <h1 className="text-2xl font-semibold mb-6">Review Status</h1>
-              <StatusCards data={dataAyurveda} />
+              <StatusCards data={dataAyurveda} admin={true} />
             </TabPanel>
 
             <TabPanel>
               <h1 className="text-2xl font-semibold mb-6">Reviewers</h1>
               <div className="w-full">
-
                 <ReviewerDisplay reviewersToDisplay={reviewersToDisplay} />
-
               </div>
             </TabPanel>
           </TabPanels>
