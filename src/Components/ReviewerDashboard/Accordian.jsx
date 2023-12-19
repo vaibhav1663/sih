@@ -10,8 +10,9 @@ import {
 } from "@chakra-ui/react";
 import { toast } from "react-toastify";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-
+import StatusCards from "../AdminDashboard/StatusCards";
 import ReviewForm from "../ReviewForm";
+import PieChart from "./PieChart";
 
 const BooksAccordion = ({ data, toBeReviewed, reviewerID }) => (
   <Accordion allowToggle>
@@ -50,6 +51,7 @@ const BooksAccordion = ({ data, toBeReviewed, reviewerID }) => (
 const Accordian = ({ reviewerID }) => {
   const [toBeReviewed, setToBeReviewed] = useState([]);
   const [reviewed, setReviewed] = useState([]);
+  const [graphData, setGraphData] = useState([{"label":"Unreviewed", "value":null},{"label":"Reviewed","value":null}]);
 
   const GET_REVIEWER_BOOKS_URL = "http://localhost:5000/reviewer/getBooks";
   let TOAST_ON = false;
@@ -87,7 +89,38 @@ const Accordian = ({ reviewerID }) => {
     getBooksByReviewerId();
   }, []);
   console.log({ toBeReviewed, reviewed });
+
+
+  useEffect(() => {
+    setGraphData((prevGraphData) => {
+      const unreviewedData = {
+        label: 'Unreviewed',
+        value: toBeReviewed.length,
+      };
+  
+      const reviewedData = {
+        label: 'Reviewed',
+        value: reviewed.length,
+      };
+  
+      // Replace or add logic as needed to update graphData
+      const updatedGraphData = prevGraphData.map((d) => {
+        if (d.label === 'Unreviewed') {
+          return unreviewedData;
+        }
+        if (d.label === 'Reviewed') {
+          return reviewedData;
+        }
+        return d;
+      });
+  
+      return updatedGraphData;
+    });
+  }, [toBeReviewed, reviewed]);
+  console.log({graphData})
+
   return (
+    <>
     <Tabs
       variant="soft-rounded"
       colorScheme="blue"
@@ -106,6 +139,7 @@ const Accordian = ({ reviewerID }) => {
             toBeReviewed={true}
             reviewerID={reviewerID}
           />
+          <StatusCards data={toBeReviewed} admin={false} ></StatusCards>
         </TabPanel>
         <TabPanel>
           <h1 className="text-2xl font-semibold mb-6">Reviewed Books</h1>
@@ -114,9 +148,18 @@ const Accordian = ({ reviewerID }) => {
             toBeReviewed={false}
             reviewerID={reviewerID}
           />
+          <StatusCards data={reviewed} admin={false} ></StatusCards>
         </TabPanel>
       </TabPanels>
     </Tabs>
+    <div className="piechart">
+    <PieChart data={graphData}
+          width={200}
+          height={200}
+          innerRadius={60}
+          outerRadius={100}/>
+     </div>
+    </>
   );
 };
 
