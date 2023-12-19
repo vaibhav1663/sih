@@ -21,6 +21,7 @@ import {
 import { useEffect } from "react";
 import Search from "./Search";
 import ModalComp from "../ModalComp";
+import RejectComp from "./Reject";
 
 const GET_BOOKS_TO_REVIEW_URL =
     "http://localhost:5000/admin/getRecommendations";
@@ -223,7 +224,7 @@ const DataTable = ({ handleReviewer }) => {
         );
         return data ? data.reviewers : [null, null, null];
     };
-
+  
     return (
         <>
             <TableContainer style={{ paddingBottom: "8rem" }}>
@@ -265,7 +266,6 @@ const DataTable = ({ handleReviewer }) => {
                                     ></Search>
                                 </Td>
                             </Tr>
-
                             <Tr>
                                 <Td key={3} border="0" py={2}>
                                     <Search
@@ -319,7 +319,7 @@ const DataTable = ({ handleReviewer }) => {
                                                         bookID,
                                                         reviewers
                                                     );
-
+                                                  
                                                     if (
                                                         reviewers.some(
                                                             (reviewer) =>

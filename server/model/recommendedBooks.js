@@ -43,7 +43,10 @@ const recommendedBook = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  reject: {},
+  reject: {
+    type: Array,
+    required: true,
+  },
 });
 
 const buff = mongoose.model("recommendedbooks", recommendedBook);
