@@ -49,7 +49,7 @@ const Home = () => {
             </div>
             <Info></Info>
             <Footer></Footer>
-            <ReviewForm></ReviewForm>
+            
         </>
     );
 };
