@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import LogoutButton from "./LogOut";
 import "./styles/Navbar.css";
@@ -90,7 +90,7 @@ const Navbar = (props) => {
                             </a>
                         </li>
 
-                        {user && user.role == "student" ? (
+                        {user && user.role === "student" ? (
                             <>
                                 <li>
                                     <a
@@ -107,7 +107,7 @@ const Navbar = (props) => {
                             </>
                         ) : null}
 
-                        {user && user.role == "teacher" ? (
+                        {user && user.role === "teacher" ? (
                             <>
                                 <li>
                                     <a
@@ -124,7 +124,7 @@ const Navbar = (props) => {
                             </>
                         ) : null}
 
-                        {user && user.role == "reviewer" ? (
+                        {user && user.role === "reviewer" ? (
                             <>
                                 <li>
                                     <a
@@ -141,7 +141,7 @@ const Navbar = (props) => {
                             </>
                         ) : null}
 
-                        {user && user.role == "admin" ? (
+                        {user && user.role === "admin" ? (
                             <>
                                 <li>
                                     <a
@@ -174,7 +174,7 @@ const Navbar = (props) => {
                                 href="/ai"
                                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent hover:shadow-lg"
                             >
-                                <button className="ai-btn">Book Whisperer AI</button>
+                                <button className="nav-btn">Book Whisperer AI</button>
                             </a>
                         </li>
 
