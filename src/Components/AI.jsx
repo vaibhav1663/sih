@@ -1,57 +1,128 @@
-import React, { useState } from 'react'
-import Navbar from './Navbar'
-import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
-import { SearchIcon } from '@chakra-ui/icons'
-import { toast } from 'react-toastify'
-
+import React, { useEffect, useState } from "react";
+import Navbar from "./Navbar";
+import { Input, InputGroup } from "@chakra-ui/react";
+import { toast } from "react-toastify";
+import "./styles/AI.css";
+import { Spinner } from "@chakra-ui/react";
 const AI = () => {
     const [bookName, setBookName] = useState("");
     const [response, setResponse] = useState([""]);
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(false);
     const getResponse = () => {
+        document.getElementById("genbtn").style.display = "none";
+        setLoading(true);
+        document.getElementById("response").innerHTML = "";
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
         var raw = JSON.stringify({
-            "book": bookName
+            book: bookName,
         });
 
         var requestOptions = {
-            method: 'POST',
+            method: "POST",
             headers: myHeaders,
             body: raw,
-            redirect: 'follow'
+            redirect: "follow",
         };
-        setResponse(["AI Model is working hard to review your book ..."])
+        // setResponse(["AI Model is working hard to review your book ..."]);
 
         fetch("http://localhost:5000/bard/getGeneralOverview/", requestOptions)
-            .then(response => response.text())
-            .then(result => {
-                setResponse(JSON.parse(result).result.replace("##","").split("\n"));
-                
+            .then((response) => response.text())
+            .then((result) => {
+                setResponse(
+                    JSON.parse(result).result.replace("##", "").split("\n")
+                );
             })
-            .catch(error => toast('error', error));
-    }
+            .catch((error) => toast("error", error));
+    };
+
+    useEffect(() => {
+        console.log(response);
+        setData(response);
+    }, [response]);
+
+    useEffect(() => {
+        let resp = document.getElementById("response");
+        let index = 0;
+
+        const intervalId = setInterval(() => {
+            if (index < data.length) {
+                resp.innerHTML +=
+                    "<p className='mb-3 text-lg text-gray-200 dark:text-gray-100'>" +
+                    data[index] +
+                    "</p><br>";
+                index++;
+                window.scrollTo(0, document.body.scrollHeight);
+            } else {
+                clearInterval(intervalId);
+            }
+        }, 1000);
+
+        return () => {
+            setLoading(false);
+            clearInterval(intervalId);
+            document.getElementById("genbtn").style.display = "block";
+        };
+    }, [data]);
+
     return (
         <>
             <Navbar />
-            <div className="p-2 flex flex-col">
+            <div
+                style={{ backgroundColor: "#111827" }}
+                className="p-2 flex flex-col"
+            >
                 <InputGroup className="max-w-screen-xl m-auto">
                     <Input
                         type="text"
                         placeholder="Book Name"
-                        className='m-3'
-                        onChange={(e) => { setBookName(e.target.value) }}
+                        className="m-3"
+                        color={"white"}
+                        onChange={(e) => {
+                            setBookName(e.target.value);
+                        }}
                     />
                 </InputGroup>
-                <button type="button" onClick={getResponse} class="m-auto max-w-md mt-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none dark:focus:ring-blue-800">Generate Review</button>
-                <div className='max-w-screen-xl m-auto mt-4 p-3'>
-                    {response.map((paragraph, index) => (
-                        <p className="mb-3 text-gray-500 dark:text-gray-400"  key={index}>{paragraph}</p>
-                    ))}
-                </div>
+                <button
+                    id="genbtn"
+                    type="button"
+                    onClick={getResponse}
+                    className="ai-btn h-fit m-auto"
+                >
+                    Generate Review
+                </button>
+                {loading ? (
+                    <span className="flex flex-row items-center justify-center">
+                        <p className="text-lg text-white">Generating Review</p>
+                        <Spinner
+                            ml={2}
+                            size="sm"
+                            color="white"
+                            className="animate-spin"
+                        />
+                    </span>
+                ) : null}
+                <div
+                    id="response"
+                    className="text-white max-w-screen-xl m-auto mt-4 p-3 text-lg"
+                ></div>
+                {/* <div className="max-w-screen-xl m-auto mt-4 p-3">
+                    {response.map((paragraph, index) => {
+                        return (
+                            <p
+                                className="mb-3 text-lg text-gray-200 dark:text-gray-100"
+                                key={index}
+                            >
+                                {paragraph}
+                            </p>
+                        );
+                    })}
+                </div> */}
             </div>
         </>
-    )
-}
+    );
+};
 
-export default AI
+export default AI;
