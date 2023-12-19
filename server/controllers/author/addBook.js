@@ -2,7 +2,7 @@ const { randomId, checkId, getId } = require("../../lib/uid_generator");
 const underReviewBook = require("../../model/recommendedBooks");
 
 exports.addBook = async (req, res) => {
-  const { recomendedBy, name, desc, imageLink, buyLink, author, previewLink } =
+  const { recomendedBy, name, desc, imageLink, buyLink, previewLink } =
     req.body;
   // console.log(">?>?", req.body);
   // const dateString = [year, month, day].join('-')
@@ -25,7 +25,6 @@ exports.addBook = async (req, res) => {
       underReview: false,
       name,
       desc,
-      author,
       imageLink,
       buyLink,
       previewLink,

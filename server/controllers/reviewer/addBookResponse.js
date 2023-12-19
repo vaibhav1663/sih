@@ -2,7 +2,6 @@ const Book = require("../../model/bookSchema");
 const ReviewerQueue = require("../../model/reviewerqueue");
 
 exports.addBookResponse = async (req, res) => {
-
   try {
     const { _id, reviewerid, H, A, B, C, D, E, F, G } = req.body;
 
@@ -35,6 +34,14 @@ exports.addBookResponse = async (req, res) => {
 
     // Create a new response object
     const responseObject = {
+      H,
+      A,
+      B,
+      C,
+      D,
+      E,
+      F,
+      G,
       reviewerid,
       a_total,
       b_total,

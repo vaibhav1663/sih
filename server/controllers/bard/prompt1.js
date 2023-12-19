@@ -3,7 +3,7 @@ exports.getPrompt = async (req) => {
 
     const prompt = promptText
     
-
+    console.log("adfs");
     const myHeaders = new Headers();
     myHeaders.append("authority", "bard.google.com");
     myHeaders.append("accept", "*/*");
@@ -31,9 +31,9 @@ exports.getPrompt = async (req) => {
         body: raw,
         redirect: 'follow'
     };
-
+    
     const AIResponse = await fetch("https://bard.google.com/_/BardChatUi/data/assistant.lamda.BardFrontendService/StreamGenerate?hl=en&rt=c", requestOptions)
-        .then(async (response) => {
+    .then(async (response) => {
             let lines = (await response.text()).split("\n");
             let longest_line = lines.reduce(function (a, b) {
                 return a.length > b.length ? a : b;
@@ -41,11 +41,13 @@ exports.getPrompt = async (req) => {
             let response1 = await JSON.parse(JSON.parse(longest_line)[0][2])[4][0][1][0];
             const processedResponse = response1.replaceAll(/\*/g, "").replaceAll("\n\n", "\n").replaceAll("  ", " ");
             console.log("Got this thing");
+            console.log("adfs");
             console.log({processedResponse: processedResponse});
             return (processedResponse);
            
         })
-
+        
         .catch(error => console.log('error', error));
+        
         return AIResponse
-};
+    };
