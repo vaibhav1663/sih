@@ -28,6 +28,7 @@ import TeacherDashboard from "./Components/TeacherDashboard.jsx";
 import AI from "./Components/AI.jsx";
 import PeerToPeer from "./Components/PeertoPeer.jsx";
 import { useEffect } from "react";
+import Plagarism from "./Components/Plag/Plagarism.jsx";
 
 function App() {
     const { user } = useAuthContext();
@@ -83,6 +84,8 @@ function App() {
                             }
                         />
                         <Route path="/book/:id" element={<Book />} />
+                        <Route path="/plag/" element= {<Plagarism />} />
+
                         <Route
                             path="/peer-to-peer"
                             element={

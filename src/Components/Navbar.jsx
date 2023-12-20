@@ -111,7 +111,7 @@ const Navbar = (props) => {
                             <>
                                 <li>
                                     <a
-                                        href="/author"
+                                        href="/teacher"
                                         className={
                                             props.page === "author"
                                                 ? highlight
