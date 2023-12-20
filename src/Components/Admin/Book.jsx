@@ -326,12 +326,16 @@ const Book = () => {
                                 )}
                                 <Center gap={4}>
                                     <RejectComp _id={book._id} />
+
+
                                     <Button
+                                     mb={4}
+                                     px={9}
                                         onClick={handlePublish}
                                         display="block"
-                                        className="!w-min !px-4 !bg-blue-700 !text-white !rounded-lg !shadow-md !shadow-blue-300/50 hover:!bg-blue-600 !w-full"
+                                        colorScheme="green"
                                     >
-                                        Accept
+                                        Accept Book
                                     </Button>
                                 </Center>
                             </div>
