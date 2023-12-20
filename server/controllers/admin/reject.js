@@ -1,6 +1,6 @@
 const Book = require("../../model/bookSchema");
 const RecommendedBook = require("../../model/recommendedBooks");
-const {sendMailReject} = require("./sendMail")
+
 exports.reject = async (req, res) => {
   try {
     const { _id, message, deadline } = req.body;
@@ -12,15 +12,19 @@ exports.reject = async (req, res) => {
     const book = await Book.findById(_id);
 
     if (recommendedBook || book) {
+      if (recommendedBook) {
+        if (recommendedBook.reject.length % 2 !== 0)
+          return res.send("Already Rejected").status(400);
+      }
       // Create a new reject object
       const rejectObject = {
         message: message,
         date: new Date(),
         deadline: deadline,
       };
+
       // Update the recommendedBook collection if the book is found
-      
-            if (recommendedBook) {
+      if (recommendedBook) {
         await RecommendedBook.findByIdAndUpdate(_id, {
           $push: { reject: rejectObject },
         });
@@ -29,14 +33,13 @@ exports.reject = async (req, res) => {
         rejectObject.reviewerResponse = book.reviewerResponse;
       }
 
-      // Update the Books collection if the book is found
+      // Update the Bonoks collection if the book is found
       if (book) {
         await Book.findByIdAndUpdate(_id, {
           $push: { reject: rejectObject },
         });
       }
-      
-      sendMailReject({ bookId:_id, deadline, message});
+
       return res.status(200).json({ message: "Book rejected successfully" });
     }
 
