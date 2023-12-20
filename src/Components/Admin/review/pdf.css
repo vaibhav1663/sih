@@ -1,0 +1,76 @@
+/* Style for the table container */
+.table-container {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Style for the table */
+.table.table-bordered {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  /* Adjust as needed */
+}
+
+/* Style for table headers */
+.table.table-bordered th {
+  background-color: #3498db;
+  /* Blue background for headers */
+  color: #fff;
+  /* White text for headers */
+  padding: 15px;
+  text-align: center;
+}
+
+/* Style for alternating row colors */
+.table.table-bordered tr:nth-child(even) {
+  background-color: #ecf0f1;
+  /* Light gray for even rows */
+}
+
+/* Style for table cells */
+.table.table-bordered td {
+  width: 50%;
+  /* Two cells in each row */
+  padding: 15px;
+  border: 1px solid #bdc3c7;
+  /* Border color for table cells */
+  text-align: center;
+}
+
+/* Style for the caption */
+.table.table-bordered caption {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #2c3e50;
+  /* Dark blue text for the caption */
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .table.table-bordered {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .table.table-bordered th,
+  .table.table-bordered td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .table.table-bordered th,
+  .table.table-bordered td {
+    background-color: #3498db;
+    /* Blue background for headers and cells */
+    color: #fff;
+    /* White text for headers and cells */
+  }
+
+  .table.table-bordered caption {
+    text-align: center;
+  }
+}
