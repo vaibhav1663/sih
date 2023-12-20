@@ -82,6 +82,9 @@ const AI = () => {
                     <Input
                         type="text"
                         placeholder="Book Name"
+                        defaultValue={
+                            "Ayurveda and the Mind by Dr. David Frawley"
+                        }
                         className="m-3"
                         color={"white"}
                         onChange={(e) => {
