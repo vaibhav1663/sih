@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 
-const FileUpload = () => {
-  const [file, setFile] = useState(null);
+const PlagiarismForm = () => {
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+    setSelectedFile(e.target.files[0]);
   };
 
   const handleUpload = () => {
-    if (file) {
+    if (selectedFile) {
       const formData = new FormData();
-      formData.append('file', file, file.name);
+      formData.append('file', selectedFile, selectedFile.name); // Use a different name for the FormData object
 
       const requestOptions = {
         method: 'POST',
@@ -25,7 +25,7 @@ const FileUpload = () => {
           return response.text();
         })
         .then((result) => {
-          console.log("Hek==",result);
+          console.log("Response:", result);
           // Handle the result as needed
         })
         .catch((error) => {
@@ -46,4 +46,4 @@ const FileUpload = () => {
   );
 };
 
-export default FileUpload;
+export default PlagiarismForm;
