@@ -107,13 +107,13 @@ const Navbar = (props) => {
                             </>
                         ) : null}
 
-                        {user && user.role === "teacher" ? (
+                        {user && user.role === "author" ? (
                             <>
                                 <li>
                                     <a
-                                        href="/teacher"
+                                        href="/author"
                                         className={
-                                            props.page === "teacher"
+                                            props.page === "author"
                                                 ? highlight
                                                 : simple
                                         }

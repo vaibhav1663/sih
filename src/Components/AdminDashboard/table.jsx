@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 import {
   Table,
   Thead,
   Tbody,
+  Link,
   Tfoot,
   Tr,
   Th,
@@ -100,7 +102,6 @@ const DataTable = ({ handleReviewer }) => {
         reviewers,
       };
       submitData(requestData, (res) => {
-        console.log(">>>", res);
         if (res.code === 201) {
           setSuccessModalOpen(true);
         } else {
@@ -304,37 +305,37 @@ const DataTable = ({ handleReviewer }) => {
                   ></Search>
                 </Td>
               </Tr>
-              {getReviewersByBookId(getBookIdByName(rowData[0])).some(
-                (reviewer) => reviewer === null
-              ) ? null : (
-                <>
-                  {" "}
-                  <Tr>
-                    <Td border="1">
-                      {" "}
-                      <Button
-                        key={5}
-                        onClick={(e) => {
-                          const bookID = getBookIdByName(rowData[0]);
-                          const reviewers = getReviewersByBookId(bookID);
-                          console.log(bookID, reviewers);
+              <>
+                {" "}
+                <Tr>
+                  <Td border="1"> </Td>
+                </Tr>
+              </>
 
-                          if (reviewers.some((reviewer) => reviewer === null)) {
-                            console.log("Select 3 Reviewers");
-                          } else {
-                            handleAllocateReviewer(e, bookID, reviewers);
-                          }
-                        }}
-                        colorScheme="blue"
-                      >
-                        Submit Reviewers
-                      </Button>
-                    </Td>
-                  </Tr>
-                </>
-              )}
               <Td>
-                <RejectComp bookId={getBookIdByName(rowData[0])} />
+                <div>
+                  <Button
+                    key={5}
+                    mb={4}
+                    onClick={(e) => {
+                      const bookID = getBookIdByName(rowData[0]);
+                      const reviewers = getReviewersByBookId(bookID);
+                      console.log(bookID, reviewers);
+
+                      if (reviewers.some((reviewer) => reviewer === null)) {
+                        toast.error("Select 3 Reviewers");
+                      } else {
+                        handleAllocateReviewer(e, bookID, reviewers);
+                      }
+                    }}
+                    colorScheme="green"
+                  >
+                    Submit Reviewers
+                  </Button>
+                </div>
+                <div>
+                  <RejectComp bookId={getBookIdByName(rowData[0])} />
+                </div>
               </Td>
             </Tr>
           ))}

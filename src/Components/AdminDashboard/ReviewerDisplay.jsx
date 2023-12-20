@@ -74,82 +74,96 @@ const ReviewerDisplay = ({ reviewersToDisplay }) => {
     }, [reviewersToDisplay, reviewersData]);
 
     return (
-        <>
-            <TableContainer style={{ paddingBottom: "8rem",  borderRadius: "8px", border: "1px solid grey" }}>
-                <Table variant="simple">
-                    <Thead>
-                        <Tr>
-                            {headers.map((header, index) => (
-                                <Th
-                                    className="bg-blue-100 border-r-4"
-                                    width="10%"
-                                    key={index}
-                                >
-                                    {header}
-                                </Th>
-                            ))}
-                        </Tr>
-                    </Thead>
-                    <Tbody>
-                        {reviewersData.map((rowData, i) => (
-                            <Tr  className={i % 2 === 0 ? '' : 'bg-blue-100'} key={i}>
-                                {propsToDisplay.map((prop, j) => (
-                                    <Td  key={j}  className={`border border-2 py-2 ${j === 0 ? 'border-white' : 'break-all overflow-wrap border-blue-400'}`}>{rowData[prop]}</Td>
-                                   
+      <>
+        <TableContainer
+          style={{
+            paddingBottom: "8rem",
+            borderRadius: "8px",
+            border: "1px solid grey",
+          }}
+        >
+          <Table variant="simple">
+            <Thead>
+              <Tr>
+                {headers.map((header, index) => (
+                  <Th
+                    className="bg-blue-100 border-r-4"
+                    width="10%"
+                    key={index}
+                  >
+                    {header}
+                  </Th>
+                ))}
+              </Tr>
+            </Thead>
+            <Tbody>
+              {reviewersData.map((rowData, i) => (
+                <Tr className={i % 2 === 0 ? "" : "bg-blue-100"} key={i}>
+                  {propsToDisplay.map((prop, j) => (
+                    <Td
+                      key={j}
+                      className={`border border-2 py-2 ${
+                        j === 0
+                          ? "border-white"
+                          : "break-all overflow-wrap border-blue-400"
+                      }`}
+                    >
+                      {rowData[prop]}
+                    </Td>
+                  ))}
+                  <Td>
+                    <ul>
+                      {rowData.reviewed &&
+                        rowData.reviewed.map(
+                          (item, index) =>
+                            item && (
+                              <li key={index}>
+                                <Link to={`/book/${item._id}`}>
+                                  <Button
+                                    mb={2}
+                                    mr={2}
+                                    className="font-medium text-xl hover:bg-blue-400"
+                                  >
+                                    {item.name}
+                                  </Button>
+                                </Link>
+                              </li>
+                            )
+                        )}
+                    </ul>
+                  </Td>
+                  <Td>
+                    <ul>
+                      {rowData.underReview &&
+                        rowData.underReview.map(
+                          (item, index) =>
+                            item && (
+                              <li key={index}>
+                                <Link to={`/admin/book/${item._id}`}>
+                                  <Button
+                                    mb={2}
+                                    mr={2}
+                                    className="font-medium text-xl"
+                                  >
+                                    {item.name}
+                                  </Button>
+                                </Link>
+                              </li>
+                            )
+                        )}
+                    </ul>
+                  </Td>
+                </Tr>
+              ))}
+            </Tbody>
+          </Table>
+          <Link to={"/admin/addReviewer"}>
+          <Button colorScheme="blue" mt={4}>Add Reviewer</Button>
+        </Link>
+        </TableContainer>
 
-                                ))}
-                                <Td>
-                                    <ul>
-                                        {rowData.reviewed &&
-                                            rowData.reviewed.map(
-                                                (item, index) =>
-                                                    item && (
-                                                        <li key={index}>
-                                                            <Link
-                                                                to={`/book/${item._id}`}
-                                                            >
-                                                                <Button
-                                                                    mb={2}
-                                                                    mr={2}
-                                                                    className="font-medium text-xl hover:bg-blue-400"
-                                                                >
-                                                                    {item.name}
-                                                                </Button>
-                                                            </Link>
-                                                        </li>
-                                                    )
-                                            )}
-                                    </ul>
-                                </Td>
-                                <Td>
-                                    <ul>
-                                        {rowData.underReview &&
-                                            rowData.underReview.map(
-                                                (item, index) =>
-                                                    item && (
-                                                        <li key={index}>
-                                                            <Link
-                                                                to={`/admin/book/${item._id}`}
-                                                            >
-                                                                <Button
-                                                                    mb={2}
-                                                                    mr={2}
-                                                                    className="font-medium text-xl"
-                                                                >
-                                                                    {item.name}
-                                                                </Button>
-                                                            </Link>
-                                                        </li>
-                                                    )
-                                            )}
-                                    </ul>
-                                </Td>
-                            </Tr>
-                        ))}
-                    </Tbody>
-                </Table>
-            </TableContainer>
-        </>
+
+      </>
     );
 };
 

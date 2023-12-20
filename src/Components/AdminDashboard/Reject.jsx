@@ -68,12 +68,16 @@ const RejectComp = ({ _id }) => {
 
     return (
         <>
-            <Button
-                className="!w-min !px-4 !bg-red-700 !text-white !rounded-lg !shadow-md !shadow-red-300/50 hover:!bg-red-600 !w-full"
-                onClick={onOpen}
-            >
-                Reject
-            </Button>
+                          <Button
+                    key={5}
+                    mb={4}
+                    px={9}
+                    onClick={onOpen}
+                    colorScheme="red"
+                  >
+                    Reject Book
+                  </Button>
+
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
