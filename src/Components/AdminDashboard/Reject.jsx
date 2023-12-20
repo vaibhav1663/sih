@@ -23,7 +23,7 @@ import { Textarea } from "@chakra-ui/react";
 
 const REJECT_BOOK_URL = "http://localhost:5000/admin/reject";
 
-const RejectComp = ({ _id }) => {
+const RejectComp = ({ bookId }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [message, setMessage] = useState("");
     const [deadline, setDeadline] = useState(30);
@@ -36,7 +36,7 @@ const RejectComp = ({ _id }) => {
         }
 
         const rejectData = {
-            _id,
+            bookId,
             message,
             deadline: String(deadline),
         };
