@@ -55,11 +55,11 @@ function App() {
                         <Route path="/signup" element={<Signup />} />
                         <Route path="/ai" element={<AI />} />
                         {/* Admin Routes */}
-                        <Route path="/admin" element={localStorage.getItem("user").role == 'admin' ?<AdminDashboard /> :<>You must be Admin and logged in to access admin route</> } />
-                        <Route path="/admin/book/:id" element={localStorage.getItem("user").role == 'admin' ?<AdminDashboard /> :<>You must be Admin and logged in to access admin route</> } />
+                        <Route path="/admin" element={localStorage.getItem("user").role == 'admin' ? <AdminDashboard /> : <>You must be Admin and logged in to access admin route</>} />
+                        <Route path="/admin/book/:id" element={localStorage.getItem("user").role == 'admin' ? <AdminDashboard /> : <>You must be Admin and logged in to access admin route</>} />
                         <Route
                             path="/admin/book/:bookID/review/:reviewerID"
-                            element={localStorage.getItem("user").role == 'admin' ? <PDF /> :<>You must be Admin and logged in to access admin route</>}
+                            element={localStorage.getItem("user").role == 'admin' ? <PDF /> : <>You must be Admin and logged in to access admin route</>}
                         />
 
                         {/* Reviewer Routes */}
@@ -83,10 +83,16 @@ function App() {
                         />
                         <Route path="/book/:id" element={<Book />} />
                         <Route
-                        path = "/peer-to-peer"
-                        element={
-                            <PeerToPeer/>
-                        }/>
+                            path="/peer-to-peer"
+                            element={
+                                <PeerToPeer />
+                            } />
+
+                        <Route
+                            path="/*"
+                            element={
+                                <Login />
+                            } />
 
                     </Routes>
                 </div>
