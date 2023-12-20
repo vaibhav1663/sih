@@ -9,6 +9,7 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 const plagiarismOptions = {
+  // extra api key :a8e61e8a45msh23ae90ad7647480p17b50ajsne0288059280e
   method: "POST",
   url: "https://plagiarism-checker-and-auto-citation-generator-multi-lingual.p.rapidapi.com/plagiarism",
   headers: {
