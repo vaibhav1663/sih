@@ -152,13 +152,13 @@ const Accordian = ({ reviewerID }) => {
           <StatusCards data={reviewed} admin={false} ></StatusCards>
         </TabPanel>
         <TabPanel>
-        <h2>Total Review Status</h2>
+        <h2 className="text-2xl">Total Review Status</h2>
         <div className="piechart">
           <PieChart data={graphData}
-            width={200}
-            height={200}
-            innerRadius={60}
-            outerRadius={100}/>
+            width={500}
+            height={400}
+            innerRadius={100}
+            outerRadius={200}/>
         </div>
         </TabPanel>
       </TabPanels>

@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import Table from "./TeacherDashboard/table";
 import SuggestBook from "./SuggestBook";
+import Widget from "./TeacherDashboard/genie";
 import { useAuthContext } from "../hooks/useAuthContext";
 const TeacherDashboard = () => {
     const teacher = useAuthContext();
@@ -21,7 +22,10 @@ const TeacherDashboard = () => {
                 <div className="my-12">
                     <SuggestBook recommenderID={teacherID} bookID="" revise={false} />
                 </div>
+                
+                
             </div>
+            <Widget></Widget>
         </>
     );
 };
