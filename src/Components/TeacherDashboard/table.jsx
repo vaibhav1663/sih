@@ -12,8 +12,10 @@ import {
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { Button } from "@material-tailwind/react";
+import SuggestBook from "../SuggestBook";
 
 const GET_AUTHOR_BOOKS_URL = "http://localhost:5000/author/getBooks";
+
 const match = (a, b) => {
   console.log({ a, b });
   return a.split(" ").some((word1) => {
@@ -35,6 +37,7 @@ function formatDate(date) {
   return formattedDate;
 }
 const DataTable = ({ recommenderID }) => {
+
   const [booksToDisplay, setBooksToDisplay] = useState([]);
 
   const getBooksByTeacherName = async (u) => {
@@ -55,6 +58,7 @@ const DataTable = ({ recommenderID }) => {
     const fetchData = async () => {
       try {
         const response = await getBooksByTeacherName(String(recommenderID));
+        console.log(response);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -76,57 +80,53 @@ const DataTable = ({ recommenderID }) => {
       <Table variant="simple">
         <Thead>
           <Tr>
-            {header.map((x, i) => (
-              <Th
-                className={`bg-blue-300 text-gray-800 ${
-                  i !== 2 ? "border-r-4" : " "
-                }`}
-                width="10%"
-                key={i}
-              >
-                {x}
-              </Th>
-            ))}
+            <Th className="bg-blue-300 border-r-4 text-gray-800" width="10%">
+              Book Title
+            </Th>
+            <Th className="bg-blue-300 border-r-4 text-gray-800" width="10%">
+              Submission Date
+            </Th>
+            <Th className="bg-blue-300 border-r-4 text-gray-800" width="10%">
+              Status
+            </Th>
           </Tr>
         </Thead>
         <Tbody>
-          {tableData.map((rowData, i) => {
-            return (
-              <>
-                <Tr key={i} className={i % 2 === 0 ? "" : "bg-blue-100"}>
-                  {rowData.map((col, j) => (
-                    <Td
-                      key={j}
-                      // border="2px solid white"
-                      style={{ maxWidth: "400px", textWrap: "balance" }}
-                      className={`border border-2 py-2 ${
-                        j === 0
-                          ? "border-white"
-                          : "break-all overflow-wrap border-blue-400"
-                      }`}
-                    >
-                      {j === 1 ? (
-                        formatDate(new Date(col))
-                      ) : col.length < 40 ? (
-                        col
-                      ) : (
-                        <>{col}</>
-                      )}
-                    </Td>
-                  ))}
-                  {rowData[3] == "true" ? (
-                    <Td>
-                      <Button onClick={handleChart} colorScheme="blue">
-                        More
-                      </Button>
-                    </Td>
-                  ) : (
-                    <></>
-                  )}
-                </Tr>
-              </>
-            );
-          })}
+          {booksToDisplay.map((dataBook, i) => (
+            <Tr key={i} className={i % 2 === 0 ? "" : "bg-blue-100"}>
+              <Td
+                style={{ maxWidth: "400px", textWrap: "balance" }}
+                className="border border-2 py-2 border-white break-all overflow-wrap border-blue-400"
+              >
+                {dataBook.name.length < 40 ? (
+                  dataBook.name
+                ) : (
+                  <>{dataBook.name}</>
+                )}
+              </Td>
+              <Td
+                style={{ maxWidth: "400px", textWrap: "balance" }}
+                className="border border-2 py-2 break-all overflow-wrap border-blue-400"
+              >
+                {formatDate(new Date(dataBook.date))}
+              </Td>
+              <Td>
+                {dataBook.reject.length%2 == 0 ? (
+                  <>
+                    {dataBook.underReview ? (
+                      <p>Under Review</p>
+                    ) : (
+                      <p>Pending</p>
+                    )}
+                  </>
+                ) : (
+                  <><p className="text-red-600">Rejected <SuggestBook bookID={dataBook._id} recommenderID={recommenderID} revise={true} /></p>
+                  
+                  </>
+                )}
+              </Td>
+            </Tr>
+          ))}
         </Tbody>
         <Tfoot></Tfoot>
       </Table>

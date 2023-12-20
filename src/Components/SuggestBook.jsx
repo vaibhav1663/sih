@@ -27,6 +27,9 @@ import { IoBookSharp } from "react-icons/io5";
 import { Navigate } from "react-router-dom";
 const ADD_RECOMMMENDATION_URL =
   "http://localhost:5000/author/addRecommendation";
+const REVISE_RECOMMMENDATION_URL =
+  "http://localhost:5000/author/revise";
+
 const SuccessModal = ({ isOpen, onClose, handleExplore, referenceNumber }) => (
   <AlertDialog isOpen={isOpen} onClose={onClose}>
     <AlertDialogOverlay />
@@ -53,9 +56,8 @@ const SuccessModal = ({ isOpen, onClose, handleExplore, referenceNumber }) => (
   </AlertDialog>
 );
 
-const SuggestBook = ({ recommenderID }) => {
+const SuggestBook = ({ recommenderID, bookID, revise }) => {
   const navigate = useNavigate();
-  console.log("id<>", recommenderID);
   let teacherID = recommenderID;
   const [discipline, setDiscipline] = useState("");
   const [title, setTitle] = useState("");
@@ -65,6 +67,8 @@ const SuggestBook = ({ recommenderID }) => {
   const [previewLink, setPreviewLink] = useState("");
   const [imageLink, setImageLink] = useState("");
   const [referenceNumber, setReferenceNumber] = useState("");
+
+  const [bookInfo, setBookInfo] = useState({});
   //   const [file, setFile] = useState(null);
   const [error, setError] = useState("");
   const [successModalOpen, setSuccessModalOpen] = useState(false);
@@ -106,66 +110,67 @@ const SuggestBook = ({ recommenderID }) => {
     }
     return true;
   };
+
   const submitData = async function (data, callback) {
-    const requestOptions = {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
-      mode: "cors", // no-cors, *cors, same-origin
-      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: "same-origin", // include, *same-origin, omit
-      headers: {
-        "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      redirect: "follow", // manual, *follow, error
-      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: JSON.stringify(data), // body data type must match "Content-Type" header
-    };
-
-    const responseDT = await fetch(ADD_RECOMMMENDATION_URL, requestOptions);
-
-    const responseJSON = await responseDT.json();
-    console.log(responseJSON);
-    callback(responseJSON);
+  const requestOptions = {
+    method: "POST",
+    mode: "cors",
+    cache: "no-cache",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    redirect: "follow",
+    referrerPolicy: "no-referrer",
+    body: JSON.stringify(data),
   };
+
+  let apiUrl = ADD_RECOMMMENDATION_URL;
+
+  if (revise) {
+    apiUrl = REVISE_RECOMMMENDATION_URL;
+  }
+
+  if (revise) {
+    data.bookID = bookID;
+  }
+
+  const responseDT = await fetch(apiUrl, requestOptions);
+
+  const responseJSON = await responseDT.json();
+  console.log(responseJSON);
+  callback(responseJSON);
+};
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setError("");
 
     if (!validateForm()) return;
-    // console.log("id>>", id);
-    const bookInfo = {
-      name: title + " - " + author,
-      recomendedBy: teacherID,
-      desc: description,
-      imageLink,
-      previewLink,
-      buyLink,
-    };
-    //     {
-    //     "discipline": "ayurveda",
-    //     "name": "MEW",
 
-    //   "recomendedBy":"657d341f5052a71110dd35e3",
-    //   "author":"AUthor 2",
+    const bookData = {
+  name: title + " - " + author,
+  desc: description,
+  imageLink,
+  previewLink,
+  buyLink,
+};
 
-    //     "desc": "this is a description",
-    //     "imageLink": "http://books.google.com/books/content?id=Xq52DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+if (revise) {
+  bookData._id = bookID;
+} else {
+  bookData.recomendedBy = teacherID;
+}
 
-    //     "previewLink": "https://www.googleapis.com/books/v1/volumes/Xq52DwAAQBAJ",
 
-    //     "buyLink": "http://books.google.co.in/books?id=Xq52DwAAQBAJ&dq=Essentials+of+Medical+Microbiology+-+Apurba+S.+Sastry&hl=&source=gbs_api",
-    //     "date":"2023-12-16",
-    //     "referenceId":"6x9xghzk"
+    console.log(bookData);
+    setBookInfo(bookData);
 
-    // }
-
-    console.log("Book Information:", bookInfo);
     submitData(bookInfo, (ref) => {
       console.log(">>>", ref);
       if ("error" in ref) {
         setError(ref.error);
-        // setFailure Modal
       } else {
         setReferenceNumber(ref.referenceId);
         setSuccessModalOpen(true);
@@ -182,7 +187,6 @@ const SuggestBook = ({ recommenderID }) => {
   const handleExplore = () => {
     navigate("/book-reviews");
   };
-
   return (
     <>
       <Button
@@ -190,7 +194,8 @@ const SuggestBook = ({ recommenderID }) => {
         className="hover:bg-blue-200 px-4 py-2"
         onClick={onOpen}
       >
-        Recommend a Book
+        {revise? (<>Revise</>):(<>Recommend a Book</>)}
+        
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose} size="xl">
