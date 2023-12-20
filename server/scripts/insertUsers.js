@@ -1,8 +1,9 @@
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectId } = require("mongodb");
 let documentsToInsert = require("./user.json");
 
 // Connection URI
-const uri = "mongodb+srv://username:27bKylHTcLzRZqhf@brocoders.kmwx8fe.mongodb.net/";
+const uri =
+    "mongodb+srv://username:27bKylHTcLzRZqhf@brocoders.kmwx8fe.mongodb.net/";
 
 // Database Name
 const dbName = "sih";
@@ -33,5 +34,9 @@ async function insertDocuments(documents) {
         await client.close();
     }
 }
+documentsToInsert = documentsToInsert.map((item) => {
+    item["_id"] = new ObjectId(item["_id"]);
+    return item;
+});
 
 insertDocuments(documentsToInsert);
