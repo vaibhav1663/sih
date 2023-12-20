@@ -19,7 +19,7 @@ const TeacherDashboard = () => {
                 </div>
                 
                 <div className="my-12">
-                    <SuggestBook recommenderID={teacherID} />
+                    <SuggestBook recommenderID={teacherID} bookID="" revise={false} />
                 </div>
             </div>
         </>

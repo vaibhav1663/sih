@@ -38,7 +38,7 @@ const RejectComp = ({ _id }) => {
         const rejectData = {
             _id,
             message,
-            deadline,
+            deadline: String(deadline),
         };
 
         try {
