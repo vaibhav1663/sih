@@ -331,7 +331,7 @@ const Book = () => {
                                         display="block"
                                         className="!w-min !px-4 !bg-blue-700 !text-white !rounded-lg !shadow-md !shadow-blue-300/50 hover:!bg-blue-600 !w-full"
                                     >
-                                        Publish
+                                        Accept
                                     </Button>
                                 </Center>
                             </div>
