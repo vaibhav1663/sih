@@ -56,10 +56,10 @@ function App() {
                         <Route path="/ai" element={<AI />} />
                         {/* Admin Routes */}
                         <Route path="/admin" element={<AdminDashboard />} />
-                        <Route path="/admin/book/:id" element={<AdminDashboard />} />
+                        <Route path="/admin/book/:id" element={<AdminBook />} />
                         <Route
                             path="/admin/book/:bookID/review/:reviewerID"
-                            element={localStorage.getItem("user")?.role == 'admin' ? <PDF /> : <>You must be Admin and logged in to access admin route</>}
+                            element={<PDF />}
                         />
 
                         {/* Reviewer Routes */}
