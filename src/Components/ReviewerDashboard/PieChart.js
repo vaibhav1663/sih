@@ -45,7 +45,7 @@ const Pie = props => {
         .attr("alignment-baseline", "middle")
         .attr("transform", d => `translate(${createArc.centroid(d)})`)
         .style("fill", "white")
-        .style("font-size", 7)
+        .style("font-size", 16)
         .text(d => (d.data.label+":"+format(d.value)));
     },
     [props.data]
