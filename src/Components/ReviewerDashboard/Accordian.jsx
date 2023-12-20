@@ -129,9 +129,10 @@ const Accordian = ({ reviewerID }) => {
       <TabList className="overflow-x-auto">
         <Tab>To be Reviewed</Tab>
         <Tab>Reviewed</Tab>
+        <Tab>Review Status</Tab>
       </TabList>
 
-      <TabPanels className="md:px-12 lg:px-16">
+      <TabPanels className="md:px-2 lg:px-2">
         <TabPanel>
           <h1 className="text-2xl font-semibold mb-6">Books to be Reviewed</h1>
           <BooksAccordion
@@ -150,15 +151,18 @@ const Accordian = ({ reviewerID }) => {
           />
           <StatusCards data={reviewed} admin={false} ></StatusCards>
         </TabPanel>
+        <TabPanel>
+        <h2>Total Review Status</h2>
+        <div className="piechart">
+          <PieChart data={graphData}
+            width={200}
+            height={200}
+            innerRadius={60}
+            outerRadius={100}/>
+        </div>
+        </TabPanel>
       </TabPanels>
     </Tabs>
-    <div className="piechart">
-    <PieChart data={graphData}
-          width={200}
-          height={200}
-          innerRadius={60}
-          outerRadius={100}/>
-     </div>
     </>
   );
 };

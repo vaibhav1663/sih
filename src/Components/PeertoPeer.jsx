@@ -3,6 +3,7 @@ import Search from "./AdminDashboard/Search";
 import StatusCards from "./AdminDashboard/StatusCards";
 import BarChart from "./TeacherDashboard/BarChart";
 import { HStack, Center, Button,Stack } from "@chakra-ui/react";
+import { toast } from "react-toastify";
 import Navbar from "./Navbar";
 
 let COMPARE_BOOKS_URL = "http://localhost:5000/books/compareBooksById";
@@ -14,7 +15,9 @@ const PeerToPeer = () => {
     const [books, setBooks] = useState([null,null]);
     const [bookname, setBookNames] = useState([null,null]);
     const [data, setData] = useState([]);
+    const [obj, setObj] = useState([]);
     const [data1, setData1] = useState([]);
+    const [response, setResponse] = useState("");
     
     useEffect(() => {
         const fetchData = async () => {
@@ -51,10 +54,39 @@ const PeerToPeer = () => {
             );
             const responseJSON = await response.json()
             console.log({responseJSON})
+            setObj(responseJSON)
             setData1(responseJSON)
             };
             giveCompare();
-    }
+            console.log({obj});
+          var myHeaders = new Headers();
+          myHeaders.append("Content-Type", "application/json");
+
+          var raw = JSON.stringify({
+            obj: obj,
+          });
+
+          var requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow",
+           };
+          // setResponse(["AI Model is working hard to review your book ..."]);
+
+          fetch("http://localhost:5000/bard/getGeneralOverview/", requestOptions)
+            .then((response) => response.text())
+            .then((result) => {
+                setResponse(
+                    JSON.parse(result).result.replace("##", "").split("\n")
+                );
+          })
+          .catch((error) => toast("error", error));
+  };
+
+    useEffect(() => {
+        console.log(response);
+    }, [response]);
 
     const handleChange = (bname,value, r) => {
         setBooks((prevBooks) => {
