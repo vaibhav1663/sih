@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 // import jsPDF from "jspdf";
-import "./pdf.css"
+import "./pdf.css";
 import "jspdf-autotable";
 let done = false;
 const PDF = () => {
     const { bookID, reviewerID } = useParams();
     const [tables, setTables] = useState();
+    let b;
     console.log("bookID >>", bookID);
     console.log("reviewID >>", reviewerID);
-
+    let done = false;
     useEffect(() => {
         const getReview = async () => {
             const response = await fetch(
@@ -27,6 +28,7 @@ const PDF = () => {
             const data = await response.json();
             console.log("fetched book data >>", data);
             const book = data;
+            b = data;
             if (book.reviewerResponse) {
                 const reviews = book.reviewerResponse;
                 let filteredReview = reviews.filter(
@@ -38,16 +40,16 @@ const PDF = () => {
                     const bookData = ["A", "B", "C", "D", "E", "F", "G"].map(
                         (key) => filteredReview[key]
                     );
-                      const keyMappings = {
-                          H: "Ethical issues(related to author editor and publishor)",
-                          A: "Author credibitlity",
-                          B: "Publisher credibitlity",
-                          C: "in general",
-                          D: "physical appearance structure and organisation",
-                          E: "subject matter",
-                          F: "Language",
-                          G: "Illustrations",
-                      };
+                    const keyMappings = {
+                        H: "Ethical issues(related to author editor and publishor)",
+                        A: "Author credibitlity",
+                        B: "Publisher credibitlity",
+                        C: "in general",
+                        D: "physical appearance structure and organisation",
+                        E: "subject matter",
+                        F: "Language",
+                        G: "Illustrations",
+                    };
                     let PDFData = {
                         H: {
                             Plagiarism: null,
@@ -253,29 +255,30 @@ const PDF = () => {
                     // !done && pdf.save(`${bookID}-${reviewerID}.pdf`);
                     // done = true;
                     console.log(docData);
-                  setTables(docData);
-                  const headers = [
-                    "Ethical issues(related to author editor and publishor)",
-                    "Author credibitlity",
-                    "Publisher credibitlity",
-                    "in general",
-                    "physical appearance structure and organisation",
-                    "subject matter",
-                    "Language",
-                    "Illustrations",
-                  ];
-                  let tableArr = docData.map((table, i) => {
-                      
-                    const Table = document.createElement("table");
-                    Table.className = "table table-bordered";
-                      const TableCaption = document.createElement("caption");
-                      TableCaption.innerText = headers[i];
-                      Table.append(TableCaption);
-                      Table.style.border = "solid"
+                    setTables(docData);
+                    const headers = [
+                        "Ethical issues(related to author editor and publisher)",
+                        "Author Credibitlity",
+                        "Publisher Credibitlity",
+                        "In General",
+                        "Physical Appearance Structure and Organisation",
+                        "Subject Matter - Concept",
+                        "Subject Matter - Is the content promoting?",
+                        "Subject Matter - Misc",
+                        "Language",
+                        "Illustrations",
+                    ];
+                    document.getElementById("pdfframe").innerHTML = "";
+                    let tableArr = docData.map((table, i) => {
+                        const Table = document.createElement("table");
+                        Table.className = "table table-bordered";
+                        const TableCaption = document.createElement("caption");
+                        TableCaption.innerText = headers[i];
+                        Table.append(TableCaption);
+                        Table.style.border = "solid";
                         const row = (data) => {
-                          const Tr = document.createElement("tr");
-                          if (data.length != 2)
-                            return
+                            const Tr = document.createElement("tr");
+                            if (data.length != 2) return;
                             data.map((cell) => {
                                 const Td = document.createElement("td");
                                 Td.innerText = cell;
@@ -284,10 +287,14 @@ const PDF = () => {
                             Table.append(Tr);
                         };
                         table.forEach((rowData) => row(rowData));
-                        document.body.append(Table);
+                        document.getElementById("h1").innerHTML =
+                            "Book Name: " + b.name;
+                        document.getElementById("h2").innerHTML =
+                            "Reviewer ID: " + reviewerID;
+                        document.getElementById("pdfframe").append(Table);
                         return Table;
                     });
-                  setTables(tableArr);
+                    setTables(tableArr);
                     console.log(tableArr);
                 }
             }
@@ -297,7 +304,26 @@ const PDF = () => {
         })();
     }, []);
 
-    return <></>;
+    return (
+        <>
+            <img className="m-auto" src="/img/header.png" alt="Header" />
+            <h1
+                id="h1"
+                className="text-center text-3xl bold text-bold strong"
+            ></h1>
+            <h2
+                id="h2"
+                className="text-center text-2xl bold text-bold strong"
+            ></h2>
+            <div
+                style={{
+                    width: "75vw",
+                }}
+                className="m-auto flex flex-col items-center justify-center "
+                id="pdfframe"
+            ></div>
+        </>
+    );
 };
 
 export default PDF;
