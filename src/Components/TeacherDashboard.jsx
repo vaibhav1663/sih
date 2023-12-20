@@ -58,12 +58,16 @@ const TeacherDashboard = () => {
                     <SuggestBook recommenderID={teacherID} bookID="" revise={false} />
                 </div>
             </div>
-            <Widget data={data} ></Widget>
-            
-            <div classname="inline ">
-                <input className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none" type="file" onChange={handleFileChange} />
-                <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none"  onClick={handleUpload}>Upload</button>
+            <div className="p-4 box text-center">
+            <h1 className="mt-4 font-bold text-4xl">Plagiarism Check</h1>
             </div>
+             
+            <div style={{display: 'flex', flexDirection: 'column'}}>
+                <input className="m-auto p-2 block text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" type="file" onChange={handleFileChange} />
+                <button className="center m-auto mt-2 mb-2 ml-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none"  onClick={handleUpload}>Upload</button>
+            </div>
+            <Widget data={data} ></Widget>
+           
         </>
     );
 };
