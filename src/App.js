@@ -55,8 +55,8 @@ function App() {
                         <Route path="/signup" element={<Signup />} />
                         <Route path="/ai" element={<AI />} />
                         {/* Admin Routes */}
-                        <Route path="/admin" element={localStorage.getItem("user")?.role == 'admin' ? <AdminDashboard /> : <>You must be Admin and logged in to access admin route</>} />
-                        <Route path="/admin/book/:id" element={localStorage.getItem("user")?.role == 'admin' ? <AdminDashboard /> : <>You must be Admin and logged in to access admin route</>} />
+                        <Route path="/admin" element={<AdminDashboard />} />
+                        <Route path="/admin/book/:id" element={<AdminDashboard />} />
                         <Route
                             path="/admin/book/:bookID/review/:reviewerID"
                             element={localStorage.getItem("user")?.role == 'admin' ? <PDF /> : <>You must be Admin and logged in to access admin route</>}
@@ -65,12 +65,12 @@ function App() {
                         {/* Reviewer Routes */}
                         <Route
                             path="/reviewer"
-                            element={localStorage.getItem("user")?.role == 'reviewer' ? <ReviewerDashboard /> : <>You must be Reviewer and logged in to access reviewer route</>}
+                            element={<ReviewerDashboard />}
                         />
-                        <Route path="/review" element={localStorage.getItem("user")?.role == 'reviewer' ? <ReviewForm /> : <>You must be Reviewer and logged in to access reviewer route</>} />
+                        <Route path="/review" element={<ReviewForm />} />
 
                         {/* Teacher Routes */}
-                        <Route path="/teacher" element={localStorage.getItem("user")?.role == 'author' ? <TeacherDashboard /> : <>You must be Reviewer and logged in to access reviewer route</>} />
+                        <Route path="/teacher" element={<TeacherDashboard />} />
 
                         {/* Student Routes */}
                         <Route
