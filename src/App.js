@@ -59,6 +59,10 @@ function App() {
                         <Route path="/admin" element={JSON.parse(localStorage.getItem("user"))?.role === "admin" ? <AdminDashboard /> : <>You must be Admin and logged in to access admin route <a href="/login" className="text-sky-500	">login</a></>} />
                         <Route path="/admin/book/:id" element={JSON.parse(localStorage.getItem("user"))?.role == 'admin' ? <AdminBook /> : <>You must be Admin and logged in to access admin route <a href="/login" className="text-sky-500	">login</a></>} />
                         <Route
+                            path="/admin/addReviewer"
+                            element={JSON.parse(localStorage.getItem("user"))?.role == 'admin' ? <AddReviewer /> : <>You must be Admin and logged in to access admin route <a href="/login" className="text-sky-500	">login</a></>}
+                        />
+                        <Route
                             path="/admin/book/:bookID/review/:reviewerID"
                             element={JSON.parse(localStorage.getItem("user"))?.role == 'admin' ? <PDF /> : <>You must be Admin and logged in to access admin route <a href="/login" className="text-sky-500	">login</a></>}
                         />

@@ -7,11 +7,10 @@ import { toast } from "react-toastify";
 import Navbar from "./Navbar";
 
 let COMPARE_BOOKS_URL = "http://localhost:5000/books/compareBooksById";
-let REVIEWED_BOOK_URL = "http://localhost:5000/books/getReviewedBooks"
-
+let REVIEWED_BOOK_URL = "http://localhost:5000/books/getReviewedBooks";
 
 const PeerToPeer = () => {
-  const [compare, setCompare] = useState(false)
+  const [compare, setCompare] = useState(false);
   const [books, setBooks] = useState([null, null]);
   const [bookname, setBookNames] = useState([null, null]);
   const [data, setData] = useState([]);
@@ -32,61 +31,65 @@ const PeerToPeer = () => {
     fetchData();
   }, []);
 
-  console.log(data);
-
+  const validateCompare= ()=>{
+    return books[0] && books[1];
+  }
   const handleCompare = () => {
-    setCompare(true);
+    try {
+      setCompare(true);
 
-    const giveCompare = async () => {
-      const response = await fetch(
-        `http://localhost:5000/books/compareBooksById/`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            id1: books[0],
-            id2: books[1],
-
-          }),
+      const giveCompare = async () => {
+        if(!validateCompare()){
+          toast.error("Please select two books to compare");
+          return;
         }
-      );
-      const responseJSON = await response.json()
-      console.log({ responseJSON })
-      setObj(responseJSON)
-      setData1(responseJSON)
-    };
-    giveCompare();
-    console.log({ obj });
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    var raw = JSON.stringify({
-      obj: obj,
-    });
-
-    var requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-    // setResponse(["AI Model is working hard to review your book ..."]);
-
-    fetch("http://localhost:5000/bard/getGeneralOverview/", requestOptions)
-      .then((response) => response.text())
-      .then((result) => {
-        setResponse(
-          JSON.parse(result).result.replace("##", "").split("\n")
+        const response = await fetch(
+          `http://localhost:5000/books/compareBooksById/`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              id1: books[0],
+              id2: books[1],
+            }),
+          }
         );
-      })
-      .catch((error) => toast("error", error));
-  };
+        const responseJSON = await response.json();
+        if("error" in responseJSON){
+          toast.error(responseJSON.error);          
+          return;
+        }
+        setObj(responseJSON);
+        setData1(responseJSON);
+      };
+      giveCompare();
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
 
-  useEffect(() => {
-    console.log(response);
-  }, [response]);
+      var raw = JSON.stringify({
+        obj: obj,
+      });
+
+      var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+      // setResponse(["AI Model is working hard to review your book ..."]);
+
+      fetch("http://localhost:5000/bard/getGeneralOverview/", requestOptions)
+        .then((response) => response.text())
+        .then((result) => {
+          setResponse(JSON.parse(result).result.replace("##", "").split("\n"));
+        })
+        .catch((error) => toast("error", error));
+    } catch (e) {
+      console.log({ error: e });
+    }
+  };
 
   const handleChange = (bname, value, r) => {
     setBooks((prevBooks) => {
@@ -98,9 +101,6 @@ const PeerToPeer = () => {
     });
   };
 
-
-
-  console.log(">b>", books);
 
   function filterData(data, books) {
     if (!Array.isArray(books) || books.every((id) => id === null)) {
@@ -117,13 +117,10 @@ const PeerToPeer = () => {
     return filteredData;
   }
 
-
   function getBookName(bookId) {
     const book = data.find((d) => d._id === bookId);
     return book ? book.name : null;
   }
-
-
 
   return (
     <>
@@ -141,7 +138,11 @@ const PeerToPeer = () => {
                 r="0"
                 placeholder="Select Book"
               ></Search>
-              <img src="/img/vsFinal.png" className="w-12 h-24 mx-4" alt="V/S" />
+              <img
+                src="/img/vsFinal.png"
+                className="w-12 h-24 mx-4"
+                alt="Flowbite Logo"
+              />
               <Search
                 reviewers={filterData(data, books)}
                 onChange={handleChange}
@@ -157,14 +158,23 @@ const PeerToPeer = () => {
         </Center>
       </div>
       <div>
-        {compare ? <>
-          <BarChart books={data1} bname1={getBookName(books[0])} bname2={getBookName(books[1])} />
-        </> : <></>}
+        {compare ? (
+          <>
+            <BarChart
+              books={data1}
+              bname1={getBookName(books[0])}
+              bname2={getBookName(books[1])}
+            />
+          </>
+        ) : (
+          <></>
+        )}
       </div>
       <div>
         <StatusCards data={data} admin={false}></StatusCards>
       </div>
-    </>)
-}
+    </>
+  );
+};
 
 export default PeerToPeer;
