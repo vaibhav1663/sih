@@ -31,9 +31,11 @@ const BookReviews = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(API_ROUTE);
-        const json = await response.json();
-        setData(json);
-        setPData(json);
+        const json = await response.json()
+        const nonZeroScoreBooks = json.filter((book) => book.totalScore!=0)
+        
+        setData(nonZeroScoreBooks);
+        setPData(nonZeroScoreBooks);
       } catch (error) {
         console.error("Error fetching data:", error);
       }

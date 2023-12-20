@@ -58,12 +58,11 @@ const BookCard = () => {
     }, []);
     let data_ayurveda = data;
     let data_siddha = data;
-    console.log(booksToDisplay);
     if (booksToDisplay.length === 0) {
         getBooks();
     } else {
-        data_ayurveda = booksToDisplay[0].books;
-        data_siddha = booksToDisplay[1].books;
+        data_ayurveda =booksToDisplay.length==0?[]: booksToDisplay[0].books;
+        data_siddha =booksToDisplay.length==0?[]: booksToDisplay[1].books;
     }
     return (
         <div className="flex flex-col gap-2">

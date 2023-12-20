@@ -83,10 +83,10 @@ const Signup = () => {
                         <div className="flex flex-col max-w-md space-y-5">
                             <form>
                                 <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                                    <div class="sm:col-span-2">
+                                    <div className="sm:col-span-2">
                                         <label
-                                            for="name"
-                                            class="block mb-2 text-sm font-medium text-gray-900  text-left"
+                                            htmlFor="name"
+                                            className="block mb-2 text-sm font-medium text-gray-900  text-left"
                                         >
                                             Name
                                         </label>
@@ -102,10 +102,10 @@ const Signup = () => {
                                         />
                                     </div>
 
-                                    <div class="sm:col-span-2">
+                                    <div className="sm:col-span-2">
                                         <label
-                                            for="email"
-                                            class="block mb-2 text-sm font-medium text-gray-900  text-left"
+                                            htmlFor="email"
+                                            className="block mb-2 text-sm font-medium text-gray-900  text-left"
                                         >
                                             Email
                                         </label>
@@ -121,10 +121,10 @@ const Signup = () => {
                                         />
                                     </div>
 
-                                    <div class="sm:col-span-2">
+                                    <div className="sm:col-span-2">
                                         <label
-                                            for="college"
-                                            class="block mb-2 text-sm font-medium text-gray-900  text-left"
+                                            htmlFor="college"
+                                            className="block mb-2 text-sm font-medium text-gray-900  text-left"
                                         >
                                             College
                                         </label>
@@ -140,10 +140,10 @@ const Signup = () => {
                                         />
                                     </div>
 
-                                    <div class="w-full">
+                                    <div className="w-full">
                                         <label
-                                            for="gender"
-                                            class="block mb-2 text-sm font-medium text-gray-900  text-left "
+                                            htmlFor="gender"
+                                            className="block mb-2 text-sm font-medium text-gray-900  text-left "
                                         >
                                             Gender
                                         </label>
@@ -157,17 +157,17 @@ const Signup = () => {
                                             }}
                                             className="border-2 border-black rounded-lg text-gray-900 text-sm focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
                                         >
-                                            <option selected="">
+                                            <option defaultValue="">
                                                 Select category
                                             </option>
                                             <option value="M">Male</option>
                                             <option value="F">Female</option>
                                         </select>
                                     </div>
-                                    <div class="w-full">
+                                    <div className="w-full">
                                         <label
-                                            for="age"
-                                            class="block mb-2 text-sm font-medium text-gray-900  text-left "
+                                            htmlFor="age"
+                                            className="block mb-2 text-sm font-medium text-gray-900  text-left "
                                         >
                                             Age
                                         </label>
@@ -185,8 +185,8 @@ const Signup = () => {
                                     </div>
                                     <div>
                                         <label
-                                            for="stream"
-                                            class="block mb-2 text-sm font-medium text-gray-900  text-left "
+                                            htmlFor="stream"
+                                            className="block mb-2 text-sm font-medium text-gray-900  text-left "
                                         >
                                             Stream
                                         </label>
@@ -200,7 +200,7 @@ const Signup = () => {
                                             }}
                                             className="border-2 border-black rounded-lg text-gray-900 text-sm focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
                                         >
-                                            <option selected="">
+                                            <option defaultValue="">
                                                 Select category
                                             </option>
                                             <option value="UG">UG</option>
@@ -209,8 +209,8 @@ const Signup = () => {
                                     </div>
                                     <div>
                                         <label
-                                            for="year"
-                                            class="block mb-2 text-sm font-medium text-gray-900  text-left "
+                                            htmlFor="year"
+                                            className="block mb-2 text-sm font-medium text-gray-900  text-left "
                                         >
                                             Year
                                         </label>
@@ -224,7 +224,7 @@ const Signup = () => {
                                             }}
                                             className="border-2 border-black rounded-lg text-gray-900 text-sm focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
                                         >
-                                            <option selected="">
+                                            <option defaultValue="">
                                                 Select category
                                             </option>
                                             <option value="FY">
@@ -243,8 +243,8 @@ const Signup = () => {
                                     </div>
                                     <div>
                                         <label
-                                            for="field"
-                                            class="block mb-2 text-sm font-medium text-gray-900  text-left "
+                                            htmlFor="field"
+                                            className="block mb-2 text-sm font-medium text-gray-900  text-left "
                                         >
                                             Course
                                         </label>
@@ -258,7 +258,7 @@ const Signup = () => {
                                             }}
                                             className="border-2 border-black rounded-lg text-gray-900 text-sm focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
                                         >
-                                            <option selected="">
+                                            <option defaultValue="">
                                                 Select category
                                             </option>
                                             <option value="ayurveda">
@@ -271,8 +271,8 @@ const Signup = () => {
                                     </div>
                                     <div>
                                         <label
-                                            for="role"
-                                            class="block mb-2 text-sm font-medium text-gray-900  text-left "
+                                            htmlFor="role"
+                                            className="block mb-2 text-sm font-medium text-gray-900  text-left "
                                         >
                                             Role
                                         </label>
@@ -286,7 +286,7 @@ const Signup = () => {
                                             }}
                                             className="border-2 border-black rounded-lg text-gray-900 text-sm focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
                                         >
-                                            <option selected="">Role</option>
+                                            <option defaultValue="">Role</option>
                                             <option value="student">
                                                 Student
                                             </option>
@@ -299,10 +299,10 @@ const Signup = () => {
                                         </select>
                                     </div>
 
-                                    <div class="sm:col-span-2">
+                                    <div className="sm:col-span-2">
                                         <label
-                                            for="password"
-                                            class="block mb-2 text-sm font-medium text-gray-900  text-left"
+                                            htmlFor="password"
+                                            className="block mb-2 text-sm font-medium text-gray-900  text-left"
                                         >
                                             Password
                                         </label>

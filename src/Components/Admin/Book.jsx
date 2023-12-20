@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Button } from "@chakra-ui/react";
 import { ListItem, UnorderedList, HStack, Center } from "@chakra-ui/react";
 import RejectComp from "../AdminDashboard/Reject";
-
+import {toast} from "react-toastify"
 const Book = () => {
     const { id } = useParams();
     // fetch data from mongo
@@ -30,9 +30,13 @@ const Book = () => {
             return originalUrl;
         }
     }
-
+    const validatePublish = ()=>{
+        
+        return pendingReviewers.length ==0;
+    }
     const handlePublish = async () => {
         try {
+            if(!validatePublish()) return toast.error("Reviewer responses are pending");
             const response = await fetch(
                 `http://localhost:5000/admin/publish`,
                 {
@@ -46,6 +50,10 @@ const Book = () => {
                 }
             );
             let json = await response.json();
+            if(json == null  || "error" in json) {
+                toast.error(json?.error);
+                return;
+            }
             console.log(json);
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -68,6 +76,11 @@ const Book = () => {
                     }
                 );
                 let json = await response.json();
+                console.log(json);
+                if(json == null  || "error" in json) {
+                    toast.error(json?.error);
+                    return;
+                }
                 setBook(json);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -85,6 +98,10 @@ const Book = () => {
                         `http://localhost:5000/admin/getReviewers`
                     );
                     let json = await response.json();
+                    if(json == null  || "error" in json) {
+                        toast.error(json?.error);
+                        return;
+                    }
                     let reviewers = json.filter((reviewer) =>
                         book.reviewersAlotted.includes(reviewer._id)
                     );
@@ -116,19 +133,22 @@ const Book = () => {
                     );
                     let json = await response.json();
                     console.log("json>>", json);
+                    if( json == null  || "error" in json){
+                        toast.error(json?.error);
+                        return;
+                    }
+
+
                     setReviews(reviews);
 
                     let temp = json.map((x) => {
                         const id1 = x.reviewerid;
-                        // console.log(x);
                         const d2 = reviewers.filter((y) => y._id === id1)[0];
-                        // console.log(">>>",d2, reviewers);
                         return {
                             ...x,
                             ...d2,
                         };
                     });
-                    console.log(temp);
                     setArrToBeMapped(temp);
                 } catch (error) {
                     console.error("Error fetching data:", error);
@@ -153,7 +173,7 @@ const Book = () => {
         setPendingReviewers(pending);
     }, [reviewedReviewers, reviewers]);
 
-    if (!Object.keys(book)) {
+    if (book && !Object.keys(book)) {
         return (
             <>
                 <Navbar page="book-reviews" />
@@ -333,7 +353,7 @@ const Book = () => {
                                      px={9}
                                         onClick={handlePublish}
                                         display="block"
-                                        colorScheme="green"
+                                        colorScheme="green" opacity={(pendingReviewers.length != 0)?.5:1}
                                     >
                                         Accept Book
                                     </Button>

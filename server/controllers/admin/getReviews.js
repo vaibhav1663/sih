@@ -8,7 +8,7 @@ exports.getReviews = async (req, res) => {
             return res.status(404).json({ error: "Book not found" });
         }
         if (bookReview.reviewerResponse.length === 0) {
-            return res.status(404).json({ error: "No reveiwers found" });
+            return res.status(404).json({ error: "No reveiwer response found" });
         }
         const reviewers = bookReview.reviewerResponse;
         res.status(200).json(reviewers);
