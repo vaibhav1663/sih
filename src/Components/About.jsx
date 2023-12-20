@@ -6,17 +6,77 @@ const About = () => {
         <div>
             <Navbar page="about" />
             <div class="lg:mb-0 flex " style={{height: '100vh' ,textAlign: 'center'}} >
-                <img src="./img/img2.jpg" alt="" class="object-cover w-1/2 h-screen"/>
-                <div class="p-8 ">
-                <h2 class="mb-10 text-3xl max-w-[700px] font-bold leading-[1.208] text-dark  lg:text-[38px] xl:text-[40px] m-auto">
-                    About National Commission For Indian System Of Medicine
-                </h2>
-                <p class=" mb-8 max-w-[700px] text-base text-body-color m-auto text-justify">
-                    The National Commission For Indian System Of Medicine is the statutory body constituted under <b>NCISM Act, 2020</b> vide gazette notification extraordinary part (ii) section 3(ii) dated 21.09.2020.
-
-                    An Act to provide for a <b>medical education system that improves access to quality and affordable medical education</b>, ensures availability of adequate and high quality medical professionals of Indian System of Medicine in all parts of the country; that promotes equitable and universal healthcare that encourages community health perspective and makes services of such medical professionals accessible and affordable to all the citizens; that promotes national health goals; that encourages such medical professionals to adopt latest medical research in their work and to contribute to research; that has an objective periodic and transparent assessment of medical institutions and facilitates maintenance of a medical register of Indian System of Medicine for India and enforces high ethical standards in all aspects of medical services; that is flexible to adapt to the changing needs and has an effective grievance redressal mechanism and for matters connected therewith or incidental thereto.
-                </p>
-                </div>
+                <img src="./img/img2.jpg" alt="" class="object-cover w-1/3"/>
+                <section>
+    <div class="container mx-auto bg-white max-w-7xl sm:p-6 lg:p-8 dark:bg-gray-800">
+    <p class="my-5 text-xl font-extrabold leading-8 tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+            How to get your book reccomended by NCISM?
+        </p>
+            <div class="w-full">
+                <ul class="space-y-6">
+                    <li class="flex -mx-4">
+                        <div class="px-4">
+                            <span class="flex items-center justify-center w-16 h-16 mx-auto text-2xl font-bold text-blue-600 rounded-full font-heading bg-blue-50">
+                                1
+                            </span>
+                        </div>
+                        <div class="px-4">
+                            <h3 class="my-4 text-xl font-semibold dark:text-white">
+                                Submission
+                            </h3>
+                            <p class="leading-loose text-gray-500 dark:text-gray-300">
+                                Visit the dashboard, click "Recommend Book," and submit your book following the provided guidelines. Stay tuned for updates on the status table.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="flex -mx-4">
+                        <div class="px-4">
+                            <span class="flex items-center justify-center w-16 h-16 mx-auto text-2xl font-bold text-blue-600 rounded-full font-heading bg-blue-50">
+                                2
+                            </span>
+                        </div>
+                        <div class="px-4">
+                            <h3 class="my-4 text-xl font-semibold dark:text-white">
+                                Admin Review
+                            </h3>
+                            <p class="leading-loose text-gray-500 dark:text-gray-300">
+                                The NCISM Committee will assess whether to assign reviewers for the book or reject it outright. If rejected, a detailed email explaining the reasons will be sent. Additionally, a cool-down period for re-submission will be provided.</p>
+                        </div>
+                    </li>
+                    <li class="flex -mx-4">
+                        <div class="px-4">
+                            <span class="flex items-center justify-center w-16 h-16 mx-auto text-2xl font-bold text-blue-600 rounded-full font-heading bg-blue-50">
+                                3
+                            </span>
+                        </div>
+                        <div class="px-4">
+                            <h3 class="my-4 text-xl font-semibold dark:text-white">
+                                Peer Review
+                            </h3>
+                            <p class="leading-loose text-gray-500 dark:text-gray-300">
+                                Assigned reviewers will receive notifications via email. They are required to submit a book review following the NCISM Guidelines. The scores provided will determine whether the book is recommended or rejected.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="flex -mx-4">
+                        <div class="px-4">
+                            <span class="flex items-center justify-center w-16 h-16 mx-auto text-2xl font-bold text-blue-600 rounded-full font-heading bg-blue-50">
+                                4
+                            </span>
+                        </div>
+                        <div class="px-4">
+                            <h3 class="my-4 text-xl font-semibold dark:text-white">
+                                Publish
+                            </h3>
+                            <p class="leading-loose text-gray-500 dark:text-gray-300">
+                                After all three reviewers have completed their assessments, the administrator will consolidate the total scores. Based on the cumulative evaluation, the final decision will be made regarding the inclusion of the book in the list.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+        </div>
+    </div>
+</section>
 
             </div>
 

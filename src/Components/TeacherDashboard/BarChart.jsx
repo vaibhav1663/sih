@@ -127,7 +127,7 @@ const BarChart = ({books, bname1, bname2}) => {
 
     const legend = svg.selectAll('.legend').data(color.domain()).enter().append('g').attr('class', 'legend');
 
-    const legendSpacing = 200;
+    const legendSpacing = 400;
 
     legend
       .append('text') 
