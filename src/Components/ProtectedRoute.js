@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useLogin } from "../hooks/useLogin";
 
-const ProtectedRoute = ({ children, allowedRoles }) => {
+const ProtectedRoute = ({ children }) => {
   const { user } = useAuthContext();
   const {isLoading} = useLogin();
 
