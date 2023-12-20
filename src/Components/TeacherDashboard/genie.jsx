@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PieChart from "../ReviewerDashboard/PieChart";
 import {
     Accordion,
@@ -147,7 +147,7 @@ let data={
 const WidgetToggle = () => {
 
   return (
-          <div className="pic bg-blue-100 p-6 rounded-lg">
+          <div className="pic p-6 rounded-lg">
             <Tabs
           variant="soft-rounded"
           colorScheme="blue"

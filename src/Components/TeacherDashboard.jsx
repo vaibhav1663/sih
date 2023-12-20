@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import Table from "./TeacherDashboard/table";
 import SuggestBook from "./SuggestBook";
 import Widget from "./TeacherDashboard/genie";
+import PlagiarismForm from "./TeacherDashboard/PlagiarismForm";
 import { useAuthContext } from "../hooks/useAuthContext";
 const TeacherDashboard = () => {
     const teacher = useAuthContext();
@@ -26,6 +27,7 @@ const TeacherDashboard = () => {
                 
             </div>
             <Widget></Widget>
+            <PlagiarismForm></PlagiarismForm>
         </>
     );
 };
