@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { useSignup } from "../../hooks/useSignup";
 
-const Signup = () => {
+const AddReviewer = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -56,7 +56,7 @@ const Signup = () => {
                     <div className="flex items-center justify-start space-x-3">
                         <span className="bg-black rounded-full w-8 h-8"></span>
                         <a href="/" className="font-medium text-xl">
-                            Brand
+                            NCISM
                         </a>
                     </div>
                 </div>
@@ -66,14 +66,14 @@ const Signup = () => {
                         <div className="flex items-center justify-start space-x-3">
                             <span className="bg-black rounded-full w-6 h-6"></span>
                             <a href="/" className="font-medium text-lg">
-                                Brand
+                                NCISM
                             </a>
                         </div>
                     </div>
                     <div className="flex flex-1 flex-col mt-8 justify-center space-y-5 max-w-md">
                         <div className="flex flex-col space-y-2 text-center">
                             <h2 className="text-3xl md:text-4xl font-bold">
-                                Create an account
+                                Reviewer Creation Form
                             </h2>
                             <p className="text-md md:text-xl">
                                 It'll takes few minutes
@@ -126,7 +126,7 @@ const Signup = () => {
                                             for="college"
                                             class="block mb-2 text-sm font-medium text-gray-900  text-left"
                                         >
-                                            College
+                                            College/Organisation
                                         </label>
                                         <input
                                             type="text"
@@ -188,7 +188,7 @@ const Signup = () => {
                                             for="stream"
                                             class="block mb-2 text-sm font-medium text-gray-900  text-left "
                                         >
-                                            Stream
+                                            Qualification
                                         </label>
                                         <select
                                             id="stream"
@@ -205,48 +205,16 @@ const Signup = () => {
                                             </option>
                                             <option value="UG">UG</option>
                                             <option value="PG">PG</option>
+                                            <option value="PG">Doctorate</option>
                                         </select>
                                     </div>
-                                    <div>
-                                        <label
-                                            for="year"
-                                            class="block mb-2 text-sm font-medium text-gray-900  text-left "
-                                        >
-                                            Year
-                                        </label>
-                                        <select
-                                            id="year"
-                                            onChange={(e) => {
-                                                setYear(
-                                                    e.target.selectedOptions[0]
-                                                        .value
-                                                );
-                                            }}
-                                            className="border-2 border-black rounded-lg text-gray-900 text-sm focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
-                                        >
-                                            <option selected="">
-                                                Select category
-                                            </option>
-                                            <option value="FY">
-                                                First Year
-                                            </option>
-                                            <option value="SY">
-                                                Second Year
-                                            </option>
-                                            <option value="TY">
-                                                Third year
-                                            </option>
-                                            <option value="LY">
-                                                Fourth year
-                                            </option>
-                                        </select>
-                                    </div>
+                                    
                                     <div>
                                         <label
                                             for="field"
                                             class="block mb-2 text-sm font-medium text-gray-900  text-left "
                                         >
-                                            Course
+                                            Specialisation
                                         </label>
                                         <select
                                             id="field"
@@ -266,6 +234,9 @@ const Signup = () => {
                                             </option>
                                             <option value="sidhha">
                                                 Sidhha
+                                            </option>
+                                            <option value="unani">
+                                                Unani
                                             </option>
                                         </select>
                                     </div>
@@ -388,4 +359,4 @@ const Signup = () => {
     );
 };
 
-export default Signup;
+export default AddReviewer;
