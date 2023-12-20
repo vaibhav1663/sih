@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ReviewForm from "./Components/ReviewForm.jsx";
 import LoginForm from "./Components/LoginForm.jsx";
 import SuggestBook from "./Components/SuggestBook.jsx";
+import AddReviewer from "./Components/Admin/AddReviewer.jsx";
 
 import About from "./Components/About.jsx";
 import { ToastContainer } from "react-toastify";
@@ -26,10 +27,11 @@ import ReviewerDashboard from "./Components/ReviewerDashboard.jsx";
 import TeacherDashboard from "./Components/TeacherDashboard.jsx";
 import AI from "./Components/AI.jsx";
 import PeerToPeer from "./Components/PeertoPeer.jsx";
+import { useEffect } from "react";
+import Plagarism from "./Components/Plag/Plagarism.jsx";
 
 function App() {
     const { user } = useAuthContext();
-
     return (
         <Router>
             <ChakraProvider>
@@ -55,22 +57,22 @@ function App() {
                         <Route path="/signup" element={<Signup />} />
                         <Route path="/ai" element={<AI />} />
                         {/* Admin Routes */}
-                        <Route path="/admin" element={<AdminDashboard />} />
-                        <Route path="/admin/book/:id" element={<AdminBook />} />
+                        <Route path="/admin" element={JSON.parse(localStorage.getItem("user"))?.role === "admin" ? <AdminDashboard /> : <>You must be Admin and logged in to access admin route <a href="/login" className="text-sky-500	">login</a></>} />
+                        <Route path="/admin/book/:id" element={JSON.parse(localStorage.getItem("user"))?.role == 'admin' ? <AdminBook /> : <>You must be Admin and logged in to access admin route <a href="/login" className="text-sky-500	">login</a></>} />
                         <Route
                             path="/admin/book/:bookID/review/:reviewerID"
-                            element={<PDF />}
+                            element={JSON.parse(localStorage.getItem("user"))?.role == 'admin' ? <PDF /> : <>You must be Admin and logged in to access admin route <a href="/login" className="text-sky-500	">login</a></>}
                         />
 
                         {/* Reviewer Routes */}
                         <Route
                             path="/reviewer"
-                            element={<ReviewerDashboard />}
+                            element={JSON.parse(localStorage.getItem("user"))?.role == 'reviewer' ? <ReviewerDashboard /> : <>You must be Reviewer and logged in to access reviewer route <a href="/login" className="text-sky-500	">login</a></>}
                         />
-                        <Route path="/review" element={<ReviewForm />} />
+                        <Route path="/review" element={JSON.parse(localStorage.getItem("user"))?.role == 'reviewer' ? <ReviewForm /> : <>You must be Reviewer and logged in to access reviewer route <a href="/login" className="text-sky-500	">login</a></>} />
 
                         {/* Teacher Routes */}
-                        <Route path="/teacher" element={<TeacherDashboard />} />
+                        <Route path="/teacher" element={JSON.parse(localStorage.getItem("user"))?.role == 'author' ? <TeacherDashboard /> : <>You must be Reviewer and logged in to access reviewer route <a href="/login" className="text-sky-500	">login</a></>} />
 
                         {/* Student Routes */}
                         <Route
@@ -82,6 +84,8 @@ function App() {
                             }
                         />
                         <Route path="/book/:id" element={<Book />} />
+                        <Route path="/plag/" element= {<Plagarism />} />
+
                         <Route
                             path="/peer-to-peer"
                             element={
