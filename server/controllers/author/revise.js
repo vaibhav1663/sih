@@ -63,7 +63,6 @@ exports.revise = async (req, res) => {
           buyLink,
           previewLink,
           reviewerAlloted: [],
-          users: [],
           reviewerResponse: [],
           $push: { reject: { date: new Date() } },
         },
