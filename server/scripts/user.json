@@ -1,8 +1,6 @@
 [
     {
-        "_id": {
-            "$oid": "65816662612ae3aa8dea8cd8"
-        },
+        "_id": "65816662612ae3aa8dea8cd8",
         "name": "Satvik Gaikwad",
         "email": "satvikg7@pm.me",
         "age": 20,
@@ -16,9 +14,7 @@
         "__v": 0
     },
     {
-        "_id": {
-            "$oid": "658166be2bc0a1b2965fdb7c"
-        },
+        "_id": "658166be2bc0a1b2965fdb7c",
         "name": "Aditya Deshmukh",
         "email": "adityasd314@gmail.com",
         "age": 20,
@@ -32,9 +28,7 @@
         "__v": 0
     },
     {
-        "_id": {
-            "$oid": "658167222bc0a1b2965fdb7d"
-        },
+        "_id": "658167222bc0a1b2965fdb7d",
         "name": "Tanmay Bansode",
         "email": "tanmaysbansode@gmail.com",
         "age": 20,
@@ -48,9 +42,7 @@
         "__v": 0
     },
     {
-        "_id": {
-            "$oid": "6581672c2bc0a1b2965fdb7e"
-        },
+        "_id": "6581672c2bc0a1b2965fdb7e",
         "name": "Tanmay Bansode 2",
         "email": "bansodets22.extc@coeptech.ac.in",
         "age": 20,
@@ -64,9 +56,7 @@
         "__v": 0
     },
     {
-        "_id": {
-            "$oid": "658167b62bc0a1b2965fdb7f"
-        },
+        "_id": "658167b62bc0a1b2965fdb7f",
         "name": "Tanmay Bansode 3",
         "email": "theparallleluniverse@gmail.com",
         "age": 20,
@@ -80,9 +70,7 @@
         "__v": 0
     },
     {
-        "_id": {
-            "$oid": "658168682bc0a1b2965fdb82"
-        },
+        "_id": "658168682bc0a1b2965fdb82",
         "name": "Vaibhav Khating",
         "email": "vaibhavkhating@gmail.com",
         "age": 20,
@@ -96,9 +84,7 @@
         "__v": 0
     },
     {
-        "_id": {
-            "$oid": "658168712bc0a1b2965fdb83"
-        },
+        "_id": "658168712bc0a1b2965fdb83",
         "name": "Vaibhav Khating 2",
         "email": "vaibhavkhating2@gmail.com",
         "age": 20,
@@ -112,9 +98,7 @@
         "__v": 0
     },
     {
-        "_id": {
-            "$oid": "658168792bc0a1b2965fdb84"
-        },
+        "_id": "658168792bc0a1b2965fdb84",
         "name": "Vaibhav Khating 3",
         "email": "vaibhavkhating3@gmail.com",
         "age": 20,
@@ -128,9 +112,7 @@
         "__v": 0
     },
     {
-        "_id": {
-            "$oid": "65816b482bc0a1b2965fdb89"
-        },
+        "_id": "65816b482bc0a1b2965fdb89",
         "name": "Payal Sankpal 1",
         "email": "payalss2004@gmail.com",
         "age": 20,
@@ -144,9 +126,7 @@
         "__v": 0
     },
     {
-        "_id": {
-            "$oid": "65816b512bc0a1b2965fdb8a"
-        },
+        "_id": "65816b512bc0a1b2965fdb8a",
         "name": "Payal Sankpal 2",
         "email": "sankpalpayal9@gmail.com",
         "age": 20,
@@ -160,9 +140,7 @@
         "__v": 0
     },
     {
-        "_id": {
-            "$oid": "65816c882bc0a1b2965fdb8d"
-        },
+        "_id": "65816c882bc0a1b2965fdb8d",
         "name": "Om Patil",
         "email": "om648868@gmail.com",
         "age": 20,
@@ -176,9 +154,7 @@
         "__v": 0
     },
     {
-        "_id": {
-            "$oid": "6581a019eecceccc39840430"
-        },
+        "_id": "6581a019eecceccc39840430",
         "name": "Vaibhav Khating",
         "email": "vaibhav17@gmail.com",
         "age": 20,
@@ -192,9 +168,7 @@
         "__v": 0
     },
     {
-        "_id": {
-            "$oid": "6581a0eb55175c1312bf507f"
-        },
+        "_id": "6581a0eb55175c1312bf507f",
         "name": "Satvik Gaikwad",
         "email": "satvikgaikwad7@gmail.com",
         "age": 20,
@@ -208,9 +182,7 @@
         "__v": 0
     },
     {
-        "_id": {
-            "$oid": "6582a0a35307ddf7b1cce3fd"
-        },
+        "_id": "6582a0a35307ddf7b1cce3fd",
         "name": "USER NAME",
         "email": "user@gmail.com",
         "age": 21,

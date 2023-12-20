@@ -1,6 +1,6 @@
 import {
   Tag,
-  TagLabel,
+  TagLabel,Heading
 } from "@chakra-ui/react";
 import { TiTick } from "react-icons/ti";
 import { RxCross2 } from "react-icons/rx";
@@ -27,8 +27,8 @@ function StatusCards({ data, admin }) {
   console.log({ data });
   const sortedData = data.sort((a, b) => (a.allocated > b.allocated ? -1 : 1));
 
-  return (
-    <div className="p-4 max-w-screen-xl m-auto grid gap-5 grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
+  return (<>
+    {(sortedData.length == 0)?<Heading className="mt-4" color={"crimson"} fontSize={"x-large"}>No Books Found</Heading>:(<div className="p-4 max-w-screen-xl m-auto grid gap-5 grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
       {sortedData.map((book, index) => {
         return (
           <div
@@ -124,8 +124,8 @@ function StatusCards({ data, admin }) {
           </div>
         );
       })}
-    </div>
-  );
+    </div>)}
+  </>);
 }
 
 export default StatusCards;

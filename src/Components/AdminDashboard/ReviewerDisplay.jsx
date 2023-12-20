@@ -8,7 +8,7 @@ import {
     Th,
     Td,
     TableContainer,
-    Button,
+    Button,Heading
 } from "@chakra-ui/react";
 
 const ReviewerDisplay = ({ reviewersToDisplay }) => {
@@ -75,7 +75,9 @@ const ReviewerDisplay = ({ reviewersToDisplay }) => {
 
     return (
       <>
-        <TableContainer
+       
+
+        {((reviewersToDisplay.length == 0)?<Heading color={"crimson"} fontSize={"x-large"}>No Reviewers Found</Heading>: <TableContainer
           style={{
             paddingBottom: "8rem",
             borderRadius: "8px",
@@ -160,9 +162,7 @@ const ReviewerDisplay = ({ reviewersToDisplay }) => {
           <Link to={"/admin/addReviewer"}>
           <Button colorScheme="blue" mt={4}>Add Reviewer</Button>
         </Link>
-        </TableContainer>
-
-
+        </TableContainer>)}
       </>
     );
 };

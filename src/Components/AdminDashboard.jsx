@@ -9,7 +9,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 import StatusCards from "./AdminDashboard/StatusCards";
-
+import {toast} from "react-toastify"
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 
 import ReviewerAllocationTable from "./AdminDashboard/table";
@@ -26,8 +26,11 @@ const AdminDashboard = () => {
     try {
       const response = await fetch(GET_REVIEWERS_URL);
       const data = await response.json();
+      if("error" in data) {
+        toast.error(data.error);
+        return
+      }
       setReviewersToDisplay(data);
-      console.log("set :", data);
       return;
     } catch (error) {
       console.error("Error fetching reviewers:", error);
@@ -38,7 +41,6 @@ const AdminDashboard = () => {
     try {
       const response = await fetch(GET_BOOKS  );
       const data = await response.json();
-      console.log("FUCK THIS DATA :", data);
       data && setBooks(data);
       return;
     } catch (error) {
@@ -76,7 +78,6 @@ const AdminDashboard = () => {
         allocated: item.reviewerAlloted.length ? true : false,
       };
     });
-    console.log("array to be mapped", arr);
     // setBooks(arr);
     setBooksToBeMapped(arr);
   }, [books]);
@@ -98,8 +99,6 @@ const AdminDashboard = () => {
     setReviewerData((prevReviewerData) => {
       const newReviewerData = [...prevReviewerData];
       const reviewerData = { ...newReviewerData[bid] };
-      console.log("Triigger");
-      console.log({ reviewerData });
       if (id === 0) {
         reviewerData.reviewer1 = value;
       } else if (id === 1) {
@@ -112,17 +111,7 @@ const AdminDashboard = () => {
     });
   };
 
-  console.log(reviewerData); //reviwerData is array of objects containing bookId and three respective reviwers (no. of elements same as Data)
-
-  const handleCopyId = async (id) => {
-    try {
-      console.log(id);
-      await navigator.clipboard.writeText(id);
-      console.log("Content copied to clipboard");
-    } catch (err) {
-      console.error("Failed to copy: ", err);
-    }
-  };
+  
 
   return (
     <>

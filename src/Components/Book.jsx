@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-
+import { toast } from "react-toastify";
 import {
   Text,
   Flex,
@@ -59,6 +59,8 @@ const Book = () => {
           }
         );
         let json = await response.json();
+        if(!json) throw new Error("No book found");
+        
         console.log("resp >>", json);
         json = {
           ...json,
@@ -124,8 +126,6 @@ const Book = () => {
       comment: comment,
     };
 
-    console.log("Review Data to be sent:", reviewData);
-
     const addReview = async () => {
       try {
         const response = await fetch(
@@ -139,19 +139,18 @@ const Book = () => {
           }
         );
 
-        console.log(response);
-
         if (response.ok) {
-          console.log("Review submitted successfully!");
+          toast.success("Review submitted successfully!");
           onClose();
         } else {
-          console.error("Failed to submit the review.");
+          toast.error("Review submitted successfully");
+
         }
       } catch (error) {
         console.error("Error submitting review:", error);
       }
     };
-
+    
     addReview();
   };
 
