@@ -66,6 +66,7 @@ const Dropdown = ({ reviewers, onChange, bookname, r, placeholder }) => {
         </button>
         <div
           id="dropdown-menu"
+          style={{overflowY: "auto"}}
           className={`${
             isOpen ? '' : 'hidden'
           } absolute right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-1 space-y-1 z-50 max-h-60`}
