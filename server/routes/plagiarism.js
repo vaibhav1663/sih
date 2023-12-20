@@ -51,7 +51,7 @@ router.post("/text", upload.single("file"), async (req, res) => {
       return res.status(400).json({ error: "PDF file is required" });
     }
 
-    const buffer = req.file.buffer;
+    const buffer = await req.file.buffer;
     const data = await pdfParse(buffer);
 
     const text = data.text;
