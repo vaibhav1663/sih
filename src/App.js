@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ReviewForm from "./Components/ReviewForm.jsx";
 import LoginForm from "./Components/LoginForm.jsx";
 import SuggestBook from "./Components/SuggestBook.jsx";
+import AddReviewer from "./Components/Admin/AddReviewer.jsx";
 
 import About from "./Components/About.jsx";
 import { ToastContainer } from "react-toastify";
@@ -57,6 +58,7 @@ function App() {
                         {/* Admin Routes */}
                         <Route path="/admin" element={<AdminDashboard />} />
                         <Route path="/admin/book/:id" element={<AdminBook />} />
+                        <Route path="/admin/addReviewer" element={<AddReviewer />} />
                         <Route
                             path="/admin/book/:bookID/review/:reviewerID"
                             element={<PDF />}
