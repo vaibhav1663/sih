@@ -14,7 +14,7 @@ const AddReviewer = () => {
     const [field, setField] = useState("");
     const [collegeName, setCollegeName] = useState("");
     const [degree, setDegree] = useState("");
-    const [year, setYear] = useState("");
+    const [year, setYear] = useState("0");
     const [role, setRole] = useState("reviewer");
 
     const { signup, error, isLoading } = useSignup();
@@ -22,6 +22,19 @@ const AddReviewer = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        console.log(
+          email,
+          password,
+          name,
+          collegeName,
+          gender,
+          role,
+          age,
+          degree,
+          year,
+          field
+        );
 
         await signup(
             email,
@@ -205,7 +218,7 @@ const AddReviewer = () => {
                                             </option>
                                             <option value="UG">UG</option>
                                             <option value="PG">PG</option>
-                                            <option value="PG">Doctorate</option>
+                                            <option value="Doctorate">Doctorate</option>
                                         </select>
                                     </div>
                                     
@@ -269,21 +282,31 @@ const AddReviewer = () => {
                                     Submit
                                 </button>
                             </form>
+
+                            <p className=" mb-1">
+                                Already have an Account ?{" "}
+                                <Link
+                                    className="font-bold underline"
+                                    to="/login"
+                                >
+                                    Login{" "}
+                                </Link>
+                            </p>
+
                         </div>
                     </div>
 
-                    <div className="flex justify-center flex-col m-auto mt-16 mb-16 text-center text-lg ">
-                        <p className="font-bold mb-1">
-                            Built by{" "}
-                            <a href="/" className="">
-                                Team Brocoders for SIH
-                            </a>
+                     <p
+                            style={{
+                                color: "dodgerblue",
+                            }}
+                        >
+                            Socials
                         </p>
-                        <p>Contact us</p>
-                        <div className="flex items-center justify-center  dark:text-slate-200 space-x-2 mt-4 flex-wrap">
+                        <div className="flex items-center justify-center dark:text-slate-200 space-x-2 flex-wrap">
                             <a
                                 href="https://www.linkedin.com/in/frankuxui/"
-                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-slate-700"
+                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-blue-800"
                             >
                                 <svg
                                     width="24"
@@ -305,7 +328,7 @@ const AddReviewer = () => {
                             </a>
                             <a
                                 href="https://github.com/frankuxui"
-                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-slate-700"
+                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-blue-800"
                             >
                                 <svg
                                     width="24"
@@ -321,7 +344,7 @@ const AddReviewer = () => {
                             </a>
                             <a
                                 href="https://www.instagram.com/frankuxui/"
-                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-slate-700"
+                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-blue-800"
                             >
                                 <svg
                                     width="24"
@@ -337,7 +360,7 @@ const AddReviewer = () => {
                             </a>
                             <a
                                 href="https://twitter.com/frankuxui"
-                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-slate-700"
+                                className="flex flex-none items-center justify-center rounded-full w-12 h-12 hover:bg-slate-200 transition-all dark:hover:bg-blue-800"
                             >
                                 <svg
                                     width="24"
@@ -355,7 +378,7 @@ const AddReviewer = () => {
                     </div>
                 </div>
             </div>
-        </div>
+       
     );
 };
 
